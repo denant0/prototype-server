@@ -1,0 +1,23 @@
+{
+  "name": "prototype-server",
+  "version": "0.0.1",
+  "description": "Webix + NodeJS",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:denant0/prototype-server.git"
+  },
+  "keywords": [
+    "prototype",
+    "server"
+  ],
+  "author": "Denis Antonenkov",
+  "homepage": "https://github.com/denant0/prototype-server",
+  "dependencies": {
+    "mongoskin": "~1.3.20",
+    "express": "~3.5.1"
+  }
+}
