@@ -42,7 +42,7 @@ webix.ready(function(){
             $sort: 'AssetType'
 
         },
-        url: '/data'
+        url: 'rest->/data'
     });
     webix.event(window, "resize", function(){dtable.adjust()});
 
@@ -279,7 +279,7 @@ var columnsMetadata = [
         width: 125
     },
     {
-        header: [columnTitle.StateCode,{content:"selectFilter"}],
+        header: [columnTitle.StateCode,{content:"serverFilter"}],
         id: dataIndex.StateCode,
         sort:"string",
         width: 125,

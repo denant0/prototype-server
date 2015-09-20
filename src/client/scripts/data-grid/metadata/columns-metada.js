@@ -127,7 +127,7 @@ var columnsMetadata = [
         width: 125
     },
     {
-        header: [columnTitle.StateCode,{content:"selectFilter"}],
+        header: [columnTitle.StateCode,{content:"serverFilter"}],
         id: dataIndex.StateCode,
         sort:"string",
         width: 125,

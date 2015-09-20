@@ -30,6 +30,7 @@ echo                  `
 
 rem Guess ORIENTDB_HOME if not defined
 set CURRENT_DIR=%cd%
+set ORIENTDB_HOME=%cd%\src\server\lib\orientdb\
 
 if exist "%JAVA_HOME%\bin\java.exe" goto setJavaHome
 set JAVA=java
@@ -43,11 +44,14 @@ if not "%ORIENTDB_HOME%" == "" goto gotHome
 set ORIENTDB_HOME=%CURRENT_DIR%
 if exist "%ORIENTDB_HOME%\bin\server.bat" goto okHome
 cd ..
+echo %ORIENTDB_HOME%
 set ORIENTDB_HOME=%cd%
+echo %ORIENTDB_HOME%
 cd %CURRENT_DIR%
 
 :gotHome
 if exist "%ORIENTDB_HOME%\bin\server.bat" goto okHome
+echo %CURRENT_DIR%
 echo The ORIENTDB_HOME environment variable is not defined correctly
 echo This environment variable is needed to run this program
 goto end

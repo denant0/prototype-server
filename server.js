@@ -17,21 +17,10 @@ app.use(express.bodyParser());
 
 
 app.get('/data', function(req, res){
-    console.log(req.query.sort);
+
     db.query('select from AssetGrid', {
         limit: 1000
     }).then(function (results){
-
-        res.send(results);
-    });
-});
-
-app.get('/data?sort', function(req, res){
-    console.log(req.query.sort);
-    db.query('select from AssetGrid', {
-        limit: 1000
-    }).then(function (results){
-
         res.send(results);
     });
 });

@@ -41,7 +41,7 @@ webix.ready(function(){
             $sort: 'AssetType'
 
         },
-        url: '/data'
+        url: 'rest->/data'
     });
     webix.event(window, "resize", function(){dtable.adjust()});
 
