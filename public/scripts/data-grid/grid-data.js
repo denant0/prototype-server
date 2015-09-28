@@ -42,7 +42,7 @@ webix.ready(function(){
             $sort: 'AssetType'
 
         },
-        url: 'rest->/data'
+        url: "server/data"
     });
     webix.event(window, "resize", function(){dtable.adjust()});
 
@@ -233,7 +233,7 @@ var columnsMetadata = [
     },
     {
         id: dataIndex.AssetType,
-        header: [columnTitle.AssetType,{content:"selectFilter"}],
+        header: [columnTitle.AssetType,{content:"serverFilter"}],
         sort:"string",
         width: 200,
         template:function(obj, common){
@@ -281,7 +281,7 @@ var columnsMetadata = [
     {
         header: [columnTitle.StateCode,{content:"serverFilter"}],
         id: dataIndex.StateCode,
-        sort:"string",
+        sort:"server",
         width: 125,
         cssFormat:status
     },

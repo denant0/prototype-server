@@ -16,8 +16,8 @@ app.use(express.bodyParser());
 
 
 
-app.get('/data', function(req, res){
-
+app.get('/server/data', function(req, res){
+    console.log(req.query);
     db.query('select from AssetGrid', {
         limit: 1000
     }).then(function (results){

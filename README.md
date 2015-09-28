@@ -1,5 +1,12 @@
 # prototype-server
 
+Users:
+For correct operation of the server you need to install npm modules using npm install in the root directory.
+
+Developers:
+For correct operation of the server you need to install npm modules using npm install package-dev.jcon in the root directory.
+
+
 Run app for Windows x64: Start the file start-application-x64.
 Run app for Windows x86: Start the file start-application-x86.
 

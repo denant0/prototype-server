@@ -81,7 +81,7 @@ var columnsMetadata = [
     },
     {
         id: dataIndex.AssetType,
-        header: [columnTitle.AssetType,{content:"selectFilter"}],
+        header: [columnTitle.AssetType,{content:"serverFilter"}],
         sort:"string",
         width: 200,
         template:function(obj, common){
@@ -129,14 +129,14 @@ var columnsMetadata = [
     {
         header: [columnTitle.StateCode,{content:"serverFilter"}],
         id: dataIndex.StateCode,
-        sort:"string",
+        sort:"server",
         width: 125,
         cssFormat:status
     },
     {
         header: [columnTitle.CityCode,{content:"selectFilter"}],
         id: dataIndex.CityCode,
-        sort:"server",
+        sort:"string",
         width: 125,
         cssFormat:status
     },
