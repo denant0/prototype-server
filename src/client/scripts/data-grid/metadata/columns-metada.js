@@ -81,12 +81,18 @@ var columnsMetadata = [
     },
     {
         id: dataIndex.AssetType,
-        header: [columnTitle.AssetType,{content:"serverFilter"}],
+        header: [columnTitle.AssetType,{content:"selectFilter"}],
         sort:"string",
         width: 200,
-        template:function(obj, common){
-            if (obj.$group)
-                return common.treetable(obj, common) + "AssetType: " + obj.value + ". Count: " + obj.$count;
+        template:function(obj, common,a, b, currentNumber){
+            if (obj.$group) {
+                dtable.addSpan(obj.id, "AssetType", 17, 1, null, "hrow");
+                var result = common.treetable(obj, common) + "AssetType: " + obj.value + " ( " + obj.$count + " assets )";
+                var freeItems = 100 - currentNumber;
+                if(freeItems < obj.$count )
+                    result += " (Continues on the next page)";
+                return result;
+            }
             return obj.AssetType;
         },
         cssFormat:status

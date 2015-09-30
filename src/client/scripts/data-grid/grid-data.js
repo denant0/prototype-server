@@ -19,6 +19,7 @@ webix.ready(function(){
         select: "cell",
         multiselect: true,
         resizeColumn:true,
+        spans: true,
         checkboxRefresh:true,
         on:{
             onSelectChange:function(){
@@ -37,15 +38,12 @@ webix.ready(function(){
             }
         },
         scheme:{
-            $group:'AssetType',
-            $sort: 'AssetType'
-
+            $group: 'AssetType',
+            $sort: "AssetType"
         },
         url: "server/data"
     });
     webix.event(window, "resize", function(){dtable.adjust()});
-
-    dtable.openAll();
 
     dtable.on_click.editclass = function(grid, rowIndex, colIndex) {
         webix.message('You click button 1');
