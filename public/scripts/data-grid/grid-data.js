@@ -36,7 +36,6 @@ webix.ready(function(){
             },
             onAfterLoad:function(row, column, value){
                 this.openAll();
-
             }
         },
         scheme:{
@@ -240,8 +239,9 @@ var columnsMetadata = [
                 dtable.addSpan(obj.id, "AssetType", 17, 1, null, "hrow");
                 var result = common.treetable(obj, common) + "AssetType: " + obj.value + " ( " + obj.$count + " assets )";
                 var freeItems = 100 - currentNumber;
-                if(freeItems < obj.$count )
-                    result += " (Continues on the next page)";
+                if(obj.open)
+                    if(freeItems < obj.$count )
+                        result += " (Continues on the next page)";
                 return result;
             }
             return obj.AssetType;
@@ -347,7 +347,7 @@ var columnsMetadata = [
         cssFormat:status
     },
     {
-        header: columnTitle.Data,
+        header: [columnTitle.Data,{content:"datepickerFilter"}],
         id: dataIndex.Data,
         sort:"string",
         width: 125,
