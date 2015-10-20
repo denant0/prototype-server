@@ -1,6 +1,5 @@
 var columnsMetadata = require('./metadata/columns-metada');
 
-
 webix.ready(function(){
 
     dtable = new webix.ui({
@@ -34,7 +33,7 @@ webix.ready(function(){
                 })
             },
             onAfterLoad:function(row, column, value){
-                this.openAll();
+                //this.openAll();
             }
         },
         scheme:{
@@ -42,7 +41,9 @@ webix.ready(function(){
             $sort: "AssetType"
         },
         url: "server/data"
+
     });
+
     webix.event(window, "resize", function(){dtable.adjust()});
 
     dtable.on_click.editclass = function(grid, rowIndex, colIndex) {
@@ -58,6 +59,8 @@ webix.ready(function(){
         webix.message('You click button 4');
     };
 })
+
+
 
 
 
