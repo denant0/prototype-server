@@ -17,27 +17,53 @@ app.use(express.bodyParser());
 
 
 app.get('/server/data', function(req, res){
-    console.log(req.query);
-    console.log(req.query.filter);
+    var query;
     if(typeof req.query.filter === 'undefined'){
-        console.log("load data");
-        db.query('select * from AssetGrid ').then(function (results) {
-
-            res.send(results);
-        });
+        query = 'select * from AssetGrid ';
     }
     else{
-        var keys = Object.keys(req.query.filter);
-        console.log(keys);
-        for(var i=0;i<keys.length;i++){
-           if(req.query.filter[keys[i]] != '' && req.query.filter[keys[i]] != null){
-               console.log(req.query.filter[keys[i]]);
+        query = 'select * from AssetGrid WHERE ';
+        var filter = req.query.filter;
+        var flag = false;
+        var index = 0;
+        var queryArray = new Array();
+        for(var key in filter){
+            if(filter[key] != "" && filter[key] != 'null'){
+                queryArray[index] =  key + ' like \'' + filter[key] + '%\'';
+                index++;
+                flag = true;
             }
         }
+        if(index == 1){
+            query += queryArray[0];
+        }
+        else{
+            for(var i=0;i<index;i++){
+                if(i == index-1)
+                    query += queryArray[i];
+                else
+                    query += queryArray[i] + ' and ';
+            }
+        }
+        if(!flag){
+            query = 'select * from AssetGrid';
+        }
+        if(typeof req.query.sort != 'undefined'){
+            var sort = req.query.sort;
+            for(var key in sort){
+                query += ' order by ' + key + ' ' + sort[key];
+            }
+            flag = true;
+            console.log('sort');
+        }
+        if(!flag){
+            query = 'select * from AssetGrid ';
+        }
     }
-
-
-
+    console.log(query);
+    db.query(query).then(function (results) {
+        res.send(results);
+    });
 });
 
 app.listen(8000);

@@ -21,11 +21,13 @@ webix.ready(function(){
         spans: true,
         checkboxRefresh:true,
         on:{
-            onSelectChange:function(){
+            onSelectChange:function() {
                 var id = dtable.getSelectedId(true);
-                var text = dtable.getItem(id)[id[0].column];
-                webix.message(text);
-                document.getElementById('select').innerHTML = text;
+                if (id.length != 0) {
+                    var text = dtable.getItem(id)[id[0].column];
+                    webix.message(text);
+                    document.getElementById('select').innerHTML = text;
+                }
             },
             onCheck:function(row, column, value){
                 this.data.eachChild(row, function(item){
@@ -33,7 +35,7 @@ webix.ready(function(){
                 })
             },
             onAfterLoad:function(row, column, value){
-                //this.openAll();
+                this.openAll();
             }
         },
         scheme:{

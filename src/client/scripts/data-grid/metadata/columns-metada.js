@@ -81,8 +81,8 @@ var columnsMetadata = [
     },
     {
         id: dataIndex.AssetType,
-        header: [columnTitle.AssetType,{content:"selectFilter"}],
-        sort:"string",
+        header: [columnTitle.AssetType,{content:"serverFilter"}],
+        sort:"server",
         width: 200,
         template:function(obj, common,a, b, currentNumber){
             if (obj.$group) {
@@ -99,38 +99,38 @@ var columnsMetadata = [
         cssFormat:status
     },
     {
-        header: [columnTitle.AssetStandard,{content:"selectFilter"}],
+        header: [columnTitle.AssetStandard,{content:"serverFilter"}],
         id: dataIndex.AssetStandard,
-        sort:"string",
+        sort:"server",
         width: 125,
         cssFormat:status
     },
     {
-        header: [columnTitle.AssetStatus,{content:"selectFilter"}],
+        header: [columnTitle.AssetStatus,{content:"serverSelectFilter"}],
         id: dataIndex.AssetStatus,
-        sort:"string",
+        sort:"server",
         width: 125,
         cssFormat:status
     },
     {
-        header: [columnTitle.TitleDescription,{content:"selectFilter"}],
+        header: [columnTitle.TitleDescription,{content:"serverFilter"}],
         id: dataIndex.TitleDescription,
-        sort:"string",
+        sort:"server",
         width: 300,
         cssFormat:status
     },
     {
-        header: [columnTitle.GeoRegionID,{content:"selectFilter"}],
+        header: [columnTitle.GeoRegionID,{content:"serverSelectFilter"}],
         id: dataIndex.GeoRegionID,
-        sort:"string",
+        sort:"server",
         width: 125,
         cssFormat:status
     },
     {
-        header: [columnTitle.CountryCode,{content:"selectFilter"}],
+        header: [columnTitle.CountryCode,{content:"serverFilter"}],
         id: dataIndex.CountryCode,
         cssFormat:cellColor,
-        sort:"string",
+        sort:"server",
         width: 125
     },
     {
@@ -141,65 +141,65 @@ var columnsMetadata = [
         cssFormat:status
     },
     {
-        header: [columnTitle.CityCode,{content:"selectFilter"}],
+        header: [columnTitle.CityCode,{content:"serverFilter"}],
         id: dataIndex.CityCode,
-        sort:"string",
+        sort:"server",
         width: 125,
         cssFormat:status
     },
     {
-        header: [columnTitle.SiteCode,{content:"selectFilter"}],
+        header: [columnTitle.SiteCode,{content:"serverFilter"}],
         id: dataIndex.SiteCode,
-        sort:"string",
+        sort:"server",
         width: 125,
         cssFormat:status
     },
     {
-        header: [columnTitle.BuildingCode,{content:"selectFilter"}],
+        header: [columnTitle.BuildingCode,{content:"serverFilter"}],
         id: dataIndex.BuildingCode,
-        sort:"string",
+        sort:"server",
         width: 125,
         cssFormat:status
     },
     {
-        header: [columnTitle.FloorCode,{content:"selectFilter"}],
+        header: [columnTitle.FloorCode,{content:"serverFilter"}],
         id: dataIndex.FloorCode,
-        sort:"string",
+        sort:"server",
         width: 125,
         cssFormat:status
     },
     {
-        header: [columnTitle.RoomCode,{content:"selectFilter"}],
+        header: [columnTitle.RoomCode,{content:"serverFilter"}],
         id: dataIndex.RoomCode,
-        sort:"string",
+        sort:"server",
         width: 125,
         cssFormat:status
     },
     {
-        header: [columnTitle.BusinessUnit,{content:"selectFilter"}],
+        header: [columnTitle.BusinessUnit,{content:"serverFilter"}],
         id: dataIndex.BusinessUnit,
-        sort:"string",
+        sort:"server",
         width: 125,
         cssFormat:status
     },
     {
-        header: [columnTitle.DivisionCode,{content:"selectFilter"}],
+        header: [columnTitle.DivisionCode,{content:"serverFilter"}],
         id: dataIndex.DivisionCode,
-        sort:"string",
+        sort:"server",
         width: 125,
         cssFormat:status
     },
     {
-        header: [columnTitle.DepartmentCode,{content:"selectFilter"}],
+        header: [columnTitle.DepartmentCode,{content:"serverFilter"}],
         id: dataIndex.DepartmentCode,
-        sort:"string",
+        sort:"server",
         width: 125,
         cssFormat:status
     },
     {
         header: [columnTitle.Data,{content:"datepickerFilter"}],
         id: dataIndex.Data,
-        sort:"string",
+        sort:"server",
         width: 125,
         cssFormat:status
     },
