@@ -1,5 +1,6 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var columnsMetadata = require('./metadata/columns-metada');
+var buttonsMetadata = require('./metadata/buttons-metadata');
 
 webix.ready(function(){
 
@@ -37,11 +38,20 @@ webix.ready(function(){
             },
             onAfterLoad:function(row, column, value){
                 this.openAll();
+            },
+            onBeforeRender: function(){
+                for(var key in buttonsMetadata){
+                    var button = buttonsMetadata[key];
+                        this.on_click[button.class]= button.function;
+                }
+            },
+            onDataRequest: function (id, callback, url) {
+                var y =id;
             }
         },
         scheme:{
             $group: 'AssetType',
-            $sort: "AssetType"
+            $sort: 'AssetType'
         },
         url: "server/data"
 
@@ -49,19 +59,7 @@ webix.ready(function(){
 
     webix.event(window, "resize", function(){dtable.adjust()});
 
-    dtable.on_click.editclass = function(grid, rowIndex, colIndex) {
-        webix.message('You click button 1');
-    };
-    dtable.on_click.deleteclass = function(grid, rowIndex, colIndex) {
-        webix.message('You click button 2');
-    };
-    dtable.on_click.addclass = function(grid, rowIndex, colIndex) {
-        webix.message('You click button 3');
-    };
-    dtable.on_click.infoclass = function(grid, rowIndex, colIndex) {
-        webix.message('You click button 4');
-    };
-})
+});
 
 
 
@@ -71,11 +69,14 @@ webix.ready(function(){
 
 
 
-},{"./metadata/columns-metada":4}],2:[function(require,module,exports){
+},{"./metadata/buttons-metadata":2,"./metadata/columns-metada":4}],2:[function(require,module,exports){
 var buttonsMetadata = [
     {
         icon: 'style/icons/cog_edit.png',
         class: 'editclass',
+        function: function(){
+            webix.message('You click button 1');
+        },
         condition: [
             {
                 column: 'AssetType',
@@ -85,6 +86,9 @@ var buttonsMetadata = [
     },{
         icon: 'style/icons/delete.gif',
         class: 'deleteclass',
+        function: function(){
+            webix.message('You click button 2');
+        },
         condition: [
             {
                 column: 'AssetType',
@@ -94,6 +98,9 @@ var buttonsMetadata = [
     },{
         icon: 'style/icons/add.gif',
         class: 'addclass',
+        function: function(){
+            webix.message('You click button 3');
+        },
         condition: [
             {
                 column: 'AssetType',
@@ -107,6 +114,9 @@ var buttonsMetadata = [
     },{
         icon: 'style/icons/information.png',
         class: 'infoclass',
+        function: function(){
+            webix.message('You click button 4');
+        },
         condition: [
             {
                 column: 'AssetType',

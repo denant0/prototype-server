@@ -24,11 +24,6 @@ server.list()
         }
         if(isCraeteGridDatabase)
         {
-
-
-
-
-
         }
         else
         {

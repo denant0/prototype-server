@@ -1,4 +1,5 @@
 var columnsMetadata = require('./metadata/columns-metada');
+var buttonsMetadata = require('./metadata/buttons-metadata');
 
 webix.ready(function(){
 
@@ -36,11 +37,20 @@ webix.ready(function(){
             },
             onAfterLoad:function(row, column, value){
                 this.openAll();
+            },
+            onBeforeRender: function(){
+                for(var key in buttonsMetadata){
+                    var button = buttonsMetadata[key];
+                        this.on_click[button.class]= button.function;
+                }
+            },
+            onDataRequest: function (id, callback, url) {
+                var y =id;
             }
         },
         scheme:{
             $group: 'AssetType',
-            $sort: "AssetType"
+            $sort: 'AssetType'
         },
         url: "server/data"
 
@@ -48,19 +58,7 @@ webix.ready(function(){
 
     webix.event(window, "resize", function(){dtable.adjust()});
 
-    dtable.on_click.editclass = function(grid, rowIndex, colIndex) {
-        webix.message('You click button 1');
-    };
-    dtable.on_click.deleteclass = function(grid, rowIndex, colIndex) {
-        webix.message('You click button 2');
-    };
-    dtable.on_click.addclass = function(grid, rowIndex, colIndex) {
-        webix.message('You click button 3');
-    };
-    dtable.on_click.infoclass = function(grid, rowIndex, colIndex) {
-        webix.message('You click button 4');
-    };
-})
+});
 
 
 

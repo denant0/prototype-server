@@ -1,10 +1,12 @@
-var express = require('express');
-var path = require('path');
-var app = express();
+var express = require('express'),
+    path = require('path'),
+    app = express(),
+    dataBaseServer = require('./src/server/database/create-sample-database');
 
-
-var server = require('./src/server/database/create-sample-database');
-var db = server.use({
+/*
+ Database
+ */
+var db = dataBaseServer.use({
     name: 'grid',
     username: 'root',
     password: '1111'
@@ -13,9 +15,9 @@ var db = server.use({
 
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.bodyParser());
-
-
-
+/*
+ Processing the request /server/data
+ */
 app.get('/server/data', function(req, res){
     var query;
     if(typeof req.query.filter === 'undefined'){
@@ -23,40 +25,9 @@ app.get('/server/data', function(req, res){
     }
     else{
         query = 'select * from AssetGrid WHERE ';
-        var filter = req.query.filter;
-        var flag = false;
-        var index = 0;
-        var queryArray = new Array();
-        for(var key in filter){
-            if(filter[key] != "" && filter[key] != 'null'){
-                queryArray[index] =  key + ' like \'' + filter[key] + '%\'';
-                index++;
-                flag = true;
-            }
-        }
-        if(index == 1){
-            query += queryArray[0];
-        }
-        else{
-            for(var i=0;i<index;i++){
-                if(i == index-1)
-                    query += queryArray[i];
-                else
-                    query += queryArray[i] + ' and ';
-            }
-        }
-        if(!flag){
-            query = 'select * from AssetGrid';
-        }
-        if(typeof req.query.sort != 'undefined'){
-            var sort = req.query.sort;
-            for(var key in sort){
-                query += ' order by ' + key + ' ' + sort[key];
-            }
-            flag = true;
-            console.log('sort');
-        }
-        if(!flag){
+        query = getRequestFilter(req.query.filter, query);
+        query = getRequestSorting(req.query.sort, query);
+        if(query == ""){
             query = 'select * from AssetGrid ';
         }
     }
@@ -67,3 +38,51 @@ app.get('/server/data', function(req, res){
 });
 
 app.listen(8000);
+/*
+ To build the query to filter the data
+    @param filter: object with data to filter
+    @param startQuery: start request
+* */
+function getRequestFilter(filter, startQuery){
+    var query = startQuery;
+    var index = 0;
+    var queryArray = new Array();
+    for(var key in filter){
+        if(filter[key] != "" && filter[key] != 'null'){
+            queryArray[index] =  key + ' like \'' + filter[key] + '%\'';
+            index++;
+        }
+    }
+    if(index == 0){
+        return "";
+    }
+    if(index == 1){
+        query += queryArray[0];
+    }
+    else{
+        for(var i=0;i<index;i++){
+            if(i == index-1)
+                query += queryArray[i];
+            else
+                query += queryArray[i] + ' and ';
+        }
+    }
+    return query;
+}
+/*
+ To build the query to sort the data
+    @param sort: object with data to sort
+    @param startQuery: start request
+ */
+function getRequestSorting(sort, startQuery){
+    var query = startQuery;
+    if(query == ""){
+        query = 'select * from AssetGrid';
+    }
+    if(typeof sort != 'undefined'){
+        for(var key in sort){
+            query += ' order by ' + key + ' ' + sort[key];
+        }
+    }
+    return query;
+}

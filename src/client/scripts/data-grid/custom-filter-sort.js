@@ -1,3 +1,6 @@
+/*
+ Load data from the response received
+ */
 webix.TreeDataLoader._loadNextA = function(count, start, callback, url, now){
     var config = this._settings;
     if (config.datathrottle && !now){
@@ -18,6 +21,9 @@ webix.TreeDataLoader._loadNextA = function(count, start, callback, url, now){
         this.data.feed.call(this, start, count, callback);
 };
 
+/*
+ Create form the flow of the request
+ */
 webix.TreeDataLoader._feed_commonA = function(from, count, callback){
     var url = this.data.url;
     if (from<0) from = 0;
@@ -53,6 +59,9 @@ webix.TreeDataLoader._feed_commonA = function(from, count, callback){
     }
 };
 
+/*
+ Data loading
+ */
 webix.TreeDataLoader._feed_callback = function(){
     //after loading check if we have some ignored requests
     var temp = this._load_count;
@@ -60,4 +69,4 @@ webix.TreeDataLoader._feed_callback = function(){
     this._load_count = false;
     if (typeof temp =="object" && (temp[0]!=last[0] || temp[1]!=last[1]))
         this.data.feed.apply(this, temp);	//load last ignored request
-}
+};
