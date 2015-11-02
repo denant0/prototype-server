@@ -10,7 +10,7 @@ function status(value, obj, t, y){
 function cellColor(container, cellInfo, t,y){
     if (cellInfo.ch1 && ! cellInfo.$group) return "row-marked";
     var currentEnumStyle = classStyle[y];
-    for(element in currentEnumStyle){
+    for(var element in currentEnumStyle){
         if(container == currentEnumStyle[element].cellText){
             return currentEnumStyle[element].classStyle;
         }
@@ -20,10 +20,10 @@ function cellColor(container, cellInfo, t,y){
 
 function renderButton(cellElement, cellInfo){
     var result = "";
-    for(number in buttonsMetadata){
+    for(var number in buttonsMetadata){
         var button = buttonsMetadata[number];
         var conditions = button.condition;
-        for(element in conditions){
+        for(var element in conditions){
             var condition = conditions[element];
             if(cellElement[condition.column] == condition.value){
                 result = result + "<img class='" + button.class + "' src='" + button.icon + "'/>"
@@ -72,7 +72,38 @@ var columnTitle = {
     Data: 'Data'
 };
 
-var columnsMetadata = [
+
+function e (){
+    return [
+        {
+            id: "ch1",
+            header: "",
+            width: 40,
+            template: "{common.checkbox()}"
+        },
+        {
+            id: dataIndex.AssetType,
+            header: [columnTitle.AssetType,{content:"serverFilter"}],
+            sort:"server",
+            width: 200,
+            template:function(obj, common,a, b, currentNumber){
+                if (obj.$group) {
+                    dtable.addSpan(obj.id, "AssetType", 17, 1, null, "hrow");
+                    var result = common.treetable(obj, common) + "AssetType: " + obj.value + " ( " + obj.$count + " assets )";
+                    var freeItems = 100 - currentNumber;
+                    if(obj.open)
+                        if(freeItems < obj.$count )
+                            result += " (Continues on the next page)";
+                    return result;
+                }
+                return obj.AssetType;
+            },
+            cssFormat:status
+        }];
+}
+
+
+var columnsMetadata =  [
     {
         id: "ch1",
         header: "",
@@ -86,7 +117,7 @@ var columnsMetadata = [
         width: 200,
         template:function(obj, common,a, b, currentNumber){
             if (obj.$group) {
-                dtable.addSpan(obj.id, "AssetType", 17, 1, null, "hrow");
+               // dtable.addSpan(obj.id, "AssetType", 17, 1, null, "hrow");
                 var result = common.treetable(obj, common) + "AssetType: " + obj.value + " ( " + obj.$count + " assets )";
                 var freeItems = 100 - currentNumber;
                 if(obj.open)

@@ -2,11 +2,15 @@ var gulp = require('gulp'),
     browserify = require('gulp-browserify'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify');
+var babel = require("gulp-babel");
 
 gulp.task('webix', function(){
     gulp.src('src/client/scripts/data-grid/grid-data.js')
         .pipe(browserify({transform: 'reactify'}))
         .pipe(concat('grid-data.js'))
+        .pipe(babel({
+            presets: ['es2015']
+        }))
         //.pipe(uglify())
         .pipe(gulp.dest('public/scripts/data-grid'));
 });
