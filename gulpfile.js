@@ -5,9 +5,9 @@ var gulp = require('gulp'),
 var babel = require("gulp-babel");
 
 gulp.task('webix', function(){
-    gulp.src('src/client/scripts/data-grid/grid-data.js')
+    gulp.src('src/client/scripts/data-grid/datagrid.js')
         .pipe(browserify({transform: 'reactify'}))
-        .pipe(concat('grid-data.js'))
+        .pipe(concat('datagrid.js'))
         .pipe(babel({
             presets: ['es2015']
         }))
@@ -22,6 +22,8 @@ gulp.task('copy', function(){
         .pipe(gulp.dest('public/style/'));
     gulp.src('src/client/scripts/lib/**/*.*')
         .pipe(gulp.dest('public/scripts/lib/'));
+    gulp.src('src/client/scripts/data-grid/custom-filter-sort.js')
+        .pipe(gulp.dest('public/scripts/data-grid'));
 });
 
 gulp.task('default',['webix', 'copy']);
