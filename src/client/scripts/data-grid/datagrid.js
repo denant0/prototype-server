@@ -23,7 +23,7 @@ webix.ready(function(){
 
 function resize(objects){
     for(var number in objects){
-        webix.event(window, "resize", function () {
+        webix.event(window, "resize", function (event) {
             objects[number].view.adjust();
             objects[number].dataTable.adjust();
         });

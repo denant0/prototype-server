@@ -1,4 +1,4 @@
 # Lines starting with '#' are considered comments.
 # Ignore any file named foo.txt.
-src/server/lib/orientdb/databases/grid/grid.0.wal
-src/server/lib/orientdb/databases/grid/grid.wmr
+/src/server/lib/orientdb/databases/grid/grid.0.wal
+/src/server/lib/orientdb/databases/grid/grid.wmr
