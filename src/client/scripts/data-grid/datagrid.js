@@ -1,4 +1,7 @@
+require('./custom-actions');
+require('./custom-filter-sort');
 var columnsMetadata = require('./metadata/sample-columns-metadata');
+
 
 webix.ready(function(){
     var dataGrid = new DataGrid({
@@ -7,34 +10,30 @@ webix.ready(function(){
         columns: columnsMetadata,
         sortFields: [],
         dataSource: 'server/data',
-        //width: 200,
-        //height: 400,
+        //width: 700,
+        //height: 700,
+        pageSize: 100,
         events:{
-            onSelectChange:function () {
-                var id = this.getSelectedId(true);
-                if (id.length != 0) {
-                    var text = this.getItem(id)[id[0].column];
-                    webix.message(text);
-                    document.getElementById('select').innerHTML = text;
-                }
-            }
+            onSelectChange: 'selectValue'
         }
     });
+
     resize([dataGrid]);
 });
 
 function resize(objects){
     for(var number in objects){
         webix.event(window, "resize", function () {
-            objects[number].view.adjust()
-        });
-        webix.event(window, "resize", function () {
-            objects[number].dataTable.adjust()
+            objects[number].view.adjust();
+            objects[number].dataTable.adjust();
         });
     }
 }
 
+
+
 class DataGrid{
+
     constructor(config) {
         this.id = config.id;
         this.dataTypeToFilterTypeMapping = {
@@ -44,8 +43,9 @@ class DataGrid{
             number: 'serverFilter',
             integer: 'serverFilter'
         };
+        webix.pageSize = config.pageSize;
         var webixColumns = this.createWebixColumns(config.columns);
-        var webixActionGrid = {
+        var webixActionsGrid = {
             onCheck: function (row, column, value) {
                 this.data.eachChild(row, function (item) {
                         item[column] = value;
@@ -55,9 +55,9 @@ class DataGrid{
                 this.openAll();
             },
             onBeforeRender: function () {
-                for (var key in webix.actions) {
-                    var button = webix.actions[key];
-                    this.on_click[button.class] = button.function;
+                for (var key in webix.buttonsMap) {
+                    var button = webix.buttonsMap[key];
+                    this.on_click[button.class] = webix.actions[button.function];
                 }
 
             },
@@ -80,7 +80,7 @@ class DataGrid{
         }
 
         for(var event in config.events){
-            webixActionGrid[event] = config.events[event];
+            webixActionsGrid[event] = webix.actions[config.events[event]];
         }
         var nameGrid = config.container + 'Grid';
         var namePaging = config.container + 'Paging';
@@ -104,7 +104,7 @@ class DataGrid{
             pager: {
                 template: "{common.first()}{common.prev()}{common.pages()}{common.next()}{common.last()}",
                 container: namePaging,
-                size: 100,
+                size: config.pageSize,
                 group: 5,
                 animate: {
                     subtype: "in"
@@ -115,7 +115,7 @@ class DataGrid{
             resizeColumn: true,
             spans: true,
             checkboxRefresh: true,
-            on: webixActionGrid,
+            on: webixActionsGrid,
             scheme: {
                 $group: webixColumns.idGroup,
                 $sort:  webixColumns.idGroup
@@ -128,7 +128,7 @@ class DataGrid{
     renderGroup(obj, common,a, b, currentNumber){
         if (obj.$group) {
             var result = common.treetable(obj, common) + " " + this.id +": " + obj.value + " ( " + obj.$count + " assets )";
-            var freeItems = 100 - currentNumber;
+            var freeItems = webix.pageSize - currentNumber;
             if(obj.open)
                 if(freeItems < obj.$count )
                     result += " (Continues on the next page)";
@@ -139,8 +139,8 @@ class DataGrid{
 
     renderButton(cellElement, cellInfo){
         var result = "";
-        for(var number in webix.actions){
-            var button = webix.actions[number];
+        for(var number in webix.buttonsMap){
+            var button = webix.buttonsMap[number];
             var conditions = button.condition;
             for(var element in conditions){
                 var condition = conditions[element];
@@ -186,7 +186,7 @@ class DataGrid{
                 webixColumn.adjust = "data";
             }
             if(typeof ARCHIBUSColumn.action != 'undefined'){
-                webix.actions = ARCHIBUSColumn.action;
+                webix.buttonsMap = ARCHIBUSColumn.action;
                 webixColumn.template = this.renderButton;
             }
             if(typeof ARCHIBUSColumn.groupBy != 'undefined'){
@@ -194,7 +194,7 @@ class DataGrid{
                 webixColumn.template = this.renderGroup;
             }
             if(typeof ARCHIBUSColumn.cssClass != 'undefined'){
-                webixColumn.cssFormat = ARCHIBUSColumn.cssClass;
+                webixColumn.cssFormat = webix.actions[ARCHIBUSColumn.cssClass];
             }
             else{
                 webixColumn.cssFormat = function (value, obj, t, y){
@@ -213,16 +213,3 @@ class DataGrid{
         };
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

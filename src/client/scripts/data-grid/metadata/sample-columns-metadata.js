@@ -1,5 +1,5 @@
 var buttonMetadata = require('./sample-buttons-metadata');
-var classStyle = require('./sample-cell-style-metadata');
+
 
 var ARCHIBUSColumns = [
     {
@@ -37,15 +37,7 @@ var ARCHIBUSColumns = [
         id: 'CountryCode',
         title: 'Country Code',
         width: 200,
-        cssClass: function (container, cellInfo, t,y){
-            if (cellInfo.ch1 && ! cellInfo.$group) return "row-marked";
-            var currentEnumStyle = classStyle[y];
-            for(var element in currentEnumStyle){
-                if(container == currentEnumStyle[element].cellText){
-                    return currentEnumStyle[element].classStyle;
-                }
-            }
-        },
+        cssClass: 'cssClassCountryCode',
         dataType: 'text'
     },
     {

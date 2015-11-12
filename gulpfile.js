@@ -22,8 +22,6 @@ gulp.task('copy', function(){
         .pipe(gulp.dest('public/style/'));
     gulp.src('src/client/scripts/lib/**/*.*')
         .pipe(gulp.dest('public/scripts/lib/'));
-    gulp.src('src/client/scripts/data-grid/custom-filter-sort.js')
-        .pipe(gulp.dest('public/scripts/data-grid'));
 });
 
 gulp.task('default',['webix', 'copy']);

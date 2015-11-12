@@ -4,6 +4,8 @@ var _createClass = (function () { function defineProperties(target, props) { for
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : typeof obj; }
+
 (function e(t, n, r) {
     function s(o, u) {
         if (!n[o]) {
@@ -15,6 +17,105 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }return n[o].exports;
     }var i = typeof require == "function" && require;for (var o = 0; o < r.length; o++) s(r[o]);return s;
 })({ 1: [function (require, module, exports) {
+        var classStyle = require('./metadata/sample-cell-style-metadata');
+        /*
+         Map of events used in the grid user
+         */
+        webix.actions = {
+            selectValue: function selectValue() {
+                var id = this.getSelectedId(true);
+                if (id.length != 0) {
+                    var text = this.getItem(id)[id[0].column];
+                    webix.message(text);
+                    document.getElementById('select').innerHTML = text;
+                }
+            },
+            buttonClick1: function buttonClick1() {
+                webix.message('You click button 1');
+            },
+            buttonClick2: function buttonClick2() {
+                webix.message('You click button 2');
+            },
+            buttonClick3: function buttonClick3() {
+                webix.message('You click button 3');
+            },
+            buttonClick4: function buttonClick4() {
+                webix.message('You click button 4');
+            },
+            cssClassCountryCode: function cssClassCountryCode(container, cellInfo, t, y) {
+                if (cellInfo.ch1 && !cellInfo.$group) return "row-marked";
+                var currentEnumStyle = classStyle[y];
+                for (var element in currentEnumStyle) {
+                    if (container == currentEnumStyle[element].cellText) {
+                        return currentEnumStyle[element].classStyle;
+                    }
+                }
+            }
+        };
+    }, { "./metadata/sample-cell-style-metadata": 5 }], 2: [function (require, module, exports) {
+        /*
+         Load data from the response received
+         */
+        webix.TreeDataLoader._loadNextA = function (count, start, callback, url, now) {
+            var config = this._settings;
+            if (config.datathrottle && !now) {
+                if (this._throttle_request) window.clearTimeout(this._throttle_request);
+                this._throttle_request = webix.delay(function () {
+                    this.loadNext(count, start, callback, url, true);
+                }, this, 0, config.datathrottle);
+                return;
+            }
+
+            if (!start && start !== 0) start = this.count();
+            if (!count) count = config.datafetch || this.count();
+
+            this.data.url = this.data.url || url;
+            if (this.callEvent("onDataRequest", [start, count, callback, url]) && this.data.url) this.data.feed.call(this, start, count, callback);
+        };
+
+        /*
+         Create form the flow of the request
+         */
+        webix.TreeDataLoader._feed_commonA = function (from, count, callback) {
+            var url = this.data.url;
+            if (from < 0) from = 0;
+            var final_callback = [this._feed_callback, callback];
+            if (url && typeof url != "string") {
+                var details = { from: from, count: count };
+                if (this.getState) {
+                    var state = this.getState();
+                    details.sort = state.sort;
+                    details.filter = state.filter;
+                }
+
+                this.load(url, final_callback, details);
+            } else {
+                var finalurl = url + (url.indexOf("?") == -1 ? "?" : "&") + (this.count() ? "continue=true" : "");
+                if (count != -1) finalurl += "&count=" + count;
+                if (from) finalurl += "&start=" + from;
+
+                if (this.getState) {
+                    var state = this.getState();
+                    if (state.sort) finalurl += "&sort[" + state.sort.id + "]=" + state.sort.dir;
+                    if (state.filter) for (var key in state.filter) finalurl += "&filter[" + key + "]=" + state.filter[key];
+                }
+                this.load(finalurl, final_callback);
+            }
+        };
+
+        /*
+         Data loading
+         */
+        webix.TreeDataLoader._feed_callback = function () {
+            //after loading check if we have some ignored requests
+            var temp = this._load_count;
+            var last = this._feed_last;
+            this._load_count = false;
+            if ((typeof temp === "undefined" ? "undefined" : _typeof(temp)) == "object" && (temp[0] != last[0] || temp[1] != last[1])) this.data.feed.apply(this, temp); //load last ignored request
+        };
+    }, {}], 3: [function (require, module, exports) {
+        require('./custom-actions');
+        require('./custom-filter-sort');
         var columnsMetadata = require('./metadata/sample-columns-metadata');
 
         webix.ready(function () {
@@ -24,19 +125,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 columns: columnsMetadata,
                 sortFields: [],
                 dataSource: 'server/data',
-                //width: 200,
-                //height: 400,
+                //width: 700,
+                //height: 700,
+                pageSize: 100,
                 events: {
-                    onSelectChange: function onSelectChange() {
-                        var id = this.getSelectedId(true);
-                        if (id.length != 0) {
-                            var text = this.getItem(id)[id[0].column];
-                            webix.message(text);
-                            document.getElementById('select').innerHTML = text;
-                        }
-                    }
+                    onSelectChange: 'selectValue'
                 }
             });
+
             resize([dataGrid]);
         });
 
@@ -44,8 +140,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             for (var number in objects) {
                 webix.event(window, "resize", function () {
                     objects[number].view.adjust();
-                });
-                webix.event(window, "resize", function () {
                     objects[number].dataTable.adjust();
                 });
             }
@@ -63,8 +157,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     number: 'serverFilter',
                     integer: 'serverFilter'
                 };
+                webix.pageSize = config.pageSize;
                 var webixColumns = this.createWebixColumns(config.columns);
-                var webixActionGrid = {
+                var webixActionsGrid = {
                     onCheck: function onCheck(row, column, value) {
                         this.data.eachChild(row, function (item) {
                             item[column] = value;
@@ -74,9 +169,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         this.openAll();
                     },
                     onBeforeRender: function onBeforeRender() {
-                        for (var key in webix.actions) {
-                            var button = webix.actions[key];
-                            this.on_click[button.class] = button.function;
+                        for (var key in webix.buttonsMap) {
+                            var button = webix.buttonsMap[key];
+                            this.on_click[button.class] = webix.actions[button.function];
                         }
                     },
                     onAfterRender: function onAfterRender() {
@@ -96,7 +191,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 }
 
                 for (var event in config.events) {
-                    webixActionGrid[event] = config.events[event];
+                    webixActionsGrid[event] = webix.actions[config.events[event]];
                 }
                 var nameGrid = config.container + 'Grid';
                 var namePaging = config.container + 'Paging';
@@ -117,7 +212,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     pager: {
                         template: "{common.first()}{common.prev()}{common.pages()}{common.next()}{common.last()}",
                         container: namePaging,
-                        size: 100,
+                        size: config.pageSize,
                         group: 5,
                         animate: {
                             subtype: "in"
@@ -128,7 +223,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     resizeColumn: true,
                     spans: true,
                     checkboxRefresh: true,
-                    on: webixActionGrid,
+                    on: webixActionsGrid,
                     scheme: {
                         $group: webixColumns.idGroup,
                         $sort: webixColumns.idGroup
@@ -143,7 +238,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 value: function renderGroup(obj, common, a, b, currentNumber) {
                     if (obj.$group) {
                         var result = common.treetable(obj, common) + " " + this.id + ": " + obj.value + " ( " + obj.$count + " assets )";
-                        var freeItems = 100 - currentNumber;
+                        var freeItems = webix.pageSize - currentNumber;
                         if (obj.open) if (freeItems < obj.$count) result += " (Continues on the next page)";
                         return result;
                     }
@@ -153,8 +248,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 key: "renderButton",
                 value: function renderButton(cellElement, cellInfo) {
                     var result = "";
-                    for (var number in webix.actions) {
-                        var button = webix.actions[number];
+                    for (var number in webix.buttonsMap) {
+                        var button = webix.buttonsMap[number];
                         var conditions = button.condition;
                         for (var element in conditions) {
                             var condition = conditions[element];
@@ -197,7 +292,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             webixColumn.adjust = "data";
                         }
                         if (typeof ARCHIBUSColumn.action != 'undefined') {
-                            webix.actions = ARCHIBUSColumn.action;
+                            webix.buttonsMap = ARCHIBUSColumn.action;
                             webixColumn.template = this.renderButton;
                         }
                         if (typeof ARCHIBUSColumn.groupBy != 'undefined') {
@@ -205,7 +300,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             webixColumn.template = this.renderGroup;
                         }
                         if (typeof ARCHIBUSColumn.cssClass != 'undefined') {
-                            webixColumn.cssFormat = ARCHIBUSColumn.cssClass;
+                            webixColumn.cssFormat = webix.actions[ARCHIBUSColumn.cssClass];
                         } else {
                             webixColumn.cssFormat = function (value, obj, t, y) {
                                 if (obj.ch1 && !obj.$group) return "row-marked";
@@ -225,13 +320,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             return DataGrid;
         })();
-    }, { "./metadata/sample-columns-metadata": 4 }], 2: [function (require, module, exports) {
+    }, { "./custom-actions": 1, "./custom-filter-sort": 2, "./metadata/sample-columns-metadata": 6 }], 4: [function (require, module, exports) {
         var buttonsMetadata = [{
             icon: 'style/icons/cog_edit.png',
             class: 'editclass',
-            function: function _function() {
-                webix.message('You click button 1');
-            },
+            function: 'buttonClick1',
             condition: [{
                 column: 'AssetType',
                 value: 'bl'
@@ -239,9 +332,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }, {
             icon: 'style/icons/delete.gif',
             class: 'deleteclass',
-            function: function _function() {
-                webix.message('You click button 2');
-            },
+            function: 'buttonClick2',
             condition: [{
                 column: 'AssetType',
                 value: 'bl'
@@ -249,9 +340,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }, {
             icon: 'style/icons/add.gif',
             class: 'addclass',
-            function: function _function() {
-                webix.message('You click button 3');
-            },
+            function: 'buttonClick3',
             condition: [{
                 column: 'AssetType',
                 value: 'bl'
@@ -262,9 +351,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }, {
             icon: 'style/icons/information.png',
             class: 'infoclass',
-            function: function _function() {
-                webix.message('You click button 4');
-            },
+            function: 'buttonClick4',
             condition: [{
                 column: 'AssetType',
                 value: 'bl'
@@ -272,7 +359,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }];
 
         module.exports = buttonsMetadata;
-    }, {}], 3: [function (require, module, exports) {
+    }, {}], 5: [function (require, module, exports) {
         var classStyle = {
             CountryCode: [{
                 cellText: 'USA',
@@ -293,9 +380,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         };
 
         module.exports = classStyle;
-    }, {}], 4: [function (require, module, exports) {
+    }, {}], 6: [function (require, module, exports) {
         var buttonMetadata = require('./sample-buttons-metadata');
-        var classStyle = require('./sample-cell-style-metadata');
 
         var ARCHIBUSColumns = [{
             id: 'AssetType',
@@ -327,15 +413,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             id: 'CountryCode',
             title: 'Country Code',
             width: 200,
-            cssClass: function cssClass(container, cellInfo, t, y) {
-                if (cellInfo.ch1 && !cellInfo.$group) return "row-marked";
-                var currentEnumStyle = classStyle[y];
-                for (var element in currentEnumStyle) {
-                    if (container == currentEnumStyle[element].cellText) {
-                        return currentEnumStyle[element].classStyle;
-                    }
-                }
-            },
+            cssClass: 'cssClassCountryCode',
             dataType: 'text'
         }, {
             id: 'StateCode',
@@ -394,4 +472,4 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }];
 
         module.exports = ARCHIBUSColumns;
-    }, { "./sample-buttons-metadata": 2, "./sample-cell-style-metadata": 3 }] }, {}, [1]);
+    }, { "./sample-buttons-metadata": 4 }] }, {}, [3]);
