@@ -46,7 +46,7 @@ app.listen(8000);
 function getRequestFilter(filter, startQuery){
     var query = startQuery;
     var index = 0;
-    var queryArray = new Array();
+    var queryArray = [];
     for(var key in filter){
         if(filter[key] != "" && filter[key] != 'null'){
             queryArray[index] =  key + ' like \'' + filter[key] + '%\'';
@@ -76,12 +76,24 @@ function getRequestFilter(filter, startQuery){
  */
 function getRequestSorting(sort, startQuery){
     var query = startQuery;
+    var queryArray = [];
+    var index = 0;
+    for(var key in sort){
+        if(sort[key] != "" && sort[key] != 'null'){
+            queryArray[index] =  key + ' ' + sort[key];
+            index++;
+        }
+    }
     if(query == ""){
         query = 'select * from AssetGrid';
     }
     if(typeof sort != 'undefined'){
-        for(var key in sort){
-            query += ' order by ' + key + ' ' + sort[key];
+        query += ' order by ';
+        for(var i=0;i<index;i++){
+            if(i == index-1)
+                query += queryArray[i];
+            else
+                query += queryArray[i] + ', ';
         }
     }
     return query;

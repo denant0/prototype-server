@@ -16934,6 +16934,7 @@ webix.protoUI({
 
 		if (this._last_sorted)
 			this.markSorting(this._last_sorted, this._last_order);
+
 	},
 	_normalize_headers:function(collection, heights){
 		var rows = 0;

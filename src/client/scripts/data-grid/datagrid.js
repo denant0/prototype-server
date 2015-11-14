@@ -31,6 +31,16 @@ function resize(objects){
 }
 
 
+webix.protoUI({
+    name: 'customDataTable',
+    $init:function(config){
+        this.___multisort = config.multisort;
+        if(this.___multisort){
+            this._multisortMap = [];
+        }
+    }
+},webix.ui.treetable);
+
 
 class DataGrid{
 
@@ -99,7 +109,7 @@ class DataGrid{
         });
         this.dataTable = new webix.ui({
             container: nameGrid,
-            view: "treetable",
+            view: "customDataTable",
             columns: webixColumns.columns,
             pager: {
                 template: "{common.first()}{common.prev()}{common.pages()}{common.next()}{common.last()}",
@@ -110,6 +120,7 @@ class DataGrid{
                     subtype: "in"
                 }
             },
+            multisort: true,
             select: "cell",
             multiselect: true,
             resizeColumn: true,
