@@ -16934,7 +16934,6 @@ webix.protoUI({
 
 		if (this._last_sorted)
 			this.markSorting(this._last_sorted, this._last_order);
-
 	},
 	_normalize_headers:function(collection, heights){
 		var rows = 0;
@@ -18155,6 +18154,7 @@ webix.protoUI({
 				cell.appendChild(this._sort_sign);
 			}
 
+
 			this._last_sorted = column;
 			this._last_order = order;
 		} else {
@@ -18182,6 +18182,7 @@ webix.protoUI({
 	_sort:function(col_id, direction, type){
 		direction = direction || "asc";
 		this.markSorting(col_id, direction);
+
 
 		if (type == "server"){
 			this.loadNext(-1, 0, {

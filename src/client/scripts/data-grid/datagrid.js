@@ -35,8 +35,185 @@ webix.protoUI({
     name: 'customDataTable',
     $init:function(config){
         this.___multisort = config.multisort;
+        this._multisort_isDelete = false;
+        this._multisort_count = 0;
         if(this.___multisort){
             this._multisortMap = [];
+        }
+    },
+    _on_header_click:function(column){
+        var col = this.getColumnConfig(column);
+        if (!col.sort) return;
+
+        var order = 'asc';
+        if(typeof this.___multisort == 'undefined'  || !this.___multisort){
+            if (col.id == this._last_sorted)
+                order = this._last_order == "asc" ? "desc" : "asc";
+        }
+        else{
+            for(var number in this._multisortMap){
+                if(this._multisortMap[number].id == column){
+                    order = this._multisortMap[number].dir == "asc" ? "desc" : "asc";
+                    break;
+                }
+            }
+        }
+
+
+        this._sort(col.id, order, col.sort);
+    },
+    markSorting:function(column, order){
+        if(typeof this.___multisort != 'undefined'  && this.___multisort){
+            this.markMultiSorting(column,order);
+        }
+        else{
+            this.markSingSorting(column,order);
+        }
+    },
+    markSingSorting: function(column, order){
+        if (!this._sort_sign)
+            this._sort_sign = webix.html.create("DIV");
+        webix.html.remove(this._sort_sign);
+
+        if (order){
+            var cell = this._get_header_cell(this.getColumnIndex(column));
+            if (cell){
+                this._sort_sign.className = "webix_ss_sort_"+order;
+                cell.style.position = "relative";
+                cell.appendChild(this._sort_sign);
+            }
+            this._last_sorted = column;
+            this._last_order = order;
+        } else {
+            this._last_sorted = this._last_order = null;
+        }
+    },
+    markMultiSorting: function(column, order){
+
+        if(this.markMultiSorting_isAddedItem()){
+            this._multisortMap[0] = {
+                id: column,
+                dir: order,
+                html: '',
+                onClick: 0
+            };
+            this.createMarkSorting(0, column, order, true);
+        }
+        else{
+            if(this._multisort_isDelete){
+                if(this._multisort_count == 1){
+                    this._multisort_count = 0;
+                    this._multisort_isDelete = false;
+                    this._last_order = '';
+                    for(var number in this._multisortMap)
+                        this.createMarkSorting(number, this._multisortMap[number].id, this._multisortMap[number].dir, false);
+                }
+                else{
+                    this._multisort_count++;
+                }
+            }
+            else{
+                var isAdded = true;
+                for(var number in this._multisortMap){
+                    if(this._multisortMap[number].id != column){
+                        this.createMarkSorting(number, this._multisortMap[number].id, this._multisortMap[number].dir, false);
+                    }
+                    else{
+                        isAdded = false;
+                        this._multisortMap[number].dir = order;
+                        this._multisortMap[number].onClick++;
+                        this.createMarkSorting(number, column, order, true);
+                    }
+                }
+                if(isAdded){
+                    this._multisortMap[this._multisortMap.length] = {
+                        id: column,
+                        dir: order,
+                        html: '',
+                        onClick: 0
+                    };
+                    this.createMarkSorting(this._multisortMap.length - 1, column, order, true);
+                }
+                else{
+                    var numberDelete = -1;
+                    for(var number in this._multisortMap){
+                        if(this._multisortMap[number].onClick == 6){
+                            numberDelete = number;
+                            break;
+                        }
+                    }
+
+                    if(numberDelete != -1){
+                        //webix.html.remove(this._multisortMap[numberDelete].html);
+                        this._multisortMap.splice(numberDelete,1);
+                        this._multisort_isDelete = true;
+                    }
+                }
+            }
+        }
+
+    },
+    markMultiSorting_isAddedItem: function(){
+        if(this._multisortMap.length == 0 && !this._multisort_isDelete )
+            return true;
+
+        return false;
+    },
+
+    createHtmlMarkSotring: function(order){
+        var htmlElement = webix.html.create("DIV");
+        if (order){
+            htmlElement.className = "webix_ss_sort_"+order;
+        }
+        return htmlElement;
+    },
+    createMarkSorting: function(index, column, order, isAddLast){
+
+        webix.html.remove(this._multisortMap[index].html);
+            this._multisortMap[index].html = this.createHtmlMarkSotring(order);
+
+
+
+        if (order){
+            var cell = this._get_header_cell(this.getColumnIndex(column));
+            if (cell){
+                cell.style.position = "relative";
+                cell.appendChild(this._multisortMap[index].html);
+            }
+            if(isAddLast) {
+                this._last_sorted = column;
+                this._last_order = order;
+            }
+        }
+        else {
+            if(isAddLast) {
+                this._last_sorted = this._last_order = null;
+            }
+        }
+    },
+    _sort:function(col_id, direction, type){
+        direction = direction || "asc";
+        this.markSorting(col_id, direction);
+
+
+        if (type == "server"){
+            this.loadNext(-1, 0, {
+                "before":function(){
+                    var url = this.data.url;
+                    this.clearAll();
+                    this.data.url = url;
+                }
+            }, 0, 1);
+        } else {
+            if (type == "text"){
+                this.data.each(function(obj){ obj.$text = this.getText(obj.id, col_id); }, this);
+                type="string"; col_id = "$text";
+            }
+
+            if (typeof type == "function")
+                this.data.sort(type, direction);
+            else
+                this.data.sort(col_id, direction, type || "string");
         }
     }
 },webix.ui.treetable);

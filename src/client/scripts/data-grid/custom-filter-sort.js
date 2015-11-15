@@ -49,9 +49,17 @@ webix.TreeDataLoader._feed_commonA = function(from, count, callback){
 
         if (this.getState){
             var state = this.getState();
-            if (state.sort)
-                for (var key in state.sort)
-                    finalurl += "&sort["+state.sort[key].id+"]="+state.sort[key].dir;
+            if (state.sort){
+                if(typeof this.___multisort != 'undefined'  && this.___multisort){
+                    for (var key in state.sort)
+                        finalurl += "&sort["+state.sort[key].id+"]="+state.sort[key].dir;
+                }
+                else{
+                    finalurl += "&sort["+state.sort.id+"]="+state.sort.dir;
+                }
+
+            }
+
             if (state.filter)
                 for (var key in state.filter)
                     finalurl +="&filter["+key+"]="+state.filter[key];
@@ -98,38 +106,11 @@ webix.DataState = {
             settings.ids.push(columns[i].id);
             settings.size.push(columns[i].width);
         }
-        if(this.___multisort){
-            if(this._last_sorted){
-                var isAdded = true;
-                if(settings.sort.length == 0){
-                    settings.sort[settings.sort.length] = {
-                        id:this._last_sorted,
-                        dir:this._last_order
-                    };
-                }
-                else{
-                    for(var numberSort in settings.sort){
-                        if(settings.sort[numberSort].id == this._last_sorted){
-                            settings.sort[numberSort].dir = this._last_order;
-                            isAdded = false;
-                            break;
-                        }
-                    }
-                    if(isAdded){
-                        settings.sort[settings.sort.length] = {
-                            id:this._last_sorted,
-                            dir:this._last_order
-                        };
-                    }
-                }
-            }
-            this._multisortMap =    settings.sort;
-        }
-        else{
-            if(this._last_sorted){
-                settings.sort={
-                    id:this._last_sorted,
-                    dir:this._last_order
+        if(typeof this.___multisort == 'undefined'  || !this.___multisort){
+            if(this._last_sorted) {
+                settings.sort = {
+                    id: this._last_sorted,
+                    dir: this._last_order
                 };
             }
         }
@@ -154,4 +135,15 @@ webix.DataState = {
 
         return settings;
     }
+};
+
+webix.AtomDataLoader.url_setter = function(value){
+    if (typeof value == "string" && value.indexOf("->") != -1){
+        var parts = value.split("->");
+        value = webix.proxy(parts[0], parts[1]);
+    }
+    
+    if (!this._ready_for_data) return value;
+    this.load(value, this._settings.datatype);
+    return value;
 };
