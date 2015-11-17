@@ -1,4 +1,5 @@
 var data = [
+
     {
         AssetType: 'property',
         AssetStandard: '',
@@ -15,7 +16,9 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        Data: '10.10.2010'
+        cost_purchase: 1240,
+        quantity_mtbf: 769,
+        Date: '1983-1-24'
     },
     {
         AssetType: 'property',
@@ -32,7 +35,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 465,
+        quantity_mtbf: 1038,
+        Date: '2013-9-19'
     },
     {
         AssetType: 'property',
@@ -49,7 +55,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 664,
+        quantity_mtbf: 1055,
+        Date: '2011-9-2'
     },
     {
         AssetType: 'property',
@@ -66,7 +75,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 868,
+        quantity_mtbf: 69,
+        Date: '1975-11-29'
     },
     {
         AssetType: 'property',
@@ -83,7 +95,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 876,
+        quantity_mtbf: 1188,
+        Date: '2009-2-6'
     },
     {
         AssetType: 'property',
@@ -100,7 +115,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 777,
+        quantity_mtbf: 133,
+        Date: '2007-5-13'
     },
     {
         AssetType: 'property',
@@ -117,7 +135,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 223,
+        quantity_mtbf: 750,
+        Date: '1985-12-30'
     },
     {
         AssetType: 'property',
@@ -134,7 +155,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 685,
+        quantity_mtbf: 1265,
+        Date: '1981-7-9'
     },
     {
         AssetType: 'property',
@@ -151,7 +175,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 479,
+        quantity_mtbf: 250,
+        Date: '1982-9-26'
     },
     {
         AssetType: 'property',
@@ -168,7 +195,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1226,
+        quantity_mtbf: 215,
+        Date: '1979-2-8'
     },
     {
         AssetType: 'property',
@@ -185,7 +215,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 329,
+        quantity_mtbf: 511,
+        Date: '1999-11-27'
     },
     {
         AssetType: 'property',
@@ -202,7 +235,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 890,
+        quantity_mtbf: 270,
+        Date: '2008-5-22'
     },
     {
         AssetType: 'property',
@@ -219,7 +255,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 212,
+        quantity_mtbf: 830,
+        Date: '1999-4-24'
     },
     {
         AssetType: 'property',
@@ -236,7 +275,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1008,
+        quantity_mtbf: 946,
+        Date: '1992-10-27'
     },
     {
         AssetType: 'property',
@@ -253,7 +295,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1274,
+        quantity_mtbf: 365,
+        Date: '1980-1-27'
     },
     {
         AssetType: 'property',
@@ -270,7 +315,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 455,
+        quantity_mtbf: 1087,
+        Date: '1999-9-21'
     },
     {
         AssetType: 'property',
@@ -287,7 +335,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 74,
+        quantity_mtbf: 409,
+        Date: '1980-9-6'
     },
     {
         AssetType: 'property',
@@ -304,7 +355,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 749,
+        quantity_mtbf: 1049,
+        Date: '1977-12-15'
     },
     {
         AssetType: 'property',
@@ -321,7 +375,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 233,
+        quantity_mtbf: 579,
+        Date: '2003-10-19'
     },
     {
         AssetType: 'property',
@@ -338,7 +395,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 712,
+        quantity_mtbf: 1164,
+        Date: '2011-9-6'
     },
     {
         AssetType: 'property',
@@ -355,7 +415,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 410,
+        quantity_mtbf: 1246,
+        Date: '1976-11-20'
     },
     {
         AssetType: 'property',
@@ -372,7 +435,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 916,
+        quantity_mtbf: 506,
+        Date: '2000-1-2'
     },
     {
         AssetType: 'property',
@@ -389,7 +455,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 702,
+        quantity_mtbf: 80,
+        Date: '2014-9-13'
     },
     {
         AssetType: 'property',
@@ -406,7 +475,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 161,
+        quantity_mtbf: 237,
+        Date: '2000-6-27'
     },
     {
         AssetType: 'property',
@@ -423,7 +495,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1040,
+        quantity_mtbf: 40,
+        Date: '1983-11-23'
     },
     {
         AssetType: 'property',
@@ -440,7 +515,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1208,
+        quantity_mtbf: 524,
+        Date: '2012-7-20'
     },
     {
         AssetType: 'property',
@@ -457,7 +535,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 297,
+        quantity_mtbf: 871,
+        Date: '2008-6-16'
     },
     {
         AssetType: 'property',
@@ -474,7 +555,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 810,
+        quantity_mtbf: 730,
+        Date: '1990-10-9'
     },
     {
         AssetType: 'property',
@@ -491,7 +575,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1179,
+        quantity_mtbf: 195,
+        Date: '1997-8-26'
     },
     {
         AssetType: 'bl',
@@ -508,7 +595,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 827,
+        quantity_mtbf: 1133,
+        Date: '1990-7-6'
     },
     {
         AssetType: 'bl',
@@ -525,7 +615,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 48,
+        quantity_mtbf: 1222,
+        Date: '1975-5-18'
     },
     {
         AssetType: 'bl',
@@ -542,7 +635,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 95,
+        quantity_mtbf: 511,
+        Date: '1976-2-8'
     },
     {
         AssetType: 'bl',
@@ -559,7 +655,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 734,
+        quantity_mtbf: 989,
+        Date: '2000-5-25'
     },
     {
         AssetType: 'bl',
@@ -576,7 +675,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 60,
+        quantity_mtbf: 1114,
+        Date: '2005-9-7'
     },
     {
         AssetType: 'bl',
@@ -593,7 +695,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 2,
+        quantity_mtbf: 935,
+        Date: '2001-9-16'
     },
     {
         AssetType: 'bl',
@@ -610,7 +715,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1033,
+        quantity_mtbf: 1200,
+        Date: '2000-12-27'
     },
     {
         AssetType: 'bl',
@@ -627,7 +735,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 837,
+        quantity_mtbf: 63,
+        Date: '2004-7-21'
     },
     {
         AssetType: 'bl',
@@ -644,7 +755,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1104,
+        quantity_mtbf: 383,
+        Date: '1984-7-13'
     },
     {
         AssetType: 'bl',
@@ -661,7 +775,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 895,
+        quantity_mtbf: 385,
+        Date: '2001-4-5'
     },
     {
         AssetType: 'bl',
@@ -678,7 +795,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 867,
+        quantity_mtbf: 133,
+        Date: '1996-7-26'
     },
     {
         AssetType: 'bl',
@@ -695,7 +815,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 670,
+        quantity_mtbf: 771,
+        Date: '2001-9-5'
     },
     {
         AssetType: 'bl',
@@ -712,7 +835,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1205,
+        quantity_mtbf: 1234,
+        Date: '1991-6-23'
     },
     {
         AssetType: 'bl',
@@ -729,7 +855,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 456,
+        quantity_mtbf: 1230,
+        Date: '2008-12-27'
     },
     {
         AssetType: 'bl',
@@ -746,7 +875,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 790,
+        quantity_mtbf: 503,
+        Date: '1986-1-26'
     },
     {
         AssetType: 'bl',
@@ -763,7 +895,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 899,
+        quantity_mtbf: 20,
+        Date: '1994-1-27'
     },
     {
         AssetType: 'bl',
@@ -780,7 +915,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1170,
+        quantity_mtbf: 38,
+        Date: '1984-1-25'
     },
     {
         AssetType: 'bl',
@@ -797,7 +935,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1052,
+        quantity_mtbf: 878,
+        Date: '2005-1-8'
     },
     {
         AssetType: 'bl',
@@ -814,7 +955,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1116,
+        quantity_mtbf: 487,
+        Date: '2006-12-20'
     },
     {
         AssetType: 'bl',
@@ -831,7 +975,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1152,
+        quantity_mtbf: 405,
+        Date: '1999-7-27'
     },
     {
         AssetType: 'bl',
@@ -848,7 +995,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1072,
+        quantity_mtbf: 1012,
+        Date: '1989-5-12'
     },
     {
         AssetType: 'bl',
@@ -865,7 +1015,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 20,
+        quantity_mtbf: 347,
+        Date: '2007-3-26'
     },
     {
         AssetType: 'bl',
@@ -882,7 +1035,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 236,
+        quantity_mtbf: 106,
+        Date: '1992-5-28'
     },
     {
         AssetType: 'bl',
@@ -899,7 +1055,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 307,
+        quantity_mtbf: 8,
+        Date: '2003-8-17'
     },
     {
         AssetType: 'bl',
@@ -916,7 +1075,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 987,
+        quantity_mtbf: 235,
+        Date: '2013-8-31'
     },
     {
         AssetType: 'bl',
@@ -933,7 +1095,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1066,
+        quantity_mtbf: 428,
+        Date: '2004-7-5'
     },
     {
         AssetType: 'bl',
@@ -950,7 +1115,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1135,
+        quantity_mtbf: 795,
+        Date: '1986-6-25'
     },
     {
         AssetType: 'bl',
@@ -967,7 +1135,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 628,
+        quantity_mtbf: 694,
+        Date: '2009-1-10'
     },
     {
         AssetType: 'bl',
@@ -984,7 +1155,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 464,
+        quantity_mtbf: 577,
+        Date: '1980-1-6'
     },
     {
         AssetType: 'bl',
@@ -1001,7 +1175,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 18,
+        quantity_mtbf: 160,
+        Date: '2004-11-7'
     },
     {
         AssetType: 'eq',
@@ -1018,7 +1195,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 56,
+        quantity_mtbf: 803,
+        Date: '1978-1-26'
     },
     {
         AssetType: 'eq',
@@ -1035,7 +1215,10 @@ var data = [
         RoomCode: '128',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 199,
+        quantity_mtbf: 857,
+        Date: '2000-12-17'
     },
     {
         AssetType: 'eq',
@@ -1052,7 +1235,10 @@ var data = [
         RoomCode: '002',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 216,
+        quantity_mtbf: 1282,
+        Date: '1980-10-12'
     },
     {
         AssetType: 'eq',
@@ -1069,7 +1255,10 @@ var data = [
         RoomCode: '002',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1065,
+        quantity_mtbf: 995,
+        Date: '2006-11-8'
     },
     {
         AssetType: 'eq',
@@ -1086,7 +1275,10 @@ var data = [
         RoomCode: '002',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 149,
+        quantity_mtbf: 1258,
+        Date: '2004-9-2'
     },
     {
         AssetType: 'eq',
@@ -1103,7 +1295,10 @@ var data = [
         RoomCode: '002',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 247,
+        quantity_mtbf: 617,
+        Date: '1992-7-19'
     },
     {
         AssetType: 'eq',
@@ -1120,7 +1315,10 @@ var data = [
         RoomCode: '003',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 530,
+        quantity_mtbf: 490,
+        Date: '1985-4-27'
     },
     {
         AssetType: 'eq',
@@ -1137,7 +1335,10 @@ var data = [
         RoomCode: '006',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 613,
+        quantity_mtbf: 1155,
+        Date: '2009-8-20'
     },
     {
         AssetType: 'eq',
@@ -1154,7 +1355,10 @@ var data = [
         RoomCode: '006',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 113,
+        quantity_mtbf: 323,
+        Date: '1987-1-11'
     },
     {
         AssetType: 'eq',
@@ -1171,7 +1375,10 @@ var data = [
         RoomCode: '006',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 536,
+        quantity_mtbf: 1100,
+        Date: '1980-11-22'
     },
     {
         AssetType: 'eq',
@@ -1188,7 +1395,10 @@ var data = [
         RoomCode: '006',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 927,
+        quantity_mtbf: 449,
+        Date: '2011-3-22'
     },
     {
         AssetType: 'eq',
@@ -1205,7 +1415,10 @@ var data = [
         RoomCode: '003',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 244,
+        quantity_mtbf: 556,
+        Date: '1981-2-22'
     },
     {
         AssetType: 'eq',
@@ -1222,7 +1435,10 @@ var data = [
         RoomCode: '003',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 736,
+        quantity_mtbf: 471,
+        Date: '2007-10-8'
     },
     {
         AssetType: 'eq',
@@ -1239,7 +1455,10 @@ var data = [
         RoomCode: '004',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 185,
+        quantity_mtbf: 376,
+        Date: '1979-1-23'
     },
     {
         AssetType: 'eq',
@@ -1256,7 +1475,10 @@ var data = [
         RoomCode: '004',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 710,
+        quantity_mtbf: 359,
+        Date: '2011-7-30'
     },
     {
         AssetType: 'eq',
@@ -1273,7 +1495,10 @@ var data = [
         RoomCode: '003',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 415,
+        quantity_mtbf: 539,
+        Date: '2012-8-11'
     },
     {
         AssetType: 'eq',
@@ -1290,7 +1515,10 @@ var data = [
         RoomCode: '128',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 469,
+        quantity_mtbf: 992,
+        Date: '2015-5-30'
     },
     {
         AssetType: 'eq',
@@ -1307,7 +1535,10 @@ var data = [
         RoomCode: '128',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 350,
+        quantity_mtbf: 269,
+        Date: '1988-1-23'
     },
     {
         AssetType: 'eq',
@@ -1324,7 +1555,10 @@ var data = [
         RoomCode: '128',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 813,
+        quantity_mtbf: 463,
+        Date: '1989-1-30'
     },
     {
         AssetType: 'eq',
@@ -1341,7 +1575,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 132,
+        quantity_mtbf: 254,
+        Date: '1979-8-22'
     },
     {
         AssetType: 'eq',
@@ -1358,7 +1595,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 340,
+        quantity_mtbf: 611,
+        Date: '1993-9-2'
     },
     {
         AssetType: 'eq',
@@ -1375,7 +1615,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1159,
+        quantity_mtbf: 1028,
+        Date: '2006-1-28'
     },
     {
         AssetType: 'eq',
@@ -1392,7 +1635,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1288,
+        quantity_mtbf: 450,
+        Date: '2015-10-22'
     },
     {
         AssetType: 'eq',
@@ -1409,7 +1655,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1197,
+        quantity_mtbf: 645,
+        Date: '1989-5-16'
     },
     {
         AssetType: 'eq',
@@ -1426,7 +1675,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 183,
+        quantity_mtbf: 772,
+        Date: '2006-3-31'
     },
     {
         AssetType: 'eq',
@@ -1443,7 +1695,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 581,
+        quantity_mtbf: 142,
+        Date: '2006-9-6'
     },
     {
         AssetType: 'eq',
@@ -1460,7 +1715,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 42,
+        quantity_mtbf: 218,
+        Date: '1993-11-12'
     },
     {
         AssetType: 'eq',
@@ -1477,7 +1735,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 533,
+        quantity_mtbf: 907,
+        Date: '2013-8-10'
     },
     {
         AssetType: 'eq',
@@ -1494,7 +1755,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 559,
+        quantity_mtbf: 943,
+        Date: '1985-12-14'
     },
     {
         AssetType: 'eq',
@@ -1511,7 +1775,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 122,
+        quantity_mtbf: 1044,
+        Date: '2008-10-3'
     },
     {
         AssetType: 'eq',
@@ -1528,7 +1795,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1097,
+        quantity_mtbf: 690,
+        Date: '2007-5-18'
     },
     {
         AssetType: 'eq',
@@ -1545,7 +1815,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 286,
+        quantity_mtbf: 1089,
+        Date: '2003-8-18'
     },
     {
         AssetType: 'eq',
@@ -1562,7 +1835,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 844,
+        quantity_mtbf: 1007,
+        Date: '1987-3-15'
     },
     {
         AssetType: 'eq',
@@ -1579,7 +1855,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 148,
+        quantity_mtbf: 838,
+        Date: '1980-12-12'
     },
     {
         AssetType: 'eq',
@@ -1596,7 +1875,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 141,
+        quantity_mtbf: 344,
+        Date: '2003-9-6'
     },
     {
         AssetType: 'eq',
@@ -1613,7 +1895,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 342,
+        quantity_mtbf: 950,
+        Date: '2001-12-23'
     },
     {
         AssetType: 'eq',
@@ -1630,7 +1915,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 191,
+        quantity_mtbf: 282,
+        Date: '1992-4-25'
     },
     {
         AssetType: 'eq',
@@ -1647,7 +1935,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 760,
+        quantity_mtbf: 316,
+        Date: '2015-9-26'
     },
     {
         AssetType: 'eq',
@@ -1664,7 +1955,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 589,
+        quantity_mtbf: 516,
+        Date: '1976-9-15'
     },
     {
         AssetType: 'eq',
@@ -1681,7 +1975,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 567,
+        quantity_mtbf: 287,
+        Date: '2004-4-13'
     },
     {
         AssetType: 'eq',
@@ -1698,7 +1995,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 574,
+        quantity_mtbf: 839,
+        Date: '1975-5-12'
     },
     {
         AssetType: 'eq',
@@ -1715,7 +2015,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 194,
+        quantity_mtbf: 1237,
+        Date: '1982-3-23'
     },
     {
         AssetType: 'eq',
@@ -1732,7 +2035,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1077,
+        quantity_mtbf: 274,
+        Date: '2014-7-2'
     },
     {
         AssetType: 'eq',
@@ -1749,7 +2055,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 498,
+        quantity_mtbf: 252,
+        Date: '1981-10-24'
     },
     {
         AssetType: 'eq',
@@ -1766,7 +2075,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 459,
+        quantity_mtbf: 743,
+        Date: '1991-11-15'
     },
     {
         AssetType: 'eq',
@@ -1783,7 +2095,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1010,
+        quantity_mtbf: 1169,
+        Date: '1980-12-22'
     },
     {
         AssetType: 'eq',
@@ -1800,7 +2115,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 341,
+        quantity_mtbf: 388,
+        Date: '1978-8-27'
     },
     {
         AssetType: 'eq',
@@ -1817,7 +2135,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 456,
+        quantity_mtbf: 949,
+        Date: '1986-11-15'
     },
     {
         AssetType: 'eq',
@@ -1834,7 +2155,10 @@ var data = [
         RoomCode: '101',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 325,
+        quantity_mtbf: 70,
+        Date: '2015-11-9'
     },
     {
         AssetType: 'eq',
@@ -1851,7 +2175,10 @@ var data = [
         RoomCode: '101',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 184,
+        quantity_mtbf: 282,
+        Date: '1983-8-22'
     },
     {
         AssetType: 'eq',
@@ -1868,7 +2195,10 @@ var data = [
         RoomCode: '102',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 302,
+        quantity_mtbf: 360,
+        Date: '1993-5-16'
     },
     {
         AssetType: 'eq',
@@ -1885,7 +2215,10 @@ var data = [
         RoomCode: '103',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 505,
+        quantity_mtbf: 1138,
+        Date: '2002-12-13'
     },
     {
         AssetType: 'eq',
@@ -1902,7 +2235,10 @@ var data = [
         RoomCode: '104',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 431,
+        quantity_mtbf: 930,
+        Date: '2009-11-20'
     },
     {
         AssetType: 'eq',
@@ -1919,7 +2255,10 @@ var data = [
         RoomCode: '120',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 1250,
+        quantity_mtbf: 1059,
+        Date: '1998-4-2'
     },
     {
         AssetType: 'eq',
@@ -1936,7 +2275,10 @@ var data = [
         RoomCode: '119',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 758,
+        quantity_mtbf: 217,
+        Date: '2010-9-30'
     },
     {
         AssetType: 'eq',
@@ -1953,7 +2295,10 @@ var data = [
         RoomCode: '113',
         BusinessUnit: 'SERVICES',
         DivisionCode: 'SOFTWARE APP.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 318,
+        quantity_mtbf: 43,
+        Date: '2013-5-30'
     },
     {
         AssetType: 'eq',
@@ -1970,7 +2315,10 @@ var data = [
         RoomCode: '116',
         BusinessUnit: 'SERVICES',
         DivisionCode: 'SOFTWARE APP.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 376,
+        quantity_mtbf: 1135,
+        Date: '1984-7-9'
     },
     {
         AssetType: 'eq',
@@ -1987,7 +2335,10 @@ var data = [
         RoomCode: '115',
         BusinessUnit: 'SERVICES',
         DivisionCode: 'SOFTWARE APP.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 471,
+        quantity_mtbf: 259,
+        Date: '2006-7-6'
     },
     {
         AssetType: 'eq',
@@ -2004,7 +2355,10 @@ var data = [
         RoomCode: '114',
         BusinessUnit: 'SERVICES',
         DivisionCode: 'SOFTWARE APP.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 497,
+        quantity_mtbf: 349,
+        Date: '1990-7-4'
     },
     {
         AssetType: 'eq',
@@ -2021,7 +2375,10 @@ var data = [
         RoomCode: '117',
         BusinessUnit: 'SERVICES',
         DivisionCode: 'SOFTWARE APP.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 13,
+        quantity_mtbf: 571,
+        Date: '1993-12-6'
     },
     {
         AssetType: 'eq',
@@ -2038,7 +2395,10 @@ var data = [
         RoomCode: '118',
         BusinessUnit: 'SERVICES',
         DivisionCode: 'SOFTWARE APP.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 509,
+        quantity_mtbf: 1196,
+        Date: '1984-12-10'
     },
     {
         AssetType: 'eq',
@@ -2055,7 +2415,10 @@ var data = [
         RoomCode: '121',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 379,
+        quantity_mtbf: 697,
+        Date: '1976-5-11'
     },
     {
         AssetType: 'eq',
@@ -2072,7 +2435,10 @@ var data = [
         RoomCode: '120',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 633,
+        quantity_mtbf: 472,
+        Date: '1975-9-2'
     },
     {
         AssetType: 'eq',
@@ -2089,7 +2455,10 @@ var data = [
         RoomCode: '119',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 609,
+        quantity_mtbf: 1103,
+        Date: '2010-11-26'
     },
     {
         AssetType: 'eq',
@@ -2106,7 +2475,10 @@ var data = [
         RoomCode: '118',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1126,
+        quantity_mtbf: 1111,
+        Date: '2010-1-2'
     },
     {
         AssetType: 'eq',
@@ -2123,7 +2495,10 @@ var data = [
         RoomCode: '117',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1290,
+        quantity_mtbf: 519,
+        Date: '2010-10-31'
     },
     {
         AssetType: 'eq',
@@ -2140,7 +2515,10 @@ var data = [
         RoomCode: '117',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 333,
+        quantity_mtbf: 286,
+        Date: '1979-5-2'
     },
     {
         AssetType: 'eq',
@@ -2157,7 +2535,10 @@ var data = [
         RoomCode: '115',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1285,
+        quantity_mtbf: 214,
+        Date: '2005-8-9'
     },
     {
         AssetType: 'eq',
@@ -2174,7 +2555,10 @@ var data = [
         RoomCode: '112',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 335,
+        quantity_mtbf: 355,
+        Date: '1997-12-18'
     },
     {
         AssetType: 'eq',
@@ -2191,7 +2575,10 @@ var data = [
         RoomCode: '112',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 807,
+        quantity_mtbf: 147,
+        Date: '1988-12-12'
     },
     {
         AssetType: 'eq',
@@ -2208,7 +2595,10 @@ var data = [
         RoomCode: '113',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 323,
+        quantity_mtbf: 738,
+        Date: '2008-8-21'
     },
     {
         AssetType: 'eq',
@@ -2225,7 +2615,10 @@ var data = [
         RoomCode: '110',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 794,
+        quantity_mtbf: 243,
+        Date: '1978-9-29'
     },
     {
         AssetType: 'eq',
@@ -2242,7 +2635,10 @@ var data = [
         RoomCode: '111',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 425,
+        quantity_mtbf: 967,
+        Date: '1993-5-3'
     },
     {
         AssetType: 'eq',
@@ -2259,7 +2655,10 @@ var data = [
         RoomCode: '109',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 793,
+        quantity_mtbf: 506,
+        Date: '1979-8-3'
     },
     {
         AssetType: 'eq',
@@ -2276,7 +2675,10 @@ var data = [
         RoomCode: '109',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1217,
+        quantity_mtbf: 198,
+        Date: '1993-11-1'
     },
     {
         AssetType: 'eq',
@@ -2293,7 +2695,10 @@ var data = [
         RoomCode: '107',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 453,
+        quantity_mtbf: 1276,
+        Date: '1981-11-22'
     },
     {
         AssetType: 'eq',
@@ -2310,7 +2715,10 @@ var data = [
         RoomCode: '104',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 58,
+        quantity_mtbf: 913,
+        Date: '2002-6-2'
     },
     {
         AssetType: 'eq',
@@ -2327,7 +2735,10 @@ var data = [
         RoomCode: '103',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1072,
+        quantity_mtbf: 405,
+        Date: '1999-5-31'
     },
     {
         AssetType: 'eq',
@@ -2344,7 +2755,10 @@ var data = [
         RoomCode: '103',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1281,
+        quantity_mtbf: 1107,
+        Date: '1980-11-25'
     },
     {
         AssetType: 'eq',
@@ -2361,7 +2775,10 @@ var data = [
         RoomCode: '102',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 505,
+        quantity_mtbf: 1258,
+        Date: '2014-11-5'
     },
     {
         AssetType: 'eq',
@@ -2378,7 +2795,10 @@ var data = [
         RoomCode: '101',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 322,
+        quantity_mtbf: 148,
+        Date: '2006-10-6'
     },
     {
         AssetType: 'eq',
@@ -2395,7 +2815,10 @@ var data = [
         RoomCode: '106',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1233,
+        quantity_mtbf: 946,
+        Date: '1986-6-15'
     },
     {
         AssetType: 'eq',
@@ -2412,7 +2835,10 @@ var data = [
         RoomCode: '106',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 226,
+        quantity_mtbf: 1099,
+        Date: '1988-2-28'
     },
     {
         AssetType: 'eq',
@@ -2429,7 +2855,10 @@ var data = [
         RoomCode: '110',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1010,
+        quantity_mtbf: 91,
+        Date: '1978-12-23'
     },
     {
         AssetType: 'eq',
@@ -2446,7 +2875,10 @@ var data = [
         RoomCode: '111',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1150,
+        quantity_mtbf: 257,
+        Date: '2010-10-17'
     },
     {
         AssetType: 'eq',
@@ -2463,7 +2895,10 @@ var data = [
         RoomCode: '107',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1223,
+        quantity_mtbf: 143,
+        Date: '1990-3-24'
     },
     {
         AssetType: 'eq',
@@ -2480,7 +2915,10 @@ var data = [
         RoomCode: '108',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 842,
+        quantity_mtbf: 1165,
+        Date: '2004-9-14'
     },
     {
         AssetType: 'eq',
@@ -2497,7 +2935,10 @@ var data = [
         RoomCode: '112',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 248,
+        quantity_mtbf: 1070,
+        Date: '2000-12-26'
     },
     {
         AssetType: 'eq',
@@ -2514,7 +2955,10 @@ var data = [
         RoomCode: '101',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 403,
+        quantity_mtbf: 136,
+        Date: '1976-10-27'
     },
     {
         AssetType: 'eq',
@@ -2531,7 +2975,10 @@ var data = [
         RoomCode: '101',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 273,
+        quantity_mtbf: 966,
+        Date: '1990-6-30'
     },
     {
         AssetType: 'eq',
@@ -2548,7 +2995,10 @@ var data = [
         RoomCode: '103',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 978,
+        quantity_mtbf: 104,
+        Date: '1981-4-4'
     },
     {
         AssetType: 'eq',
@@ -2565,7 +3015,10 @@ var data = [
         RoomCode: '103',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1186,
+        quantity_mtbf: 928,
+        Date: '2008-7-8'
     },
     {
         AssetType: 'eq',
@@ -2582,7 +3035,10 @@ var data = [
         RoomCode: '109',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 658,
+        quantity_mtbf: 15,
+        Date: '1975-5-8'
     },
     {
         AssetType: 'eq',
@@ -2599,7 +3055,10 @@ var data = [
         RoomCode: '109',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 461,
+        quantity_mtbf: 719,
+        Date: '2009-3-10'
     },
     {
         AssetType: 'eq',
@@ -2616,7 +3075,10 @@ var data = [
         RoomCode: '111',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 513,
+        quantity_mtbf: 880,
+        Date: '1980-7-24'
     },
     {
         AssetType: 'eq',
@@ -2633,7 +3095,10 @@ var data = [
         RoomCode: '111',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 233,
+        quantity_mtbf: 527,
+        Date: '1991-8-21'
     },
     {
         AssetType: 'eq',
@@ -2650,7 +3115,10 @@ var data = [
         RoomCode: '113',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1149,
+        quantity_mtbf: 848,
+        Date: '1979-11-4'
     },
     {
         AssetType: 'eq',
@@ -2667,7 +3135,10 @@ var data = [
         RoomCode: '113',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1125,
+        quantity_mtbf: 176,
+        Date: '1995-1-19'
     },
     {
         AssetType: 'eq',
@@ -2684,7 +3155,10 @@ var data = [
         RoomCode: '112',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 805,
+        quantity_mtbf: 1147,
+        Date: '2007-7-13'
     },
     {
         AssetType: 'eq',
@@ -2701,7 +3175,10 @@ var data = [
         RoomCode: '112',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 17,
+        quantity_mtbf: 625,
+        Date: '2002-6-7'
     },
     {
         AssetType: 'eq',
@@ -2718,7 +3195,10 @@ var data = [
         RoomCode: '115',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1256,
+        quantity_mtbf: 703,
+        Date: '2008-4-6'
     },
     {
         AssetType: 'eq',
@@ -2735,7 +3215,10 @@ var data = [
         RoomCode: '117',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 656,
+        quantity_mtbf: 960,
+        Date: '1998-12-5'
     },
     {
         AssetType: 'eq',
@@ -2752,7 +3235,10 @@ var data = [
         RoomCode: '118',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 274,
+        quantity_mtbf: 310,
+        Date: '1976-6-14'
     },
     {
         AssetType: 'eq',
@@ -2769,7 +3255,10 @@ var data = [
         RoomCode: '119',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 434,
+        quantity_mtbf: 193,
+        Date: '1979-5-19'
     },
     {
         AssetType: 'eq',
@@ -2786,7 +3275,10 @@ var data = [
         RoomCode: '120',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 666,
+        quantity_mtbf: 3,
+        Date: '1991-9-4'
     },
     {
         AssetType: 'eq',
@@ -2803,7 +3295,10 @@ var data = [
         RoomCode: '121',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 2,
+        quantity_mtbf: 1145,
+        Date: '1977-12-21'
     },
     {
         AssetType: 'eq',
@@ -2820,7 +3315,10 @@ var data = [
         RoomCode: '112',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
-        DepartmentCode: 'PLANNING'
+        DepartmentCode: 'PLANNING',
+        cost_purchase: 835,
+        quantity_mtbf: 839,
+        Date: '2003-8-31'
     },
     {
         AssetType: 'eq',
@@ -2837,7 +3335,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
-        DepartmentCode: 'REGIONAL'
+        DepartmentCode: 'REGIONAL',
+        cost_purchase: 280,
+        quantity_mtbf: 218,
+        Date: '2002-4-7'
     },
     {
         AssetType: 'eq',
@@ -2854,7 +3355,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
-        DepartmentCode: 'REGIONAL'
+        DepartmentCode: 'REGIONAL',
+        cost_purchase: 262,
+        quantity_mtbf: 305,
+        Date: '2013-8-5'
     },
     {
         AssetType: 'eq',
@@ -2871,7 +3375,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
-        DepartmentCode: 'REGIONAL'
+        DepartmentCode: 'REGIONAL',
+        cost_purchase: 289,
+        quantity_mtbf: 211,
+        Date: '1985-8-20'
     },
     {
         AssetType: 'eq',
@@ -2888,7 +3395,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
-        DepartmentCode: 'REGIONAL'
+        DepartmentCode: 'REGIONAL',
+        cost_purchase: 638,
+        quantity_mtbf: 291,
+        Date: '1978-6-17'
     },
     {
         AssetType: 'eq',
@@ -2905,7 +3415,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
-        DepartmentCode: 'REGIONAL'
+        DepartmentCode: 'REGIONAL',
+        cost_purchase: 878,
+        quantity_mtbf: 270,
+        Date: '1984-2-27'
     },
     {
         AssetType: 'eq',
@@ -2922,7 +3435,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
-        DepartmentCode: 'REGIONAL'
+        DepartmentCode: 'REGIONAL',
+        cost_purchase: 24,
+        quantity_mtbf: 697,
+        Date: '2005-10-7'
     },
     {
         AssetType: 'eq',
@@ -2939,7 +3455,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
-        DepartmentCode: 'REGIONAL'
+        DepartmentCode: 'REGIONAL',
+        cost_purchase: 293,
+        quantity_mtbf: 1294,
+        Date: '1985-4-25'
     },
     {
         AssetType: 'eq',
@@ -2956,7 +3475,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
-        DepartmentCode: 'REGIONAL'
+        DepartmentCode: 'REGIONAL',
+        cost_purchase: 40,
+        quantity_mtbf: 72,
+        Date: '1978-1-31'
     },
     {
         AssetType: 'eq',
@@ -2973,7 +3495,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
-        DepartmentCode: 'REGIONAL'
+        DepartmentCode: 'REGIONAL',
+        cost_purchase: 266,
+        quantity_mtbf: 556,
+        Date: '2001-10-13'
     },
     {
         AssetType: 'eq',
@@ -2990,7 +3515,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
-        DepartmentCode: 'REGIONAL'
+        DepartmentCode: 'REGIONAL',
+        cost_purchase: 120,
+        quantity_mtbf: 947,
+        Date: '2013-8-16'
     },
     {
         AssetType: 'eq',
@@ -3007,7 +3535,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
-        DepartmentCode: 'REGIONAL'
+        DepartmentCode: 'REGIONAL',
+        cost_purchase: 1009,
+        quantity_mtbf: 276,
+        Date: '1991-10-31'
     },
     {
         AssetType: 'eq',
@@ -3024,7 +3555,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
-        DepartmentCode: 'REGIONAL'
+        DepartmentCode: 'REGIONAL',
+        cost_purchase: 747,
+        quantity_mtbf: 226,
+        Date: '2010-10-26'
     },
     {
         AssetType: 'eq',
@@ -3041,7 +3575,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
-        DepartmentCode: 'REGIONAL'
+        DepartmentCode: 'REGIONAL',
+        cost_purchase: 655,
+        quantity_mtbf: 349,
+        Date: '1981-3-14'
     },
     {
         AssetType: 'eq',
@@ -3058,7 +3595,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
-        DepartmentCode: 'REGIONAL'
+        DepartmentCode: 'REGIONAL',
+        cost_purchase: 881,
+        quantity_mtbf: 269,
+        Date: '2010-5-25'
     },
     {
         AssetType: 'eq',
@@ -3075,7 +3615,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
-        DepartmentCode: 'REGIONAL'
+        DepartmentCode: 'REGIONAL',
+        cost_purchase: 54,
+        quantity_mtbf: 511,
+        Date: '2007-5-8'
     },
     {
         AssetType: 'eq',
@@ -3092,7 +3635,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
-        DepartmentCode: 'REGIONAL'
+        DepartmentCode: 'REGIONAL',
+        cost_purchase: 879,
+        quantity_mtbf: 388,
+        Date: '2013-7-14'
     },
     {
         AssetType: 'eq',
@@ -3109,7 +3655,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
-        DepartmentCode: 'REGIONAL'
+        DepartmentCode: 'REGIONAL',
+        cost_purchase: 992,
+        quantity_mtbf: 311,
+        Date: '1976-5-5'
     },
     {
         AssetType: 'eq',
@@ -3126,7 +3675,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
-        DepartmentCode: 'REGIONAL'
+        DepartmentCode: 'REGIONAL',
+        cost_purchase: 568,
+        quantity_mtbf: 907,
+        Date: '1988-4-14'
     },
     {
         AssetType: 'eq',
@@ -3143,7 +3695,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
-        DepartmentCode: 'REGIONAL'
+        DepartmentCode: 'REGIONAL',
+        cost_purchase: 1214,
+        quantity_mtbf: 500,
+        Date: '1989-10-5'
     },
     {
         AssetType: 'eq',
@@ -3160,7 +3715,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
-        DepartmentCode: 'REGIONAL'
+        DepartmentCode: 'REGIONAL',
+        cost_purchase: 859,
+        quantity_mtbf: 1105,
+        Date: '2015-2-13'
     },
     {
         AssetType: 'eq',
@@ -3177,7 +3735,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 1287,
+        quantity_mtbf: 966,
+        Date: '1995-9-4'
     },
     {
         AssetType: 'eq',
@@ -3194,7 +3755,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 1125,
+        quantity_mtbf: 386,
+        Date: '1990-5-13'
     },
     {
         AssetType: 'eq',
@@ -3211,7 +3775,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 937,
+        quantity_mtbf: 877,
+        Date: '1983-7-14'
     },
     {
         AssetType: 'eq',
@@ -3228,7 +3795,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 18,
+        quantity_mtbf: 440,
+        Date: '1974-11-9'
     },
     {
         AssetType: 'eq',
@@ -3245,7 +3815,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 153,
+        quantity_mtbf: 594,
+        Date: '2003-7-18'
     },
     {
         AssetType: 'eq',
@@ -3262,7 +3835,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 1036,
+        quantity_mtbf: 746,
+        Date: '2000-7-5'
     },
     {
         AssetType: 'eq',
@@ -3279,7 +3855,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 1026,
+        quantity_mtbf: 1187,
+        Date: '1991-1-4'
     },
     {
         AssetType: 'eq',
@@ -3296,7 +3875,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 1129,
+        quantity_mtbf: 5,
+        Date: '2007-9-30'
     },
     {
         AssetType: 'eq',
@@ -3313,7 +3895,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 770,
+        quantity_mtbf: 37,
+        Date: '1985-3-29'
     },
     {
         AssetType: 'eq',
@@ -3330,7 +3915,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 949,
+        quantity_mtbf: 1239,
+        Date: '1986-12-18'
     },
     {
         AssetType: 'eq',
@@ -3347,7 +3935,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 630,
+        quantity_mtbf: 369,
+        Date: '1999-5-11'
     },
     {
         AssetType: 'eq',
@@ -3364,7 +3955,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 238,
+        quantity_mtbf: 367,
+        Date: '1979-7-19'
     },
     {
         AssetType: 'eq',
@@ -3381,7 +3975,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 691,
+        quantity_mtbf: 936,
+        Date: '1984-8-30'
     },
     {
         AssetType: 'eq',
@@ -3398,7 +3995,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 1004,
+        quantity_mtbf: 1282,
+        Date: '1979-2-8'
     },
     {
         AssetType: 'eq',
@@ -3415,7 +4015,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 726,
+        quantity_mtbf: 432,
+        Date: '1991-7-21'
     },
     {
         AssetType: 'eq',
@@ -3432,7 +4035,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 158,
+        quantity_mtbf: 1065,
+        Date: '1999-11-17'
     },
     {
         AssetType: 'eq',
@@ -3449,7 +4055,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 997,
+        quantity_mtbf: 314,
+        Date: '1977-11-11'
     },
     {
         AssetType: 'eq',
@@ -3466,7 +4075,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 960,
+        quantity_mtbf: 44,
+        Date: '1996-8-17'
     },
     {
         AssetType: 'eq',
@@ -3483,7 +4095,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 451,
+        quantity_mtbf: 362,
+        Date: '2000-10-11'
     },
     {
         AssetType: 'eq',
@@ -3500,7 +4115,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 589,
+        quantity_mtbf: 1078,
+        Date: '1980-5-29'
     },
     {
         AssetType: 'eq',
@@ -3517,7 +4135,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 331,
+        quantity_mtbf: 441,
+        Date: '2009-9-5'
     },
     {
         AssetType: 'eq',
@@ -3534,7 +4155,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 117,
+        quantity_mtbf: 760,
+        Date: '1980-8-10'
     },
     {
         AssetType: 'eq',
@@ -3551,7 +4175,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 774,
+        quantity_mtbf: 133,
+        Date: '2004-1-13'
     },
     {
         AssetType: 'eq',
@@ -3568,7 +4195,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 662,
+        quantity_mtbf: 1104,
+        Date: '2013-3-8'
     },
     {
         AssetType: 'eq',
@@ -3585,7 +4215,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 481,
+        quantity_mtbf: 564,
+        Date: '2002-12-4'
     },
     {
         AssetType: 'eq',
@@ -3602,7 +4235,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 137,
+        quantity_mtbf: 1178,
+        Date: '1988-11-25'
     },
     {
         AssetType: 'eq',
@@ -3619,7 +4255,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 850,
+        quantity_mtbf: 919,
+        Date: '1998-6-3'
     },
     {
         AssetType: 'eq',
@@ -3636,7 +4275,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 475,
+        quantity_mtbf: 918,
+        Date: '1995-2-5'
     },
     {
         AssetType: 'eq',
@@ -3653,7 +4295,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 728,
+        quantity_mtbf: 758,
+        Date: '2000-9-12'
     },
     {
         AssetType: 'eq',
@@ -3670,7 +4315,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 995,
+        quantity_mtbf: 1,
+        Date: '2001-10-25'
     },
     {
         AssetType: 'eq',
@@ -3687,7 +4335,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 1172,
+        quantity_mtbf: 35,
+        Date: '1976-7-20'
     },
     {
         AssetType: 'eq',
@@ -3704,7 +4355,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 1014,
+        quantity_mtbf: 1020,
+        Date: '2008-9-29'
     },
     {
         AssetType: 'eq',
@@ -3721,7 +4375,10 @@ var data = [
         RoomCode: '000',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 437,
+        quantity_mtbf: 1271,
+        Date: '1979-8-27'
     },
     {
         AssetType: 'eq',
@@ -3738,7 +4395,10 @@ var data = [
         RoomCode: '132C',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1049,
+        quantity_mtbf: 712,
+        Date: '2013-1-19'
     },
     {
         AssetType: 'eq',
@@ -3755,7 +4415,10 @@ var data = [
         RoomCode: '136D',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 228,
+        quantity_mtbf: 1086,
+        Date: '2007-9-11'
     },
     {
         AssetType: 'eq',
@@ -3772,7 +4435,10 @@ var data = [
         RoomCode: '138C',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 854,
+        quantity_mtbf: 409,
+        Date: '2000-8-7'
     },
     {
         AssetType: 'eq',
@@ -3789,7 +4455,10 @@ var data = [
         RoomCode: '138E',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 747,
+        quantity_mtbf: 1171,
+        Date: '2014-9-26'
     },
     {
         AssetType: 'eq',
@@ -3806,7 +4475,10 @@ var data = [
         RoomCode: '138F',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 909,
+        quantity_mtbf: 190,
+        Date: '1993-2-9'
     },
     {
         AssetType: 'eq',
@@ -3823,7 +4495,10 @@ var data = [
         RoomCode: '144A',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 253,
+        quantity_mtbf: 777,
+        Date: '2008-7-22'
     },
     {
         AssetType: 'eq',
@@ -3840,7 +4515,10 @@ var data = [
         RoomCode: '164',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 892,
+        quantity_mtbf: 558,
+        Date: '1975-8-25'
     },
     {
         AssetType: 'eq',
@@ -3857,7 +4535,10 @@ var data = [
         RoomCode: '164D',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 275,
+        quantity_mtbf: 1199,
+        Date: '1992-6-10'
     },
     {
         AssetType: 'eq',
@@ -3874,7 +4555,10 @@ var data = [
         RoomCode: '164E',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 802,
+        quantity_mtbf: 163,
+        Date: '1987-12-7'
     },
     {
         AssetType: 'eq',
@@ -3891,7 +4575,10 @@ var data = [
         RoomCode: '164G',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 295,
+        quantity_mtbf: 279,
+        Date: '2013-2-27'
     },
     {
         AssetType: 'eq',
@@ -3908,7 +4595,10 @@ var data = [
         RoomCode: '165',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 215,
+        quantity_mtbf: 78,
+        Date: '1987-3-27'
     },
     {
         AssetType: 'eq',
@@ -3925,7 +4615,10 @@ var data = [
         RoomCode: '165D',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1138,
+        quantity_mtbf: 42,
+        Date: '1987-12-4'
     },
     {
         AssetType: 'eq',
@@ -3942,7 +4635,10 @@ var data = [
         RoomCode: '165E',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 615,
+        quantity_mtbf: 992,
+        Date: '1990-4-4'
     },
     {
         AssetType: 'eq',
@@ -3959,7 +4655,10 @@ var data = [
         RoomCode: '165F',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 666,
+        quantity_mtbf: 588,
+        Date: '1997-11-4'
     },
     {
         AssetType: 'eq',
@@ -3976,7 +4675,10 @@ var data = [
         RoomCode: '167A',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1205,
+        quantity_mtbf: 297,
+        Date: '2002-7-2'
     },
     {
         AssetType: 'eq',
@@ -3993,7 +4695,10 @@ var data = [
         RoomCode: '157',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 727,
+        quantity_mtbf: 396,
+        Date: '1981-1-15'
     },
     {
         AssetType: 'eq',
@@ -4010,7 +4715,10 @@ var data = [
         RoomCode: '170B',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 324,
+        quantity_mtbf: 803,
+        Date: '2015-11-5'
     },
     {
         AssetType: 'eq',
@@ -4027,7 +4735,10 @@ var data = [
         RoomCode: '171',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 384,
+        quantity_mtbf: 1249,
+        Date: '1978-12-6'
     },
     {
         AssetType: 'eq',
@@ -4044,7 +4755,10 @@ var data = [
         RoomCode: '172',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 877,
+        quantity_mtbf: 695,
+        Date: '2002-2-26'
     },
     {
         AssetType: 'eq',
@@ -4061,7 +4775,10 @@ var data = [
         RoomCode: '176A',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1010,
+        quantity_mtbf: 1028,
+        Date: '2001-9-7'
     },
     {
         AssetType: 'eq',
@@ -4078,7 +4795,10 @@ var data = [
         RoomCode: '176B',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 431,
+        quantity_mtbf: 979,
+        Date: '1976-9-25'
     },
     {
         AssetType: 'eq',
@@ -4095,7 +4815,10 @@ var data = [
         RoomCode: '176C',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 11,
+        quantity_mtbf: 286,
+        Date: '1995-2-5'
     },
     {
         AssetType: 'eq',
@@ -4112,7 +4835,10 @@ var data = [
         RoomCode: '176D',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 665,
+        quantity_mtbf: 1250,
+        Date: '1993-11-24'
     },
     {
         AssetType: 'eq',
@@ -4129,7 +4855,10 @@ var data = [
         RoomCode: '176E',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1165,
+        quantity_mtbf: 437,
+        Date: '1987-8-7'
     },
     {
         AssetType: 'eq',
@@ -4146,7 +4875,10 @@ var data = [
         RoomCode: '176F',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1026,
+        quantity_mtbf: 1272,
+        Date: '1998-4-17'
     },
     {
         AssetType: 'eq',
@@ -4163,7 +4895,10 @@ var data = [
         RoomCode: '176G',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 533,
+        quantity_mtbf: 851,
+        Date: '1979-4-14'
     },
     {
         AssetType: 'eq',
@@ -4180,7 +4915,10 @@ var data = [
         RoomCode: '176F',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 725,
+        quantity_mtbf: 158,
+        Date: '1994-10-14'
     },
     {
         AssetType: 'eq',
@@ -4197,7 +4935,10 @@ var data = [
         RoomCode: '176G',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1056,
+        quantity_mtbf: 971,
+        Date: '2012-6-23'
     },
     {
         AssetType: 'eq',
@@ -4214,7 +4955,10 @@ var data = [
         RoomCode: '176H',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 874,
+        quantity_mtbf: 186,
+        Date: '1981-8-25'
     },
     {
         AssetType: 'eq',
@@ -4231,7 +4975,10 @@ var data = [
         RoomCode: '176I',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 471,
+        quantity_mtbf: 1161,
+        Date: '2000-6-8'
     },
     {
         AssetType: 'eq',
@@ -4248,7 +4995,10 @@ var data = [
         RoomCode: '176J',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1043,
+        quantity_mtbf: 160,
+        Date: '2005-4-11'
     },
     {
         AssetType: 'eq',
@@ -4265,7 +5015,10 @@ var data = [
         RoomCode: '185A',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1265,
+        quantity_mtbf: 612,
+        Date: '1978-2-8'
     },
     {
         AssetType: 'eq',
@@ -4282,7 +5035,10 @@ var data = [
         RoomCode: '107',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 762,
+        quantity_mtbf: 1156,
+        Date: '1993-1-22'
     },
     {
         AssetType: 'eq',
@@ -4299,7 +5055,10 @@ var data = [
         RoomCode: '183',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 454,
+        quantity_mtbf: 90,
+        Date: '2008-9-29'
     },
     {
         AssetType: 'eq',
@@ -4316,7 +5075,10 @@ var data = [
         RoomCode: '184A',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 174,
+        quantity_mtbf: 325,
+        Date: '1983-3-8'
     },
     {
         AssetType: 'eq',
@@ -4333,7 +5095,10 @@ var data = [
         RoomCode: '184B',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 323,
+        quantity_mtbf: 107,
+        Date: '1981-7-13'
     },
     {
         AssetType: 'eq',
@@ -4350,7 +5115,10 @@ var data = [
         RoomCode: '184C',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 452,
+        quantity_mtbf: 567,
+        Date: '1989-9-25'
     },
     {
         AssetType: 'eq',
@@ -4367,7 +5135,10 @@ var data = [
         RoomCode: '184D',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1148,
+        quantity_mtbf: 536,
+        Date: '1996-7-8'
     },
     {
         AssetType: 'eq',
@@ -4384,7 +5155,10 @@ var data = [
         RoomCode: '184E',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 68,
+        quantity_mtbf: 852,
+        Date: '1979-2-6'
     },
     {
         AssetType: 'eq',
@@ -4401,7 +5175,10 @@ var data = [
         RoomCode: '184F',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 677,
+        quantity_mtbf: 664,
+        Date: '2005-8-12'
     },
     {
         AssetType: 'eq',
@@ -4418,7 +5195,10 @@ var data = [
         RoomCode: '184G',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1127,
+        quantity_mtbf: 229,
+        Date: '1993-5-19'
     },
     {
         AssetType: 'eq',
@@ -4435,7 +5215,10 @@ var data = [
         RoomCode: '184H',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 862,
+        quantity_mtbf: 1233,
+        Date: '1997-12-12'
     },
     {
         AssetType: 'eq',
@@ -4452,7 +5235,10 @@ var data = [
         RoomCode: '184I',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1063,
+        quantity_mtbf: 1175,
+        Date: '2002-2-20'
     },
     {
         AssetType: 'eq',
@@ -4469,7 +5255,10 @@ var data = [
         RoomCode: '185',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 970,
+        quantity_mtbf: 166,
+        Date: '1993-10-21'
     },
     {
         AssetType: 'eq',
@@ -4486,7 +5275,10 @@ var data = [
         RoomCode: '185B',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1046,
+        quantity_mtbf: 713,
+        Date: '2014-6-13'
     },
     {
         AssetType: 'eq',
@@ -4503,7 +5295,10 @@ var data = [
         RoomCode: '185C',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 376,
+        quantity_mtbf: 691,
+        Date: '1983-7-16'
     },
     {
         AssetType: 'eq',
@@ -4520,7 +5315,10 @@ var data = [
         RoomCode: '185E',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 224,
+        quantity_mtbf: 1148,
+        Date: '1989-1-12'
     },
     {
         AssetType: 'eq',
@@ -4537,7 +5335,10 @@ var data = [
         RoomCode: '185F',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1285,
+        quantity_mtbf: 271,
+        Date: '2015-5-28'
     },
     {
         AssetType: 'eq',
@@ -4554,7 +5355,10 @@ var data = [
         RoomCode: '186',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1013,
+        quantity_mtbf: 698,
+        Date: '1997-8-29'
     },
     {
         AssetType: 'eq',
@@ -4571,7 +5375,10 @@ var data = [
         RoomCode: '186D',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 823,
+        quantity_mtbf: 808,
+        Date: '2015-5-10'
     },
     {
         AssetType: 'eq',
@@ -4588,7 +5395,10 @@ var data = [
         RoomCode: '186E',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 797,
+        quantity_mtbf: 1075,
+        Date: '1998-11-23'
     },
     {
         AssetType: 'eq',
@@ -4605,7 +5415,10 @@ var data = [
         RoomCode: '186F',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 264,
+        quantity_mtbf: 701,
+        Date: '1989-7-3'
     },
     {
         AssetType: 'eq',
@@ -4622,7 +5435,10 @@ var data = [
         RoomCode: '189',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 950,
+        quantity_mtbf: 426,
+        Date: '2003-10-28'
     },
     {
         AssetType: 'eq',
@@ -4639,7 +5455,10 @@ var data = [
         RoomCode: '190',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 400,
+        quantity_mtbf: 159,
+        Date: '1995-3-26'
     },
     {
         AssetType: 'eq',
@@ -4656,7 +5475,10 @@ var data = [
         RoomCode: '191A',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 309,
+        quantity_mtbf: 521,
+        Date: '1993-11-22'
     },
     {
         AssetType: 'eq',
@@ -4673,7 +5495,10 @@ var data = [
         RoomCode: '192A',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 903,
+        quantity_mtbf: 22,
+        Date: '1975-12-23'
     },
     {
         AssetType: 'eq',
@@ -4690,7 +5515,10 @@ var data = [
         RoomCode: '192B',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 809,
+        quantity_mtbf: 1107,
+        Date: '2001-6-9'
     },
     {
         AssetType: 'eq',
@@ -4707,7 +5535,10 @@ var data = [
         RoomCode: '192C',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 35,
+        quantity_mtbf: 814,
+        Date: '1984-11-13'
     },
     {
         AssetType: 'eq',
@@ -4724,7 +5555,10 @@ var data = [
         RoomCode: '192D',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 598,
+        quantity_mtbf: 33,
+        Date: '2002-3-26'
     },
     {
         AssetType: 'eq',
@@ -4741,7 +5575,10 @@ var data = [
         RoomCode: '192E',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 849,
+        quantity_mtbf: 887,
+        Date: '1992-2-22'
     },
     {
         AssetType: 'eq',
@@ -4758,7 +5595,10 @@ var data = [
         RoomCode: '192F',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 187,
+        quantity_mtbf: 289,
+        Date: '2014-10-9'
     },
     {
         AssetType: 'eq',
@@ -4775,7 +5615,10 @@ var data = [
         RoomCode: '192G',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 343,
+        quantity_mtbf: 760,
+        Date: '1999-5-13'
     },
     {
         AssetType: 'eq',
@@ -4792,7 +5635,10 @@ var data = [
         RoomCode: '192H',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1249,
+        quantity_mtbf: 931,
+        Date: '2005-4-13'
     },
     {
         AssetType: 'eq',
@@ -4809,7 +5655,10 @@ var data = [
         RoomCode: '192',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1183,
+        quantity_mtbf: 604,
+        Date: '2004-5-3'
     },
     {
         AssetType: 'eq',
@@ -4826,7 +5675,10 @@ var data = [
         RoomCode: '176',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 582,
+        quantity_mtbf: 877,
+        Date: '1995-6-14'
     },
     {
         AssetType: 'eq',
@@ -4843,7 +5695,10 @@ var data = [
         RoomCode: '184',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 822,
+        quantity_mtbf: 670,
+        Date: '2009-4-4'
     },
     {
         AssetType: 'eq',
@@ -4860,7 +5715,10 @@ var data = [
         RoomCode: '167C',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 30,
+        quantity_mtbf: 1168,
+        Date: '2011-1-8'
     },
     {
         AssetType: 'eq',
@@ -4877,7 +5735,10 @@ var data = [
         RoomCode: '167F',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1167,
+        quantity_mtbf: 52,
+        Date: '1991-4-21'
     },
     {
         AssetType: 'eq',
@@ -4894,7 +5755,10 @@ var data = [
         RoomCode: '192J',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1265,
+        quantity_mtbf: 161,
+        Date: '1986-12-4'
     },
     {
         AssetType: 'eq',
@@ -4911,7 +5775,10 @@ var data = [
         RoomCode: '167B',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 283,
+        quantity_mtbf: 637,
+        Date: '2000-3-12'
     },
     {
         AssetType: 'eq',
@@ -4928,7 +5795,10 @@ var data = [
         RoomCode: '167B',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 776,
+        quantity_mtbf: 812,
+        Date: '2014-7-13'
     },
     {
         AssetType: 'eq',
@@ -4945,7 +5815,10 @@ var data = [
         RoomCode: '167B',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1157,
+        quantity_mtbf: 525,
+        Date: '2005-6-1'
     },
     {
         AssetType: 'eq',
@@ -4962,7 +5835,10 @@ var data = [
         RoomCode: '167C',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1110,
+        quantity_mtbf: 354,
+        Date: '1999-5-26'
     },
     {
         AssetType: 'eq',
@@ -4979,7 +5855,10 @@ var data = [
         RoomCode: '167C',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1182,
+        quantity_mtbf: 417,
+        Date: '1978-11-1'
     },
     {
         AssetType: 'eq',
@@ -4996,7 +5875,10 @@ var data = [
         RoomCode: '187',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1114,
+        quantity_mtbf: 471,
+        Date: '1986-1-22'
     },
     {
         AssetType: 'eq',
@@ -5013,7 +5895,10 @@ var data = [
         RoomCode: '188',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 973,
+        quantity_mtbf: 981,
+        Date: '2008-6-3'
     },
     {
         AssetType: 'eq',
@@ -5030,7 +5915,10 @@ var data = [
         RoomCode: '103',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1148,
+        quantity_mtbf: 1236,
+        Date: '2010-4-9'
     },
     {
         AssetType: 'eq',
@@ -5047,7 +5935,10 @@ var data = [
         RoomCode: '104',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 622,
+        quantity_mtbf: 508,
+        Date: '2003-5-5'
     },
     {
         AssetType: 'eq',
@@ -5064,7 +5955,10 @@ var data = [
         RoomCode: '162OIT',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 733,
+        quantity_mtbf: 803,
+        Date: '2010-12-7'
     },
     {
         AssetType: 'eq',
@@ -5081,7 +5975,10 @@ var data = [
         RoomCode: '181ELR',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 751,
+        quantity_mtbf: 19,
+        Date: '2015-8-4'
     },
     {
         AssetType: 'eq',
@@ -5098,7 +5995,10 @@ var data = [
         RoomCode: '105',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 542,
+        quantity_mtbf: 1095,
+        Date: '1988-10-1'
     },
     {
         AssetType: 'eq',
@@ -5115,7 +6015,10 @@ var data = [
         RoomCode: '106',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 876,
+        quantity_mtbf: 731,
+        Date: '2001-8-13'
     },
     {
         AssetType: 'eq',
@@ -5132,7 +6035,10 @@ var data = [
         RoomCode: '111ELR',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 999,
+        quantity_mtbf: 233,
+        Date: '2001-8-15'
     },
     {
         AssetType: 'eq',
@@ -5149,7 +6055,10 @@ var data = [
         RoomCode: '169A',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1292,
+        quantity_mtbf: 941,
+        Date: '2015-5-28'
     },
     {
         AssetType: 'eq',
@@ -5166,7 +6075,10 @@ var data = [
         RoomCode: '169B',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1239,
+        quantity_mtbf: 1282,
+        Date: '2000-1-22'
     },
     {
         AssetType: 'eq',
@@ -5183,7 +6095,10 @@ var data = [
         RoomCode: '188',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 848,
+        quantity_mtbf: 437,
+        Date: '1975-10-28'
     },
     {
         AssetType: 'eq',
@@ -5200,7 +6115,10 @@ var data = [
         RoomCode: '187',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1049,
+        quantity_mtbf: 212,
+        Date: '1985-8-23'
     },
     {
         AssetType: 'eq',
@@ -5217,7 +6135,10 @@ var data = [
         RoomCode: '109',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 111,
+        quantity_mtbf: 674,
+        Date: '1993-4-18'
     },
     {
         AssetType: 'eq',
@@ -5234,7 +6155,10 @@ var data = [
         RoomCode: '116',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 431,
+        quantity_mtbf: 1118,
+        Date: '1975-11-18'
     },
     {
         AssetType: 'eq',
@@ -5251,7 +6175,10 @@ var data = [
         RoomCode: '117',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 950,
+        quantity_mtbf: 896,
+        Date: '1990-7-29'
     },
     {
         AssetType: 'eq',
@@ -5268,7 +6195,10 @@ var data = [
         RoomCode: '117',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1049,
+        quantity_mtbf: 767,
+        Date: '2009-10-24'
     },
     {
         AssetType: 'eq',
@@ -5285,7 +6215,10 @@ var data = [
         RoomCode: '124',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 789,
+        quantity_mtbf: 111,
+        Date: '1997-7-4'
     },
     {
         AssetType: 'eq',
@@ -5302,7 +6235,10 @@ var data = [
         RoomCode: '124',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1204,
+        quantity_mtbf: 1140,
+        Date: '2011-12-6'
     },
     {
         AssetType: 'eq',
@@ -5319,7 +6255,10 @@ var data = [
         RoomCode: '126',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 821,
+        quantity_mtbf: 93,
+        Date: '1992-6-14'
     },
     {
         AssetType: 'eq',
@@ -5336,7 +6275,10 @@ var data = [
         RoomCode: '126',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 546,
+        quantity_mtbf: 659,
+        Date: '1995-2-25'
     },
     {
         AssetType: 'eq',
@@ -5353,7 +6295,10 @@ var data = [
         RoomCode: '127',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 619,
+        quantity_mtbf: 462,
+        Date: '2012-10-22'
     },
     {
         AssetType: 'eq',
@@ -5370,7 +6315,10 @@ var data = [
         RoomCode: '127',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 709,
+        quantity_mtbf: 264,
+        Date: '2012-5-19'
     },
     {
         AssetType: 'eq',
@@ -5387,7 +6335,10 @@ var data = [
         RoomCode: '128',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 95,
+        quantity_mtbf: 980,
+        Date: '1984-5-30'
     },
     {
         AssetType: 'eq',
@@ -5404,7 +6355,10 @@ var data = [
         RoomCode: '128',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1235,
+        quantity_mtbf: 426,
+        Date: '1987-1-3'
     },
     {
         AssetType: 'eq',
@@ -5421,7 +6375,10 @@ var data = [
         RoomCode: '131',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 826,
+        quantity_mtbf: 877,
+        Date: '1997-8-22'
     },
     {
         AssetType: 'eq',
@@ -5438,7 +6395,10 @@ var data = [
         RoomCode: '131',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 361,
+        quantity_mtbf: 241,
+        Date: '1987-1-6'
     },
     {
         AssetType: 'eq',
@@ -5455,7 +6415,10 @@ var data = [
         RoomCode: '132A',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 477,
+        quantity_mtbf: 1131,
+        Date: '2008-6-11'
     },
     {
         AssetType: 'eq',
@@ -5472,7 +6435,10 @@ var data = [
         RoomCode: '132B',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 923,
+        quantity_mtbf: 537,
+        Date: '1983-8-31'
     },
     {
         AssetType: 'eq',
@@ -5489,7 +6455,10 @@ var data = [
         RoomCode: '134',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1231,
+        quantity_mtbf: 937,
+        Date: '2010-2-5'
     },
     {
         AssetType: 'eq',
@@ -5506,7 +6475,10 @@ var data = [
         RoomCode: '136B',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1125,
+        quantity_mtbf: 1247,
+        Date: '2005-3-18'
     },
     {
         AssetType: 'eq',
@@ -5523,7 +6495,10 @@ var data = [
         RoomCode: '130OIT',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 77,
+        quantity_mtbf: 914,
+        Date: '1992-2-1'
     },
     {
         AssetType: 'eq',
@@ -5540,7 +6515,10 @@ var data = [
         RoomCode: '136C',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1153,
+        quantity_mtbf: 1155,
+        Date: '2001-10-27'
     },
     {
         AssetType: 'eq',
@@ -5557,7 +6535,10 @@ var data = [
         RoomCode: '136C',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 270,
+        quantity_mtbf: 1075,
+        Date: '1988-6-10'
     },
     {
         AssetType: 'eq',
@@ -5574,7 +6555,10 @@ var data = [
         RoomCode: '136B',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 307,
+        quantity_mtbf: 766,
+        Date: '2013-2-20'
     },
     {
         AssetType: 'eq',
@@ -5591,7 +6575,10 @@ var data = [
         RoomCode: '132B',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 827,
+        quantity_mtbf: 1158,
+        Date: '1977-5-7'
     },
     {
         AssetType: 'eq',
@@ -5608,7 +6595,10 @@ var data = [
         RoomCode: '132A',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 711,
+        quantity_mtbf: 1199,
+        Date: '2012-12-4'
     },
     {
         AssetType: 'eq',
@@ -5625,7 +6615,10 @@ var data = [
         RoomCode: '137',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 396,
+        quantity_mtbf: 580,
+        Date: '2002-5-3'
     },
     {
         AssetType: 'eq',
@@ -5642,7 +6635,10 @@ var data = [
         RoomCode: '138A',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 664,
+        quantity_mtbf: 387,
+        Date: '2006-2-4'
     },
     {
         AssetType: 'eq',
@@ -5659,7 +6655,10 @@ var data = [
         RoomCode: '138B',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1027,
+        quantity_mtbf: 785,
+        Date: '2004-8-7'
     },
     {
         AssetType: 'eq',
@@ -5676,7 +6675,10 @@ var data = [
         RoomCode: '138D',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 117,
+        quantity_mtbf: 431,
+        Date: '1976-2-6'
     },
     {
         AssetType: 'eq',
@@ -5693,7 +6695,10 @@ var data = [
         RoomCode: '140',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 739,
+        quantity_mtbf: 6,
+        Date: '2013-7-1'
     },
     {
         AssetType: 'eq',
@@ -5710,7 +6715,10 @@ var data = [
         RoomCode: '141',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 292,
+        quantity_mtbf: 73,
+        Date: '2003-7-5'
     },
     {
         AssetType: 'eq',
@@ -5727,7 +6735,10 @@ var data = [
         RoomCode: '143',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 535,
+        quantity_mtbf: 808,
+        Date: '2005-1-25'
     },
     {
         AssetType: 'eq',
@@ -5744,7 +6755,10 @@ var data = [
         RoomCode: '144B',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 291,
+        quantity_mtbf: 957,
+        Date: '1980-3-4'
     },
     {
         AssetType: 'eq',
@@ -5761,7 +6775,10 @@ var data = [
         RoomCode: '164H',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 488,
+        quantity_mtbf: 667,
+        Date: '2014-1-9'
     },
     {
         AssetType: 'eq',
@@ -5778,7 +6795,10 @@ var data = [
         RoomCode: '132D',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'HUMAN RESOURCES',
-        DepartmentCode: 'NEW ENGLAND'
+        DepartmentCode: 'NEW ENGLAND',
+        cost_purchase: 1209,
+        quantity_mtbf: 1184,
+        Date: '2009-1-24'
     },
     {
         AssetType: 'eq',
@@ -5795,7 +6815,10 @@ var data = [
         RoomCode: '167H',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
-        DepartmentCode: 'REGIONAL'
+        DepartmentCode: 'REGIONAL',
+        cost_purchase: 268,
+        quantity_mtbf: 598,
+        Date: '2008-3-20'
     },
     {
         AssetType: 'eq',
@@ -5812,7 +6835,10 @@ var data = [
         RoomCode: '207',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 582,
+        quantity_mtbf: 1004,
+        Date: '1981-6-12'
     },
     {
         AssetType: 'eq',
@@ -5829,7 +6855,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 608,
+        quantity_mtbf: 854,
+        Date: '1992-4-19'
     },
     {
         AssetType: 'eq',
@@ -5846,7 +6875,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1294,
+        quantity_mtbf: 320,
+        Date: '1988-3-2'
     },
     {
         AssetType: 'eq',
@@ -5863,7 +6895,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 673,
+        quantity_mtbf: 469,
+        Date: '2005-6-6'
     },
     {
         AssetType: 'eq',
@@ -5880,7 +6915,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 898,
+        quantity_mtbf: 967,
+        Date: '1997-8-15'
     },
     {
         AssetType: 'eq',
@@ -5897,7 +6935,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 167,
+        quantity_mtbf: 461,
+        Date: '2008-4-8'
     },
     {
         AssetType: 'eq',
@@ -5914,7 +6955,10 @@ var data = [
         RoomCode: '108',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1145,
+        quantity_mtbf: 1196,
+        Date: '1988-4-4'
     },
     {
         AssetType: 'eq',
@@ -5931,7 +6975,10 @@ var data = [
         RoomCode: '110',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 468,
+        quantity_mtbf: 536,
+        Date: '1981-2-15'
     },
     {
         AssetType: 'eq',
@@ -5948,7 +6995,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 809,
+        quantity_mtbf: 446,
+        Date: '1990-2-16'
     },
     {
         AssetType: 'eq',
@@ -5965,7 +7015,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 820,
+        quantity_mtbf: 694,
+        Date: '2015-7-4'
     },
     {
         AssetType: 'eq',
@@ -5982,7 +7035,10 @@ var data = [
         RoomCode: '210',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 509,
+        quantity_mtbf: 72,
+        Date: '2000-5-10'
     },
     {
         AssetType: 'eq',
@@ -5999,7 +7055,10 @@ var data = [
         RoomCode: '208',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 623,
+        quantity_mtbf: 1081,
+        Date: '2007-1-31'
     },
     {
         AssetType: 'eq',
@@ -6016,7 +7075,10 @@ var data = [
         RoomCode: '102',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 620,
+        quantity_mtbf: 761,
+        Date: '2015-2-8'
     },
     {
         AssetType: 'eq',
@@ -6033,7 +7095,10 @@ var data = [
         RoomCode: '101',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 785,
+        quantity_mtbf: 650,
+        Date: '1997-9-14'
     },
     {
         AssetType: 'eq',
@@ -6050,7 +7115,10 @@ var data = [
         RoomCode: '120',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 279,
+        quantity_mtbf: 160,
+        Date: '1981-4-19'
     },
     {
         AssetType: 'eq',
@@ -6067,7 +7135,10 @@ var data = [
         RoomCode: '121',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 1249,
+        quantity_mtbf: 827,
+        Date: '1982-6-5'
     },
     {
         AssetType: 'eq',
@@ -6084,7 +7155,10 @@ var data = [
         RoomCode: '150',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 932,
+        quantity_mtbf: 1097,
+        Date: '1975-5-3'
     },
     {
         AssetType: 'eq',
@@ -6101,7 +7175,10 @@ var data = [
         RoomCode: '151',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 1298,
+        quantity_mtbf: 960,
+        Date: '1978-2-2'
     },
     {
         AssetType: 'eq',
@@ -6118,7 +7195,10 @@ var data = [
         RoomCode: '152',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 1078,
+        quantity_mtbf: 174,
+        Date: '1985-5-19'
     },
     {
         AssetType: 'eq',
@@ -6135,7 +7215,10 @@ var data = [
         RoomCode: '153',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 791,
+        quantity_mtbf: 1096,
+        Date: '2011-10-1'
     },
     {
         AssetType: 'eq',
@@ -6152,7 +7235,10 @@ var data = [
         RoomCode: '154',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 1057,
+        quantity_mtbf: 270,
+        Date: '1990-4-16'
     },
     {
         AssetType: 'eq',
@@ -6169,7 +7255,10 @@ var data = [
         RoomCode: '155',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 408,
+        quantity_mtbf: 624,
+        Date: '2005-7-2'
     },
     {
         AssetType: 'eq',
@@ -6186,7 +7275,10 @@ var data = [
         RoomCode: '156',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 1205,
+        quantity_mtbf: 75,
+        Date: '1989-4-1'
     },
     {
         AssetType: 'eq',
@@ -6203,7 +7295,10 @@ var data = [
         RoomCode: '157',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 963,
+        quantity_mtbf: 394,
+        Date: '1999-1-9'
     },
     {
         AssetType: 'eq',
@@ -6220,7 +7315,10 @@ var data = [
         RoomCode: '158',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 490,
+        quantity_mtbf: 1251,
+        Date: '1990-8-23'
     },
     {
         AssetType: 'eq',
@@ -6237,7 +7335,10 @@ var data = [
         RoomCode: '160',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 1158,
+        quantity_mtbf: 763,
+        Date: '1984-10-17'
     },
     {
         AssetType: 'eq',
@@ -6254,7 +7355,10 @@ var data = [
         RoomCode: '161',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 364,
+        quantity_mtbf: 873,
+        Date: '1988-6-19'
     },
     {
         AssetType: 'eq',
@@ -6271,7 +7375,10 @@ var data = [
         RoomCode: '162',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 89,
+        quantity_mtbf: 511,
+        Date: '2011-8-1'
     },
     {
         AssetType: 'eq',
@@ -6288,7 +7395,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 381,
+        quantity_mtbf: 827,
+        Date: '2002-6-7'
     },
     {
         AssetType: 'eq',
@@ -6305,7 +7415,10 @@ var data = [
         RoomCode: '202',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 234,
+        quantity_mtbf: 534,
+        Date: '1990-2-1'
     },
     {
         AssetType: 'eq',
@@ -6322,7 +7435,10 @@ var data = [
         RoomCode: '201',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 835,
+        quantity_mtbf: 24,
+        Date: '1992-3-3'
     },
     {
         AssetType: 'eq',
@@ -6339,7 +7455,10 @@ var data = [
         RoomCode: '221',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 191,
+        quantity_mtbf: 738,
+        Date: '2003-12-27'
     },
     {
         AssetType: 'eq',
@@ -6356,7 +7475,10 @@ var data = [
         RoomCode: '220',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 1018,
+        quantity_mtbf: 639,
+        Date: '1998-3-25'
     },
     {
         AssetType: 'eq',
@@ -6373,7 +7495,10 @@ var data = [
         RoomCode: '250',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 829,
+        quantity_mtbf: 48,
+        Date: '2003-2-12'
     },
     {
         AssetType: 'eq',
@@ -6390,7 +7515,10 @@ var data = [
         RoomCode: '251',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 1198,
+        quantity_mtbf: 807,
+        Date: '1994-7-18'
     },
     {
         AssetType: 'eq',
@@ -6407,7 +7535,10 @@ var data = [
         RoomCode: '252',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 758,
+        quantity_mtbf: 636,
+        Date: '1976-11-15'
     },
     {
         AssetType: 'eq',
@@ -6424,7 +7555,10 @@ var data = [
         RoomCode: '255',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 955,
+        quantity_mtbf: 1024,
+        Date: '2003-1-2'
     },
     {
         AssetType: 'eq',
@@ -6441,7 +7575,10 @@ var data = [
         RoomCode: '254',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 937,
+        quantity_mtbf: 239,
+        Date: '1976-8-25'
     },
     {
         AssetType: 'eq',
@@ -6458,7 +7595,10 @@ var data = [
         RoomCode: '253',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 963,
+        quantity_mtbf: 1298,
+        Date: '1977-3-21'
     },
     {
         AssetType: 'eq',
@@ -6475,7 +7615,10 @@ var data = [
         RoomCode: '258',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 1175,
+        quantity_mtbf: 546,
+        Date: '1997-12-15'
     },
     {
         AssetType: 'eq',
@@ -6492,7 +7635,10 @@ var data = [
         RoomCode: '257',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 1098,
+        quantity_mtbf: 391,
+        Date: '2014-4-21'
     },
     {
         AssetType: 'eq',
@@ -6509,7 +7655,10 @@ var data = [
         RoomCode: '256',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 160,
+        quantity_mtbf: 327,
+        Date: '1986-10-11'
     },
     {
         AssetType: 'eq',
@@ -6526,7 +7675,10 @@ var data = [
         RoomCode: '262',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 302,
+        quantity_mtbf: 486,
+        Date: '2010-5-2'
     },
     {
         AssetType: 'eq',
@@ -6543,7 +7695,10 @@ var data = [
         RoomCode: '261',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 463,
+        quantity_mtbf: 59,
+        Date: '2015-5-4'
     },
     {
         AssetType: 'eq',
@@ -6560,7 +7715,10 @@ var data = [
         RoomCode: '260',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 1008,
+        quantity_mtbf: 787,
+        Date: '1989-1-23'
     },
     {
         AssetType: 'eq',
@@ -6577,7 +7735,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 579,
+        quantity_mtbf: 252,
+        Date: '1989-6-25'
     },
     {
         AssetType: 'eq',
@@ -6594,7 +7755,10 @@ var data = [
         RoomCode: '160',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 1239,
+        quantity_mtbf: 258,
+        Date: '2015-11-12'
     },
     {
         AssetType: 'eq',
@@ -6611,7 +7775,10 @@ var data = [
         RoomCode: '161',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 262,
+        quantity_mtbf: 1033,
+        Date: '1982-1-8'
     },
     {
         AssetType: 'eq',
@@ -6628,7 +7795,10 @@ var data = [
         RoomCode: '162',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 79,
+        quantity_mtbf: 969,
+        Date: '1986-4-22'
     },
     {
         AssetType: 'eq',
@@ -6645,7 +7815,10 @@ var data = [
         RoomCode: '158',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 906,
+        quantity_mtbf: 567,
+        Date: '1992-3-21'
     },
     {
         AssetType: 'eq',
@@ -6662,7 +7835,10 @@ var data = [
         RoomCode: '157',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 545,
+        quantity_mtbf: 915,
+        Date: '1994-2-19'
     },
     {
         AssetType: 'eq',
@@ -6679,7 +7855,10 @@ var data = [
         RoomCode: '156',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 496,
+        quantity_mtbf: 982,
+        Date: '1985-11-21'
     },
     {
         AssetType: 'eq',
@@ -6696,7 +7875,10 @@ var data = [
         RoomCode: '153',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 493,
+        quantity_mtbf: 523,
+        Date: '2005-6-24'
     },
     {
         AssetType: 'eq',
@@ -6713,7 +7895,10 @@ var data = [
         RoomCode: '154',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 1107,
+        quantity_mtbf: 640,
+        Date: '2015-5-21'
     },
     {
         AssetType: 'eq',
@@ -6730,7 +7915,10 @@ var data = [
         RoomCode: '155',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 1236,
+        quantity_mtbf: 1150,
+        Date: '1995-3-14'
     },
     {
         AssetType: 'eq',
@@ -6747,7 +7935,10 @@ var data = [
         RoomCode: '152',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 847,
+        quantity_mtbf: 383,
+        Date: '2013-2-19'
     },
     {
         AssetType: 'eq',
@@ -6764,7 +7955,10 @@ var data = [
         RoomCode: '151',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 951,
+        quantity_mtbf: 988,
+        Date: '2003-4-19'
     },
     {
         AssetType: 'eq',
@@ -6781,7 +7975,10 @@ var data = [
         RoomCode: '150',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 735,
+        quantity_mtbf: 445,
+        Date: '2002-4-22'
     },
     {
         AssetType: 'eq',
@@ -6798,7 +7995,10 @@ var data = [
         RoomCode: '120',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 1164,
+        quantity_mtbf: 1164,
+        Date: '1996-10-30'
     },
     {
         AssetType: 'eq',
@@ -6815,7 +8015,10 @@ var data = [
         RoomCode: '121',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 437,
+        quantity_mtbf: 532,
+        Date: '2002-11-22'
     },
     {
         AssetType: 'eq',
@@ -6832,7 +8035,10 @@ var data = [
         RoomCode: '101',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 177,
+        quantity_mtbf: 770,
+        Date: '2012-5-2'
     },
     {
         AssetType: 'eq',
@@ -6849,7 +8055,10 @@ var data = [
         RoomCode: '102',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 339,
+        quantity_mtbf: 411,
+        Date: '1981-2-11'
     },
     {
         AssetType: 'eq',
@@ -6866,7 +8075,10 @@ var data = [
         RoomCode: '260',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 229,
+        quantity_mtbf: 507,
+        Date: '2010-5-7'
     },
     {
         AssetType: 'eq',
@@ -6883,7 +8095,10 @@ var data = [
         RoomCode: '261',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 696,
+        quantity_mtbf: 698,
+        Date: '1991-12-29'
     },
     {
         AssetType: 'eq',
@@ -6900,7 +8115,10 @@ var data = [
         RoomCode: '262',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 762,
+        quantity_mtbf: 1203,
+        Date: '1984-3-14'
     },
     {
         AssetType: 'eq',
@@ -6917,7 +8135,10 @@ var data = [
         RoomCode: '258',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 160,
+        quantity_mtbf: 1293,
+        Date: '2015-3-10'
     },
     {
         AssetType: 'eq',
@@ -6934,7 +8155,10 @@ var data = [
         RoomCode: '257',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 392,
+        quantity_mtbf: 609,
+        Date: '1990-2-5'
     },
     {
         AssetType: 'eq',
@@ -6951,7 +8175,10 @@ var data = [
         RoomCode: '256',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 1,
+        quantity_mtbf: 183,
+        Date: '1990-11-15'
     },
     {
         AssetType: 'eq',
@@ -6968,7 +8195,10 @@ var data = [
         RoomCode: '220',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 1194,
+        quantity_mtbf: 478,
+        Date: '1988-7-29'
     },
     {
         AssetType: 'eq',
@@ -6985,7 +8215,10 @@ var data = [
         RoomCode: '221',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 1133,
+        quantity_mtbf: 1078,
+        Date: '2009-6-19'
     },
     {
         AssetType: 'eq',
@@ -7002,7 +8235,10 @@ var data = [
         RoomCode: '253',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 679,
+        quantity_mtbf: 1122,
+        Date: '1997-7-4'
     },
     {
         AssetType: 'eq',
@@ -7019,7 +8255,10 @@ var data = [
         RoomCode: '254',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 123,
+        quantity_mtbf: 1158,
+        Date: '2006-1-3'
     },
     {
         AssetType: 'eq',
@@ -7036,7 +8275,10 @@ var data = [
         RoomCode: '201',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 1239,
+        quantity_mtbf: 196,
+        Date: '1980-8-15'
     },
     {
         AssetType: 'eq',
@@ -7053,7 +8295,10 @@ var data = [
         RoomCode: '202',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 601,
+        quantity_mtbf: 252,
+        Date: '2011-11-4'
     },
     {
         AssetType: 'eq',
@@ -7070,7 +8315,10 @@ var data = [
         RoomCode: '251',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 822,
+        quantity_mtbf: 1116,
+        Date: '1976-7-17'
     },
     {
         AssetType: 'eq',
@@ -7087,7 +8335,10 @@ var data = [
         RoomCode: '252',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 1169,
+        quantity_mtbf: 215,
+        Date: '2011-11-28'
     },
     {
         AssetType: 'eq',
@@ -7104,7 +8355,10 @@ var data = [
         RoomCode: '255',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 533,
+        quantity_mtbf: 375,
+        Date: '1991-5-12'
     },
     {
         AssetType: 'eq',
@@ -7121,7 +8375,10 @@ var data = [
         RoomCode: '250',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'DISTRIBUTION'
+        DepartmentCode: 'DISTRIBUTION',
+        cost_purchase: 390,
+        quantity_mtbf: 1075,
+        Date: '1975-11-26'
     },
     {
         AssetType: 'eq',
@@ -7138,7 +8395,10 @@ var data = [
         RoomCode: '104',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'MARKETING'
+        DepartmentCode: 'MARKETING',
+        cost_purchase: 576,
+        quantity_mtbf: 86,
+        Date: '1978-6-24'
     },
     {
         AssetType: 'eq',
@@ -7155,7 +8415,10 @@ var data = [
         RoomCode: '103',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'MARKETING'
+        DepartmentCode: 'MARKETING',
+        cost_purchase: 753,
+        quantity_mtbf: 1286,
+        Date: '2008-2-17'
     },
     {
         AssetType: 'eq',
@@ -7172,7 +8435,10 @@ var data = [
         RoomCode: '130',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'MARKETING'
+        DepartmentCode: 'MARKETING',
+        cost_purchase: 1126,
+        quantity_mtbf: 410,
+        Date: '2003-3-23'
     },
     {
         AssetType: 'eq',
@@ -7189,7 +8455,10 @@ var data = [
         RoomCode: '131',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'MARKETING'
+        DepartmentCode: 'MARKETING',
+        cost_purchase: 1177,
+        quantity_mtbf: 34,
+        Date: '1982-5-31'
     },
     {
         AssetType: 'eq',
@@ -7206,7 +8475,10 @@ var data = [
         RoomCode: '132',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'MARKETING'
+        DepartmentCode: 'MARKETING',
+        cost_purchase: 990,
+        quantity_mtbf: 854,
+        Date: '1998-10-2'
     },
     {
         AssetType: 'eq',
@@ -7223,7 +8495,10 @@ var data = [
         RoomCode: '133',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'MARKETING'
+        DepartmentCode: 'MARKETING',
+        cost_purchase: 1290,
+        quantity_mtbf: 342,
+        Date: '1986-10-1'
     },
     {
         AssetType: 'eq',
@@ -7240,7 +8515,10 @@ var data = [
         RoomCode: '134',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'MARKETING'
+        DepartmentCode: 'MARKETING',
+        cost_purchase: 987,
+        quantity_mtbf: 553,
+        Date: '1997-12-17'
     },
     {
         AssetType: 'eq',
@@ -7257,7 +8535,10 @@ var data = [
         RoomCode: '135',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'MARKETING'
+        DepartmentCode: 'MARKETING',
+        cost_purchase: 551,
+        quantity_mtbf: 686,
+        Date: '1980-1-17'
     },
     {
         AssetType: 'eq',
@@ -7274,7 +8555,10 @@ var data = [
         RoomCode: '204',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'MARKETING'
+        DepartmentCode: 'MARKETING',
+        cost_purchase: 31,
+        quantity_mtbf: 658,
+        Date: '2006-5-20'
     },
     {
         AssetType: 'eq',
@@ -7291,7 +8575,10 @@ var data = [
         RoomCode: '203',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'MARKETING'
+        DepartmentCode: 'MARKETING',
+        cost_purchase: 1153,
+        quantity_mtbf: 354,
+        Date: '1999-10-15'
     },
     {
         AssetType: 'eq',
@@ -7308,7 +8595,10 @@ var data = [
         RoomCode: '232',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'MARKETING'
+        DepartmentCode: 'MARKETING',
+        cost_purchase: 648,
+        quantity_mtbf: 481,
+        Date: '2004-7-29'
     },
     {
         AssetType: 'eq',
@@ -7325,7 +8615,10 @@ var data = [
         RoomCode: '231',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'MARKETING'
+        DepartmentCode: 'MARKETING',
+        cost_purchase: 472,
+        quantity_mtbf: 33,
+        Date: '2010-11-12'
     },
     {
         AssetType: 'eq',
@@ -7342,7 +8635,10 @@ var data = [
         RoomCode: '230',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'MARKETING'
+        DepartmentCode: 'MARKETING',
+        cost_purchase: 1205,
+        quantity_mtbf: 445,
+        Date: '1981-12-17'
     },
     {
         AssetType: 'eq',
@@ -7359,7 +8655,10 @@ var data = [
         RoomCode: '233',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'MARKETING'
+        DepartmentCode: 'MARKETING',
+        cost_purchase: 1176,
+        quantity_mtbf: 946,
+        Date: '1989-12-1'
     },
     {
         AssetType: 'eq',
@@ -7376,7 +8675,10 @@ var data = [
         RoomCode: '234',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'MARKETING'
+        DepartmentCode: 'MARKETING',
+        cost_purchase: 34,
+        quantity_mtbf: 1244,
+        Date: '1997-1-2'
     },
     {
         AssetType: 'eq',
@@ -7393,7 +8695,10 @@ var data = [
         RoomCode: '235',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'MARKETING'
+        DepartmentCode: 'MARKETING',
+        cost_purchase: 760,
+        quantity_mtbf: 18,
+        Date: '1995-6-12'
     },
     {
         AssetType: 'eq',
@@ -7410,7 +8715,10 @@ var data = [
         RoomCode: '133',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'MARKETING'
+        DepartmentCode: 'MARKETING',
+        cost_purchase: 220,
+        quantity_mtbf: 226,
+        Date: '1997-9-23'
     },
     {
         AssetType: 'eq',
@@ -7427,7 +8735,10 @@ var data = [
         RoomCode: '134',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'MARKETING'
+        DepartmentCode: 'MARKETING',
+        cost_purchase: 907,
+        quantity_mtbf: 1109,
+        Date: '1985-2-19'
     },
     {
         AssetType: 'eq',
@@ -7444,7 +8755,10 @@ var data = [
         RoomCode: '135',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'MARKETING'
+        DepartmentCode: 'MARKETING',
+        cost_purchase: 1024,
+        quantity_mtbf: 1146,
+        Date: '1990-12-20'
     },
     {
         AssetType: 'eq',
@@ -7461,7 +8775,10 @@ var data = [
         RoomCode: '103',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'MARKETING'
+        DepartmentCode: 'MARKETING',
+        cost_purchase: 1252,
+        quantity_mtbf: 269,
+        Date: '1983-9-9'
     },
     {
         AssetType: 'eq',
@@ -7478,7 +8795,10 @@ var data = [
         RoomCode: '233',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'MARKETING'
+        DepartmentCode: 'MARKETING',
+        cost_purchase: 1244,
+        quantity_mtbf: 90,
+        Date: '2002-3-11'
     },
     {
         AssetType: 'eq',
@@ -7495,7 +8815,10 @@ var data = [
         RoomCode: '234',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'MARKETING'
+        DepartmentCode: 'MARKETING',
+        cost_purchase: 169,
+        quantity_mtbf: 386,
+        Date: '2009-12-19'
     },
     {
         AssetType: 'eq',
@@ -7512,7 +8835,10 @@ var data = [
         RoomCode: '235',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'MARKETING'
+        DepartmentCode: 'MARKETING',
+        cost_purchase: 206,
+        quantity_mtbf: 259,
+        Date: '2001-7-28'
     },
     {
         AssetType: 'eq',
@@ -7529,7 +8855,10 @@ var data = [
         RoomCode: '232',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'MARKETING'
+        DepartmentCode: 'MARKETING',
+        cost_purchase: 564,
+        quantity_mtbf: 270,
+        Date: '2007-10-15'
     },
     {
         AssetType: 'eq',
@@ -7546,7 +8875,10 @@ var data = [
         RoomCode: '231',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'MARKETING'
+        DepartmentCode: 'MARKETING',
+        cost_purchase: 566,
+        quantity_mtbf: 484,
+        Date: '1999-9-14'
     },
     {
         AssetType: 'eq',
@@ -7563,7 +8895,10 @@ var data = [
         RoomCode: '230',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'MARKETING'
+        DepartmentCode: 'MARKETING',
+        cost_purchase: 185,
+        quantity_mtbf: 1175,
+        Date: '1991-8-11'
     },
     {
         AssetType: 'eq',
@@ -7580,7 +8915,10 @@ var data = [
         RoomCode: '203',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'MARKETING'
+        DepartmentCode: 'MARKETING',
+        cost_purchase: 522,
+        quantity_mtbf: 36,
+        Date: '2005-6-24'
     },
     {
         AssetType: 'eq',
@@ -7597,7 +8935,10 @@ var data = [
         RoomCode: '204',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'MARKETING'
+        DepartmentCode: 'MARKETING',
+        cost_purchase: 428,
+        quantity_mtbf: 96,
+        Date: '2007-1-13'
     },
     {
         AssetType: 'eq',
@@ -7614,7 +8955,10 @@ var data = [
         RoomCode: '105',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 913,
+        quantity_mtbf: 721,
+        Date: '2002-6-18'
     },
     {
         AssetType: 'eq',
@@ -7631,7 +8975,10 @@ var data = [
         RoomCode: '140',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 82,
+        quantity_mtbf: 681,
+        Date: '1981-2-22'
     },
     {
         AssetType: 'eq',
@@ -7648,7 +8995,10 @@ var data = [
         RoomCode: '141',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 534,
+        quantity_mtbf: 232,
+        Date: '1979-7-19'
     },
     {
         AssetType: 'eq',
@@ -7665,7 +9015,10 @@ var data = [
         RoomCode: '142',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 1299,
+        quantity_mtbf: 1045,
+        Date: '1977-7-20'
     },
     {
         AssetType: 'eq',
@@ -7682,7 +9035,10 @@ var data = [
         RoomCode: '143',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 94,
+        quantity_mtbf: 1273,
+        Date: '1989-11-11'
     },
     {
         AssetType: 'eq',
@@ -7699,7 +9055,10 @@ var data = [
         RoomCode: '144',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 123,
+        quantity_mtbf: 761,
+        Date: '1981-10-12'
     },
     {
         AssetType: 'eq',
@@ -7716,7 +9075,10 @@ var data = [
         RoomCode: '145',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 946,
+        quantity_mtbf: 742,
+        Date: '1994-2-24'
     },
     {
         AssetType: 'eq',
@@ -7733,7 +9095,10 @@ var data = [
         RoomCode: '146',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 961,
+        quantity_mtbf: 184,
+        Date: '1991-6-15'
     },
     {
         AssetType: 'eq',
@@ -7750,7 +9115,10 @@ var data = [
         RoomCode: '147',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 705,
+        quantity_mtbf: 884,
+        Date: '1977-7-23'
     },
     {
         AssetType: 'eq',
@@ -7767,7 +9135,10 @@ var data = [
         RoomCode: '148',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 409,
+        quantity_mtbf: 558,
+        Date: '2008-5-3'
     },
     {
         AssetType: 'eq',
@@ -7784,7 +9155,10 @@ var data = [
         RoomCode: '206',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 312,
+        quantity_mtbf: 86,
+        Date: '1995-12-16'
     },
     {
         AssetType: 'eq',
@@ -7801,7 +9175,10 @@ var data = [
         RoomCode: '205',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 1127,
+        quantity_mtbf: 947,
+        Date: '1980-6-16'
     },
     {
         AssetType: 'eq',
@@ -7818,7 +9195,10 @@ var data = [
         RoomCode: '242',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 1181,
+        quantity_mtbf: 906,
+        Date: '1980-1-31'
     },
     {
         AssetType: 'eq',
@@ -7835,7 +9215,10 @@ var data = [
         RoomCode: '241',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 381,
+        quantity_mtbf: 850,
+        Date: '1980-12-28'
     },
     {
         AssetType: 'eq',
@@ -7852,7 +9235,10 @@ var data = [
         RoomCode: '240',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 1060,
+        quantity_mtbf: 885,
+        Date: '2006-9-23'
     },
     {
         AssetType: 'eq',
@@ -7869,7 +9255,10 @@ var data = [
         RoomCode: '243',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 795,
+        quantity_mtbf: 184,
+        Date: '2005-7-8'
     },
     {
         AssetType: 'eq',
@@ -7886,7 +9275,10 @@ var data = [
         RoomCode: '244',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 1098,
+        quantity_mtbf: 811,
+        Date: '1981-5-21'
     },
     {
         AssetType: 'eq',
@@ -7903,7 +9295,10 @@ var data = [
         RoomCode: '245',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 196,
+        quantity_mtbf: 304,
+        Date: '1990-1-13'
     },
     {
         AssetType: 'eq',
@@ -7920,7 +9315,10 @@ var data = [
         RoomCode: '248',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 1065,
+        quantity_mtbf: 571,
+        Date: '1978-1-17'
     },
     {
         AssetType: 'eq',
@@ -7937,7 +9335,10 @@ var data = [
         RoomCode: '247',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 1034,
+        quantity_mtbf: 1013,
+        Date: '2011-11-27'
     },
     {
         AssetType: 'eq',
@@ -7954,7 +9355,10 @@ var data = [
         RoomCode: '246',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 90,
+        quantity_mtbf: 424,
+        Date: '2001-10-1'
     },
     {
         AssetType: 'eq',
@@ -7971,7 +9375,10 @@ var data = [
         RoomCode: '146',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 292,
+        quantity_mtbf: 232,
+        Date: '2011-10-16'
     },
     {
         AssetType: 'eq',
@@ -7988,7 +9395,10 @@ var data = [
         RoomCode: '147',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 137,
+        quantity_mtbf: 1102,
+        Date: '1996-3-18'
     },
     {
         AssetType: 'eq',
@@ -8005,7 +9415,10 @@ var data = [
         RoomCode: '148',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 624,
+        quantity_mtbf: 1124,
+        Date: '2004-6-23'
     },
     {
         AssetType: 'eq',
@@ -8022,7 +9435,10 @@ var data = [
         RoomCode: '143',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 822,
+        quantity_mtbf: 1,
+        Date: '1978-6-2'
     },
     {
         AssetType: 'eq',
@@ -8039,7 +9455,10 @@ var data = [
         RoomCode: '144',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 470,
+        quantity_mtbf: 937,
+        Date: '1987-9-26'
     },
     {
         AssetType: 'eq',
@@ -8056,7 +9475,10 @@ var data = [
         RoomCode: '145',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 927,
+        quantity_mtbf: 1169,
+        Date: '1992-1-1'
     },
     {
         AssetType: 'eq',
@@ -8073,7 +9495,10 @@ var data = [
         RoomCode: '142',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 1084,
+        quantity_mtbf: 828,
+        Date: '1991-2-28'
     },
     {
         AssetType: 'eq',
@@ -8090,7 +9515,10 @@ var data = [
         RoomCode: '141',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 893,
+        quantity_mtbf: 434,
+        Date: '2006-5-2'
     },
     {
         AssetType: 'eq',
@@ -8107,7 +9535,10 @@ var data = [
         RoomCode: '140',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 800,
+        quantity_mtbf: 927,
+        Date: '2004-6-2'
     },
     {
         AssetType: 'eq',
@@ -8124,7 +9555,10 @@ var data = [
         RoomCode: '106',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 1151,
+        quantity_mtbf: 449,
+        Date: '1986-1-7'
     },
     {
         AssetType: 'eq',
@@ -8141,7 +9575,10 @@ var data = [
         RoomCode: '246',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 1285,
+        quantity_mtbf: 509,
+        Date: '1996-1-4'
     },
     {
         AssetType: 'eq',
@@ -8158,7 +9595,10 @@ var data = [
         RoomCode: '247',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 478,
+        quantity_mtbf: 1239,
+        Date: '2000-1-20'
     },
     {
         AssetType: 'eq',
@@ -8175,7 +9615,10 @@ var data = [
         RoomCode: '248',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 963,
+        quantity_mtbf: 135,
+        Date: '1993-10-27'
     },
     {
         AssetType: 'eq',
@@ -8192,7 +9635,10 @@ var data = [
         RoomCode: '243',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 546,
+        quantity_mtbf: 658,
+        Date: '1983-5-9'
     },
     {
         AssetType: 'eq',
@@ -8209,7 +9655,10 @@ var data = [
         RoomCode: '244',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 419,
+        quantity_mtbf: 135,
+        Date: '2000-10-24'
     },
     {
         AssetType: 'eq',
@@ -8226,7 +9675,10 @@ var data = [
         RoomCode: '245',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 1149,
+        quantity_mtbf: 696,
+        Date: '1999-9-11'
     },
     {
         AssetType: 'eq',
@@ -8243,7 +9695,10 @@ var data = [
         RoomCode: '240',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 468,
+        quantity_mtbf: 1188,
+        Date: '1989-4-19'
     },
     {
         AssetType: 'eq',
@@ -8260,7 +9715,10 @@ var data = [
         RoomCode: '241',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 1093,
+        quantity_mtbf: 895,
+        Date: '2009-10-3'
     },
     {
         AssetType: 'eq',
@@ -8277,7 +9735,10 @@ var data = [
         RoomCode: '242',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 810,
+        quantity_mtbf: 79,
+        Date: '2006-10-29'
     },
     {
         AssetType: 'eq',
@@ -8294,7 +9755,10 @@ var data = [
         RoomCode: '205',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 283,
+        quantity_mtbf: 557,
+        Date: '2010-10-5'
     },
     {
         AssetType: 'eq',
@@ -8311,7 +9775,10 @@ var data = [
         RoomCode: '206',
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
-        DepartmentCode: 'SALES'
+        DepartmentCode: 'SALES',
+        cost_purchase: 29,
+        quantity_mtbf: 1059,
+        Date: '2000-10-3'
     },
     {
         AssetType: 'ta',
@@ -8328,7 +9795,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 415,
+        quantity_mtbf: 1158,
+        Date: '1982-3-31'
     },
     {
         AssetType: 'ta',
@@ -8345,7 +9815,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 556,
+        quantity_mtbf: 1228,
+        Date: '2014-2-19'
     },
     {
         AssetType: 'ta',
@@ -8362,7 +9835,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1027,
+        quantity_mtbf: 668,
+        Date: '1985-9-7'
     },
     {
         AssetType: 'ta',
@@ -8379,7 +9855,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 710,
+        quantity_mtbf: 631,
+        Date: '1996-5-18'
     },
     {
         AssetType: 'ta',
@@ -8396,7 +9875,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1070,
+        quantity_mtbf: 108,
+        Date: '1994-2-9'
     },
     {
         AssetType: 'ta',
@@ -8413,7 +9895,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1162,
+        quantity_mtbf: 941,
+        Date: '1995-10-30'
     },
     {
         AssetType: 'ta',
@@ -8430,7 +9915,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 438,
+        quantity_mtbf: 1083,
+        Date: '1999-5-10'
     },
     {
         AssetType: 'ta',
@@ -8447,7 +9935,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1054,
+        quantity_mtbf: 198,
+        Date: '1996-8-15'
     },
     {
         AssetType: 'ta',
@@ -8464,7 +9955,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 140,
+        quantity_mtbf: 489,
+        Date: '1993-9-9'
     },
     {
         AssetType: 'ta',
@@ -8481,7 +9975,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 578,
+        quantity_mtbf: 165,
+        Date: '2001-11-30'
     },
     {
         AssetType: 'ta',
@@ -8498,7 +9995,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 882,
+        quantity_mtbf: 336,
+        Date: '2014-1-27'
     },
     {
         AssetType: 'ta',
@@ -8515,7 +10015,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1087,
+        quantity_mtbf: 232,
+        Date: '1998-4-25'
     },
     {
         AssetType: 'ta',
@@ -8532,7 +10035,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 701,
+        quantity_mtbf: 1195,
+        Date: '1996-2-14'
     },
     {
         AssetType: 'ta',
@@ -8549,7 +10055,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 1034,
+        quantity_mtbf: 1298,
+        Date: '2010-3-8'
     },
     {
         AssetType: 'ta',
@@ -8566,7 +10075,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 924,
+        quantity_mtbf: 722,
+        Date: '1998-2-23'
     },
     {
         AssetType: 'ta',
@@ -8583,7 +10095,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 644,
+        quantity_mtbf: 595,
+        Date: '1997-1-19'
     },
     {
         AssetType: 'ta',
@@ -8600,7 +10115,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: '',
         DivisionCode: '',
-        DepartmentCode: ''
+        DepartmentCode: '',
+        cost_purchase: 421,
+        quantity_mtbf: 226,
+        Date: '1981-4-16'
     },
     {
         AssetType: 'ta',
@@ -8617,7 +10135,10 @@ var data = [
         RoomCode: '101',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 94,
+        quantity_mtbf: 619,
+        Date: '1996-5-1'
     },
     {
         AssetType: 'ta',
@@ -8634,7 +10155,10 @@ var data = [
         RoomCode: '101',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 683,
+        quantity_mtbf: 1035,
+        Date: '1987-9-28'
     },
     {
         AssetType: 'ta',
@@ -8651,7 +10175,10 @@ var data = [
         RoomCode: '102',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 408,
+        quantity_mtbf: 1178,
+        Date: '1988-11-29'
     },
     {
         AssetType: 'ta',
@@ -8668,7 +10195,10 @@ var data = [
         RoomCode: '102',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 1247,
+        quantity_mtbf: 1087,
+        Date: '1975-5-13'
     },
     {
         AssetType: 'ta',
@@ -8685,7 +10215,10 @@ var data = [
         RoomCode: '103',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 365,
+        quantity_mtbf: 1042,
+        Date: '2003-4-11'
     },
     {
         AssetType: 'ta',
@@ -8702,7 +10235,10 @@ var data = [
         RoomCode: '103',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 833,
+        quantity_mtbf: 827,
+        Date: '1995-3-16'
     },
     {
         AssetType: 'ta',
@@ -8719,7 +10255,10 @@ var data = [
         RoomCode: '104',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 750,
+        quantity_mtbf: 11,
+        Date: '1987-7-13'
     },
     {
         AssetType: 'ta',
@@ -8736,7 +10275,10 @@ var data = [
         RoomCode: '104',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 1141,
+        quantity_mtbf: 613,
+        Date: '1995-1-25'
     },
     {
         AssetType: 'ta',
@@ -8753,7 +10295,10 @@ var data = [
         RoomCode: '105',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 1239,
+        quantity_mtbf: 1094,
+        Date: '1996-3-1'
     },
     {
         AssetType: 'ta',
@@ -8770,7 +10315,10 @@ var data = [
         RoomCode: '105',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 1279,
+        quantity_mtbf: 1164,
+        Date: '2007-10-26'
     },
     {
         AssetType: 'ta',
@@ -8787,7 +10335,10 @@ var data = [
         RoomCode: '105',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 177,
+        quantity_mtbf: 80,
+        Date: '1983-3-16'
     },
     {
         AssetType: 'ta',
@@ -8804,7 +10355,10 @@ var data = [
         RoomCode: '105',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 71,
+        quantity_mtbf: 325,
+        Date: '1993-6-23'
     },
     {
         AssetType: 'ta',
@@ -8821,7 +10375,10 @@ var data = [
         RoomCode: '105',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 527,
+        quantity_mtbf: 1131,
+        Date: '1987-8-18'
     },
     {
         AssetType: 'ta',
@@ -8838,7 +10395,10 @@ var data = [
         RoomCode: '105',
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 933,
+        quantity_mtbf: 712,
+        Date: '2008-6-5'
     },
     {
         AssetType: 'ta',
@@ -8855,7 +10415,10 @@ var data = [
         RoomCode: '117',
         BusinessUnit: 'SERVICES',
         DivisionCode: 'SOFTWARE APP.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 1007,
+        quantity_mtbf: 348,
+        Date: '1975-10-22'
     },
     {
         AssetType: 'ta',
@@ -8872,7 +10435,10 @@ var data = [
         RoomCode: '117',
         BusinessUnit: 'SERVICES',
         DivisionCode: 'SOFTWARE APP.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 763,
+        quantity_mtbf: 568,
+        Date: '2003-11-8'
     },
     {
         AssetType: 'ta',
@@ -8889,7 +10455,10 @@ var data = [
         RoomCode: '117',
         BusinessUnit: 'SERVICES',
         DivisionCode: 'SOFTWARE APP.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 520,
+        quantity_mtbf: 213,
+        Date: '1983-11-20'
     },
     {
         AssetType: 'ta',
@@ -8906,7 +10475,10 @@ var data = [
         RoomCode: '117',
         BusinessUnit: 'SERVICES',
         DivisionCode: 'SOFTWARE APP.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 989,
+        quantity_mtbf: 435,
+        Date: '1985-9-21'
     },
     {
         AssetType: 'ta',
@@ -8923,7 +10495,10 @@ var data = [
         RoomCode: '118',
         BusinessUnit: 'SERVICES',
         DivisionCode: 'SOFTWARE APP.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 815,
+        quantity_mtbf: 404,
+        Date: '2002-2-26'
     },
     {
         AssetType: 'ta',
@@ -8940,7 +10515,10 @@ var data = [
         RoomCode: '118',
         BusinessUnit: 'SERVICES',
         DivisionCode: 'SOFTWARE APP.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 81,
+        quantity_mtbf: 699,
+        Date: '1992-1-22'
     },
     {
         AssetType: 'ta',
@@ -8957,7 +10535,10 @@ var data = [
         RoomCode: '118',
         BusinessUnit: 'SERVICES',
         DivisionCode: 'SOFTWARE APP.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 217,
+        quantity_mtbf: 1095,
+        Date: '2005-12-21'
     },
     {
         AssetType: 'ta',
@@ -8974,7 +10555,10 @@ var data = [
         RoomCode: '118',
         BusinessUnit: 'SERVICES',
         DivisionCode: 'SOFTWARE APP.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 1271,
+        quantity_mtbf: 46,
+        Date: '1981-11-10'
     },
     {
         AssetType: 'ta',
@@ -8991,7 +10575,10 @@ var data = [
         RoomCode: '118',
         BusinessUnit: 'SERVICES',
         DivisionCode: 'SOFTWARE APP.',
-        DepartmentCode: 'ENGINEERING'
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 698,
+        quantity_mtbf: 1173,
+        Date: '2007-8-16'
     },
     {
         AssetType: 'ta',
@@ -9008,7 +10595,10 @@ var data = [
         RoomCode: '101',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 446,
+        quantity_mtbf: 1023,
+        Date: '1996-12-26'
     },
     {
         AssetType: 'ta',
@@ -9025,7 +10615,10 @@ var data = [
         RoomCode: '101',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 158,
+        quantity_mtbf: 312,
+        Date: '1982-1-8'
     },
     {
         AssetType: 'ta',
@@ -9042,7 +10635,10 @@ var data = [
         RoomCode: '101',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 783,
+        quantity_mtbf: 850,
+        Date: '2012-3-14'
     },
     {
         AssetType: 'ta',
@@ -9059,7 +10655,10 @@ var data = [
         RoomCode: '101',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 615,
+        quantity_mtbf: 557,
+        Date: '1978-9-28'
     },
     {
         AssetType: 'ta',
@@ -9076,7 +10675,10 @@ var data = [
         RoomCode: '101',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 49,
+        quantity_mtbf: 15,
+        Date: '1980-2-19'
     },
     {
         AssetType: 'ta',
@@ -9093,7 +10695,10 @@ var data = [
         RoomCode: '102',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 549,
+        quantity_mtbf: 358,
+        Date: '1987-8-3'
     },
     {
         AssetType: 'ta',
@@ -9110,7 +10715,10 @@ var data = [
         RoomCode: '102',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 508,
+        quantity_mtbf: 577,
+        Date: '2005-5-5'
     },
     {
         AssetType: 'ta',
@@ -9127,7 +10735,10 @@ var data = [
         RoomCode: '102',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 246,
+        quantity_mtbf: 535,
+        Date: '2003-4-29'
     },
     {
         AssetType: 'ta',
@@ -9144,7 +10755,10 @@ var data = [
         RoomCode: '102',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 80,
+        quantity_mtbf: 17,
+        Date: '1976-5-6'
     },
     {
         AssetType: 'ta',
@@ -9161,7 +10775,10 @@ var data = [
         RoomCode: '102',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 279,
+        quantity_mtbf: 266,
+        Date: '1976-3-2'
     },
     {
         AssetType: 'ta',
@@ -9178,7 +10795,10 @@ var data = [
         RoomCode: '103',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 308,
+        quantity_mtbf: 538,
+        Date: '1989-9-30'
     },
     {
         AssetType: 'ta',
@@ -9195,7 +10815,10 @@ var data = [
         RoomCode: '103',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 321,
+        quantity_mtbf: 706,
+        Date: '2003-3-21'
     },
     {
         AssetType: 'ta',
@@ -9212,7 +10835,10 @@ var data = [
         RoomCode: '103',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1098,
+        quantity_mtbf: 835,
+        Date: '1981-8-7'
     },
     {
         AssetType: 'ta',
@@ -9229,7 +10855,10 @@ var data = [
         RoomCode: '103',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1013,
+        quantity_mtbf: 581,
+        Date: '1986-2-17'
     },
     {
         AssetType: 'ta',
@@ -9246,7 +10875,10 @@ var data = [
         RoomCode: '103',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 947,
+        quantity_mtbf: 382,
+        Date: '2010-10-18'
     },
     {
         AssetType: 'ta',
@@ -9263,7 +10895,10 @@ var data = [
         RoomCode: '103',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 109,
+        quantity_mtbf: 26,
+        Date: '1993-8-7'
     },
     {
         AssetType: 'ta',
@@ -9280,7 +10915,10 @@ var data = [
         RoomCode: '103',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 927,
+        quantity_mtbf: 653,
+        Date: '1975-1-8'
     },
     {
         AssetType: 'ta',
@@ -9297,7 +10935,10 @@ var data = [
         RoomCode: '103',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 686,
+        quantity_mtbf: 1210,
+        Date: '1985-8-2'
     },
     {
         AssetType: 'ta',
@@ -9314,7 +10955,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 555,
+        quantity_mtbf: 696,
+        Date: '1991-2-3'
     },
     {
         AssetType: 'ta',
@@ -9331,7 +10975,10 @@ var data = [
         RoomCode: '104',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 865,
+        quantity_mtbf: 1213,
+        Date: '1996-8-25'
     },
     {
         AssetType: 'ta',
@@ -9348,7 +10995,10 @@ var data = [
         RoomCode: '104',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1252,
+        quantity_mtbf: 1263,
+        Date: '2012-11-3'
     },
     {
         AssetType: 'ta',
@@ -9365,7 +11015,10 @@ var data = [
         RoomCode: '109',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 164,
+        quantity_mtbf: 974,
+        Date: '1998-4-26'
     },
     {
         AssetType: 'ta',
@@ -9382,7 +11035,10 @@ var data = [
         RoomCode: '109',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1186,
+        quantity_mtbf: 457,
+        Date: '1994-9-3'
     },
     {
         AssetType: 'ta',
@@ -9399,7 +11055,10 @@ var data = [
         RoomCode: '109',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1196,
+        quantity_mtbf: 804,
+        Date: '2008-5-12'
     },
     {
         AssetType: 'ta',
@@ -9416,7 +11075,10 @@ var data = [
         RoomCode: '109',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 454,
+        quantity_mtbf: 981,
+        Date: '1991-9-20'
     },
     {
         AssetType: 'ta',
@@ -9433,7 +11095,10 @@ var data = [
         RoomCode: '109',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1015,
+        quantity_mtbf: 1254,
+        Date: '2005-12-7'
     },
     {
         AssetType: 'ta',
@@ -9450,7 +11115,10 @@ var data = [
         RoomCode: '109',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1066,
+        quantity_mtbf: 432,
+        Date: '2001-10-7'
     },
     {
         AssetType: 'ta',
@@ -9467,7 +11135,10 @@ var data = [
         RoomCode: '109',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 866,
+        quantity_mtbf: 1208,
+        Date: '2012-12-7'
     },
     {
         AssetType: 'ta',
@@ -9484,7 +11155,10 @@ var data = [
         RoomCode: '109',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 703,
+        quantity_mtbf: 751,
+        Date: '1980-12-23'
     },
     {
         AssetType: 'ta',
@@ -9501,7 +11175,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 514,
+        quantity_mtbf: 1248,
+        Date: '1989-2-19'
     },
     {
         AssetType: 'ta',
@@ -9518,7 +11195,10 @@ var data = [
         RoomCode: '111',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1136,
+        quantity_mtbf: 35,
+        Date: '1999-11-8'
     },
     {
         AssetType: 'ta',
@@ -9535,7 +11215,10 @@ var data = [
         RoomCode: '',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 909,
+        quantity_mtbf: 967,
+        Date: '1994-11-6'
     },
     {
         AssetType: 'ta',
@@ -9552,7 +11235,10 @@ var data = [
         RoomCode: '113',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1206,
+        quantity_mtbf: 523,
+        Date: '1998-12-5'
     },
     {
         AssetType: 'ta',
@@ -9569,7 +11255,10 @@ var data = [
         RoomCode: '112',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 731,
+        quantity_mtbf: 1154,
+        Date: '1994-12-18'
     },
     {
         AssetType: 'ta',
@@ -9586,7 +11275,10 @@ var data = [
         RoomCode: '112',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1190,
+        quantity_mtbf: 335,
+        Date: '2001-2-24'
     },
     {
         AssetType: 'ta',
@@ -9603,7 +11295,10 @@ var data = [
         RoomCode: '112',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1280,
+        quantity_mtbf: 684,
+        Date: '1992-8-26'
     },
     {
         AssetType: 'ta',
@@ -9620,7 +11315,10 @@ var data = [
         RoomCode: '112',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 452,
+        quantity_mtbf: 365,
+        Date: '2002-12-26'
     },
     {
         AssetType: 'ta',
@@ -9637,7 +11335,10 @@ var data = [
         RoomCode: '112',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 314,
+        quantity_mtbf: 345,
+        Date: '1997-6-3'
     },
     {
         AssetType: 'ta',
@@ -9654,7 +11355,10 @@ var data = [
         RoomCode: '112',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 374,
+        quantity_mtbf: 647,
+        Date: '2002-11-5'
     },
     {
         AssetType: 'ta',
@@ -9671,7 +11375,10 @@ var data = [
         RoomCode: '112',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 820,
+        quantity_mtbf: 641,
+        Date: '2006-4-16'
     },
     {
         AssetType: 'ta',
@@ -9688,7 +11395,10 @@ var data = [
         RoomCode: '112',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 938,
+        quantity_mtbf: 210,
+        Date: '2011-6-5'
     },
     {
         AssetType: 'ta',
@@ -9705,7 +11415,10 @@ var data = [
         RoomCode: '115',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 128,
+        quantity_mtbf: 1265,
+        Date: '2003-1-28'
     },
     {
         AssetType: 'ta',
@@ -9722,7 +11435,10 @@ var data = [
         RoomCode: '115',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 666,
+        quantity_mtbf: 154,
+        Date: '2003-11-28'
     },
     {
         AssetType: 'ta',
@@ -9739,7 +11455,10 @@ var data = [
         RoomCode: '115',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 260,
+        quantity_mtbf: 495,
+        Date: '2014-2-8'
     },
     {
         AssetType: 'ta',
@@ -9756,7 +11475,10 @@ var data = [
         RoomCode: '115',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1087,
+        quantity_mtbf: 778,
+        Date: '2001-9-24'
     },
     {
         AssetType: 'ta',
@@ -9773,7 +11495,10 @@ var data = [
         RoomCode: '115',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 508,
+        quantity_mtbf: 1103,
+        Date: '1986-12-4'
     },
     {
         AssetType: 'ta',
@@ -9790,7 +11515,10 @@ var data = [
         RoomCode: '117',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 183,
+        quantity_mtbf: 916,
+        Date: '1978-12-24'
     },
     {
         AssetType: 'ta',
@@ -9807,7 +11535,10 @@ var data = [
         RoomCode: '117',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 78,
+        quantity_mtbf: 1217,
+        Date: '2011-2-10'
     },
     {
         AssetType: 'ta',
@@ -9824,7 +11555,10 @@ var data = [
         RoomCode: '117',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 354,
+        quantity_mtbf: 496,
+        Date: '2001-11-18'
     },
     {
         AssetType: 'ta',
@@ -9841,7 +11575,10 @@ var data = [
         RoomCode: '117',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1068,
+        quantity_mtbf: 664,
+        Date: '2010-12-12'
     },
     {
         AssetType: 'ta',
@@ -9858,7 +11595,10 @@ var data = [
         RoomCode: '117',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1026,
+        quantity_mtbf: 43,
+        Date: '1980-6-4'
     },
     {
         AssetType: 'ta',
@@ -9875,7 +11615,10 @@ var data = [
         RoomCode: '117',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 913,
+        quantity_mtbf: 119,
+        Date: '1999-11-14'
     },
     {
         AssetType: 'ta',
@@ -9892,7 +11635,10 @@ var data = [
         RoomCode: '117',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1001,
+        quantity_mtbf: 331,
+        Date: '1983-6-17'
     },
     {
         AssetType: 'ta',
@@ -9909,7 +11655,10 @@ var data = [
         RoomCode: '117',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 803,
+        quantity_mtbf: 701,
+        Date: '2014-4-29'
     },
     {
         AssetType: 'ta',
@@ -9926,7 +11675,10 @@ var data = [
         RoomCode: '118',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 118,
+        quantity_mtbf: 522,
+        Date: '1990-10-2'
     },
     {
         AssetType: 'ta',
@@ -9943,7 +11695,10 @@ var data = [
         RoomCode: '118',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 834,
+        quantity_mtbf: 56,
+        Date: '1983-4-2'
     },
     {
         AssetType: 'ta',
@@ -9960,7 +11715,10 @@ var data = [
         RoomCode: '118',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1231,
+        quantity_mtbf: 1172,
+        Date: '1996-3-6'
     },
     {
         AssetType: 'ta',
@@ -9977,7 +11735,10 @@ var data = [
         RoomCode: '119',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 311,
+        quantity_mtbf: 926,
+        Date: '1998-11-28'
     },
     {
         AssetType: 'ta',
@@ -9994,7 +11755,10 @@ var data = [
         RoomCode: '119',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1207,
+        quantity_mtbf: 944,
+        Date: '1979-12-19'
     },
     {
         AssetType: 'ta',
@@ -10011,7 +11775,10 @@ var data = [
         RoomCode: '119',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 301,
+        quantity_mtbf: 1053,
+        Date: '1996-3-12'
     },
     {
         AssetType: 'ta',
@@ -10028,7 +11795,10 @@ var data = [
         RoomCode: '119',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 263,
+        quantity_mtbf: 236,
+        Date: '2012-8-21'
     },
     {
         AssetType: 'ta',
@@ -10045,7 +11815,10 @@ var data = [
         RoomCode: '119',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 67,
+        quantity_mtbf: 413,
+        Date: '1978-9-10'
     },
     {
         AssetType: 'ta',
@@ -10062,7 +11835,10 @@ var data = [
         RoomCode: '121',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1127,
+        quantity_mtbf: 178,
+        Date: '1995-9-7'
     },
     {
         AssetType: 'ta',
@@ -10079,7 +11855,10 @@ var data = [
         RoomCode: '121',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 502,
+        quantity_mtbf: 835,
+        Date: '1982-2-10'
     },
     {
         AssetType: 'ta',
@@ -10096,7 +11875,10 @@ var data = [
         RoomCode: '121',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 288,
+        quantity_mtbf: 397,
+        Date: '1999-1-20'
     },
     {
         AssetType: 'ta',
@@ -10113,7 +11895,10 @@ var data = [
         RoomCode: '121',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1291,
+        quantity_mtbf: 1177,
+        Date: '2007-8-10'
     },
     {
         AssetType: 'ta',
@@ -10130,7 +11915,10 @@ var data = [
         RoomCode: '121',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 879,
+        quantity_mtbf: 157,
+        Date: '1992-4-6'
     },
     {
         AssetType: 'ta',
@@ -10147,7 +11935,10 @@ var data = [
         RoomCode: '101',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 915,
+        quantity_mtbf: 895,
+        Date: '2015-9-18'
     },
     {
         AssetType: 'ta',
@@ -10164,7 +11955,10 @@ var data = [
         RoomCode: '101',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 596,
+        quantity_mtbf: 9,
+        Date: '1995-7-24'
     },
     {
         AssetType: 'ta',
@@ -10181,7 +11975,10 @@ var data = [
         RoomCode: '101',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 265,
+        quantity_mtbf: 335,
+        Date: '2011-10-6'
     },
     {
         AssetType: 'ta',
@@ -10198,7 +11995,10 @@ var data = [
         RoomCode: '101',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 651,
+        quantity_mtbf: 858,
+        Date: '1980-2-23'
     },
     {
         AssetType: 'ta',
@@ -10215,7 +12015,10 @@ var data = [
         RoomCode: '101',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 377,
+        quantity_mtbf: 566,
+        Date: '1995-1-18'
     },
     {
         AssetType: 'ta',
@@ -10232,7 +12035,10 @@ var data = [
         RoomCode: '107',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1243,
+        quantity_mtbf: 452,
+        Date: '1984-12-2'
     },
     {
         AssetType: 'ta',
@@ -10249,7 +12055,10 @@ var data = [
         RoomCode: '107',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1172,
+        quantity_mtbf: 310,
+        Date: '1994-1-10'
     },
     {
         AssetType: 'ta',
@@ -10266,7 +12075,10 @@ var data = [
         RoomCode: '107',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 606,
+        quantity_mtbf: 451,
+        Date: '1978-3-19'
     },
     {
         AssetType: 'ta',
@@ -10283,7 +12095,10 @@ var data = [
         RoomCode: '107',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 10,
+        quantity_mtbf: 710,
+        Date: '1992-2-29'
     },
     {
         AssetType: 'ta',
@@ -10300,7 +12115,10 @@ var data = [
         RoomCode: '107',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 196,
+        quantity_mtbf: 15,
+        Date: '1988-9-19'
     },
     {
         AssetType: 'ta',
@@ -10317,7 +12135,10 @@ var data = [
         RoomCode: '107',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 401,
+        quantity_mtbf: 790,
+        Date: '2000-2-8'
     },
     {
         AssetType: 'ta',
@@ -10334,7 +12155,10 @@ var data = [
         RoomCode: '107',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1275,
+        quantity_mtbf: 501,
+        Date: '1995-12-31'
     },
     {
         AssetType: 'ta',
@@ -10351,7 +12175,10 @@ var data = [
         RoomCode: '110',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 291,
+        quantity_mtbf: 823,
+        Date: '1987-5-13'
     },
     {
         AssetType: 'ta',
@@ -10368,7 +12195,10 @@ var data = [
         RoomCode: '110',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1129,
+        quantity_mtbf: 1267,
+        Date: '1990-10-22'
     },
     {
         AssetType: 'ta',
@@ -10385,7 +12215,10 @@ var data = [
         RoomCode: '110',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 414,
+        quantity_mtbf: 1021,
+        Date: '2006-7-21'
     },
     {
         AssetType: 'ta',
@@ -10402,7 +12235,10 @@ var data = [
         RoomCode: '110',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 530,
+        quantity_mtbf: 957,
+        Date: '1993-9-17'
     },
     {
         AssetType: 'ta',
@@ -10419,7 +12255,10 @@ var data = [
         RoomCode: '110',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 477,
+        quantity_mtbf: 1075,
+        Date: '1998-10-18'
     },
     {
         AssetType: 'ta',
@@ -10436,7 +12275,10 @@ var data = [
         RoomCode: '110',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 258,
+        quantity_mtbf: 715,
+        Date: '1998-2-5'
     },
     {
         AssetType: 'ta',
@@ -10453,7 +12295,10 @@ var data = [
         RoomCode: '110',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 331,
+        quantity_mtbf: 1198,
+        Date: '1994-12-11'
     },
     {
         AssetType: 'ta',
@@ -10470,7 +12315,10 @@ var data = [
         RoomCode: '106',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 679,
+        quantity_mtbf: 1266,
+        Date: '1996-7-29'
     },
     {
         AssetType: 'ta',
@@ -10487,7 +12335,10 @@ var data = [
         RoomCode: '106',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 403,
+        quantity_mtbf: 704,
+        Date: '1993-1-14'
     },
     {
         AssetType: 'ta',
@@ -10504,7 +12355,10 @@ var data = [
         RoomCode: '106',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1158,
+        quantity_mtbf: 801,
+        Date: '1984-11-25'
     },
     {
         AssetType: 'ta',
@@ -10521,7 +12375,10 @@ var data = [
         RoomCode: '106',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 469,
+        quantity_mtbf: 676,
+        Date: '1978-1-24'
     },
     {
         AssetType: 'ta',
@@ -10538,7 +12395,10 @@ var data = [
         RoomCode: '106',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 306,
+        quantity_mtbf: 192,
+        Date: '1987-1-5'
     },
     {
         AssetType: 'ta',
@@ -10555,7 +12415,10 @@ var data = [
         RoomCode: '106',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 229,
+        quantity_mtbf: 1136,
+        Date: '1992-12-26'
     },
     {
         AssetType: 'ta',
@@ -10572,7 +12435,10 @@ var data = [
         RoomCode: '107',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 388,
+        quantity_mtbf: 582,
+        Date: '1982-7-22'
     },
     {
         AssetType: 'ta',
@@ -10589,7 +12455,10 @@ var data = [
         RoomCode: '107',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 982,
+        quantity_mtbf: 864,
+        Date: '1995-1-3'
     },
     {
         AssetType: 'ta',
@@ -10606,7 +12475,10 @@ var data = [
         RoomCode: '107',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1056,
+        quantity_mtbf: 125,
+        Date: '1998-6-3'
     },
     {
         AssetType: 'ta',
@@ -10623,7 +12495,10 @@ var data = [
         RoomCode: '107',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 920,
+        quantity_mtbf: 96,
+        Date: '2005-6-9'
     },
     {
         AssetType: 'ta',
@@ -10640,7 +12515,10 @@ var data = [
         RoomCode: '107',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1018,
+        quantity_mtbf: 741,
+        Date: '1979-3-6'
     },
     {
         AssetType: 'ta',
@@ -10657,7 +12535,10 @@ var data = [
         RoomCode: '108',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 506,
+        quantity_mtbf: 683,
+        Date: '2013-1-26'
     },
     {
         AssetType: 'ta',
@@ -10674,7 +12555,10 @@ var data = [
         RoomCode: '108',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 445,
+        quantity_mtbf: 656,
+        Date: '2010-12-1'
     },
     {
         AssetType: 'ta',
@@ -10691,7 +12575,10 @@ var data = [
         RoomCode: '108',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 36,
+        quantity_mtbf: 287,
+        Date: '1977-7-13'
     },
     {
         AssetType: 'ta',
@@ -10708,7 +12595,10 @@ var data = [
         RoomCode: '108',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1274,
+        quantity_mtbf: 97,
+        Date: '2002-8-6'
     },
     {
         AssetType: 'ta',
@@ -10725,7 +12615,10 @@ var data = [
         RoomCode: '108',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 53,
+        quantity_mtbf: 1191,
+        Date: '1976-8-27'
     },
     {
         AssetType: 'ta',
@@ -10742,7 +12635,10 @@ var data = [
         RoomCode: '109',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 121,
+        quantity_mtbf: 111,
+        Date: '2001-11-16'
     },
     {
         AssetType: 'ta',
@@ -10759,7 +12655,10 @@ var data = [
         RoomCode: '109',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 31,
+        quantity_mtbf: 229,
+        Date: '2009-2-8'
     },
     {
         AssetType: 'ta',
@@ -10776,7 +12675,10 @@ var data = [
         RoomCode: '109',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 912,
+        quantity_mtbf: 996,
+        Date: '2000-2-15'
     },
     {
         AssetType: 'ta',
@@ -10793,7 +12695,10 @@ var data = [
         RoomCode: '109',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 931,
+        quantity_mtbf: 475,
+        Date: '1996-10-22'
     },
     {
         AssetType: 'ta',
@@ -10810,7 +12715,10 @@ var data = [
         RoomCode: '109',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 32,
+        quantity_mtbf: 914,
+        Date: '1974-12-2'
     },
     {
         AssetType: 'ta',
@@ -10827,7 +12735,10 @@ var data = [
         RoomCode: '109',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 518,
+        quantity_mtbf: 937,
+        Date: '1989-10-27'
     },
     {
         AssetType: 'ta',
@@ -10844,7 +12755,10 @@ var data = [
         RoomCode: '109',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1039,
+        quantity_mtbf: 577,
+        Date: '2006-10-29'
     },
     {
         AssetType: 'ta',
@@ -10861,7 +12775,10 @@ var data = [
         RoomCode: '112',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 634,
+        quantity_mtbf: 1248,
+        Date: '1994-2-24'
     },
     {
         AssetType: 'ta',
@@ -10878,7 +12795,10 @@ var data = [
         RoomCode: '112',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1274,
+        quantity_mtbf: 913,
+        Date: '1996-2-15'
     },
     {
         AssetType: 'ta',
@@ -10895,7 +12815,10 @@ var data = [
         RoomCode: '112',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 20,
+        quantity_mtbf: 133,
+        Date: '1989-10-3'
     },
     {
         AssetType: 'ta',
@@ -10912,7 +12835,10 @@ var data = [
         RoomCode: '112',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1095,
+        quantity_mtbf: 235,
+        Date: '1983-5-5'
     },
     {
         AssetType: 'ta',
@@ -10929,7 +12855,10 @@ var data = [
         RoomCode: '112',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 180,
+        quantity_mtbf: 1237,
+        Date: '1998-2-28'
     },
     {
         AssetType: 'ta',
@@ -10946,9 +12875,13 @@ var data = [
         RoomCode: '112',
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT'
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 760,
+        quantity_mtbf: 1019,
+        Date: '2013-1-13'
     }
-]
+
+];
 
 
 

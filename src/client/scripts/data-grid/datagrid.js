@@ -11,12 +11,14 @@ webix.ready(function(){
         sortFields: [],
         dataSource: 'server/data',
         //width: 700,
-        //height: 700,
+       // height: 700,
         pageSize: 100,
         events:{
             onSelectChange: 'selectValue'
         }
     });
+
+
 
     resize([dataGrid]);
 });
@@ -58,8 +60,6 @@ webix.protoUI({
                 }
             }
         }
-
-
         this._sort(col.id, order, col.sort);
     },
     markSorting:function(column, order){
@@ -90,12 +90,13 @@ webix.protoUI({
     },
     markMultiSorting: function(column, order){
 
-        if(this.markMultiSorting_isAddedItem()){
+        if(this._multisortMap.length == 0 && !this._multisort_isDelete){
             this._multisortMap[0] = {
                 id: column,
                 dir: order,
                 html: '',
-                onClick: 0
+                onClick: 0,
+                numberInQuery: 1
             };
             this.createMarkSorting(0, column, order, true);
         }
@@ -115,13 +116,15 @@ webix.protoUI({
             else{
                 var isAdded = true;
                 for(var number in this._multisortMap){
-                    if(this._multisortMap[number].id != column){
-                        this.createMarkSorting(number, this._multisortMap[number].id, this._multisortMap[number].dir, false);
+                    var element = this._multisortMap[number];
+                    if(element.id != column){
+                        this.createMarkSorting(number, element.id, element.dir, false);
                     }
                     else{
                         isAdded = false;
                         this._multisortMap[number].dir = order;
                         this._multisortMap[number].onClick++;
+                        this._multisortMap[number].numberInQuery = 1;
                         this.createMarkSorting(number, column, order, true);
                     }
                 }
@@ -142,7 +145,6 @@ webix.protoUI({
                             break;
                         }
                     }
-
                     if(numberDelete != -1){
                         //webix.html.remove(this._multisortMap[numberDelete].html);
                         this._multisortMap.splice(numberDelete,1);
@@ -151,15 +153,7 @@ webix.protoUI({
                 }
             }
         }
-
     },
-    markMultiSorting_isAddedItem: function(){
-        if(this._multisortMap.length == 0 && !this._multisort_isDelete )
-            return true;
-
-        return false;
-    },
-
     createHtmlMarkSotring: function(order){
         var htmlElement = webix.html.create("DIV");
         if (order){
@@ -168,12 +162,8 @@ webix.protoUI({
         return htmlElement;
     },
     createMarkSorting: function(index, column, order, isAddLast){
-
         webix.html.remove(this._multisortMap[index].html);
-            this._multisortMap[index].html = this.createHtmlMarkSotring(order);
-
-
-
+        this._multisortMap[index].html = this.createHtmlMarkSotring(order);
         if (order){
             var cell = this._get_header_cell(this.getColumnIndex(column));
             if (cell){
@@ -194,8 +184,6 @@ webix.protoUI({
     _sort:function(col_id, direction, type){
         direction = direction || "asc";
         this.markSorting(col_id, direction);
-
-
         if (type == "server"){
             this.loadNext(-1, 0, {
                 "before":function(){
@@ -225,50 +213,16 @@ class DataGrid{
         this.id = config.id;
         this.dataTypeToFilterTypeMapping = {
             text: 'serverFilter',
-            data: 'serverFilter',
+            date: 'serverFilter',
             time: 'serverFilter',
             number: 'serverFilter',
             integer: 'serverFilter'
         };
         webix.pageSize = config.pageSize;
         var webixColumns = this.createWebixColumns(config.columns);
-        var webixActionsGrid = {
-            onCheck: function (row, column, value) {
-                this.data.eachChild(row, function (item) {
-                        item[column] = value;
-                    })
-            },
-            onAfterLoad: function (row, column, value) {
-                this.openAll();
-            },
-            onBeforeRender: function () {
-                for (var key in webix.buttonsMap) {
-                    var button = webix.buttonsMap[key];
-                    this.on_click[button.class] = webix.actions[button.function];
-                }
+        var webixActionsGrid = this.configurationActionsGrid(config.events);
+        this.configurationSizeGrid(config.container, config.width, config.height);
 
-            },
-            onAfterRender: function (){
-                this.adjust();
-            }
-        };
-
-        if(typeof config.width != 'undefined'){
-            document.getElementById(config.container).style.width = config.width + "px";
-        }
-        else{
-            document.getElementById(config.container).style.width = "100%";
-        }
-        if(typeof config.height != 'undefined'){
-            document.getElementById(config.container).style.height = config.height + "px";
-        }
-        else{
-            document.getElementById(config.container).style.height = "90%";
-        }
-
-        for(var event in config.events){
-            webixActionsGrid[event] = webix.actions[config.events[event]];
-        }
         var nameGrid = config.container + 'Grid';
         var namePaging = config.container + 'Paging';
 
@@ -284,10 +238,23 @@ class DataGrid{
                 }
             ]
         });
-        this.dataTable = new webix.ui({
+
+        var configGrid  = this.confiturationGrid(config);
+        this.dataTable = new webix.ui(configGrid);
+    }
+
+    confiturationGrid(config){
+        var webixColumns = this.createWebixColumns(config.columns);
+        var webixActionsGrid = this.configurationActionsGrid(config.events);
+
+        var nameGrid = config.container + 'Grid';
+        var namePaging = config.container + 'Paging';
+
+        var configGrid = {
             container: nameGrid,
             view: "customDataTable",
             columns: webixColumns.columns,
+            leftSplit: 1,
             pager: {
                 template: "{common.first()}{common.prev()}{common.pages()}{common.next()}{common.last()}",
                 container: namePaging,
@@ -304,28 +271,90 @@ class DataGrid{
             spans: true,
             checkboxRefresh: true,
             on: webixActionsGrid,
-            scheme: {
-                $group: webixColumns.idGroup,
-                $sort:  webixColumns.idGroup
-            },
-            url: config.dataSource
+            url: config.dataSource,
+            footer:true
+        };
 
-        });
+        var configGroup = {
+            $group: {}
+        };
+
+        if(this.existsField(webixColumns.group.id)){
+            configGroup.$group.by = webixColumns.group.id;
+            configGrid.scheme = configGroup;
+        }
+        if(this.existsField(webixColumns.group.footer)){
+            configGroup.$group.footer = {};
+            webix.groupTotalLine = webixColumns.group.footer;
+            for(var i in webix.groupTotalLine){
+                configGroup.$group.footer[webix.groupTotalLine[i].id + 'Sum'] = [webix.groupTotalLine[i].id, 'sum'];
+            }
+            configGroup.$group.footer.row = webix.actions.totalGroup;
+            configGrid.scheme = configGroup;
+        }
+
+        return configGrid;
     }
 
-    renderGroup(obj, common,a, b, currentNumber){
+    configurationSizeGrid(container, width, height){
+        if(typeof width != 'undefined'){
+            document.getElementById(container).style.width = width + "px";
+        }
+        else{
+            document.getElementById(container).style.width = "100%";
+        }
+        if(typeof height != 'undefined'){
+            document.getElementById(container).style.height = height + "px";
+        }
+        else{
+            document.getElementById(container).style.height = "90%";
+        }
+    }
+
+    configurationActionsGrid(events){
+        var webixActionsGrid = {
+            onCheck: function (row, column, value) {
+                this.data.eachChild(row, function (item) {
+                    item[column] = value;
+                })
+            },
+            onAfterLoad: function (row, column, value) {
+                this.openAll();
+            },
+            onBeforeRender: function () {
+                for (var key in webix.buttonsMap) {
+                    var button = webix.buttonsMap[key];
+                    this.on_click[button.class] = webix.actions[button.function];
+                }
+            },
+            onAfterRender: function (){
+                this.adjust();
+            }
+        };
+        for(var event in events){
+            webixActionsGrid[event] = webix.actions[events[event]];
+        }
+        return webixActionsGrid;
+    }
+
+    renderGroup(obj, common, value, b, currentNumber){
         if (obj.$group) {
-            var result = common.treetable(obj, common) + " " + this.id +": " + obj.value + " ( " + obj.$count + " assets )";
+            var count = obj.$count - 1;
+            var result = common.treetable(obj, common) + " " + this.id +": " + obj.value + " ( " + count + " assets )";
             var freeItems = webix.pageSize - currentNumber;
             if(obj.open)
                 if(freeItems < obj.$count )
                     result += " (Continues on the next page)";
             return result;
         }
-        return obj[this.id];
+
+        return value;
     }
 
     renderButton(cellElement, cellInfo){
+        if(cellElement.$group){
+            return ' ';
+        }
         var result = "";
         for(var number in webix.buttonsMap){
             var button = webix.buttonsMap[number];
@@ -343,61 +372,112 @@ class DataGrid{
 
     createWebixColumns(ARCHIBUSColumns){
         var webixColumns = [];
-        var idGroupBy;
+        var webixGroupBy = {};
+
         webixColumns[0] = {
             id: "ch1",
             header: "",
             width: 40,
-            template: "{common.checkbox()}"
+            template: "{common.checkbox()}",
+            footer:{text:"Total:"}
         };
         var index = 1;
         for(var numberColumn in ARCHIBUSColumns){
             var ARCHIBUSColumn = ARCHIBUSColumns[numberColumn];
             var webixColumn = {};
-            var filter;
-
-            webixColumn.id = ARCHIBUSColumn.id;
-            for(var type in this.dataTypeToFilterTypeMapping){
-                if(type === ARCHIBUSColumn.dataType){
-                    filter = this.dataTypeToFilterTypeMapping[type];
-                }
+            if(this.existsField(ARCHIBUSColumn.id)){
+                webixColumn.id = ARCHIBUSColumn.id;
             }
-            webixColumn.header = [
-                ARCHIBUSColumn.title,
-                {content:filter}
-            ];
-            webixColumn.sort = "server";
-            if(typeof ARCHIBUSColumn.width != 'undefined'){
+            if(this.existsField(ARCHIBUSColumn.dataType)){
+                switch (ARCHIBUSColumn.dataType){
+                    case 'number': webixColumn.format = webix.i18n.numberFormat;
+                        break;
+                    case 'date':
+                        //webixColumn.format = webix.Date.dateToStr("%m/%d/%y");
+
+                        break;
+                }
+            }else{
+                ARCHIBUSColumn.dataType = 'String';
+            }
+            webixColumn.header = this.createColumnHeader(ARCHIBUSColumn.title, ARCHIBUSColumn.dataType, ARCHIBUSColumn.action);
+            webixColumn.cssFormat = this.createColumnCssFormat(ARCHIBUSColumn.cssClass);
+            webixColumn.template = function(cellElement, cellInfo, cellValue){
+                if(cellElement.$group){
+                    return ' ';
+                }
+                return cellValue;
+            }
+
+            if(this.existsField(ARCHIBUSColumn.width)){
                 webixColumn.width = ARCHIBUSColumn.width;
             }
             else{
                 webixColumn.adjust = "data";
             }
-            if(typeof ARCHIBUSColumn.action != 'undefined'){
+            if(this.existsField(ARCHIBUSColumn.action)){
                 webix.buttonsMap = ARCHIBUSColumn.action;
                 webixColumn.template = this.renderButton;
             }
-            if(typeof ARCHIBUSColumn.groupBy != 'undefined'){
-                idGroupBy = ARCHIBUSColumn.id;
-                webixColumn.template = this.renderGroup;
-            }
-            if(typeof ARCHIBUSColumn.cssClass != 'undefined'){
-                webixColumn.cssFormat = webix.actions[ARCHIBUSColumn.cssClass];
-            }
             else{
-                webixColumn.cssFormat = function (value, obj, t, y){
-                    if (obj.ch1 && !obj.$group)
-                        return "row-marked";
-                    return "";
-                };
+                webixColumn.sort = "server";
             }
+            if(this.existsField(ARCHIBUSColumn.groupBy)){
+                webixColumn.template = this.renderGroup;
+                webixGroupBy.id =  ARCHIBUSColumn.id;
+            }
+            if(this.existsField(ARCHIBUSColumn.showTotals)){
+                webixColumn.footer = { content:"summColumn" };
+                if(!this.existsField(webixGroupBy.footer)){
+                    webixGroupBy.footer = [];
+                }
+                var i = webixGroupBy.footer.length;
+                webixGroupBy.footer[i] = {};
+                webixGroupBy.footer[i].id = ARCHIBUSColumn.id;
+                webixGroupBy.footer[i].title = ARCHIBUSColumn.title;
+                webixGroupBy.footer[i].type = ARCHIBUSColumn.dataType;
 
+            }
             webixColumns[index] = webixColumn;
             index++;
         }
         return {
             columns: webixColumns,
-            idGroup: idGroupBy
+            group: webixGroupBy
         };
     }
+
+    existsField(field){
+        return typeof field != 'undefined'
+    }
+
+    createColumnHeader (title, dataType, action){
+        if(this.existsField(action)){
+            return title;
+        }
+        var filterView;
+        for(var type in this.dataTypeToFilterTypeMapping){
+            if(type === dataType){
+                filterView = this.dataTypeToFilterTypeMapping[type];
+            }
+        }
+        return [
+            title,
+            {content:filterView}
+        ];
+    }
+
+    createColumnCssFormat(cssClass){
+        if(this.existsField(cssClass)){
+            return webix.actions[cssClass];
+        }
+        else{
+            return function (value, obj, t, y){
+                if (obj.ch1 && !obj.$group)
+                    return "row-marked";
+                return "";
+            };
+        }
+    }
+
 }

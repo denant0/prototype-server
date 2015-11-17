@@ -50,6 +50,16 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                         return currentEnumStyle[element].classStyle;
                     }
                 }
+            },
+            totalGroup: function totalGroup(obj) {
+                var result = "<span style='float:right;'>";
+                for (var i in webix.groupTotalLine) {
+                    if (webix.groupTotalLine[i].type == 'number') {
+                        result += webix.groupTotalLine[i].title + ": " + webix.i18n.numberFormat(obj[webix.groupTotalLine[i].id + "Sum"]) + " ";
+                    } else result += webix.groupTotalLine[i].title + ": " + obj[webix.groupTotalLine[i].id + "Sum"] + "      ";
+                }
+                result += "</span>";
+                return result;
             }
         };
     }, { "./metadata/sample-cell-style-metadata": 5 }], 2: [function (require, module, exports) {
@@ -197,7 +207,7 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                 sortFields: [],
                 dataSource: 'server/data',
                 //width: 700,
-                //height: 700,
+                // height: 700,
                 pageSize: 100,
                 events: {
                     onSelectChange: 'selectValue'
@@ -241,7 +251,6 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                         }
                     }
                 }
-
                 this._sort(col.id, order, col.sort);
             },
             markSorting: function markSorting(column, order) {
@@ -270,12 +279,13 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
             },
             markMultiSorting: function markMultiSorting(column, order) {
 
-                if (this.markMultiSorting_isAddedItem()) {
+                if (this._multisortMap.length == 0 && !this._multisort_isDelete) {
                     this._multisortMap[0] = {
                         id: column,
                         dir: order,
                         html: '',
-                        onClick: 0
+                        onClick: 0,
+                        numberInQuery: 1
                     };
                     this.createMarkSorting(0, column, order, true);
                 } else {
@@ -291,12 +301,14 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                     } else {
                         var isAdded = true;
                         for (var number in this._multisortMap) {
-                            if (this._multisortMap[number].id != column) {
-                                this.createMarkSorting(number, this._multisortMap[number].id, this._multisortMap[number].dir, false);
+                            var element = this._multisortMap[number];
+                            if (element.id != column) {
+                                this.createMarkSorting(number, element.id, element.dir, false);
                             } else {
                                 isAdded = false;
                                 this._multisortMap[number].dir = order;
                                 this._multisortMap[number].onClick++;
+                                this._multisortMap[number].numberInQuery = 1;
                                 this.createMarkSorting(number, column, order, true);
                             }
                         }
@@ -316,7 +328,6 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                                     break;
                                 }
                             }
-
                             if (numberDelete != -1) {
                                 //webix.html.remove(this._multisortMap[numberDelete].html);
                                 this._multisortMap.splice(numberDelete, 1);
@@ -326,12 +337,6 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                     }
                 }
             },
-            markMultiSorting_isAddedItem: function markMultiSorting_isAddedItem() {
-                if (this._multisortMap.length == 0 && !this._multisort_isDelete) return true;
-
-                return false;
-            },
-
             createHtmlMarkSotring: function createHtmlMarkSotring(order) {
                 var htmlElement = webix.html.create("DIV");
                 if (order) {
@@ -340,10 +345,8 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                 return htmlElement;
             },
             createMarkSorting: function createMarkSorting(index, column, order, isAddLast) {
-
                 webix.html.remove(this._multisortMap[index].html);
                 this._multisortMap[index].html = this.createHtmlMarkSotring(order);
-
                 if (order) {
                     var cell = this._get_header_cell(this.getColumnIndex(column));
                     if (cell) {
@@ -363,7 +366,6 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
             _sort: function _sort(col_id, direction, type) {
                 direction = direction || "asc";
                 this.markSorting(col_id, direction);
-
                 if (type == "server") {
                     this.loadNext(-1, 0, {
                         "before": function before() {
@@ -392,47 +394,16 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                 this.id = config.id;
                 this.dataTypeToFilterTypeMapping = {
                     text: 'serverFilter',
-                    data: 'serverFilter',
+                    date: 'serverFilter',
                     time: 'serverFilter',
                     number: 'serverFilter',
                     integer: 'serverFilter'
                 };
                 webix.pageSize = config.pageSize;
                 var webixColumns = this.createWebixColumns(config.columns);
-                var webixActionsGrid = {
-                    onCheck: function onCheck(row, column, value) {
-                        this.data.eachChild(row, function (item) {
-                            item[column] = value;
-                        });
-                    },
-                    onAfterLoad: function onAfterLoad(row, column, value) {
-                        this.openAll();
-                    },
-                    onBeforeRender: function onBeforeRender() {
-                        for (var key in webix.buttonsMap) {
-                            var button = webix.buttonsMap[key];
-                            this.on_click[button.class] = webix.actions[button.function];
-                        }
-                    },
-                    onAfterRender: function onAfterRender() {
-                        this.adjust();
-                    }
-                };
+                var webixActionsGrid = this.configurationActionsGrid(config.events);
+                this.configurationSizeGrid(config.container, config.width, config.height);
 
-                if (typeof config.width != 'undefined') {
-                    document.getElementById(config.container).style.width = config.width + "px";
-                } else {
-                    document.getElementById(config.container).style.width = "100%";
-                }
-                if (typeof config.height != 'undefined') {
-                    document.getElementById(config.container).style.height = config.height + "px";
-                } else {
-                    document.getElementById(config.container).style.height = "90%";
-                }
-
-                for (var event in config.events) {
-                    webixActionsGrid[event] = webix.actions[config.events[event]];
-                }
                 var nameGrid = config.container + 'Grid';
                 var namePaging = config.container + 'Paging';
 
@@ -445,49 +416,125 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                         autoheight: true
                     }]
                 });
-                this.dataTable = new webix.ui({
-                    container: nameGrid,
-                    view: "customDataTable",
-                    columns: webixColumns.columns,
-                    pager: {
-                        template: "{common.first()}{common.prev()}{common.pages()}{common.next()}{common.last()}",
-                        container: namePaging,
-                        size: config.pageSize,
-                        group: 5,
-                        animate: {
-                            subtype: "in"
-                        }
-                    },
-                    multisort: true,
-                    select: "cell",
-                    multiselect: true,
-                    resizeColumn: true,
-                    spans: true,
-                    checkboxRefresh: true,
-                    on: webixActionsGrid,
-                    scheme: {
-                        $group: webixColumns.idGroup,
-                        $sort: webixColumns.idGroup
-                    },
-                    url: config.dataSource
 
-                });
+                var configGrid = this.confiturationGrid(config);
+                this.dataTable = new webix.ui(configGrid);
             }
 
             _createClass(DataGrid, [{
+                key: "confiturationGrid",
+                value: function confiturationGrid(config) {
+                    var webixColumns = this.createWebixColumns(config.columns);
+                    var webixActionsGrid = this.configurationActionsGrid(config.events);
+
+                    var nameGrid = config.container + 'Grid';
+                    var namePaging = config.container + 'Paging';
+
+                    var configGrid = {
+                        container: nameGrid,
+                        view: "customDataTable",
+                        columns: webixColumns.columns,
+                        leftSplit: 1,
+                        pager: {
+                            template: "{common.first()}{common.prev()}{common.pages()}{common.next()}{common.last()}",
+                            container: namePaging,
+                            size: config.pageSize,
+                            group: 5,
+                            animate: {
+                                subtype: "in"
+                            }
+                        },
+                        multisort: true,
+                        select: "cell",
+                        multiselect: true,
+                        resizeColumn: true,
+                        spans: true,
+                        checkboxRefresh: true,
+                        on: webixActionsGrid,
+                        url: config.dataSource,
+                        footer: true
+                    };
+
+                    var configGroup = {
+                        $group: {}
+                    };
+
+                    if (this.existsField(webixColumns.group.id)) {
+                        configGroup.$group.by = webixColumns.group.id;
+                        configGrid.scheme = configGroup;
+                    }
+                    if (this.existsField(webixColumns.group.footer)) {
+                        configGroup.$group.footer = {};
+                        webix.groupTotalLine = webixColumns.group.footer;
+                        for (var i in webix.groupTotalLine) {
+                            configGroup.$group.footer[webix.groupTotalLine[i].id + 'Sum'] = [webix.groupTotalLine[i].id, 'sum'];
+                        }
+                        configGroup.$group.footer.row = webix.actions.totalGroup;
+                        configGrid.scheme = configGroup;
+                    }
+
+                    return configGrid;
+                }
+            }, {
+                key: "configurationSizeGrid",
+                value: function configurationSizeGrid(container, width, height) {
+                    if (typeof width != 'undefined') {
+                        document.getElementById(container).style.width = width + "px";
+                    } else {
+                        document.getElementById(container).style.width = "100%";
+                    }
+                    if (typeof height != 'undefined') {
+                        document.getElementById(container).style.height = height + "px";
+                    } else {
+                        document.getElementById(container).style.height = "90%";
+                    }
+                }
+            }, {
+                key: "configurationActionsGrid",
+                value: function configurationActionsGrid(events) {
+                    var webixActionsGrid = {
+                        onCheck: function onCheck(row, column, value) {
+                            this.data.eachChild(row, function (item) {
+                                item[column] = value;
+                            });
+                        },
+                        onAfterLoad: function onAfterLoad(row, column, value) {
+                            this.openAll();
+                        },
+                        onBeforeRender: function onBeforeRender() {
+                            for (var key in webix.buttonsMap) {
+                                var button = webix.buttonsMap[key];
+                                this.on_click[button.class] = webix.actions[button.function];
+                            }
+                        },
+                        onAfterRender: function onAfterRender() {
+                            this.adjust();
+                        }
+                    };
+                    for (var event in events) {
+                        webixActionsGrid[event] = webix.actions[events[event]];
+                    }
+                    return webixActionsGrid;
+                }
+            }, {
                 key: "renderGroup",
-                value: function renderGroup(obj, common, a, b, currentNumber) {
+                value: function renderGroup(obj, common, value, b, currentNumber) {
                     if (obj.$group) {
-                        var result = common.treetable(obj, common) + " " + this.id + ": " + obj.value + " ( " + obj.$count + " assets )";
+                        var count = obj.$count - 1;
+                        var result = common.treetable(obj, common) + " " + this.id + ": " + obj.value + " ( " + count + " assets )";
                         var freeItems = webix.pageSize - currentNumber;
                         if (obj.open) if (freeItems < obj.$count) result += " (Continues on the next page)";
                         return result;
                     }
-                    return obj[this.id];
+
+                    return value;
                 }
             }, {
                 key: "renderButton",
                 value: function renderButton(cellElement, cellInfo) {
+                    if (cellElement.$group) {
+                        return ' ';
+                    }
                     var result = "";
                     for (var number in webix.buttonsMap) {
                         var button = webix.buttonsMap[number];
@@ -506,56 +553,108 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                 key: "createWebixColumns",
                 value: function createWebixColumns(ARCHIBUSColumns) {
                     var webixColumns = [];
-                    var idGroupBy;
+                    var webixGroupBy = {};
+
                     webixColumns[0] = {
                         id: "ch1",
                         header: "",
                         width: 40,
-                        template: "{common.checkbox()}"
+                        template: "{common.checkbox()}",
+                        footer: { text: "Total:" }
                     };
                     var index = 1;
                     for (var numberColumn in ARCHIBUSColumns) {
                         var ARCHIBUSColumn = ARCHIBUSColumns[numberColumn];
                         var webixColumn = {};
-                        var filter;
-
-                        webixColumn.id = ARCHIBUSColumn.id;
-                        for (var type in this.dataTypeToFilterTypeMapping) {
-                            if (type === ARCHIBUSColumn.dataType) {
-                                filter = this.dataTypeToFilterTypeMapping[type];
-                            }
+                        if (this.existsField(ARCHIBUSColumn.id)) {
+                            webixColumn.id = ARCHIBUSColumn.id;
                         }
-                        webixColumn.header = [ARCHIBUSColumn.title, { content: filter }];
-                        webixColumn.sort = "server";
-                        if (typeof ARCHIBUSColumn.width != 'undefined') {
+                        if (this.existsField(ARCHIBUSColumn.dataType)) {
+                            switch (ARCHIBUSColumn.dataType) {
+                                case 'number':
+                                    webixColumn.format = webix.i18n.numberFormat;
+                                    break;
+                                case 'date':
+                                    //webixColumn.format = webix.Date.dateToStr("%m/%d/%y");
+
+                                    break;
+                            }
+                        } else {
+                            ARCHIBUSColumn.dataType = 'String';
+                        }
+                        webixColumn.header = this.createColumnHeader(ARCHIBUSColumn.title, ARCHIBUSColumn.dataType, ARCHIBUSColumn.action);
+                        webixColumn.cssFormat = this.createColumnCssFormat(ARCHIBUSColumn.cssClass);
+                        webixColumn.template = function (cellElement, cellInfo, cellValue) {
+                            if (cellElement.$group) {
+                                return ' ';
+                            }
+                            return cellValue;
+                        };
+
+                        if (this.existsField(ARCHIBUSColumn.width)) {
                             webixColumn.width = ARCHIBUSColumn.width;
                         } else {
                             webixColumn.adjust = "data";
                         }
-                        if (typeof ARCHIBUSColumn.action != 'undefined') {
+                        if (this.existsField(ARCHIBUSColumn.action)) {
                             webix.buttonsMap = ARCHIBUSColumn.action;
                             webixColumn.template = this.renderButton;
-                        }
-                        if (typeof ARCHIBUSColumn.groupBy != 'undefined') {
-                            idGroupBy = ARCHIBUSColumn.id;
-                            webixColumn.template = this.renderGroup;
-                        }
-                        if (typeof ARCHIBUSColumn.cssClass != 'undefined') {
-                            webixColumn.cssFormat = webix.actions[ARCHIBUSColumn.cssClass];
                         } else {
-                            webixColumn.cssFormat = function (value, obj, t, y) {
-                                if (obj.ch1 && !obj.$group) return "row-marked";
-                                return "";
-                            };
+                            webixColumn.sort = "server";
                         }
-
+                        if (this.existsField(ARCHIBUSColumn.groupBy)) {
+                            webixColumn.template = this.renderGroup;
+                            webixGroupBy.id = ARCHIBUSColumn.id;
+                        }
+                        if (this.existsField(ARCHIBUSColumn.showTotals)) {
+                            webixColumn.footer = { content: "summColumn" };
+                            if (!this.existsField(webixGroupBy.footer)) {
+                                webixGroupBy.footer = [];
+                            }
+                            var i = webixGroupBy.footer.length;
+                            webixGroupBy.footer[i] = {};
+                            webixGroupBy.footer[i].id = ARCHIBUSColumn.id;
+                            webixGroupBy.footer[i].title = ARCHIBUSColumn.title;
+                            webixGroupBy.footer[i].type = ARCHIBUSColumn.dataType;
+                        }
                         webixColumns[index] = webixColumn;
                         index++;
                     }
                     return {
                         columns: webixColumns,
-                        idGroup: idGroupBy
+                        group: webixGroupBy
                     };
+                }
+            }, {
+                key: "existsField",
+                value: function existsField(field) {
+                    return typeof field != 'undefined';
+                }
+            }, {
+                key: "createColumnHeader",
+                value: function createColumnHeader(title, dataType, action) {
+                    if (this.existsField(action)) {
+                        return title;
+                    }
+                    var filterView;
+                    for (var type in this.dataTypeToFilterTypeMapping) {
+                        if (type === dataType) {
+                            filterView = this.dataTypeToFilterTypeMapping[type];
+                        }
+                    }
+                    return [title, { content: filterView }];
+                }
+            }, {
+                key: "createColumnCssFormat",
+                value: function createColumnCssFormat(cssClass) {
+                    if (this.existsField(cssClass)) {
+                        return webix.actions[cssClass];
+                    } else {
+                        return function (value, obj, t, y) {
+                            if (obj.ch1 && !obj.$group) return "row-marked";
+                            return "";
+                        };
+                    }
                 }
             }]);
 
@@ -631,6 +730,18 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
             sortBy: 'asc', // or 'desc'
             dataType: 'text'
         }, {
+            id: 'cost_purchase',
+            title: 'Purchase Cost',
+            width: 200,
+            dataType: 'number',
+            showTotals: true
+        }, {
+            id: 'quantity_mtbf',
+            title: 'Mean Time Between Failures',
+            width: 200,
+            dataType: 'integer',
+            showTotals: true
+        }, {
             id: 'AssetStandard',
             title: 'Asset Standard',
             width: 200,
@@ -702,10 +813,11 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
             width: 200,
             dataType: 'text'
         }, {
-            id: 'Data',
-            title: 'Data',
+            id: 'Date',
+            title: 'Date',
             width: 200,
-            dataType: 'data'
+            dataType: 'date',
+            dateTimeFormat: ''
         }, {
             title: 'Action',
             width: 200,

@@ -10,6 +10,20 @@ var ARCHIBUSColumns = [
         dataType: 'text'
     },
     {
+        id: 'cost_purchase',
+        title: 'Purchase Cost',
+        width: 200,
+        dataType: 'number',
+        showTotals: true
+    },
+    {
+        id: 'quantity_mtbf',
+        title: 'Mean Time Between Failures',
+        width: 200,
+        dataType: 'integer',
+        showTotals: true
+    },
+    {
         id: 'AssetStandard',
         title: 'Asset Standard',
         width: 200,
@@ -95,10 +109,11 @@ var ARCHIBUSColumns = [
         dataType: 'text'
     },
     {
-        id: 'Data',
-        title: 'Data',
+        id: 'Date',
+        title: 'Date',
         width: 200,
-        dataType: 'data'
+        dataType: 'date',
+        dateTimeFormat: ''
     },
     {
         title: 'Action',

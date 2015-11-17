@@ -83,6 +83,15 @@ server.list()
                             }, {
                                 name: 'DepartmentCode',
                                 type: 'String'
+                            }, {
+                                name: 'Date',
+                                type: 'Date'
+                            }, {
+                                name: 'cost_purchase',
+                                type: 'Integer'
+                            }, {
+                                name: 'quantity_mtbf',
+                                type: 'Integer'
                             }]).then(function () {console.log('Property created.'); console.log('End create database.');});
 
 
