@@ -203,6 +203,39 @@ webix.protoUI({
             else
                 this.data.sort(col_id, direction, type || "string");
         }
+    },
+    mapGroupsCells:function(startrow, startcol, numrows, numcols, callback) {
+        if (startrow === null && this.data.order.length > 0) startrow = this.data.order[0];
+        if (startcol === null) startcol = this.columnId(0);
+        if (numrows === null) numrows = this.data.order.length;
+        if (numcols === null) numcols = this._settings.columns.length;
+
+        if (!this.exists(startrow)) return;
+        startrow = this.getIndexById(startrow);
+        startcol = this.getColumnIndex(startcol);
+        if (startcol === null) return;
+
+        for (var i = 0; i < numrows && (startrow + i) < this.data.order.length; i++) {
+            var row_ind = startrow + i;
+            var row_id = this.data.order[row_ind];
+            var item = this.getItem(row_id);
+            var col_id = this.columnId(numcols);
+            for (var j = 0; j < numcols && (startcol + j) < this._settings.columns.length; j++) {
+                var col_ind = startcol + j;
+                var col_id = this.columnId(col_ind);
+                var flag = true;
+                for(var num_mas in webix.groupTotalLine){
+                    if(col_id == webix.groupTotalLine[num_mas].id){
+                        callback(item[webix.groupTotalLine[num_mas].id+"Sum"]);
+                        flag = false;
+                    }
+                }
+                if(flag){
+                    item[col_id] = callback(item[col_id], row_id, col_id, i, j);
+                }
+
+            }
+        }
     }
 },webix.ui.treetable);
 
@@ -284,12 +317,12 @@ class DataGrid{
             configGrid.scheme = configGroup;
         }
         if(this.existsField(webixColumns.group.footer)){
-            configGroup.$group.footer = {};
+            configGroup.$group.map = {};
             webix.groupTotalLine = webixColumns.group.footer;
             for(var i in webix.groupTotalLine){
-                configGroup.$group.footer[webix.groupTotalLine[i].id + 'Sum'] = [webix.groupTotalLine[i].id, 'sum'];
+                configGroup.$group.map[webix.groupTotalLine[i].id + 'Sum'] = [webix.groupTotalLine[i].id, 'sum'];
             }
-            configGroup.$group.footer.row = webix.actions.totalGroup;
+            configGroup.$group.row =  webixColumns.group.id;
             configGrid.scheme = configGroup;
         }
 
@@ -339,12 +372,24 @@ class DataGrid{
 
     renderGroup(obj, common, value, b, currentNumber){
         if (obj.$group) {
-            var count = obj.$count - 1;
+            var count = obj.$count;
             var result = common.treetable(obj, common) + " " + this.id +": " + obj.value + " ( " + count + " assets )";
             var freeItems = webix.pageSize - currentNumber;
             if(obj.open)
                 if(freeItems < obj.$count )
                     result += " (Continues on the next page)";
+            if(typeof webix.groupTotalLine !='undefined' ){
+                result += '<span style="float: right;">';
+                for(var i in webix.groupTotalLine) {
+                    if (webix.groupTotalLine[i].type == 'number'){
+                        result += webix.groupTotalLine[i].title + ": " + webix.i18n.numberFormat(obj[webix.groupTotalLine[i].id+"Sum"]) + " ";
+                    }
+                    else
+                        result += webix.groupTotalLine[i].title + ": " + obj[webix.groupTotalLine[i].id+"Sum"] + "      ";
+                }
+                result += "</span>";
+            }
+
             return result;
         }
 
@@ -427,7 +472,7 @@ class DataGrid{
                 webixGroupBy.id =  ARCHIBUSColumn.id;
             }
             if(this.existsField(ARCHIBUSColumn.showTotals)){
-                webixColumn.footer = { content:"summColumn" };
+                webixColumn.footer = { content:"sumTotalGroup" };
                 if(!this.existsField(webixGroupBy.footer)){
                     webixGroupBy.footer = [];
                 }
@@ -481,3 +526,30 @@ class DataGrid{
     }
 
 }
+
+webix.ui.datafilter.sumTotalGroup = {
+    getValue:function(node){ return node.firstChild.innerHTML; },
+    setValue: function(){},
+    refresh:function(master, node, value){
+        var result = 0;
+        master.mapGroupsCells(null, value.columnId, null, 1, function(value){
+            value = value*1;
+            if (!isNaN(value))
+                result+=value;
+            return value;
+        });
+
+        if (value.format)
+            result = value.format(result);
+        if (value.template)
+            result = value.template({value:result});
+
+        node.firstChild.innerHTML = result;
+    },
+    trackCells:true,
+    render:function(master, config) {
+        if (config.template)
+            config.template = webix.template(config.template);
+        return "";
+    }
+};

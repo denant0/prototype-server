@@ -8,7 +8,6 @@ webix.actions = {
         if (id.length != 0) {
             var text = this.getItem(id)[id[0].column];
             webix.message(text);
-            document.getElementById('select').innerHTML = text;
         }
     },
     buttonClick1: function(){
@@ -32,17 +31,27 @@ webix.actions = {
             }
         }
     },
-    totalGroup: function(obj){
-        var result = "<span style='float:right;'>";
-        for(var i in webix.groupTotalLine) {
-            if (webix.groupTotalLine[i].type == 'number'){
-                result += webix.groupTotalLine[i].title + ": " + webix.i18n.numberFormat(obj[webix.groupTotalLine[i].id+"Sum"]) + " ";
-            }
+    totalGroup: function(obj, common, a,v,d,f) {
+        var result = "";
+        if(obj.$group){
+            var count = obj.$count;
 
-            else
-                result += webix.groupTotalLine[i].title + ": " + obj[webix.groupTotalLine[i].id+"Sum"] + "      ";
+            result = common.treetable(obj, common) + " "+ obj.id + ": " + obj.value + " ( " + count + " assets )";
+            /*var freeItems = webix.pageSize - currentNumber;
+            if(obj.open)
+                if(freeItems < obj.$count )
+                    result += " (Continues on the next page)";*/
+            result += "<span>";
+            for(var i in webix.groupTotalLine) {
+                if (webix.groupTotalLine[i].type == 'number'){
+                    result += webix.groupTotalLine[i].title + ": " + webix.i18n.numberFormat(obj[webix.groupTotalLine[i].id+"Sum"]) + " ";
+                }
+
+                else
+                    result += webix.groupTotalLine[i].title + ": " + obj[webix.groupTotalLine[i].id+"Sum"] + "      ";
+            }
+            result += "</span>";
         }
-        result += "</span>";
         return result;
     }
 };
