@@ -510,7 +510,7 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                         for (var i in webix.groupTotalLine) {
                             configGroup.$group.map[webix.groupTotalLine[i].id + 'Sum'] = [webix.groupTotalLine[i].id, 'sum'];
                         }
-                        configGroup.$group.row = webixColumns.group.id;
+                        //configGroup.$group.row =  webixColumns.group.id;
                         configGrid.scheme = configGroup;
                     }
 
@@ -637,7 +637,16 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                         webixColumn.cssFormat = this.createColumnCssFormat(ARCHIBUSColumn.cssClass);
                         webixColumn.template = function (cellElement, cellInfo, cellValue) {
                             if (cellElement.$group) {
-                                return ' ';
+                                var result = "<span>";
+                                for (var i in webix.groupTotalLine) {
+                                    if (webix.groupTotalLine[i].id == this.id) {
+                                        if (webix.groupTotalLine[i].type == 'number') {
+                                            result += "Total: " + webix.i18n.numberFormat(cellElement[webix.groupTotalLine[i].id + "Sum"]);
+                                        } else result += "Total: " + cellElement[webix.groupTotalLine[i].id + "Sum"];
+                                    }
+                                }
+                                result += "</span>";
+                                return result;
                             }
                             return cellValue;
                         };
