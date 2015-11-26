@@ -90,6 +90,27 @@ webix.TreeDataLoader.load = function(url,call){
     return ajax;
 };
 
+webix.TreeDataLoader._onLoad = function(text,xml,loader){
+    var data;
+    if (loader === -1)
+        data = this.data.driver.toObject(xml);
+    else {
+        //ignore data loading command if data was reloaded
+        this._ajax_queue.remove(loader);
+        data = this.data.driver.toObject(text,xml);
+    }
+
+    if (data)
+        this.data._parse(data);
+    else
+        return this._onLoadError(text, xml, loader);
+
+    //data loaded, view rendered, call onready handler
+    this._call_onready();
+
+    this.callEvent("onAfterLoad",[]);
+    this.waitData.resolve();
+};
 
 webix.DataState = {
     getState:function(){

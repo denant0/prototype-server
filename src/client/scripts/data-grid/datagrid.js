@@ -237,7 +237,14 @@ webix.protoUI({
             }
         }
     }
-},webix.ui.treetable);
+},webix.ui.treetable,webix.PagingAbility);
+
+webix.editors.$popup = {
+    text:{
+        view:"popup",
+        body:{view:"textarea", width:250, height:50}
+    }
+};
 
 
 class DataGrid{
@@ -249,7 +256,8 @@ class DataGrid{
             date: 'serverFilter',
             time: 'serverFilter',
             number: 'serverFilter',
-            integer: 'serverFilter'
+            integer: 'serverFilter',
+            enum: 'serverSelectFilter'
         };
         webix.pageSize = config.pageSize;
         var webixColumns = this.createWebixColumns(config.columns);
@@ -286,8 +294,11 @@ class DataGrid{
         var configGrid = {
             container: nameGrid,
             view: "customDataTable",
+           //view: "datatable",
             columns: webixColumns.columns,
             leftSplit: 1,
+            //datafetch: 120,
+            //loadahead: 100,
             pager: {
                 template: "{common.first()}{common.prev()}{common.pages()}{common.next()}{common.last()}",
                 container: namePaging,
@@ -301,10 +312,12 @@ class DataGrid{
             select: "cell",
             multiselect: true,
             resizeColumn: true,
-            spans: true,
             checkboxRefresh: true,
             on: webixActionsGrid,
+            editable:true,
+            editaction: "custom",
             url: config.dataSource,
+
             footer:true
         };
 
@@ -353,6 +366,7 @@ class DataGrid{
             },
             onAfterLoad: function (row, column, value) {
                 this.openAll();
+
             },
             onBeforeRender: function () {
                 for (var key in webix.buttonsMap) {
@@ -362,6 +376,13 @@ class DataGrid{
             },
             onAfterRender: function (){
                 this.adjust();
+            },
+            onItemClick: function(id, event){
+                if(typeof webix.ARCHIBUS.editRows != 'undefined'){
+                    if(id.row == webix.ARCHIBUS.editRows){
+                        this.editCell(id.row, id.column);
+                    }
+                }
             }
         };
         for(var event in events){
@@ -436,11 +457,28 @@ class DataGrid{
             if(this.existsField(ARCHIBUSColumn.dataType)){
                 switch (ARCHIBUSColumn.dataType){
                     case 'number': webixColumn.format = webix.i18n.numberFormat;
+                        webixColumn.editor = 'text';
+                        break;
+                    case 'integer':
+                        webixColumn.editor = 'text';
                         break;
                     case 'date':
                         //webixColumn.format = webix.Date.dateToStr("%m/%d/%y");
+                        webixColumn.editor = 'date';
+                        break;
+                    case 'text':
+                        webixColumn.editor = 'popup';
 
                         break;
+                    case 'enum':
+                        webixColumn.editor = 'combo';
+                        webixColumn.collection = [
+                            {id: 'USA', value:"USA"},
+                            {id: 'BRA', value:"BRA"},
+                            {id: 'CAN', value:"CAN"},
+                            {id: 'MEX', value:"MEX"},
+                            {id: 'ARG', value:"ARG"}
+                        ];
                 }
             }else{
                 ARCHIBUSColumn.dataType = 'String';

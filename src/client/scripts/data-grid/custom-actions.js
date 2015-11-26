@@ -1,4 +1,6 @@
 var classStyle = require('./metadata/sample-cell-style-metadata');
+webix.ARCHIBUS = {};
+
 /*
  Map of events used in the grid user
  */
@@ -13,11 +15,32 @@ webix.actions = {
     buttonClick1: function(){
         webix.message('You click button 1');
     },
-    buttonClick2: function(){
+    buttonClick2: function(event,object,cell,d){
+        this.eachColumn(
+            function (columnId){
+                this.removeCellCss(object.row,columnId,"row-edited");
+            }
+        );
+        webix.ARCHIBUS.editRows = "";
         webix.message('You click button 2');
     },
-    buttonClick3: function(){
-        webix.message('You click button 3');
+    buttonClick3: function(event,object,cell,d){
+        if(typeof webix.ARCHIBUS.editRows != 'undefined'){
+            this.eachColumn(
+                function (columnId){
+                    this.removeCellCss(webix.ARCHIBUS.editRows,columnId,"row-edited");
+                }
+            );
+        }
+        this.eachColumn(
+            function (columnId){
+                this.addCellCss(object.row,columnId,"row-edited");
+            }
+        );
+
+
+        webix.ARCHIBUS.editRows = object.row;
+        webix.message('Edit');
     },
     buttonClick4: function(){
         webix.message('You click button 4');
@@ -30,28 +53,5 @@ webix.actions = {
                 return currentEnumStyle[element].classStyle;
             }
         }
-    },
-    totalGroup: function(obj, common, a,v,d,f) {
-        var result = "";
-        if(obj.$group){
-            var count = obj.$count;
-
-            result = common.treetable(obj, common) + " "+ obj.id + ": " + obj.value + " ( " + count + " assets )";
-            /*var freeItems = webix.pageSize - currentNumber;
-            if(obj.open)
-                if(freeItems < obj.$count )
-                    result += " (Continues on the next page)";*/
-            result += "<span>";
-            for(var i in webix.groupTotalLine) {
-                if (webix.groupTotalLine[i].type == 'number'){
-                    result += webix.groupTotalLine[i].title + ": " + webix.i18n.numberFormat(obj[webix.groupTotalLine[i].id+"Sum"]) + " ";
-                }
-
-                else
-                    result += webix.groupTotalLine[i].title + ": " + obj[webix.groupTotalLine[i].id+"Sum"] + "      ";
-            }
-            result += "</span>";
-        }
-        return result;
     }
 };

@@ -52,7 +52,7 @@ var ARCHIBUSColumns = [
         title: 'Country Code',
         width: 200,
         cssClass: 'cssClassCountryCode',
-        dataType: 'text'
+        dataType: 'enum'
     },
     {
         id: 'StateCode',

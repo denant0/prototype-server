@@ -18,6 +18,8 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
     }var i = typeof require == "function" && require;for (var o = 0; o < r.length; o++) s(r[o]);return s;
 })({ 1: [function (require, module, exports) {
         var classStyle = require('./metadata/sample-cell-style-metadata');
+        webix.ARCHIBUS = {};
+
         /*
          Map of events used in the grid user
          */
@@ -32,11 +34,25 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
             buttonClick1: function buttonClick1() {
                 webix.message('You click button 1');
             },
-            buttonClick2: function buttonClick2() {
+            buttonClick2: function buttonClick2(event, object, cell, d) {
+                this.eachColumn(function (columnId) {
+                    this.removeCellCss(object.row, columnId, "row-edited");
+                });
+                webix.ARCHIBUS.editRows = "";
                 webix.message('You click button 2');
             },
-            buttonClick3: function buttonClick3() {
-                webix.message('You click button 3');
+            buttonClick3: function buttonClick3(event, object, cell, d) {
+                if (typeof webix.ARCHIBUS.editRows != 'undefined') {
+                    this.eachColumn(function (columnId) {
+                        this.removeCellCss(webix.ARCHIBUS.editRows, columnId, "row-edited");
+                    });
+                }
+                this.eachColumn(function (columnId) {
+                    this.addCellCss(object.row, columnId, "row-edited");
+                });
+
+                webix.ARCHIBUS.editRows = object.row;
+                webix.message('Edit');
             },
             buttonClick4: function buttonClick4() {
                 webix.message('You click button 4');
@@ -49,26 +65,6 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                         return currentEnumStyle[element].classStyle;
                     }
                 }
-            },
-            totalGroup: function totalGroup(obj, common, a, v, d, f) {
-                var result = "";
-                if (obj.$group) {
-                    var count = obj.$count;
-
-                    result = common.treetable(obj, common) + " " + obj.id + ": " + obj.value + " ( " + count + " assets )";
-                    /*var freeItems = webix.pageSize - currentNumber;
-                    if(obj.open)
-                        if(freeItems < obj.$count )
-                            result += " (Continues on the next page)";*/
-                    result += "<span>";
-                    for (var i in webix.groupTotalLine) {
-                        if (webix.groupTotalLine[i].type == 'number') {
-                            result += webix.groupTotalLine[i].title + ": " + webix.i18n.numberFormat(obj[webix.groupTotalLine[i].id + "Sum"]) + " ";
-                        } else result += webix.groupTotalLine[i].title + ": " + obj[webix.groupTotalLine[i].id + "Sum"] + "      ";
-                    }
-                    result += "</span>";
-                }
-                return result;
             }
         };
     }, { "./metadata/sample-cell-style-metadata": 5 }], 2: [function (require, module, exports) {
@@ -147,6 +143,23 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
             if (!this.data.url) this.data.url = url;
 
             return ajax;
+        };
+
+        webix.TreeDataLoader._onLoad = function (text, xml, loader) {
+            var data;
+            if (loader === -1) data = this.data.driver.toObject(xml);else {
+                //ignore data loading command if data was reloaded
+                this._ajax_queue.remove(loader);
+                data = this.data.driver.toObject(text, xml);
+            }
+
+            if (data) this.data._parse(data);else return this._onLoadError(text, xml, loader);
+
+            //data loaded, view rendered, call onready handler
+            this._call_onready();
+
+            this.callEvent("onAfterLoad", []);
+            this.waitData.resolve();
         };
 
         webix.DataState = {
@@ -426,7 +439,14 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                     }
                 }
             }
-        }, webix.ui.treetable);
+        }, webix.ui.treetable, webix.PagingAbility);
+
+        webix.editors.$popup = {
+            text: {
+                view: "popup",
+                body: { view: "textarea", width: 250, height: 50 }
+            }
+        };
 
         var DataGrid = (function () {
             function DataGrid(config) {
@@ -438,7 +458,8 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                     date: 'serverFilter',
                     time: 'serverFilter',
                     number: 'serverFilter',
-                    integer: 'serverFilter'
+                    integer: 'serverFilter',
+                    enum: 'serverSelectFilter'
                 };
                 webix.pageSize = config.pageSize;
                 var webixColumns = this.createWebixColumns(config.columns);
@@ -474,8 +495,11 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                     var configGrid = {
                         container: nameGrid,
                         view: "customDataTable",
+                        //view: "datatable",
                         columns: webixColumns.columns,
                         leftSplit: 1,
+                        //datafetch: 120,
+                        //loadahead: 100,
                         pager: {
                             template: "{common.first()}{common.prev()}{common.pages()}{common.next()}{common.last()}",
                             container: namePaging,
@@ -489,10 +513,12 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                         select: "cell",
                         multiselect: true,
                         resizeColumn: true,
-                        spans: true,
                         checkboxRefresh: true,
                         on: webixActionsGrid,
+                        editable: true,
+                        editaction: "custom",
                         url: config.dataSource,
+
                         footer: true
                     };
 
@@ -550,6 +576,13 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                         },
                         onAfterRender: function onAfterRender() {
                             this.adjust();
+                        },
+                        onItemClick: function onItemClick(id, event) {
+                            if (typeof webix.ARCHIBUS.editRows != 'undefined') {
+                                if (id.row == webix.ARCHIBUS.editRows) {
+                                    this.editCell(id.row, id.column);
+                                }
+                            }
                         }
                     };
                     for (var event in events) {
@@ -624,11 +657,22 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                             switch (ARCHIBUSColumn.dataType) {
                                 case 'number':
                                     webixColumn.format = webix.i18n.numberFormat;
+                                    webixColumn.editor = 'text';
+                                    break;
+                                case 'integer':
+                                    webixColumn.editor = 'text';
                                     break;
                                 case 'date':
                                     //webixColumn.format = webix.Date.dateToStr("%m/%d/%y");
+                                    webixColumn.editor = 'date';
+                                    break;
+                                case 'text':
+                                    webixColumn.editor = 'popup';
 
                                     break;
+                                case 'enum':
+                                    webixColumn.editor = 'combo';
+                                    webixColumn.collection = [{ id: 'USA', value: "USA" }, { id: 'BRA', value: "BRA" }, { id: 'CAN', value: "CAN" }, { id: 'MEX', value: "MEX" }, { id: 'ARG', value: "ARG" }];
                             }
                         } else {
                             ARCHIBUSColumn.dataType = 'String';
@@ -851,7 +895,7 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
             title: 'Country Code',
             width: 200,
             cssClass: 'cssClassCountryCode',
-            dataType: 'text'
+            dataType: 'enum'
         }, {
             id: 'StateCode',
             title: 'State Code',
