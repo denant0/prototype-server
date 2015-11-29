@@ -92,6 +92,9 @@ server.list()
                             }, {
                                 name: 'quantity_mtbf',
                                 type: 'Integer'
+                            }, {
+                                name: 'idData',
+                                type: 'String'
                             }]).then(function () {console.log('Property created.'); console.log('End create database.');});
 
 

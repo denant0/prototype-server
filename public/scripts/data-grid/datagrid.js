@@ -42,17 +42,7 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                 webix.message('You click button 2');
             },
             buttonClick3: function buttonClick3(event, object, cell, d) {
-                if (typeof webix.ARCHIBUS.editRows != 'undefined') {
-                    this.eachColumn(function (columnId) {
-                        this.removeCellCss(webix.ARCHIBUS.editRows, columnId, "row-edited");
-                    });
-                }
-                this.eachColumn(function (columnId) {
-                    this.addCellCss(object.row, columnId, "row-edited");
-                });
-
-                webix.ARCHIBUS.editRows = object.row;
-                webix.message('Edit');
+                webix.message('You click button 3');
             },
             buttonClick4: function buttonClick4() {
                 webix.message('You click button 4');
@@ -67,7 +57,7 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                 }
             }
         };
-    }, { "./metadata/sample-cell-style-metadata": 5 }], 2: [function (require, module, exports) {
+    }, { "./metadata/sample-cell-style-metadata": 7 }], 2: [function (require, module, exports) {
         /*
          Load data from the response received
          */
@@ -217,37 +207,41 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
             return value;
         };
     }, {}], 3: [function (require, module, exports) {
-        require('./custom-actions');
-        require('./custom-filter-sort');
-        var columnsMetadata = require('./metadata/sample-columns-metadata');
+        webix.ui.datafilter.sumTotalGroup = /*webix.extend({
+                                            refresh:function(master, node, value){
+                                            var result = 0;
+                                            master.data.each(function(obj){
+                                            if (obj.$level == 2) result += obj[value.columnId];
+                                            });
+                                            node.firstChild.innerHTML = result;
+                                            }
+                                            }, webix.ui.datafilter.summColumn);*/
+        {
+            getValue: function getValue(node) {
+                return node.firstChild.innerHTML;
+            },
+            setValue: function setValue() {},
+            refresh: function refresh(master, node, value) {
+                var result = 0;
+                master.mapGroupsCells(null, value.columnId, null, 1, function (value) {
+                    value = value * 1;
+                    if (!isNaN(value)) result += value;
 
-        webix.ready(function () {
-            var dataGrid = new DataGrid({
-                id: 'projectsGrid',
-                container: 'projectsGridContainer',
-                columns: columnsMetadata,
-                sortFields: [],
-                dataSource: 'server/data',
-                //width: 700,
-                // height: 700,
-                pageSize: 100,
-                events: {
-                    onSelectChange: 'selectValue'
-                }
-            });
-
-            resize([dataGrid]);
-        });
-
-        function resize(objects) {
-            for (var number in objects) {
-                webix.event(window, "resize", function (event) {
-                    objects[number].view.adjust();
-                    objects[number].dataTable.adjust();
+                    return value;
                 });
-            }
-        }
 
+                if (value.format) result = value.format(result);
+                if (value.template) result = value.template({ value: result });
+
+                node.firstChild.innerHTML = result;
+            },
+            trackCells: true,
+            render: function render(master, config) {
+                if (config.template) config.template = webix.template(config.template);
+                return "";
+            }
+        };
+    }, {}], 4: [function (require, module, exports) {
         webix.protoUI({
             name: 'customDataTable',
             $init: function $init(config) {
@@ -438,20 +432,71 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                         }
                     }
                 }
+            },
+            _custom_tab_handler: function _custom_tab_handler(tab, e) {
+                if (this._settings.editable && !this._in_edit_mode) {
+                    //if we have focus in some custom input inside of datatable
+                    if (e.target && e.target.tagName == "INPUT") return true;
+
+                    var selection = this.getSelectedId(true);
+                    if (selection.length == 1) {
+                        //this.editNext(tab, selection[0]);
+                        return false;
+                    }
+                }
+                return true;
             }
         }, webix.ui.treetable, webix.PagingAbility);
+    }, {}], 5: [function (require, module, exports) {
+        require('./custom-actions');
+        require('./custom-filter-sort');
+        require('./custom-prototype-grid');
+        require('./custom-function-calc');
 
-        webix.editors.$popup = {
-            text: {
-                view: "popup",
-                body: { view: "textarea", width: 250, height: 50 }
+        var columnsMetadata = require('./metadata/sample-columns-metadata');
+
+        webix.ready(function () {
+            var dataGrid = new DataGrid({
+                id: 'projectsGrid',
+                container: 'projectsGridContainer',
+                columns: columnsMetadata,
+                sortFields: [],
+                dataSource: 'server/data',
+                //width: 700,
+                // height: 700,
+                pageSize: 100,
+                events: {
+                    onSelectChange: 'selectValue'
+                },
+                editing: true,
+                firstRightFixedColumn: 'Date',
+                lastLeftFixedColumn: 'quantity_mtbf'
+            });
+
+            resize([dataGrid]);
+        });
+
+        function resize(objects) {
+            for (var number in objects) {
+                webix.event(window, "resize", function (event) {
+                    objects[number].view.adjust();
+                    objects[number].dataTable.adjust();
+                });
             }
-        };
+        }
 
         var DataGrid = (function () {
             function DataGrid(config) {
                 _classCallCheck(this, DataGrid);
 
+                webix.UIManager.tabControl = true;
+                webix.editors.$popup = {
+                    text: {
+                        view: "popup",
+                        body: { view: "textarea", width: 250, height: 50 }
+                    }
+                };
+                webix.ARCHIBUS.editRows = [];
                 this.id = config.id;
                 this.dataTypeToFilterTypeMapping = {
                     text: 'serverFilter',
@@ -461,9 +506,7 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                     integer: 'serverFilter',
                     enum: 'serverSelectFilter'
                 };
-                webix.pageSize = config.pageSize;
-                var webixColumns = this.createWebixColumns(config.columns);
-                var webixActionsGrid = this.configurationActionsGrid(config.events);
+                webix.ARCHIBUS.pageSize = config.pageSize;
                 this.configurationSizeGrid(config.container, config.width, config.height);
 
                 var nameGrid = config.container + 'Grid';
@@ -486,20 +529,19 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
             _createClass(DataGrid, [{
                 key: "confiturationGrid",
                 value: function confiturationGrid(config) {
-                    var webixColumns = this.createWebixColumns(config.columns);
-                    var webixActionsGrid = this.configurationActionsGrid(config.events);
+                    var webixColumns = this.createWebixColumns(config);
+                    var webixActionsGrid = this.configurationActionsGrid(config);
 
                     var nameGrid = config.container + 'Grid';
                     var namePaging = config.container + 'Paging';
 
+                    var leftSplit = 1;
+                    var rightSplit = 1;
+
                     var configGrid = {
                         container: nameGrid,
                         view: "customDataTable",
-                        //view: "datatable",
                         columns: webixColumns.columns,
-                        leftSplit: 1,
-                        //datafetch: 120,
-                        //loadahead: 100,
                         pager: {
                             template: "{common.first()}{common.prev()}{common.pages()}{common.next()}{common.last()}",
                             container: namePaging,
@@ -515,11 +557,10 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                         resizeColumn: true,
                         checkboxRefresh: true,
                         on: webixActionsGrid,
-                        editable: true,
-                        editaction: "custom",
                         url: config.dataSource,
 
-                        footer: true
+                        footer: true,
+                        navigation: true
                     };
 
                     var configGroup = {
@@ -536,10 +577,37 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                         for (var i in webix.groupTotalLine) {
                             configGroup.$group.map[webix.groupTotalLine[i].id + 'Sum'] = [webix.groupTotalLine[i].id, 'sum'];
                         }
-                        //configGroup.$group.row =  webixColumns.group.id;
                         configGrid.scheme = configGroup;
                     }
 
+                    if (this.existsField(config.editing)) {
+                        if (config.editing) {
+                            configGrid.editable = true;
+                            configGrid.editaction = "custom";
+                            configGrid.editMath = true;
+                            leftSplit++;
+                        }
+                    }
+                    if (this.existsField(config.lastLeftFixedColumn)) {
+                        leftSplit = 1;
+                        for (var index = 0; index < webixColumns.columns.length; index++) {
+                            if (webixColumns.columns[index].id == config.lastLeftFixedColumn) {
+                                leftSplit = index + 1;
+                                break;
+                            }
+                        }
+                    }
+                    if (this.existsField(config.firstRightFixedColumn)) {
+
+                        for (var index = 0; index < webixColumns.columns.length; index++) {
+                            if (webixColumns.columns[index].id == config.firstRightFixedColumn) {
+                                rightSplit = webixColumns.columns.length - index;
+                                break;
+                            }
+                        }
+                        configGrid.rightSplit = rightSplit;
+                    }
+                    configGrid.leftSplit = leftSplit;
                     return configGrid;
                 }
             }, {
@@ -558,7 +626,8 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                 }
             }, {
                 key: "configurationActionsGrid",
-                value: function configurationActionsGrid(events) {
+                value: function configurationActionsGrid(config) {
+                    var events = config.events;
                     var webixActionsGrid = {
                         onCheck: function onCheck(row, column, value) {
                             this.data.eachChild(row, function (item) {
@@ -573,14 +642,61 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                                 var button = webix.buttonsMap[key];
                                 this.on_click[button.class] = webix.actions[button.function];
                             }
+
+                            if (typeof webix.ARCHIBUS.editButtonMap != 'undefined') {
+                                for (var key in webix.ARCHIBUS.editButtonMap) {
+                                    var button = webix.ARCHIBUS.editButtonMap[key];
+                                    this.on_click[button.class] = button.function;
+                                }
+                            }
                         },
                         onAfterRender: function onAfterRender() {
                             this.adjust();
                         },
                         onItemClick: function onItemClick(id, event) {
                             if (typeof webix.ARCHIBUS.editRows != 'undefined') {
-                                if (id.row == webix.ARCHIBUS.editRows) {
-                                    this.editCell(id.row, id.column);
+                                for (var index in webix.ARCHIBUS.editRows) {
+                                    var editRow = webix.ARCHIBUS.editRows[index];
+                                    if (editRow.id == id.row) {
+                                        this.editCell(id.row, id.column);
+                                    }
+                                }
+                            }
+                        },
+                        onAfterEditStop: function onAfterEditStop(state, editor, ignoreUpdate) {
+                            if (state.value != state.old) {
+                                for (var index in webix.ARCHIBUS.editRows) {
+                                    var editRow = webix.ARCHIBUS.editRows[index];
+                                    if (editRow.id == editor.row) {
+                                        var idAdd = true;
+                                        for (var obj in webix.ARCHIBUS.editRows[index].data) {
+                                            if (obj == editor.column) {
+                                                idAdd = false;
+                                                break;
+                                            }
+                                        }
+                                        if (idAdd) webix.ARCHIBUS.editRows[index].data[editor.column] = state.old;
+                                        break;
+                                    }
+                                }
+                            }
+
+                            for (var index in webix.groupTotalLine) {
+                                var id = webix.groupTotalLine[index].id;
+                                if (editor.column == id) {
+                                    var row = editor.row;
+                                    var childs = this.data.getBranch(this.getParentId(row));
+                                    var sum = 0;
+                                    for (var i = 0; i < childs.length; i++) {
+                                        var item = childs[i];
+                                        sum += item[id] * 1;
+                                    }
+                                    var idRowParent = this.getParentId(row);
+                                    var parent = this.getItem(idRowParent);
+
+                                    parent[id + 'Sum'] = sum;
+                                    this.refresh(idRowParent);
+                                    break;
                                 }
                             }
                         }
@@ -591,51 +707,9 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                     return webixActionsGrid;
                 }
             }, {
-                key: "renderGroup",
-                value: function renderGroup(obj, common, value, b, currentNumber) {
-                    if (obj.$group) {
-                        var count = obj.$count;
-                        var result = common.treetable(obj, common) + " " + this.id + ": " + obj.value + " ( " + count + " assets )";
-                        var freeItems = webix.pageSize - currentNumber;
-                        if (obj.open) if (freeItems < obj.$count) result += " (Continues on the next page)";
-                        if (typeof webix.groupTotalLine != 'undefined') {
-                            result += '<span style="float: right;">';
-                            for (var i in webix.groupTotalLine) {
-                                if (webix.groupTotalLine[i].type == 'number') {
-                                    result += webix.groupTotalLine[i].title + ": " + webix.i18n.numberFormat(obj[webix.groupTotalLine[i].id + "Sum"]) + " ";
-                                } else result += webix.groupTotalLine[i].title + ": " + obj[webix.groupTotalLine[i].id + "Sum"] + "      ";
-                            }
-                            result += "</span>";
-                        }
-
-                        return result;
-                    }
-
-                    return value;
-                }
-            }, {
-                key: "renderButton",
-                value: function renderButton(cellElement, cellInfo) {
-                    if (cellElement.$group) {
-                        return ' ';
-                    }
-                    var result = "";
-                    for (var number in webix.buttonsMap) {
-                        var button = webix.buttonsMap[number];
-                        var conditions = button.condition;
-                        for (var element in conditions) {
-                            var condition = conditions[element];
-                            if (cellElement[condition.column] == condition.value) {
-                                result = result + "<img class='" + button.class + "' src='" + button.icon + "'/>";
-                                break;
-                            }
-                        }
-                    }
-                    return result;
-                }
-            }, {
                 key: "createWebixColumns",
-                value: function createWebixColumns(ARCHIBUSColumns) {
+                value: function createWebixColumns(config) {
+                    var ARCHIBUSColumns = config.columns;
                     var webixColumns = [];
                     var webixGroupBy = {};
 
@@ -646,7 +720,95 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                         template: "{common.checkbox()}",
                         footer: { text: "Total:" }
                     };
-                    var index = 1;
+                    if (this.existsField(config.editing)) {
+                        if (config.editing) {
+                            webix.ARCHIBUS.editButtonMap = [{
+                                class: 'editStartClass',
+                                function: function _function(event, object, cell, d) {
+                                    var isFocus = true;
+                                    this.eachColumn(function (columnId) {
+                                        this.addCellCss(object.row, columnId, "row-edited");
+                                        var config = this.getColumnConfig(columnId);
+                                        if (typeof config.editor != 'undefined' && isFocus) {
+                                            this.editCell(object.row, columnId);
+                                            isFocus = false;
+                                        }
+                                    });
+                                    webix.ARCHIBUS.editRows[webix.ARCHIBUS.editRows.length] = {
+                                        id: object.row,
+                                        data: {}
+                                    };
+                                }
+                            }, {
+                                class: 'editSuccessClass',
+                                function: function _function(event, object, cell, d) {
+                                    this.editStop();
+                                    for (var index in webix.ARCHIBUS.editRows) {
+                                        var editRow = webix.ARCHIBUS.editRows[index];
+                                        if (editRow.id == object.row) {
+                                            this.eachColumn(function (columnId) {
+                                                this.removeCellCss(editRow.id, columnId, "row-edited");
+                                            });
+                                            webix.ARCHIBUS.editRows.splice(index, 1);
+                                            webix.ajax().post("server/data/save", this.getItem(object.row), function (response) {
+                                                webix.message(response.status);
+                                            });
+                                            this.refresh();
+                                            break;
+                                        }
+                                    }
+                                }
+                            }, {
+                                class: 'editCancelClass',
+                                function: function _function(event, object, cell, d) {
+                                    this.editStop();
+                                    for (var index in webix.ARCHIBUS.editRows) {
+                                        var editRow = webix.ARCHIBUS.editRows[index];
+                                        if (editRow.id == object.row) {
+                                            this.eachColumn(function (columnId) {
+                                                this.removeCellCss(editRow.id, columnId, "row-edited");
+                                            });
+                                            var dataRow = this.getItem(object.row);
+                                            for (var index in editRow.data) {
+                                                dataRow[index] = editRow.data[index];
+                                            }
+                                            this.updateItem(object.row, dataRow);
+                                            webix.ARCHIBUS.editRows.splice(index, 1);
+                                            break;
+                                        }
+                                    }
+
+                                    for (var index in webix.groupTotalLine) {
+                                        var id = webix.groupTotalLine[index].id;
+                                        this.eachColumn(function (columnId) {
+                                            if (columnId == id) {
+                                                var row = object.row;
+                                                var childs = this.data.getBranch(this.getParentId(row));
+                                                var sum = 0;
+                                                for (var i = 0; i < childs.length; i++) {
+                                                    var item = childs[i];
+                                                    sum += item[id] * 1;
+                                                }
+                                                var idRowParent = this.getParentId(row);
+                                                var parent = this.getItem(idRowParent);
+
+                                                parent[id + 'Sum'] = sum;
+                                                this.refresh(idRowParent);
+                                            }
+                                        });
+                                    }
+                                }
+                            }];
+
+                            webixColumns[1] = {
+                                id: 'edit',
+                                header: "",
+                                width: 60,
+                                template: this.templateEditColumn
+                            };
+                        }
+                    }
+                    var index = webixColumns.length;
                     for (var numberColumn in ARCHIBUSColumns) {
                         var ARCHIBUSColumn = ARCHIBUSColumns[numberColumn];
                         var webixColumn = {};
@@ -658,9 +820,12 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                                 case 'number':
                                     webixColumn.format = webix.i18n.numberFormat;
                                     webixColumn.editor = 'text';
+                                    webixColumn.css = { "text-align": "right" };
                                     break;
                                 case 'integer':
                                     webixColumn.editor = 'text';
+                                    webixColumn.css = { "text-align": "right" };
+
                                     break;
                                 case 'date':
                                     //webixColumn.format = webix.Date.dateToStr("%m/%d/%y");
@@ -679,21 +844,7 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                         }
                         webixColumn.header = this.createColumnHeader(ARCHIBUSColumn.title, ARCHIBUSColumn.dataType, ARCHIBUSColumn.action);
                         webixColumn.cssFormat = this.createColumnCssFormat(ARCHIBUSColumn.cssClass);
-                        webixColumn.template = function (cellElement, cellInfo, cellValue) {
-                            if (cellElement.$group) {
-                                var result = "<span>";
-                                for (var i in webix.groupTotalLine) {
-                                    if (webix.groupTotalLine[i].id == this.id) {
-                                        if (webix.groupTotalLine[i].type == 'number') {
-                                            result += "Total: " + webix.i18n.numberFormat(cellElement[webix.groupTotalLine[i].id + "Sum"]);
-                                        } else result += "Total: " + cellElement[webix.groupTotalLine[i].id + "Sum"];
-                                    }
-                                }
-                                result += "</span>";
-                                return result;
-                            }
-                            return cellValue;
-                        };
+                        webixColumn.template = this.templateColumnsCell;
 
                         if (this.existsField(ARCHIBUSColumn.width)) {
                             webixColumn.width = ARCHIBUSColumn.width;
@@ -702,12 +853,12 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                         }
                         if (this.existsField(ARCHIBUSColumn.action)) {
                             webix.buttonsMap = ARCHIBUSColumn.action;
-                            webixColumn.template = this.renderButton;
+                            webixColumn.template = this.templateActionButtonsColumn;
                         } else {
                             webixColumn.sort = "server";
                         }
                         if (this.existsField(ARCHIBUSColumn.groupBy)) {
-                            webixColumn.template = this.renderGroup;
+                            webixColumn.template = this.templateGroupColumn;
                             webixGroupBy.id = ARCHIBUSColumn.id;
                         }
                         if (this.existsField(ARCHIBUSColumn.showTotals)) {
@@ -760,39 +911,88 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                         };
                     }
                 }
+            }, {
+                key: "templateGroupColumn",
+                value: function templateGroupColumn(cellElement, cellInfo, cellValue, b, rowNumber) {
+                    if (cellElement.$group) {
+                        var count = cellElement.$count;
+                        var result = cellInfo.treetable(cellElement, cellInfo) + " " + this.id + ": " + cellElement.value + " ( " + count + " assets )";
+                        var freeItems = webix.ARCHIBUS.pageSize - rowNumber;
+                        if (cellElement.open) if (freeItems < cellElement.$count) result += " (Continues on the next page)";
+                        if (typeof webix.groupTotalLine != 'undefined') {
+                            result += '<span style="float: right;">';
+                            for (var i in webix.groupTotalLine) {
+                                if (webix.groupTotalLine[i].type == 'number') {
+                                    result += webix.groupTotalLine[i].title + ": " + webix.i18n.numberFormat(cellElement[webix.groupTotalLine[i].id + "Sum"]) + " ";
+                                } else result += webix.groupTotalLine[i].title + ": " + cellElement[webix.groupTotalLine[i].id + "Sum"] + "      ";
+                            }
+                            result += "</span>";
+                        }
+                        return result;
+                    }
+
+                    return cellValue;
+                }
+            }, {
+                key: "templateActionButtonsColumn",
+                value: function templateActionButtonsColumn(cellElement, cellInfo) {
+                    if (cellElement.$group) {
+                        return ' ';
+                    }
+                    var result = "";
+                    for (var number in webix.buttonsMap) {
+                        var button = webix.buttonsMap[number];
+                        var conditions = button.condition;
+                        for (var element in conditions) {
+                            var condition = conditions[element];
+                            if (cellElement[condition.column] == condition.value) {
+                                result = result + "<img class='" + button.class + "' src='" + button.icon + "'/>";
+                                break;
+                            }
+                        }
+                    }
+                    return result;
+                }
+            }, {
+                key: "templateEditColumn",
+                value: function templateEditColumn(cellElement, cellInfo) {
+                    if (cellElement.$group) {
+                        return ' ';
+                    }
+                    var result = "";
+                    var isEdit = true;
+                    for (var index in webix.ARCHIBUS.editRows) {
+                        if (webix.ARCHIBUS.editRows[index].id == cellElement.id) {
+                            return "<img class='editSuccessClass' src='style/icons/success.png'/><img class='editCancelClass' src='style/icons/delete.gif'/>";
+                        }
+                    }
+                    return "<img class='editStartClass' src='style/icons/cog_edit.png'/>";
+                }
+            }, {
+                key: "templateColumnsCell",
+                value: function templateColumnsCell(cellElement, cellInfo, cellValue) {
+                    if (cellElement.$group) {
+                        var result = "<span>";
+                        for (var i in webix.groupTotalLine) {
+                            if (webix.groupTotalLine[i].id == this.id) {
+                                if (webix.groupTotalLine[i].type == 'number') {
+                                    result += "Total: " + webix.i18n.numberFormat(cellElement[webix.groupTotalLine[i].id + "Sum"]);
+                                } else result += "Total: " + cellElement[webix.groupTotalLine[i].id + "Sum"];
+                            }
+                        }
+                        result += "</span>";
+                        return result;
+                    }
+                    return cellValue;
+                }
             }]);
 
             return DataGrid;
         })();
-
-        webix.ui.datafilter.sumTotalGroup = {
-            getValue: function getValue(node) {
-                return node.firstChild.innerHTML;
-            },
-            setValue: function setValue() {},
-            refresh: function refresh(master, node, value) {
-                var result = 0;
-                master.mapGroupsCells(null, value.columnId, null, 1, function (value) {
-                    value = value * 1;
-                    if (!isNaN(value)) result += value;
-                    return value;
-                });
-
-                if (value.format) result = value.format(result);
-                if (value.template) result = value.template({ value: result });
-
-                node.firstChild.innerHTML = result;
-            },
-            trackCells: true,
-            render: function render(master, config) {
-                if (config.template) config.template = webix.template(config.template);
-                return "";
-            }
-        };
-    }, { "./custom-actions": 1, "./custom-filter-sort": 2, "./metadata/sample-columns-metadata": 6 }], 4: [function (require, module, exports) {
+    }, { "./custom-actions": 1, "./custom-filter-sort": 2, "./custom-function-calc": 3, "./custom-prototype-grid": 4, "./metadata/sample-columns-metadata": 8 }], 6: [function (require, module, exports) {
         var buttonsMetadata = [{
             icon: 'style/icons/cog_edit.png',
-            class: 'editclass',
+            class: 'editclasss',
             function: 'buttonClick1',
             condition: [{
                 column: 'AssetType',
@@ -828,7 +1028,7 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
         }];
 
         module.exports = buttonsMetadata;
-    }, {}], 5: [function (require, module, exports) {
+    }, {}], 7: [function (require, module, exports) {
         var classStyle = {
             CountryCode: [{
                 cellText: 'USA',
@@ -849,7 +1049,7 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
         };
 
         module.exports = classStyle;
-    }, {}], 6: [function (require, module, exports) {
+    }, {}], 8: [function (require, module, exports) {
         var buttonMetadata = require('./sample-buttons-metadata');
 
         var ARCHIBUSColumns = [{
@@ -954,4 +1154,4 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
         }];
 
         module.exports = ARCHIBUSColumns;
-    }, { "./sample-buttons-metadata": 4 }] }, {}, [3]);
+    }, { "./sample-buttons-metadata": 6 }] }, {}, [5]);

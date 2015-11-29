@@ -1,6 +1,7 @@
 var data = [
 
     {
+        idData: '0',
         AssetType: 'property',
         AssetStandard: '',
         AssetStatus: 'LEASED',
@@ -16,11 +17,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1240,
-        quantity_mtbf: 769,
-        Date: '1983-1-24'
+        cost_purchase: 45,
+        quantity_mtbf: 266,
+        Date: '1978-7-29'
     },
     {
+        idData: '1',
         AssetType: 'property',
         AssetStandard: '',
         AssetStatus: 'UNKNOWN',
@@ -36,11 +38,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 465,
-        quantity_mtbf: 1038,
-        Date: '2013-9-19'
+        cost_purchase: 939,
+        quantity_mtbf: 1181,
+        Date: '2008-11-13'
     },
     {
+        idData: '2',
         AssetType: 'property',
         AssetStandard: '',
         AssetStatus: 'LEASED',
@@ -56,11 +59,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 664,
-        quantity_mtbf: 1055,
-        Date: '2011-9-2'
+        cost_purchase: 524,
+        quantity_mtbf: 542,
+        Date: '1975-10-3'
     },
     {
+        idData: '3',
         AssetType: 'property',
         AssetStandard: '',
         AssetStatus: 'OWNED AND LEASED',
@@ -76,11 +80,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 868,
-        quantity_mtbf: 69,
-        Date: '1975-11-29'
+        cost_purchase: 341,
+        quantity_mtbf: 223,
+        Date: '2002-2-16'
     },
     {
+        idData: '4',
         AssetType: 'property',
         AssetStandard: '',
         AssetStatus: 'LEASED',
@@ -96,11 +101,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 876,
-        quantity_mtbf: 1188,
-        Date: '2009-2-6'
+        cost_purchase: 1137,
+        quantity_mtbf: 879,
+        Date: '1999-8-2'
     },
     {
+        idData: '5',
         AssetType: 'property',
         AssetStandard: '',
         AssetStatus: 'LEASED',
@@ -116,11 +122,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 777,
-        quantity_mtbf: 133,
-        Date: '2007-5-13'
+        cost_purchase: 838,
+        quantity_mtbf: 1271,
+        Date: '1990-10-12'
     },
     {
+        idData: '6',
         AssetType: 'property',
         AssetStandard: '',
         AssetStatus: 'LEASED',
@@ -136,11 +143,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 223,
-        quantity_mtbf: 750,
-        Date: '1985-12-30'
+        cost_purchase: 192,
+        quantity_mtbf: 604,
+        Date: '1976-6-1'
     },
     {
+        idData: '7',
         AssetType: 'property',
         AssetStandard: '',
         AssetStatus: 'SUB-LEASED',
@@ -156,11 +164,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 685,
-        quantity_mtbf: 1265,
-        Date: '1981-7-9'
+        cost_purchase: 1274,
+        quantity_mtbf: 436,
+        Date: '1983-10-26'
     },
     {
+        idData: '8',
         AssetType: 'property',
         AssetStandard: '',
         AssetStatus: 'SUB LET',
@@ -176,11 +185,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 479,
-        quantity_mtbf: 250,
-        Date: '1982-9-26'
+        cost_purchase: 507,
+        quantity_mtbf: 240,
+        Date: '1995-2-6'
     },
     {
+        idData: '9',
         AssetType: 'property',
         AssetStandard: '',
         AssetStatus: 'LEASED',
@@ -196,11 +206,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1226,
-        quantity_mtbf: 215,
-        Date: '1979-2-8'
+        cost_purchase: 848,
+        quantity_mtbf: 517,
+        Date: '2004-8-3'
     },
     {
+        idData: '10',
         AssetType: 'property',
         AssetStandard: '',
         AssetStatus: 'LEASED',
@@ -216,11 +227,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 329,
-        quantity_mtbf: 511,
-        Date: '1999-11-27'
+        cost_purchase: 50,
+        quantity_mtbf: 1081,
+        Date: '2011-7-21'
     },
     {
+        idData: '11',
         AssetType: 'property',
         AssetStandard: '',
         AssetStatus: 'LEASED (EXPIRED)',
@@ -236,11 +248,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 890,
-        quantity_mtbf: 270,
-        Date: '2008-5-22'
+        cost_purchase: 986,
+        quantity_mtbf: 795,
+        Date: '2013-7-13'
     },
     {
+        idData: '12',
         AssetType: 'property',
         AssetStandard: '',
         AssetStatus: 'FOR SALE',
@@ -256,11 +269,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 212,
-        quantity_mtbf: 830,
-        Date: '1999-4-24'
+        cost_purchase: 281,
+        quantity_mtbf: 16,
+        Date: '2011-4-14'
     },
     {
+        idData: '13',
         AssetType: 'property',
         AssetStandard: '',
         AssetStatus: 'LEASED',
@@ -276,11 +290,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1008,
-        quantity_mtbf: 946,
-        Date: '1992-10-27'
+        cost_purchase: 318,
+        quantity_mtbf: 1250,
+        Date: '2007-8-10'
     },
     {
+        idData: '14',
         AssetType: 'property',
         AssetStandard: '',
         AssetStatus: 'LEASED',
@@ -296,11 +311,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1274,
-        quantity_mtbf: 365,
-        Date: '1980-1-27'
+        cost_purchase: 307,
+        quantity_mtbf: 922,
+        Date: '1999-11-10'
     },
     {
+        idData: '15',
         AssetType: 'property',
         AssetStandard: '',
         AssetStatus: 'UNDER CONTRACT',
@@ -316,11 +332,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 455,
-        quantity_mtbf: 1087,
-        Date: '1999-9-21'
+        cost_purchase: 1075,
+        quantity_mtbf: 1016,
+        Date: '2009-2-17'
     },
     {
+        idData: '16',
         AssetType: 'property',
         AssetStandard: '',
         AssetStatus: 'UNDER CONTRACT',
@@ -336,11 +353,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 74,
-        quantity_mtbf: 409,
-        Date: '1980-9-6'
+        cost_purchase: 432,
+        quantity_mtbf: 243,
+        Date: '1976-6-17'
     },
     {
+        idData: '17',
         AssetType: 'property',
         AssetStandard: '',
         AssetStatus: 'ESCROWED',
@@ -356,11 +374,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 749,
-        quantity_mtbf: 1049,
-        Date: '1977-12-15'
+        cost_purchase: 561,
+        quantity_mtbf: 659,
+        Date: '1992-2-10'
     },
     {
+        idData: '18',
         AssetType: 'property',
         AssetStandard: '',
         AssetStatus: 'OWNED AND LEASED',
@@ -376,11 +395,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 233,
-        quantity_mtbf: 579,
-        Date: '2003-10-19'
+        cost_purchase: 1078,
+        quantity_mtbf: 1054,
+        Date: '2012-12-16'
     },
     {
+        idData: '19',
         AssetType: 'property',
         AssetStandard: '',
         AssetStatus: 'UNKNOWN',
@@ -396,11 +416,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 712,
-        quantity_mtbf: 1164,
-        Date: '2011-9-6'
+        cost_purchase: 736,
+        quantity_mtbf: 359,
+        Date: '1983-8-30'
     },
     {
+        idData: '20',
         AssetType: 'property',
         AssetStandard: '',
         AssetStatus: 'OWNED',
@@ -416,11 +437,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 410,
-        quantity_mtbf: 1246,
-        Date: '1976-11-20'
+        cost_purchase: 822,
+        quantity_mtbf: 1256,
+        Date: '2005-11-22'
     },
     {
+        idData: '21',
         AssetType: 'property',
         AssetStandard: '',
         AssetStatus: 'LEASED',
@@ -436,11 +458,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 916,
-        quantity_mtbf: 506,
-        Date: '2000-1-2'
+        cost_purchase: 1201,
+        quantity_mtbf: 138,
+        Date: '1986-5-8'
     },
     {
+        idData: '22',
         AssetType: 'property',
         AssetStandard: '',
         AssetStatus: 'SOLD',
@@ -456,11 +479,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 702,
-        quantity_mtbf: 80,
-        Date: '2014-9-13'
+        cost_purchase: 601,
+        quantity_mtbf: 560,
+        Date: '1986-5-16'
     },
     {
+        idData: '23',
         AssetType: 'property',
         AssetStandard: '',
         AssetStatus: 'OWNED AND LEASED',
@@ -476,11 +500,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 161,
-        quantity_mtbf: 237,
-        Date: '2000-6-27'
+        cost_purchase: 340,
+        quantity_mtbf: 76,
+        Date: '2002-4-12'
     },
     {
+        idData: '24',
         AssetType: 'property',
         AssetStandard: '',
         AssetStatus: 'OWNED AND LEASED',
@@ -496,11 +521,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1040,
-        quantity_mtbf: 40,
-        Date: '1983-11-23'
+        cost_purchase: 470,
+        quantity_mtbf: 1289,
+        Date: '1991-4-17'
     },
     {
+        idData: '25',
         AssetType: 'property',
         AssetStandard: '',
         AssetStatus: 'LEASED',
@@ -516,11 +542,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1208,
-        quantity_mtbf: 524,
-        Date: '2012-7-20'
+        cost_purchase: 386,
+        quantity_mtbf: 147,
+        Date: '1979-6-24'
     },
     {
+        idData: '26',
         AssetType: 'property',
         AssetStandard: '',
         AssetStatus: 'UNKNOWN',
@@ -536,11 +563,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 297,
-        quantity_mtbf: 871,
-        Date: '2008-6-16'
+        cost_purchase: 689,
+        quantity_mtbf: 796,
+        Date: '2009-8-12'
     },
     {
+        idData: '27',
         AssetType: 'property',
         AssetStandard: '',
         AssetStatus: 'OWNED',
@@ -556,11 +584,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 810,
-        quantity_mtbf: 730,
-        Date: '1990-10-9'
+        cost_purchase: 421,
+        quantity_mtbf: 263,
+        Date: '1983-5-11'
     },
     {
+        idData: '28',
         AssetType: 'property',
         AssetStandard: '',
         AssetStatus: 'OWNED',
@@ -576,11 +605,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1179,
-        quantity_mtbf: 195,
-        Date: '1997-8-26'
+        cost_purchase: 579,
+        quantity_mtbf: 144,
+        Date: '1975-6-9'
     },
     {
+        idData: '29',
         AssetType: 'bl',
         AssetStandard: '',
         AssetStatus: 'N/A',
@@ -596,11 +626,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 827,
-        quantity_mtbf: 1133,
-        Date: '1990-7-6'
+        cost_purchase: 901,
+        quantity_mtbf: 508,
+        Date: '2010-6-2'
     },
     {
+        idData: '30',
         AssetType: 'bl',
         AssetStandard: '',
         AssetStatus: 'N/A',
@@ -616,11 +647,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 48,
-        quantity_mtbf: 1222,
-        Date: '1975-5-18'
+        cost_purchase: 224,
+        quantity_mtbf: 391,
+        Date: '1982-11-17'
     },
     {
+        idData: '31',
         AssetType: 'bl',
         AssetStandard: '',
         AssetStatus: 'N/A',
@@ -636,11 +668,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 95,
-        quantity_mtbf: 511,
-        Date: '1976-2-8'
+        cost_purchase: 1216,
+        quantity_mtbf: 215,
+        Date: '1997-9-23'
     },
     {
+        idData: '32',
         AssetType: 'bl',
         AssetStandard: '',
         AssetStatus: 'N/A',
@@ -656,11 +689,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 734,
-        quantity_mtbf: 989,
-        Date: '2000-5-25'
+        cost_purchase: 1103,
+        quantity_mtbf: 1122,
+        Date: '2009-11-2'
     },
     {
+        idData: '33',
         AssetType: 'bl',
         AssetStandard: '',
         AssetStatus: 'N/A',
@@ -676,11 +710,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 60,
-        quantity_mtbf: 1114,
-        Date: '2005-9-7'
+        cost_purchase: 839,
+        quantity_mtbf: 1248,
+        Date: '1997-6-12'
     },
     {
+        idData: '34',
         AssetType: 'bl',
         AssetStandard: '',
         AssetStatus: 'N/A',
@@ -696,11 +731,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 2,
-        quantity_mtbf: 935,
-        Date: '2001-9-16'
+        cost_purchase: 44,
+        quantity_mtbf: 616,
+        Date: '1987-5-16'
     },
     {
+        idData: '35',
         AssetType: 'bl',
         AssetStandard: '',
         AssetStatus: 'N/A',
@@ -716,11 +752,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1033,
-        quantity_mtbf: 1200,
-        Date: '2000-12-27'
+        cost_purchase: 657,
+        quantity_mtbf: 753,
+        Date: '1990-10-26'
     },
     {
+        idData: '36',
         AssetType: 'bl',
         AssetStandard: '',
         AssetStatus: 'N/A',
@@ -736,11 +773,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 837,
-        quantity_mtbf: 63,
-        Date: '2004-7-21'
+        cost_purchase: 804,
+        quantity_mtbf: 490,
+        Date: '2007-4-19'
     },
     {
+        idData: '37',
         AssetType: 'bl',
         AssetStandard: '',
         AssetStatus: 'N/A',
@@ -756,11 +794,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1104,
-        quantity_mtbf: 383,
-        Date: '1984-7-13'
+        cost_purchase: 994,
+        quantity_mtbf: 94,
+        Date: '2001-12-31'
     },
     {
+        idData: '38',
         AssetType: 'bl',
         AssetStandard: '',
         AssetStatus: 'N/A',
@@ -776,11 +815,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 895,
-        quantity_mtbf: 385,
-        Date: '2001-4-5'
+        cost_purchase: 1179,
+        quantity_mtbf: 848,
+        Date: '1980-8-10'
     },
     {
+        idData: '39',
         AssetType: 'bl',
         AssetStandard: '',
         AssetStatus: 'N/A',
@@ -796,11 +836,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 867,
-        quantity_mtbf: 133,
-        Date: '1996-7-26'
+        cost_purchase: 195,
+        quantity_mtbf: 1021,
+        Date: '1987-3-10'
     },
     {
+        idData: '40',
         AssetType: 'bl',
         AssetStandard: '',
         AssetStatus: 'N/A',
@@ -816,11 +857,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 670,
-        quantity_mtbf: 771,
-        Date: '2001-9-5'
+        cost_purchase: 975,
+        quantity_mtbf: 243,
+        Date: '1998-11-15'
     },
     {
+        idData: '41',
         AssetType: 'bl',
         AssetStandard: '',
         AssetStatus: 'N/A',
@@ -836,11 +878,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1205,
-        quantity_mtbf: 1234,
-        Date: '1991-6-23'
+        cost_purchase: 781,
+        quantity_mtbf: 317,
+        Date: '1999-1-9'
     },
     {
+        idData: '42',
         AssetType: 'bl',
         AssetStandard: '',
         AssetStatus: 'N/A',
@@ -856,11 +899,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 456,
-        quantity_mtbf: 1230,
-        Date: '2008-12-27'
+        cost_purchase: 536,
+        quantity_mtbf: 929,
+        Date: '1975-5-24'
     },
     {
+        idData: '43',
         AssetType: 'bl',
         AssetStandard: '',
         AssetStatus: 'N/A',
@@ -876,11 +920,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 790,
-        quantity_mtbf: 503,
-        Date: '1986-1-26'
+        cost_purchase: 327,
+        quantity_mtbf: 936,
+        Date: '1994-11-4'
     },
     {
+        idData: '44',
         AssetType: 'bl',
         AssetStandard: '',
         AssetStatus: 'N/A',
@@ -896,11 +941,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 899,
-        quantity_mtbf: 20,
-        Date: '1994-1-27'
+        cost_purchase: 1122,
+        quantity_mtbf: 298,
+        Date: '2010-1-2'
     },
     {
+        idData: '45',
         AssetType: 'bl',
         AssetStandard: '',
         AssetStatus: 'N/A',
@@ -916,11 +962,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1170,
-        quantity_mtbf: 38,
-        Date: '1984-1-25'
+        cost_purchase: 80,
+        quantity_mtbf: 935,
+        Date: '2009-7-8'
     },
     {
+        idData: '46',
         AssetType: 'bl',
         AssetStandard: '',
         AssetStatus: 'N/A',
@@ -936,11 +983,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1052,
-        quantity_mtbf: 878,
-        Date: '2005-1-8'
+        cost_purchase: 153,
+        quantity_mtbf: 228,
+        Date: '2004-10-7'
     },
     {
+        idData: '47',
         AssetType: 'bl',
         AssetStandard: '',
         AssetStatus: 'N/A',
@@ -956,11 +1004,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1116,
-        quantity_mtbf: 487,
-        Date: '2006-12-20'
+        cost_purchase: 135,
+        quantity_mtbf: 432,
+        Date: '1977-3-15'
     },
     {
+        idData: '48',
         AssetType: 'bl',
         AssetStandard: '',
         AssetStatus: 'N/A',
@@ -976,11 +1025,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1152,
-        quantity_mtbf: 405,
-        Date: '1999-7-27'
+        cost_purchase: 40,
+        quantity_mtbf: 987,
+        Date: '2008-12-24'
     },
     {
+        idData: '49',
         AssetType: 'bl',
         AssetStandard: '',
         AssetStatus: 'N/A',
@@ -996,11 +1046,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1072,
-        quantity_mtbf: 1012,
-        Date: '1989-5-12'
+        cost_purchase: 335,
+        quantity_mtbf: 779,
+        Date: '1983-8-1'
     },
     {
+        idData: '50',
         AssetType: 'bl',
         AssetStandard: '',
         AssetStatus: 'N/A',
@@ -1016,11 +1067,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 20,
-        quantity_mtbf: 347,
-        Date: '2007-3-26'
+        cost_purchase: 1021,
+        quantity_mtbf: 391,
+        Date: '2001-10-10'
     },
     {
+        idData: '51',
         AssetType: 'bl',
         AssetStandard: '',
         AssetStatus: 'N/A',
@@ -1036,11 +1088,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 236,
-        quantity_mtbf: 106,
-        Date: '1992-5-28'
+        cost_purchase: 32,
+        quantity_mtbf: 1153,
+        Date: '1976-12-2'
     },
     {
+        idData: '52',
         AssetType: 'bl',
         AssetStandard: '',
         AssetStatus: 'N/A',
@@ -1056,11 +1109,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 307,
-        quantity_mtbf: 8,
-        Date: '2003-8-17'
+        cost_purchase: 632,
+        quantity_mtbf: 933,
+        Date: '1986-6-24'
     },
     {
+        idData: '53',
         AssetType: 'bl',
         AssetStandard: '',
         AssetStatus: 'N/A',
@@ -1076,11 +1130,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 987,
-        quantity_mtbf: 235,
-        Date: '2013-8-31'
+        cost_purchase: 643,
+        quantity_mtbf: 200,
+        Date: '2015-10-8'
     },
     {
+        idData: '54',
         AssetType: 'bl',
         AssetStandard: '',
         AssetStatus: 'N/A',
@@ -1096,11 +1151,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1066,
-        quantity_mtbf: 428,
-        Date: '2004-7-5'
+        cost_purchase: 1102,
+        quantity_mtbf: 328,
+        Date: '1995-1-11'
     },
     {
+        idData: '55',
         AssetType: 'bl',
         AssetStandard: '',
         AssetStatus: 'N/A',
@@ -1116,11 +1172,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1135,
-        quantity_mtbf: 795,
-        Date: '1986-6-25'
+        cost_purchase: 384,
+        quantity_mtbf: 1030,
+        Date: '1984-5-23'
     },
     {
+        idData: '56',
         AssetType: 'bl',
         AssetStandard: '',
         AssetStatus: 'N/A',
@@ -1136,11 +1193,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 628,
-        quantity_mtbf: 694,
-        Date: '2009-1-10'
+        cost_purchase: 1249,
+        quantity_mtbf: 1180,
+        Date: '1979-12-20'
     },
     {
+        idData: '57',
         AssetType: 'bl',
         AssetStandard: '',
         AssetStatus: 'N/A',
@@ -1156,11 +1214,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 464,
-        quantity_mtbf: 577,
-        Date: '1980-1-6'
+        cost_purchase: 832,
+        quantity_mtbf: 1281,
+        Date: '1991-6-2'
     },
     {
+        idData: '58',
         AssetType: 'bl',
         AssetStandard: '',
         AssetStatus: 'N/A',
@@ -1176,11 +1235,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 18,
-        quantity_mtbf: 160,
-        Date: '2004-11-7'
+        cost_purchase: 910,
+        quantity_mtbf: 899,
+        Date: '1987-12-5'
     },
     {
+        idData: '59',
         AssetType: 'eq',
         AssetStandard: 'EXHAUST-FAN',
         AssetStatus: 'stor',
@@ -1196,11 +1256,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 56,
-        quantity_mtbf: 803,
-        Date: '1978-1-26'
+        cost_purchase: 978,
+        quantity_mtbf: 174,
+        Date: '2009-7-7'
     },
     {
+        idData: '60',
         AssetType: 'eq',
         AssetStandard: 'PBX-NR',
         AssetStatus: 'in',
@@ -1216,11 +1277,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 199,
-        quantity_mtbf: 857,
-        Date: '2000-12-17'
+        cost_purchase: 795,
+        quantity_mtbf: 1203,
+        Date: '2012-5-6'
     },
     {
+        idData: '61',
         AssetType: 'eq',
         AssetStandard: 'AIR-CONDITIONER',
         AssetStatus: 'in',
@@ -1236,11 +1298,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 216,
-        quantity_mtbf: 1282,
-        Date: '1980-10-12'
+        cost_purchase: 127,
+        quantity_mtbf: 1045,
+        Date: '1978-8-17'
     },
     {
+        idData: '62',
         AssetType: 'eq',
         AssetStandard: 'AIR-CONDITIONER',
         AssetStatus: 'in',
@@ -1256,11 +1319,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1065,
-        quantity_mtbf: 995,
-        Date: '2006-11-8'
+        cost_purchase: 536,
+        quantity_mtbf: 1022,
+        Date: '1995-8-16'
     },
     {
+        idData: '63',
         AssetType: 'eq',
         AssetStandard: 'AIR-CONDITIONER',
         AssetStatus: 'in',
@@ -1276,11 +1340,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 149,
-        quantity_mtbf: 1258,
-        Date: '2004-9-2'
+        cost_purchase: 601,
+        quantity_mtbf: 576,
+        Date: '1985-4-26'
     },
     {
+        idData: '64',
         AssetType: 'eq',
         AssetStandard: 'AIR-CONDITIONER',
         AssetStatus: 'in',
@@ -1296,11 +1361,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 247,
-        quantity_mtbf: 617,
-        Date: '1992-7-19'
+        cost_purchase: 355,
+        quantity_mtbf: 563,
+        Date: '1998-11-26'
     },
     {
+        idData: '65',
         AssetType: 'eq',
         AssetStandard: 'AIR-CONDITIONER',
         AssetStatus: 'in',
@@ -1316,11 +1382,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 530,
-        quantity_mtbf: 490,
-        Date: '1985-4-27'
+        cost_purchase: 54,
+        quantity_mtbf: 193,
+        Date: '1996-10-10'
     },
     {
+        idData: '66',
         AssetType: 'eq',
         AssetStandard: 'AIR-HANDLER-30HP',
         AssetStatus: 'in',
@@ -1336,11 +1403,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 613,
-        quantity_mtbf: 1155,
-        Date: '2009-8-20'
+        cost_purchase: 514,
+        quantity_mtbf: 715,
+        Date: '2004-12-10'
     },
     {
+        idData: '67',
         AssetType: 'eq',
         AssetStandard: 'AIR-HANDLER-30HP',
         AssetStatus: 'in',
@@ -1356,11 +1424,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 113,
-        quantity_mtbf: 323,
-        Date: '1987-1-11'
+        cost_purchase: 1,
+        quantity_mtbf: 585,
+        Date: '1992-1-25'
     },
     {
+        idData: '68',
         AssetType: 'eq',
         AssetStandard: 'AIR-HANDLER-30HP',
         AssetStatus: 'in',
@@ -1376,11 +1445,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 536,
-        quantity_mtbf: 1100,
-        Date: '1980-11-22'
+        cost_purchase: 212,
+        quantity_mtbf: 927,
+        Date: '1982-6-14'
     },
     {
+        idData: '69',
         AssetType: 'eq',
         AssetStandard: 'AIR-HANDLER-30HP',
         AssetStatus: 'in',
@@ -1396,11 +1466,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 927,
-        quantity_mtbf: 449,
-        Date: '2011-3-22'
+        cost_purchase: 985,
+        quantity_mtbf: 903,
+        Date: '1998-11-16'
     },
     {
+        idData: '70',
         AssetType: 'eq',
         AssetStandard: 'PDU',
         AssetStatus: 'in',
@@ -1416,11 +1487,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 244,
-        quantity_mtbf: 556,
-        Date: '1981-2-22'
+        cost_purchase: 287,
+        quantity_mtbf: 128,
+        Date: '2008-6-2'
     },
     {
+        idData: '71',
         AssetType: 'eq',
         AssetStandard: 'STS',
         AssetStatus: 'in',
@@ -1436,11 +1508,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 736,
-        quantity_mtbf: 471,
-        Date: '2007-10-8'
+        cost_purchase: 1133,
+        quantity_mtbf: 794,
+        Date: '2007-11-27'
     },
     {
+        idData: '72',
         AssetType: 'eq',
         AssetStandard: 'UPS',
         AssetStatus: 'in',
@@ -1456,11 +1529,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 185,
-        quantity_mtbf: 376,
-        Date: '1979-1-23'
+        cost_purchase: 1214,
+        quantity_mtbf: 350,
+        Date: '1998-10-28'
     },
     {
+        idData: '73',
         AssetType: 'eq',
         AssetStandard: 'UPS',
         AssetStatus: 'in',
@@ -1476,11 +1550,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 710,
-        quantity_mtbf: 359,
-        Date: '2011-7-30'
+        cost_purchase: 985,
+        quantity_mtbf: 273,
+        Date: '1984-5-18'
     },
     {
+        idData: '74',
         AssetType: 'eq',
         AssetStandard: 'UPS',
         AssetStatus: 'in',
@@ -1496,11 +1571,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 415,
-        quantity_mtbf: 539,
-        Date: '2012-8-11'
+        cost_purchase: 696,
+        quantity_mtbf: 153,
+        Date: '2010-10-16'
     },
     {
+        idData: '75',
         AssetType: 'eq',
         AssetStandard: 'HPSERVER-A',
         AssetStatus: 'in',
@@ -1516,11 +1592,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 469,
-        quantity_mtbf: 992,
-        Date: '2015-5-30'
+        cost_purchase: 821,
+        quantity_mtbf: 441,
+        Date: '1999-7-26'
     },
     {
+        idData: '76',
         AssetType: 'eq',
         AssetStandard: 'NETFRAME-A',
         AssetStatus: 'in',
@@ -1536,11 +1613,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 350,
-        quantity_mtbf: 269,
-        Date: '1988-1-23'
+        cost_purchase: 10,
+        quantity_mtbf: 161,
+        Date: '2000-2-2'
     },
     {
+        idData: '77',
         AssetType: 'eq',
         AssetStandard: 'HPSERVER-A',
         AssetStatus: 'in',
@@ -1556,11 +1634,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 813,
-        quantity_mtbf: 463,
-        Date: '1989-1-30'
+        cost_purchase: 1284,
+        quantity_mtbf: 1117,
+        Date: '1985-9-20'
     },
     {
+        idData: '78',
         AssetType: 'eq',
         AssetStandard: 'A-HP-LASERJET2',
         AssetStatus: 'stor',
@@ -1576,11 +1655,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 132,
-        quantity_mtbf: 254,
-        Date: '1979-8-22'
+        cost_purchase: 265,
+        quantity_mtbf: 286,
+        Date: '2013-7-18'
     },
     {
+        idData: '79',
         AssetType: 'eq',
         AssetStandard: 'A-HP-LASERJET2',
         AssetStatus: 'stor',
@@ -1596,11 +1676,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 340,
-        quantity_mtbf: 611,
-        Date: '1993-9-2'
+        cost_purchase: 617,
+        quantity_mtbf: 909,
+        Date: '2000-4-22'
     },
     {
+        idData: '80',
         AssetType: 'eq',
         AssetStandard: 'A-HP-LASERJET2',
         AssetStatus: 'stor',
@@ -1616,11 +1697,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1159,
-        quantity_mtbf: 1028,
-        Date: '2006-1-28'
+        cost_purchase: 333,
+        quantity_mtbf: 68,
+        Date: '1994-2-13'
     },
     {
+        idData: '81',
         AssetType: 'eq',
         AssetStandard: 'A-HP-LASERJET2',
         AssetStatus: 'stor',
@@ -1636,11 +1718,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1288,
-        quantity_mtbf: 450,
-        Date: '2015-10-22'
+        cost_purchase: 1144,
+        quantity_mtbf: 539,
+        Date: '1998-10-24'
     },
     {
+        idData: '82',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'stor',
@@ -1656,11 +1739,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1197,
-        quantity_mtbf: 645,
-        Date: '1989-5-16'
+        cost_purchase: 274,
+        quantity_mtbf: 192,
+        Date: '1996-8-2'
     },
     {
+        idData: '83',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'stor',
@@ -1676,11 +1760,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 183,
-        quantity_mtbf: 772,
-        Date: '2006-3-31'
+        cost_purchase: 517,
+        quantity_mtbf: 535,
+        Date: '1976-5-27'
     },
     {
+        idData: '84',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'stor',
@@ -1696,11 +1781,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 581,
-        quantity_mtbf: 142,
-        Date: '2006-9-6'
+        cost_purchase: 1180,
+        quantity_mtbf: 248,
+        Date: '2004-7-30'
     },
     {
+        idData: '85',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'stor',
@@ -1716,11 +1802,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 42,
-        quantity_mtbf: 218,
-        Date: '1993-11-12'
+        cost_purchase: 1070,
+        quantity_mtbf: 1282,
+        Date: '2002-2-16'
     },
     {
+        idData: '86',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'stor',
@@ -1736,11 +1823,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 533,
-        quantity_mtbf: 907,
-        Date: '2013-8-10'
+        cost_purchase: 1214,
+        quantity_mtbf: 75,
+        Date: '2008-7-24'
     },
     {
+        idData: '87',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'stor',
@@ -1756,11 +1844,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 559,
-        quantity_mtbf: 943,
-        Date: '1985-12-14'
+        cost_purchase: 1187,
+        quantity_mtbf: 667,
+        Date: '1986-9-10'
     },
     {
+        idData: '88',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'stor',
@@ -1776,11 +1865,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 122,
-        quantity_mtbf: 1044,
-        Date: '2008-10-3'
+        cost_purchase: 70,
+        quantity_mtbf: 633,
+        Date: '1996-11-5'
     },
     {
+        idData: '89',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'stor',
@@ -1796,11 +1886,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1097,
-        quantity_mtbf: 690,
-        Date: '2007-5-18'
+        cost_purchase: 1131,
+        quantity_mtbf: 187,
+        Date: '1985-4-13'
     },
     {
+        idData: '90',
         AssetType: 'eq',
         AssetStandard: 'A-SUN-COMPUTER',
         AssetStatus: 'stor',
@@ -1816,11 +1907,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 286,
-        quantity_mtbf: 1089,
-        Date: '2003-8-18'
+        cost_purchase: 37,
+        quantity_mtbf: 328,
+        Date: '2006-2-26'
     },
     {
+        idData: '91',
         AssetType: 'eq',
         AssetStandard: 'FIRE-EXT.-10-DRY',
         AssetStatus: 'stor',
@@ -1836,11 +1928,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 844,
-        quantity_mtbf: 1007,
-        Date: '1987-3-15'
+        cost_purchase: 1180,
+        quantity_mtbf: 203,
+        Date: '1983-5-13'
     },
     {
+        idData: '92',
         AssetType: 'eq',
         AssetStandard: 'FIRE-EXT.-10-DRY',
         AssetStatus: 'stor',
@@ -1856,11 +1949,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 148,
-        quantity_mtbf: 838,
-        Date: '1980-12-12'
+        cost_purchase: 1041,
+        quantity_mtbf: 913,
+        Date: '1976-10-18'
     },
     {
+        idData: '93',
         AssetType: 'eq',
         AssetStandard: 'FIRE-EXT.-10-DRY',
         AssetStatus: 'stor',
@@ -1876,11 +1970,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 141,
-        quantity_mtbf: 344,
-        Date: '2003-9-6'
+        cost_purchase: 183,
+        quantity_mtbf: 353,
+        Date: '2012-4-5'
     },
     {
+        idData: '94',
         AssetType: 'eq',
         AssetStandard: 'FIRE-EXT.-10-DRY',
         AssetStatus: 'stor',
@@ -1896,11 +1991,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 342,
-        quantity_mtbf: 950,
-        Date: '2001-12-23'
+        cost_purchase: 730,
+        quantity_mtbf: 183,
+        Date: '2001-3-28'
     },
     {
+        idData: '95',
         AssetType: 'eq',
         AssetStandard: 'FIRE-EXT.-10-DRY',
         AssetStatus: 'stor',
@@ -1916,11 +2012,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 191,
-        quantity_mtbf: 282,
-        Date: '1992-4-25'
+        cost_purchase: 321,
+        quantity_mtbf: 1225,
+        Date: '1974-11-18'
     },
     {
+        idData: '96',
         AssetType: 'eq',
         AssetStandard: 'FIRE-EXT.-10-DRY',
         AssetStatus: 'stor',
@@ -1936,11 +2033,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 760,
-        quantity_mtbf: 316,
-        Date: '2015-9-26'
+        cost_purchase: 311,
+        quantity_mtbf: 77,
+        Date: '2002-5-11'
     },
     {
+        idData: '97',
         AssetType: 'eq',
         AssetStandard: 'FIRE-EXT.-10-DRY',
         AssetStatus: 'stor',
@@ -1956,11 +2054,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 589,
-        quantity_mtbf: 516,
-        Date: '1976-9-15'
+        cost_purchase: 571,
+        quantity_mtbf: 220,
+        Date: '1988-5-5'
     },
     {
+        idData: '98',
         AssetType: 'eq',
         AssetStandard: 'FIRE-EXT.-20-CO2',
         AssetStatus: 'stor',
@@ -1976,11 +2075,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 567,
-        quantity_mtbf: 287,
-        Date: '2004-4-13'
+        cost_purchase: 284,
+        quantity_mtbf: 594,
+        Date: '1976-9-2'
     },
     {
+        idData: '99',
         AssetType: 'eq',
         AssetStandard: 'FIRE-EXT.-20-CO2',
         AssetStatus: 'stor',
@@ -1996,11 +2096,75 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 574,
+        cost_purchase: 520,
+        quantity_mtbf: 1023,
+        Date: '1989-8-28'
+    },
+    {
+        idData: '100',
+        AssetType: 'eq',
+        AssetStandard: 'FIRE-EXT.-20-CO2',
+        AssetStatus: 'stor',
+        TitleDescription: '',
+        GeoRegionID: 'AMER',
+        CountryCode: 'USA',
+        StateCode: 'PA',
+        CityCode: 'PHILADELPHIA',
+        SiteCode: '',
+        BuildingCode: 'HQ',
+        FloorCode: 'WARE',
+        RoomCode: '',
+        BusinessUnit: '',
+        DivisionCode: '',
+        DepartmentCode: '',
+        cost_purchase: 1132,
+        quantity_mtbf: 451,
+        Date: '2009-6-29'
+    },
+    {
+        idData: '101',
+        AssetType: 'eq',
+        AssetStandard: 'FIRE-EXT.-20-CO2',
+        AssetStatus: 'stor',
+        TitleDescription: '',
+        GeoRegionID: 'AMER',
+        CountryCode: 'USA',
+        StateCode: 'PA',
+        CityCode: 'PHILADELPHIA',
+        SiteCode: '',
+        BuildingCode: 'HQ',
+        FloorCode: 'WARE',
+        RoomCode: '',
+        BusinessUnit: '',
+        DivisionCode: '',
+        DepartmentCode: '',
+        cost_purchase: 393,
+        quantity_mtbf: 448,
+        Date: '2000-5-6'
+    },
+    {
+        idData: '102',
+        AssetType: 'eq',
+        AssetStandard: 'FIRE-EXT.-20-CO2',
+        AssetStatus: 'stor',
+        TitleDescription: '',
+        GeoRegionID: 'AMER',
+        CountryCode: 'USA',
+        StateCode: 'PA',
+        CityCode: 'PHILADELPHIA',
+        SiteCode: '',
+        BuildingCode: 'HQ',
+        FloorCode: 'WARE',
+        RoomCode: '',
+        BusinessUnit: '',
+        DivisionCode: '',
+        DepartmentCode: '',
+        cost_purchase: 383,
         quantity_mtbf: 839,
-        Date: '1975-5-12'
+        Date: '1985-11-23'
     },
     {
+        idData: '103',
         AssetType: 'eq',
         AssetStandard: 'FIRE-EXT.-20-CO2',
         AssetStatus: 'stor',
@@ -2016,71 +2180,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 194,
-        quantity_mtbf: 1237,
-        Date: '1982-3-23'
+        cost_purchase: 526,
+        quantity_mtbf: 1234,
+        Date: '1983-6-30'
     },
     {
-        AssetType: 'eq',
-        AssetStandard: 'FIRE-EXT.-20-CO2',
-        AssetStatus: 'stor',
-        TitleDescription: '',
-        GeoRegionID: 'AMER',
-        CountryCode: 'USA',
-        StateCode: 'PA',
-        CityCode: 'PHILADELPHIA',
-        SiteCode: '',
-        BuildingCode: 'HQ',
-        FloorCode: 'WARE',
-        RoomCode: '',
-        BusinessUnit: '',
-        DivisionCode: '',
-        DepartmentCode: '',
-        cost_purchase: 1077,
-        quantity_mtbf: 274,
-        Date: '2014-7-2'
-    },
-    {
-        AssetType: 'eq',
-        AssetStandard: 'FIRE-EXT.-20-CO2',
-        AssetStatus: 'stor',
-        TitleDescription: '',
-        GeoRegionID: 'AMER',
-        CountryCode: 'USA',
-        StateCode: 'PA',
-        CityCode: 'PHILADELPHIA',
-        SiteCode: '',
-        BuildingCode: 'HQ',
-        FloorCode: 'WARE',
-        RoomCode: '',
-        BusinessUnit: '',
-        DivisionCode: '',
-        DepartmentCode: '',
-        cost_purchase: 498,
-        quantity_mtbf: 252,
-        Date: '1981-10-24'
-    },
-    {
-        AssetType: 'eq',
-        AssetStandard: 'FIRE-EXT.-20-CO2',
-        AssetStatus: 'stor',
-        TitleDescription: '',
-        GeoRegionID: 'AMER',
-        CountryCode: 'USA',
-        StateCode: 'PA',
-        CityCode: 'PHILADELPHIA',
-        SiteCode: '',
-        BuildingCode: 'HQ',
-        FloorCode: 'WARE',
-        RoomCode: '',
-        BusinessUnit: '',
-        DivisionCode: '',
-        DepartmentCode: '',
-        cost_purchase: 459,
-        quantity_mtbf: 743,
-        Date: '1991-11-15'
-    },
-    {
+        idData: '104',
         AssetType: 'eq',
         AssetStandard: 'TRANSFORMER',
         AssetStatus: 'in',
@@ -2096,11 +2201,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1010,
-        quantity_mtbf: 1169,
-        Date: '1980-12-22'
+        cost_purchase: 274,
+        quantity_mtbf: 618,
+        Date: '1984-5-2'
     },
     {
+        idData: '105',
         AssetType: 'eq',
         AssetStandard: 'TRANSFORMER',
         AssetStatus: 'in',
@@ -2116,11 +2222,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 341,
-        quantity_mtbf: 388,
-        Date: '1978-8-27'
+        cost_purchase: 1048,
+        quantity_mtbf: 931,
+        Date: '1998-9-21'
     },
     {
+        idData: '106',
         AssetType: 'eq',
         AssetStandard: 'TRANSFORMER',
         AssetStatus: 'in',
@@ -2136,11 +2243,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 456,
-        quantity_mtbf: 949,
-        Date: '1986-11-15'
+        cost_purchase: 455,
+        quantity_mtbf: 430,
+        Date: '2003-10-10'
     },
     {
+        idData: '107',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'in',
@@ -2156,11 +2264,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 325,
-        quantity_mtbf: 70,
-        Date: '2015-11-9'
+        cost_purchase: 872,
+        quantity_mtbf: 5,
+        Date: '1989-6-14'
     },
     {
+        idData: '108',
         AssetType: 'eq',
         AssetStandard: 'A-HP-LASERJET2',
         AssetStatus: 'in',
@@ -2176,11 +2285,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 184,
-        quantity_mtbf: 282,
-        Date: '1983-8-22'
+        cost_purchase: 188,
+        quantity_mtbf: 941,
+        Date: '1983-1-26'
     },
     {
+        idData: '109',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'in',
@@ -2196,11 +2306,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 302,
-        quantity_mtbf: 360,
-        Date: '1993-5-16'
+        cost_purchase: 798,
+        quantity_mtbf: 661,
+        Date: '1977-2-22'
     },
     {
+        idData: '110',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'in',
@@ -2216,11 +2327,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 505,
-        quantity_mtbf: 1138,
-        Date: '2002-12-13'
+        cost_purchase: 9,
+        quantity_mtbf: 164,
+        Date: '2013-5-22'
     },
     {
+        idData: '111',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'in',
@@ -2236,11 +2348,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 431,
-        quantity_mtbf: 930,
-        Date: '2009-11-20'
+        cost_purchase: 1104,
+        quantity_mtbf: 997,
+        Date: '2005-2-16'
     },
     {
+        idData: '112',
         AssetType: 'eq',
         AssetStandard: 'A-SUN-COMPUTER',
         AssetStatus: 'in',
@@ -2256,11 +2369,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 1250,
-        quantity_mtbf: 1059,
-        Date: '1998-4-2'
+        cost_purchase: 1227,
+        quantity_mtbf: 1144,
+        Date: '1975-1-3'
     },
     {
+        idData: '113',
         AssetType: 'eq',
         AssetStandard: 'A-SUN-COMPUTER',
         AssetStatus: 'in',
@@ -2276,11 +2390,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 758,
-        quantity_mtbf: 217,
-        Date: '2010-9-30'
+        cost_purchase: 972,
+        quantity_mtbf: 1137,
+        Date: '2015-1-20'
     },
     {
+        idData: '114',
         AssetType: 'eq',
         AssetStandard: 'A-SUN-COMPUTER',
         AssetStatus: 'in',
@@ -2296,11 +2411,12 @@ var data = [
         BusinessUnit: 'SERVICES',
         DivisionCode: 'SOFTWARE APP.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 318,
-        quantity_mtbf: 43,
-        Date: '2013-5-30'
+        cost_purchase: 804,
+        quantity_mtbf: 968,
+        Date: '1985-8-17'
     },
     {
+        idData: '115',
         AssetType: 'eq',
         AssetStandard: 'A-SUN-COMPUTER',
         AssetStatus: 'in',
@@ -2316,11 +2432,12 @@ var data = [
         BusinessUnit: 'SERVICES',
         DivisionCode: 'SOFTWARE APP.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 376,
-        quantity_mtbf: 1135,
-        Date: '1984-7-9'
+        cost_purchase: 383,
+        quantity_mtbf: 775,
+        Date: '2013-5-15'
     },
     {
+        idData: '116',
         AssetType: 'eq',
         AssetStandard: 'A-SUN-COMPUTER',
         AssetStatus: 'in',
@@ -2336,11 +2453,12 @@ var data = [
         BusinessUnit: 'SERVICES',
         DivisionCode: 'SOFTWARE APP.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 471,
-        quantity_mtbf: 259,
-        Date: '2006-7-6'
+        cost_purchase: 113,
+        quantity_mtbf: 108,
+        Date: '1991-7-16'
     },
     {
+        idData: '117',
         AssetType: 'eq',
         AssetStandard: 'A-SUN-COMPUTER',
         AssetStatus: 'in',
@@ -2356,11 +2474,12 @@ var data = [
         BusinessUnit: 'SERVICES',
         DivisionCode: 'SOFTWARE APP.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 497,
-        quantity_mtbf: 349,
-        Date: '1990-7-4'
+        cost_purchase: 355,
+        quantity_mtbf: 886,
+        Date: '2008-7-22'
     },
     {
+        idData: '118',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'in',
@@ -2376,11 +2495,12 @@ var data = [
         BusinessUnit: 'SERVICES',
         DivisionCode: 'SOFTWARE APP.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 13,
-        quantity_mtbf: 571,
-        Date: '1993-12-6'
+        cost_purchase: 1235,
+        quantity_mtbf: 732,
+        Date: '2001-10-3'
     },
     {
+        idData: '119',
         AssetType: 'eq',
         AssetStandard: 'A-IBM-PS2',
         AssetStatus: 'in',
@@ -2396,11 +2516,12 @@ var data = [
         BusinessUnit: 'SERVICES',
         DivisionCode: 'SOFTWARE APP.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 509,
-        quantity_mtbf: 1196,
-        Date: '1984-12-10'
+        cost_purchase: 1119,
+        quantity_mtbf: 203,
+        Date: '1987-6-27'
     },
     {
+        idData: '120',
         AssetType: 'eq',
         AssetStandard: 'T-2LINE-A',
         AssetStatus: 'in',
@@ -2416,11 +2537,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 379,
-        quantity_mtbf: 697,
-        Date: '1976-5-11'
+        cost_purchase: 387,
+        quantity_mtbf: 249,
+        Date: '1984-8-14'
     },
     {
+        idData: '121',
         AssetType: 'eq',
         AssetStandard: 'T-2LINE-A',
         AssetStatus: 'in',
@@ -2436,11 +2558,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 633,
-        quantity_mtbf: 472,
-        Date: '1975-9-2'
+        cost_purchase: 79,
+        quantity_mtbf: 113,
+        Date: '1985-1-24'
     },
     {
+        idData: '122',
         AssetType: 'eq',
         AssetStandard: 'T-2LINE-A',
         AssetStatus: 'in',
@@ -2456,11 +2579,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 609,
-        quantity_mtbf: 1103,
-        Date: '2010-11-26'
+        cost_purchase: 435,
+        quantity_mtbf: 689,
+        Date: '2006-2-24'
     },
     {
+        idData: '123',
         AssetType: 'eq',
         AssetStandard: 'T-2LINE-A',
         AssetStatus: 'in',
@@ -2476,11 +2600,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1126,
-        quantity_mtbf: 1111,
-        Date: '2010-1-2'
+        cost_purchase: 770,
+        quantity_mtbf: 1180,
+        Date: '1982-6-26'
     },
     {
+        idData: '124',
         AssetType: 'eq',
         AssetStandard: 'T-2LINE-A',
         AssetStatus: 'in',
@@ -2496,11 +2621,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1290,
-        quantity_mtbf: 519,
-        Date: '2010-10-31'
+        cost_purchase: 504,
+        quantity_mtbf: 567,
+        Date: '1990-11-25'
     },
     {
+        idData: '125',
         AssetType: 'eq',
         AssetStandard: 'T-2LINE-A',
         AssetStatus: 'in',
@@ -2516,11 +2642,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 333,
-        quantity_mtbf: 286,
-        Date: '1979-5-2'
+        cost_purchase: 32,
+        quantity_mtbf: 642,
+        Date: '2015-9-1'
     },
     {
+        idData: '126',
         AssetType: 'eq',
         AssetStandard: 'T-2LINE-A',
         AssetStatus: 'in',
@@ -2536,11 +2663,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1285,
-        quantity_mtbf: 214,
-        Date: '2005-8-9'
+        cost_purchase: 1096,
+        quantity_mtbf: 1159,
+        Date: '2008-7-2'
     },
     {
+        idData: '127',
         AssetType: 'eq',
         AssetStandard: 'T-2LINE-A',
         AssetStatus: 'in',
@@ -2556,11 +2684,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 335,
-        quantity_mtbf: 355,
-        Date: '1997-12-18'
+        cost_purchase: 1015,
+        quantity_mtbf: 968,
+        Date: '2004-6-3'
     },
     {
+        idData: '128',
         AssetType: 'eq',
         AssetStandard: 'T-2LINE-A',
         AssetStatus: 'in',
@@ -2576,11 +2705,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 807,
-        quantity_mtbf: 147,
-        Date: '1988-12-12'
+        cost_purchase: 647,
+        quantity_mtbf: 695,
+        Date: '2010-9-27'
     },
     {
+        idData: '129',
         AssetType: 'eq',
         AssetStandard: 'T-2LINE-A',
         AssetStatus: 'in',
@@ -2596,11 +2726,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 323,
-        quantity_mtbf: 738,
-        Date: '2008-8-21'
+        cost_purchase: 520,
+        quantity_mtbf: 538,
+        Date: '1984-8-9'
     },
     {
+        idData: '130',
         AssetType: 'eq',
         AssetStandard: 'T-2LINE-A',
         AssetStatus: 'in',
@@ -2616,11 +2747,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 794,
-        quantity_mtbf: 243,
-        Date: '1978-9-29'
+        cost_purchase: 1166,
+        quantity_mtbf: 689,
+        Date: '1987-12-15'
     },
     {
+        idData: '131',
         AssetType: 'eq',
         AssetStandard: 'T-2LINE-A',
         AssetStatus: 'in',
@@ -2636,11 +2768,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 425,
-        quantity_mtbf: 967,
-        Date: '1993-5-3'
+        cost_purchase: 431,
+        quantity_mtbf: 606,
+        Date: '2008-1-6'
     },
     {
+        idData: '132',
         AssetType: 'eq',
         AssetStandard: 'T-2LINE-A',
         AssetStatus: 'in',
@@ -2656,11 +2789,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 793,
-        quantity_mtbf: 506,
-        Date: '1979-8-3'
+        cost_purchase: 235,
+        quantity_mtbf: 273,
+        Date: '1991-12-14'
     },
     {
+        idData: '133',
         AssetType: 'eq',
         AssetStandard: 'T-2LINE-A',
         AssetStatus: 'in',
@@ -2676,11 +2810,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1217,
-        quantity_mtbf: 198,
-        Date: '1993-11-1'
+        cost_purchase: 819,
+        quantity_mtbf: 347,
+        Date: '1978-2-14'
     },
     {
+        idData: '134',
         AssetType: 'eq',
         AssetStandard: 'T-2LINE-A',
         AssetStatus: 'in',
@@ -2696,11 +2831,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 453,
-        quantity_mtbf: 1276,
-        Date: '1981-11-22'
+        cost_purchase: 76,
+        quantity_mtbf: 1286,
+        Date: '1984-9-18'
     },
     {
+        idData: '135',
         AssetType: 'eq',
         AssetStandard: 'T-2LINE-A',
         AssetStatus: 'in',
@@ -2716,11 +2852,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 58,
-        quantity_mtbf: 913,
-        Date: '2002-6-2'
+        cost_purchase: 69,
+        quantity_mtbf: 755,
+        Date: '2004-4-1'
     },
     {
+        idData: '136',
         AssetType: 'eq',
         AssetStandard: 'T-2LINE-A',
         AssetStatus: 'in',
@@ -2736,11 +2873,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1072,
-        quantity_mtbf: 405,
-        Date: '1999-5-31'
+        cost_purchase: 1122,
+        quantity_mtbf: 596,
+        Date: '1997-8-21'
     },
     {
+        idData: '137',
         AssetType: 'eq',
         AssetStandard: 'T-2LINE-A',
         AssetStatus: 'in',
@@ -2756,11 +2894,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1281,
-        quantity_mtbf: 1107,
-        Date: '1980-11-25'
+        cost_purchase: 275,
+        quantity_mtbf: 1059,
+        Date: '1987-8-10'
     },
     {
+        idData: '138',
         AssetType: 'eq',
         AssetStandard: 'T-2LINE-A',
         AssetStatus: 'in',
@@ -2776,11 +2915,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 505,
-        quantity_mtbf: 1258,
-        Date: '2014-11-5'
+        cost_purchase: 86,
+        quantity_mtbf: 991,
+        Date: '1984-3-20'
     },
     {
+        idData: '139',
         AssetType: 'eq',
         AssetStandard: 'T-2LINE-A',
         AssetStatus: 'in',
@@ -2796,11 +2936,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 322,
-        quantity_mtbf: 148,
-        Date: '2006-10-6'
+        cost_purchase: 563,
+        quantity_mtbf: 539,
+        Date: '2008-9-16'
     },
     {
+        idData: '140',
         AssetType: 'eq',
         AssetStandard: 'A-IBM-PS2',
         AssetStatus: 'in',
@@ -2816,11 +2957,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1233,
-        quantity_mtbf: 946,
-        Date: '1986-6-15'
+        cost_purchase: 374,
+        quantity_mtbf: 1092,
+        Date: '1991-8-1'
     },
     {
+        idData: '141',
         AssetType: 'eq',
         AssetStandard: 'A-HP-LASERJET2',
         AssetStatus: 'in',
@@ -2836,11 +2978,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 226,
-        quantity_mtbf: 1099,
-        Date: '1988-2-28'
+        cost_purchase: 634,
+        quantity_mtbf: 237,
+        Date: '2012-9-6'
     },
     {
+        idData: '142',
         AssetType: 'eq',
         AssetStandard: 'A-SUN-COMPUTER',
         AssetStatus: 'in',
@@ -2856,11 +2999,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1010,
-        quantity_mtbf: 91,
-        Date: '1978-12-23'
+        cost_purchase: 936,
+        quantity_mtbf: 1040,
+        Date: '1985-6-15'
     },
     {
+        idData: '143',
         AssetType: 'eq',
         AssetStandard: 'A-SUN-COMPUTER',
         AssetStatus: 'in',
@@ -2876,11 +3020,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1150,
-        quantity_mtbf: 257,
-        Date: '2010-10-17'
+        cost_purchase: 979,
+        quantity_mtbf: 254,
+        Date: '2003-6-7'
     },
     {
+        idData: '144',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'in',
@@ -2896,11 +3041,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1223,
-        quantity_mtbf: 143,
-        Date: '1990-3-24'
+        cost_purchase: 393,
+        quantity_mtbf: 686,
+        Date: '2014-1-18'
     },
     {
+        idData: '145',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'in',
@@ -2916,11 +3062,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 842,
-        quantity_mtbf: 1165,
-        Date: '2004-9-14'
+        cost_purchase: 239,
+        quantity_mtbf: 541,
+        Date: '1997-5-22'
     },
     {
+        idData: '146',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'in',
@@ -2936,11 +3083,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 248,
-        quantity_mtbf: 1070,
-        Date: '2000-12-26'
+        cost_purchase: 213,
+        quantity_mtbf: 581,
+        Date: '2012-10-21'
     },
     {
+        idData: '147',
         AssetType: 'eq',
         AssetStandard: 'A-IBM-PS2',
         AssetStatus: 'in',
@@ -2956,11 +3104,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 403,
-        quantity_mtbf: 136,
-        Date: '1976-10-27'
+        cost_purchase: 336,
+        quantity_mtbf: 998,
+        Date: '2005-12-6'
     },
     {
+        idData: '148',
         AssetType: 'eq',
         AssetStandard: 'A-HP-LASERJET2',
         AssetStatus: 'in',
@@ -2976,11 +3125,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 273,
-        quantity_mtbf: 966,
-        Date: '1990-6-30'
+        cost_purchase: 1118,
+        quantity_mtbf: 773,
+        Date: '1985-1-14'
     },
     {
+        idData: '149',
         AssetType: 'eq',
         AssetStandard: 'A-IBM-PS2',
         AssetStatus: 'in',
@@ -2996,11 +3146,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 978,
-        quantity_mtbf: 104,
-        Date: '1981-4-4'
+        cost_purchase: 1178,
+        quantity_mtbf: 162,
+        Date: '2000-5-6'
     },
     {
+        idData: '150',
         AssetType: 'eq',
         AssetStandard: 'A-HP-LASERJET2',
         AssetStatus: 'in',
@@ -3016,111 +3167,117 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1186,
-        quantity_mtbf: 928,
+        cost_purchase: 1169,
+        quantity_mtbf: 424,
+        Date: '2003-9-25'
+    },
+    {
+        idData: '151',
+        AssetType: 'eq',
+        AssetStandard: 'A-IBM-PS2',
+        AssetStatus: 'in',
+        TitleDescription: '',
+        GeoRegionID: 'AMER',
+        CountryCode: 'USA',
+        StateCode: 'PA',
+        CityCode: 'PHILADELPHIA',
+        SiteCode: '',
+        BuildingCode: 'HQ',
+        FloorCode: '19',
+        RoomCode: '109',
+        BusinessUnit: 'CORPORATE',
+        DivisionCode: 'EXECUTIVE',
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 1104,
+        quantity_mtbf: 518,
+        Date: '1998-7-16'
+    },
+    {
+        idData: '152',
+        AssetType: 'eq',
+        AssetStandard: 'A-HP-LASERJET2',
+        AssetStatus: 'in',
+        TitleDescription: '',
+        GeoRegionID: 'AMER',
+        CountryCode: 'USA',
+        StateCode: 'PA',
+        CityCode: 'PHILADELPHIA',
+        SiteCode: '',
+        BuildingCode: 'HQ',
+        FloorCode: '19',
+        RoomCode: '109',
+        BusinessUnit: 'CORPORATE',
+        DivisionCode: 'EXECUTIVE',
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 498,
+        quantity_mtbf: 577,
+        Date: '1994-7-15'
+    },
+    {
+        idData: '153',
+        AssetType: 'eq',
+        AssetStandard: 'A-STD-PC',
+        AssetStatus: 'in',
+        TitleDescription: '',
+        GeoRegionID: 'AMER',
+        CountryCode: 'USA',
+        StateCode: 'PA',
+        CityCode: 'PHILADELPHIA',
+        SiteCode: '',
+        BuildingCode: 'HQ',
+        FloorCode: '19',
+        RoomCode: '111',
+        BusinessUnit: 'CORPORATE',
+        DivisionCode: 'EXECUTIVE',
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 820,
+        quantity_mtbf: 501,
+        Date: '1997-12-16'
+    },
+    {
+        idData: '154',
+        AssetType: 'eq',
+        AssetStandard: 'A-HP-LASERJET2',
+        AssetStatus: 'in',
+        TitleDescription: '',
+        GeoRegionID: 'AMER',
+        CountryCode: 'USA',
+        StateCode: 'PA',
+        CityCode: 'PHILADELPHIA',
+        SiteCode: '',
+        BuildingCode: 'HQ',
+        FloorCode: '19',
+        RoomCode: '111',
+        BusinessUnit: 'CORPORATE',
+        DivisionCode: 'EXECUTIVE',
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 885,
+        quantity_mtbf: 1256,
+        Date: '1979-11-22'
+    },
+    {
+        idData: '155',
+        AssetType: 'eq',
+        AssetStandard: 'A-HP-LASERJET2',
+        AssetStatus: 'in',
+        TitleDescription: '',
+        GeoRegionID: 'AMER',
+        CountryCode: 'USA',
+        StateCode: 'PA',
+        CityCode: 'PHILADELPHIA',
+        SiteCode: '',
+        BuildingCode: 'HQ',
+        FloorCode: '19',
+        RoomCode: '113',
+        BusinessUnit: 'CORPORATE',
+        DivisionCode: 'EXECUTIVE',
+        DepartmentCode: 'MANAGEMENT',
+        cost_purchase: 883,
+        quantity_mtbf: 955,
         Date: '2008-7-8'
     },
     {
-        AssetType: 'eq',
-        AssetStandard: 'A-IBM-PS2',
-        AssetStatus: 'in',
-        TitleDescription: '',
-        GeoRegionID: 'AMER',
-        CountryCode: 'USA',
-        StateCode: 'PA',
-        CityCode: 'PHILADELPHIA',
-        SiteCode: '',
-        BuildingCode: 'HQ',
-        FloorCode: '19',
-        RoomCode: '109',
-        BusinessUnit: 'CORPORATE',
-        DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 658,
-        quantity_mtbf: 15,
-        Date: '1975-5-8'
-    },
-    {
-        AssetType: 'eq',
-        AssetStandard: 'A-HP-LASERJET2',
-        AssetStatus: 'in',
-        TitleDescription: '',
-        GeoRegionID: 'AMER',
-        CountryCode: 'USA',
-        StateCode: 'PA',
-        CityCode: 'PHILADELPHIA',
-        SiteCode: '',
-        BuildingCode: 'HQ',
-        FloorCode: '19',
-        RoomCode: '109',
-        BusinessUnit: 'CORPORATE',
-        DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 461,
-        quantity_mtbf: 719,
-        Date: '2009-3-10'
-    },
-    {
-        AssetType: 'eq',
-        AssetStandard: 'A-STD-PC',
-        AssetStatus: 'in',
-        TitleDescription: '',
-        GeoRegionID: 'AMER',
-        CountryCode: 'USA',
-        StateCode: 'PA',
-        CityCode: 'PHILADELPHIA',
-        SiteCode: '',
-        BuildingCode: 'HQ',
-        FloorCode: '19',
-        RoomCode: '111',
-        BusinessUnit: 'CORPORATE',
-        DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 513,
-        quantity_mtbf: 880,
-        Date: '1980-7-24'
-    },
-    {
-        AssetType: 'eq',
-        AssetStandard: 'A-HP-LASERJET2',
-        AssetStatus: 'in',
-        TitleDescription: '',
-        GeoRegionID: 'AMER',
-        CountryCode: 'USA',
-        StateCode: 'PA',
-        CityCode: 'PHILADELPHIA',
-        SiteCode: '',
-        BuildingCode: 'HQ',
-        FloorCode: '19',
-        RoomCode: '111',
-        BusinessUnit: 'CORPORATE',
-        DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 233,
-        quantity_mtbf: 527,
-        Date: '1991-8-21'
-    },
-    {
-        AssetType: 'eq',
-        AssetStandard: 'A-HP-LASERJET2',
-        AssetStatus: 'in',
-        TitleDescription: '',
-        GeoRegionID: 'AMER',
-        CountryCode: 'USA',
-        StateCode: 'PA',
-        CityCode: 'PHILADELPHIA',
-        SiteCode: '',
-        BuildingCode: 'HQ',
-        FloorCode: '19',
-        RoomCode: '113',
-        BusinessUnit: 'CORPORATE',
-        DivisionCode: 'EXECUTIVE',
-        DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1149,
-        quantity_mtbf: 848,
-        Date: '1979-11-4'
-    },
-    {
+        idData: '156',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'in',
@@ -3136,11 +3293,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1125,
-        quantity_mtbf: 176,
-        Date: '1995-1-19'
+        cost_purchase: 132,
+        quantity_mtbf: 1280,
+        Date: '1997-9-4'
     },
     {
+        idData: '157',
         AssetType: 'eq',
         AssetStandard: 'A-IBM-PS2',
         AssetStatus: 'in',
@@ -3156,11 +3314,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 805,
-        quantity_mtbf: 1147,
-        Date: '2007-7-13'
+        cost_purchase: 165,
+        quantity_mtbf: 75,
+        Date: '2011-11-28'
     },
     {
+        idData: '158',
         AssetType: 'eq',
         AssetStandard: 'A-HP-LASERJET2',
         AssetStatus: 'in',
@@ -3176,11 +3335,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 17,
-        quantity_mtbf: 625,
-        Date: '2002-6-7'
+        cost_purchase: 55,
+        quantity_mtbf: 194,
+        Date: '2000-1-9'
     },
     {
+        idData: '159',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'in',
@@ -3196,11 +3356,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1256,
-        quantity_mtbf: 703,
-        Date: '2008-4-6'
+        cost_purchase: 969,
+        quantity_mtbf: 494,
+        Date: '1975-3-27'
     },
     {
+        idData: '160',
         AssetType: 'eq',
         AssetStandard: 'A-IBM-PS2',
         AssetStatus: 'in',
@@ -3216,11 +3377,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 656,
-        quantity_mtbf: 960,
-        Date: '1998-12-5'
+        cost_purchase: 594,
+        quantity_mtbf: 566,
+        Date: '1999-1-28'
     },
     {
+        idData: '161',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'in',
@@ -3236,11 +3398,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 274,
-        quantity_mtbf: 310,
-        Date: '1976-6-14'
+        cost_purchase: 1254,
+        quantity_mtbf: 690,
+        Date: '2012-7-5'
     },
     {
+        idData: '162',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'in',
@@ -3256,11 +3419,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 434,
-        quantity_mtbf: 193,
-        Date: '1979-5-19'
+        cost_purchase: 1047,
+        quantity_mtbf: 828,
+        Date: '1987-3-17'
     },
     {
+        idData: '163',
         AssetType: 'eq',
         AssetStandard: 'A-SUN-COMPUTER',
         AssetStatus: 'in',
@@ -3276,11 +3440,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 666,
-        quantity_mtbf: 3,
-        Date: '1991-9-4'
+        cost_purchase: 542,
+        quantity_mtbf: 541,
+        Date: '2013-1-18'
     },
     {
+        idData: '164',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'in',
@@ -3296,11 +3461,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 2,
-        quantity_mtbf: 1145,
-        Date: '1977-12-21'
+        cost_purchase: 260,
+        quantity_mtbf: 576,
+        Date: '2005-10-30'
     },
     {
+        idData: '165',
         AssetType: 'eq',
         AssetStandard: 'A-SUN-COMPUTER',
         AssetStatus: 'in',
@@ -3316,11 +3482,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
         DepartmentCode: 'PLANNING',
-        cost_purchase: 835,
-        quantity_mtbf: 839,
-        Date: '2003-8-31'
+        cost_purchase: 1240,
+        quantity_mtbf: 612,
+        Date: '2002-8-17'
     },
     {
+        idData: '166',
         AssetType: 'eq',
         AssetStandard: 'AIR-HANDLER-30HP',
         AssetStatus: 'in',
@@ -3336,11 +3503,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
         DepartmentCode: 'REGIONAL',
-        cost_purchase: 280,
-        quantity_mtbf: 218,
-        Date: '2002-4-7'
+        cost_purchase: 1113,
+        quantity_mtbf: 401,
+        Date: '1986-7-31'
     },
     {
+        idData: '167',
         AssetType: 'eq',
         AssetStandard: 'CONDENSER',
         AssetStatus: 'in',
@@ -3356,11 +3524,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
         DepartmentCode: 'REGIONAL',
-        cost_purchase: 262,
-        quantity_mtbf: 305,
-        Date: '2013-8-5'
+        cost_purchase: 670,
+        quantity_mtbf: 1250,
+        Date: '1978-12-16'
     },
     {
+        idData: '168',
         AssetType: 'eq',
         AssetStandard: 'GENERATOR',
         AssetStatus: 'in',
@@ -3376,11 +3545,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
         DepartmentCode: 'REGIONAL',
-        cost_purchase: 289,
-        quantity_mtbf: 211,
-        Date: '1985-8-20'
+        cost_purchase: 1287,
+        quantity_mtbf: 117,
+        Date: '1984-2-22'
     },
     {
+        idData: '169',
         AssetType: 'eq',
         AssetStandard: 'PROCESS-AIR-COMP',
         AssetStatus: 'in',
@@ -3396,11 +3566,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
         DepartmentCode: 'REGIONAL',
-        cost_purchase: 638,
-        quantity_mtbf: 291,
-        Date: '1978-6-17'
+        cost_purchase: 1039,
+        quantity_mtbf: 359,
+        Date: '1982-6-30'
     },
     {
+        idData: '170',
         AssetType: 'eq',
         AssetStandard: 'AIR-HANDLER-30HP',
         AssetStatus: 'in',
@@ -3416,11 +3587,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
         DepartmentCode: 'REGIONAL',
-        cost_purchase: 878,
-        quantity_mtbf: 270,
-        Date: '1984-2-27'
+        cost_purchase: 221,
+        quantity_mtbf: 478,
+        Date: '1997-4-27'
     },
     {
+        idData: '171',
         AssetType: 'eq',
         AssetStandard: 'AIR-HANDLER-30HP',
         AssetStatus: 'in',
@@ -3436,11 +3608,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
         DepartmentCode: 'REGIONAL',
-        cost_purchase: 24,
-        quantity_mtbf: 697,
-        Date: '2005-10-7'
+        cost_purchase: 669,
+        quantity_mtbf: 436,
+        Date: '1994-6-9'
     },
     {
+        idData: '172',
         AssetType: 'eq',
         AssetStandard: 'AIR-HANDLER-30HP',
         AssetStatus: 'in',
@@ -3456,11 +3629,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
         DepartmentCode: 'REGIONAL',
-        cost_purchase: 293,
-        quantity_mtbf: 1294,
-        Date: '1985-4-25'
+        cost_purchase: 1102,
+        quantity_mtbf: 583,
+        Date: '1975-5-10'
     },
     {
+        idData: '173',
         AssetType: 'eq',
         AssetStandard: 'AIR-HANDLER-30HP',
         AssetStatus: 'in',
@@ -3476,11 +3650,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
         DepartmentCode: 'REGIONAL',
-        cost_purchase: 40,
-        quantity_mtbf: 72,
-        Date: '1978-1-31'
+        cost_purchase: 410,
+        quantity_mtbf: 233,
+        Date: '2003-7-28'
     },
     {
+        idData: '174',
         AssetType: 'eq',
         AssetStandard: 'CHILLED-WATER-PU',
         AssetStatus: 'in',
@@ -3496,11 +3671,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
         DepartmentCode: 'REGIONAL',
-        cost_purchase: 266,
-        quantity_mtbf: 556,
-        Date: '2001-10-13'
+        cost_purchase: 417,
+        quantity_mtbf: 261,
+        Date: '2007-5-20'
     },
     {
+        idData: '175',
         AssetType: 'eq',
         AssetStandard: 'HOT-WATER-PUMP',
         AssetStatus: 'in',
@@ -3516,11 +3692,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
         DepartmentCode: 'REGIONAL',
-        cost_purchase: 120,
-        quantity_mtbf: 947,
-        Date: '2013-8-16'
+        cost_purchase: 943,
+        quantity_mtbf: 925,
+        Date: '1984-11-12'
     },
     {
+        idData: '176',
         AssetType: 'eq',
         AssetStandard: 'TRANSFORMER',
         AssetStatus: 'in',
@@ -3536,11 +3713,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
         DepartmentCode: 'REGIONAL',
-        cost_purchase: 1009,
-        quantity_mtbf: 276,
-        Date: '1991-10-31'
+        cost_purchase: 1103,
+        quantity_mtbf: 684,
+        Date: '1990-5-31'
     },
     {
+        idData: '177',
         AssetType: 'eq',
         AssetStandard: 'EXHAUST-FAN',
         AssetStatus: 'in',
@@ -3556,11 +3734,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
         DepartmentCode: 'REGIONAL',
-        cost_purchase: 747,
-        quantity_mtbf: 226,
-        Date: '2010-10-26'
+        cost_purchase: 868,
+        quantity_mtbf: 604,
+        Date: '1997-11-14'
     },
     {
+        idData: '178',
         AssetType: 'eq',
         AssetStandard: 'FAN-ASSEMBLY',
         AssetStatus: 'in',
@@ -3576,11 +3755,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
         DepartmentCode: 'REGIONAL',
-        cost_purchase: 655,
-        quantity_mtbf: 349,
-        Date: '1981-3-14'
+        cost_purchase: 469,
+        quantity_mtbf: 415,
+        Date: '1976-3-5'
     },
     {
+        idData: '179',
         AssetType: 'eq',
         AssetStandard: 'FIRE-EXT.-20-CO2',
         AssetStatus: 'in',
@@ -3596,11 +3776,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
         DepartmentCode: 'REGIONAL',
-        cost_purchase: 881,
-        quantity_mtbf: 269,
-        Date: '2010-5-25'
+        cost_purchase: 770,
+        quantity_mtbf: 969,
+        Date: '2001-12-3'
     },
     {
+        idData: '180',
         AssetType: 'eq',
         AssetStandard: 'FIRE-EXT.-20-CO2',
         AssetStatus: 'in',
@@ -3616,11 +3797,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
         DepartmentCode: 'REGIONAL',
-        cost_purchase: 54,
-        quantity_mtbf: 511,
-        Date: '2007-5-8'
+        cost_purchase: 36,
+        quantity_mtbf: 279,
+        Date: '1979-6-6'
     },
     {
+        idData: '181',
         AssetType: 'eq',
         AssetStandard: 'FIRE-EXT.-20-CO2',
         AssetStatus: 'in',
@@ -3636,11 +3818,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
         DepartmentCode: 'REGIONAL',
-        cost_purchase: 879,
-        quantity_mtbf: 388,
-        Date: '2013-7-14'
+        cost_purchase: 241,
+        quantity_mtbf: 309,
+        Date: '1990-4-10'
     },
     {
+        idData: '182',
         AssetType: 'eq',
         AssetStandard: 'MOTOR-FAN',
         AssetStatus: 'in',
@@ -3656,11 +3839,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
         DepartmentCode: 'REGIONAL',
-        cost_purchase: 992,
-        quantity_mtbf: 311,
-        Date: '1976-5-5'
+        cost_purchase: 16,
+        quantity_mtbf: 272,
+        Date: '1980-1-29'
     },
     {
+        idData: '183',
         AssetType: 'eq',
         AssetStandard: 'SMOKE-DETECTOR',
         AssetStatus: 'in',
@@ -3676,11 +3860,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
         DepartmentCode: 'REGIONAL',
-        cost_purchase: 568,
-        quantity_mtbf: 907,
-        Date: '1988-4-14'
+        cost_purchase: 1142,
+        quantity_mtbf: 1030,
+        Date: '2007-7-22'
     },
     {
+        idData: '184',
         AssetType: 'eq',
         AssetStandard: 'SMOKE-DETECTOR',
         AssetStatus: 'in',
@@ -3696,11 +3881,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
         DepartmentCode: 'REGIONAL',
-        cost_purchase: 1214,
-        quantity_mtbf: 500,
-        Date: '1989-10-5'
+        cost_purchase: 610,
+        quantity_mtbf: 214,
+        Date: '2005-4-15'
     },
     {
+        idData: '185',
         AssetType: 'eq',
         AssetStandard: 'SUPPLY-FAN',
         AssetStatus: 'in',
@@ -3716,11 +3902,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
         DepartmentCode: 'REGIONAL',
-        cost_purchase: 859,
-        quantity_mtbf: 1105,
-        Date: '2015-2-13'
+        cost_purchase: 88,
+        quantity_mtbf: 1238,
+        Date: '2004-1-18'
     },
     {
+        idData: '186',
         AssetType: 'eq',
         AssetStandard: 'BMS',
         AssetStatus: 'in',
@@ -3736,11 +3923,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 1287,
-        quantity_mtbf: 966,
-        Date: '1995-9-4'
+        cost_purchase: 454,
+        quantity_mtbf: 611,
+        Date: '2011-4-6'
     },
     {
+        idData: '187',
         AssetType: 'eq',
         AssetStandard: 'GWP',
         AssetStatus: 'in',
@@ -3756,11 +3944,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 1125,
-        quantity_mtbf: 386,
-        Date: '1990-5-13'
+        cost_purchase: 273,
+        quantity_mtbf: 116,
+        Date: '2001-2-19'
     },
     {
+        idData: '188',
         AssetType: 'eq',
         AssetStandard: 'AHU',
         AssetStatus: 'in',
@@ -3776,11 +3965,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 937,
-        quantity_mtbf: 877,
-        Date: '1983-7-14'
+        cost_purchase: 1197,
+        quantity_mtbf: 818,
+        Date: '2015-8-17'
     },
     {
+        idData: '189',
         AssetType: 'eq',
         AssetStandard: 'AHU',
         AssetStatus: 'in',
@@ -3796,11 +3986,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 18,
-        quantity_mtbf: 440,
-        Date: '1974-11-9'
+        cost_purchase: 887,
+        quantity_mtbf: 465,
+        Date: '1982-10-22'
     },
     {
+        idData: '190',
         AssetType: 'eq',
         AssetStandard: 'AHU',
         AssetStatus: 'in',
@@ -3816,11 +4007,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 153,
-        quantity_mtbf: 594,
-        Date: '2003-7-18'
+        cost_purchase: 419,
+        quantity_mtbf: 309,
+        Date: '1977-8-13'
     },
     {
+        idData: '191',
         AssetType: 'eq',
         AssetStandard: 'AHU',
         AssetStatus: 'in',
@@ -3836,11 +4028,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 1036,
-        quantity_mtbf: 746,
-        Date: '2000-7-5'
+        cost_purchase: 125,
+        quantity_mtbf: 1298,
+        Date: '2014-2-24'
     },
     {
+        idData: '192',
         AssetType: 'eq',
         AssetStandard: 'AHU',
         AssetStatus: 'rep',
@@ -3856,11 +4049,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 1026,
-        quantity_mtbf: 1187,
-        Date: '1991-1-4'
+        cost_purchase: 932,
+        quantity_mtbf: 316,
+        Date: '2014-5-5'
     },
     {
+        idData: '193',
         AssetType: 'eq',
         AssetStandard: 'AHU',
         AssetStatus: 'in',
@@ -3876,11 +4070,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 1129,
-        quantity_mtbf: 5,
-        Date: '2007-9-30'
+        cost_purchase: 808,
+        quantity_mtbf: 429,
+        Date: '1989-11-25'
     },
     {
+        idData: '194',
         AssetType: 'eq',
         AssetStandard: 'AHU',
         AssetStatus: 'in',
@@ -3896,11 +4091,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 770,
-        quantity_mtbf: 37,
-        Date: '1985-3-29'
+        cost_purchase: 833,
+        quantity_mtbf: 67,
+        Date: '2011-12-13'
     },
     {
+        idData: '195',
         AssetType: 'eq',
         AssetStandard: 'AHU',
         AssetStatus: 'in',
@@ -3916,11 +4112,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 949,
-        quantity_mtbf: 1239,
-        Date: '1986-12-18'
+        cost_purchase: 782,
+        quantity_mtbf: 872,
+        Date: '1996-1-30'
     },
     {
+        idData: '196',
         AssetType: 'eq',
         AssetStandard: 'AHU',
         AssetStatus: 'out',
@@ -3936,11 +4133,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 630,
-        quantity_mtbf: 369,
-        Date: '1999-5-11'
+        cost_purchase: 647,
+        quantity_mtbf: 70,
+        Date: '1998-8-11'
     },
     {
+        idData: '197',
         AssetType: 'eq',
         AssetStandard: 'BMS',
         AssetStatus: 'in',
@@ -3956,11 +4154,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 238,
-        quantity_mtbf: 367,
-        Date: '1979-7-19'
+        cost_purchase: 324,
+        quantity_mtbf: 1242,
+        Date: '2011-1-27'
     },
     {
+        idData: '198',
         AssetType: 'eq',
         AssetStandard: 'GWP',
         AssetStatus: 'in',
@@ -3976,11 +4175,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 691,
-        quantity_mtbf: 936,
-        Date: '1984-8-30'
+        cost_purchase: 237,
+        quantity_mtbf: 360,
+        Date: '1994-12-3'
     },
     {
+        idData: '199',
         AssetType: 'eq',
         AssetStandard: 'AHU',
         AssetStatus: 'in',
@@ -3996,11 +4196,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 1004,
-        quantity_mtbf: 1282,
-        Date: '1979-2-8'
+        cost_purchase: 421,
+        quantity_mtbf: 831,
+        Date: '2008-3-3'
     },
     {
+        idData: '200',
         AssetType: 'eq',
         AssetStandard: 'AHU',
         AssetStatus: 'in',
@@ -4016,11 +4217,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 726,
-        quantity_mtbf: 432,
-        Date: '1991-7-21'
+        cost_purchase: 741,
+        quantity_mtbf: 679,
+        Date: '2009-4-6'
     },
     {
+        idData: '201',
         AssetType: 'eq',
         AssetStandard: 'AHU',
         AssetStatus: 'in',
@@ -4036,11 +4238,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 158,
-        quantity_mtbf: 1065,
-        Date: '1999-11-17'
+        cost_purchase: 922,
+        quantity_mtbf: 203,
+        Date: '1999-7-8'
     },
     {
+        idData: '202',
         AssetType: 'eq',
         AssetStandard: 'AHU',
         AssetStatus: 'rep',
@@ -4056,11 +4259,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 997,
-        quantity_mtbf: 314,
-        Date: '1977-11-11'
+        cost_purchase: 174,
+        quantity_mtbf: 1005,
+        Date: '2008-2-4'
     },
     {
+        idData: '203',
         AssetType: 'eq',
         AssetStandard: 'AHU',
         AssetStatus: 'rep',
@@ -4076,11 +4280,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 960,
-        quantity_mtbf: 44,
-        Date: '1996-8-17'
+        cost_purchase: 471,
+        quantity_mtbf: 493,
+        Date: '1992-9-16'
     },
     {
+        idData: '204',
         AssetType: 'eq',
         AssetStandard: 'AHU',
         AssetStatus: 'in',
@@ -4096,11 +4301,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 451,
-        quantity_mtbf: 362,
-        Date: '2000-10-11'
+        cost_purchase: 411,
+        quantity_mtbf: 753,
+        Date: '1993-4-4'
     },
     {
+        idData: '205',
         AssetType: 'eq',
         AssetStandard: 'AHU',
         AssetStatus: 'in',
@@ -4116,11 +4322,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 589,
-        quantity_mtbf: 1078,
-        Date: '1980-5-29'
+        cost_purchase: 706,
+        quantity_mtbf: 950,
+        Date: '1994-1-12'
     },
     {
+        idData: '206',
         AssetType: 'eq',
         AssetStandard: 'AHU',
         AssetStatus: 'in',
@@ -4136,11 +4343,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 331,
-        quantity_mtbf: 441,
-        Date: '2009-9-5'
+        cost_purchase: 827,
+        quantity_mtbf: 306,
+        Date: '2006-3-7'
     },
     {
+        idData: '207',
         AssetType: 'eq',
         AssetStandard: 'AHU',
         AssetStatus: 'out',
@@ -4156,11 +4364,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 117,
-        quantity_mtbf: 760,
-        Date: '1980-8-10'
+        cost_purchase: 551,
+        quantity_mtbf: 1026,
+        Date: '1975-2-7'
     },
     {
+        idData: '208',
         AssetType: 'eq',
         AssetStandard: 'BMS',
         AssetStatus: 'in',
@@ -4176,11 +4385,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 774,
-        quantity_mtbf: 133,
-        Date: '2004-1-13'
+        cost_purchase: 155,
+        quantity_mtbf: 243,
+        Date: '2000-12-2'
     },
     {
+        idData: '209',
         AssetType: 'eq',
         AssetStandard: 'GWP',
         AssetStatus: 'in',
@@ -4196,11 +4406,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 662,
-        quantity_mtbf: 1104,
-        Date: '2013-3-8'
+        cost_purchase: 676,
+        quantity_mtbf: 999,
+        Date: '1975-1-11'
     },
     {
+        idData: '210',
         AssetType: 'eq',
         AssetStandard: 'AHU',
         AssetStatus: 'rep',
@@ -4216,11 +4427,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 481,
-        quantity_mtbf: 564,
-        Date: '2002-12-4'
+        cost_purchase: 763,
+        quantity_mtbf: 714,
+        Date: '1975-1-16'
     },
     {
+        idData: '211',
         AssetType: 'eq',
         AssetStandard: 'AHU',
         AssetStatus: 'in',
@@ -4236,11 +4448,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 137,
-        quantity_mtbf: 1178,
-        Date: '1988-11-25'
+        cost_purchase: 198,
+        quantity_mtbf: 544,
+        Date: '2008-10-8'
     },
     {
+        idData: '212',
         AssetType: 'eq',
         AssetStandard: 'AHU',
         AssetStatus: 'out',
@@ -4256,11 +4469,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 850,
-        quantity_mtbf: 919,
-        Date: '1998-6-3'
+        cost_purchase: 732,
+        quantity_mtbf: 515,
+        Date: '1990-10-9'
     },
     {
+        idData: '213',
         AssetType: 'eq',
         AssetStandard: 'AHU',
         AssetStatus: 'rep',
@@ -4276,11 +4490,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 475,
-        quantity_mtbf: 918,
-        Date: '1995-2-5'
+        cost_purchase: 592,
+        quantity_mtbf: 384,
+        Date: '2010-7-3'
     },
     {
+        idData: '214',
         AssetType: 'eq',
         AssetStandard: 'AHU',
         AssetStatus: 'rep',
@@ -4296,11 +4511,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 728,
-        quantity_mtbf: 758,
-        Date: '2000-9-12'
+        cost_purchase: 288,
+        quantity_mtbf: 331,
+        Date: '1996-9-18'
     },
     {
+        idData: '215',
         AssetType: 'eq',
         AssetStandard: 'AHU',
         AssetStatus: 'out',
@@ -4316,11 +4532,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 995,
-        quantity_mtbf: 1,
-        Date: '2001-10-25'
+        cost_purchase: 1178,
+        quantity_mtbf: 837,
+        Date: '1997-8-16'
     },
     {
+        idData: '216',
         AssetType: 'eq',
         AssetStandard: 'AHU',
         AssetStatus: 'in',
@@ -4336,11 +4553,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 1172,
-        quantity_mtbf: 35,
-        Date: '1976-7-20'
+        cost_purchase: 398,
+        quantity_mtbf: 57,
+        Date: '2014-7-14'
     },
     {
+        idData: '217',
         AssetType: 'eq',
         AssetStandard: 'AHU',
         AssetStatus: 'in',
@@ -4356,11 +4574,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 1014,
-        quantity_mtbf: 1020,
-        Date: '2008-9-29'
+        cost_purchase: 1023,
+        quantity_mtbf: 1039,
+        Date: '2002-9-7'
     },
     {
+        idData: '218',
         AssetType: 'eq',
         AssetStandard: 'AHU',
         AssetStatus: 'out',
@@ -4376,11 +4595,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 437,
-        quantity_mtbf: 1271,
-        Date: '1979-8-27'
+        cost_purchase: 687,
+        quantity_mtbf: 1221,
+        Date: '2011-1-4'
     },
     {
+        idData: '219',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -4396,11 +4616,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1049,
-        quantity_mtbf: 712,
-        Date: '2013-1-19'
+        cost_purchase: 1125,
+        quantity_mtbf: 1227,
+        Date: '1994-5-30'
     },
     {
+        idData: '220',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -4416,11 +4637,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 228,
-        quantity_mtbf: 1086,
-        Date: '2007-9-11'
+        cost_purchase: 1145,
+        quantity_mtbf: 316,
+        Date: '2003-5-11'
     },
     {
+        idData: '221',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -4436,11 +4658,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 854,
-        quantity_mtbf: 409,
-        Date: '2000-8-7'
+        cost_purchase: 18,
+        quantity_mtbf: 80,
+        Date: '2003-6-28'
     },
     {
+        idData: '222',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -4456,11 +4679,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 747,
-        quantity_mtbf: 1171,
-        Date: '2014-9-26'
+        cost_purchase: 660,
+        quantity_mtbf: 1131,
+        Date: '1995-2-21'
     },
     {
+        idData: '223',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -4476,11 +4700,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 909,
-        quantity_mtbf: 190,
-        Date: '1993-2-9'
+        cost_purchase: 46,
+        quantity_mtbf: 342,
+        Date: '2015-10-23'
     },
     {
+        idData: '224',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -4496,11 +4721,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 253,
-        quantity_mtbf: 777,
-        Date: '2008-7-22'
+        cost_purchase: 819,
+        quantity_mtbf: 597,
+        Date: '1981-5-18'
     },
     {
+        idData: '225',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -4516,11 +4742,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 892,
-        quantity_mtbf: 558,
-        Date: '1975-8-25'
+        cost_purchase: 1088,
+        quantity_mtbf: 1294,
+        Date: '1978-4-26'
     },
     {
+        idData: '226',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -4536,11 +4763,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 275,
-        quantity_mtbf: 1199,
-        Date: '1992-6-10'
+        cost_purchase: 983,
+        quantity_mtbf: 721,
+        Date: '1985-4-17'
     },
     {
+        idData: '227',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -4556,11 +4784,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 802,
-        quantity_mtbf: 163,
-        Date: '1987-12-7'
+        cost_purchase: 68,
+        quantity_mtbf: 28,
+        Date: '2008-10-17'
     },
     {
+        idData: '228',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -4576,11 +4805,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 295,
-        quantity_mtbf: 279,
-        Date: '2013-2-27'
+        cost_purchase: 482,
+        quantity_mtbf: 378,
+        Date: '1999-7-8'
     },
     {
+        idData: '229',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -4596,11 +4826,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 215,
-        quantity_mtbf: 78,
-        Date: '1987-3-27'
+        cost_purchase: 771,
+        quantity_mtbf: 958,
+        Date: '1998-11-2'
     },
     {
+        idData: '230',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -4616,11 +4847,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1138,
-        quantity_mtbf: 42,
-        Date: '1987-12-4'
+        cost_purchase: 414,
+        quantity_mtbf: 87,
+        Date: '2007-3-14'
     },
     {
+        idData: '231',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -4636,11 +4868,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 615,
-        quantity_mtbf: 992,
-        Date: '1990-4-4'
+        cost_purchase: 205,
+        quantity_mtbf: 81,
+        Date: '1995-2-13'
     },
     {
+        idData: '232',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -4656,11 +4889,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 666,
-        quantity_mtbf: 588,
-        Date: '1997-11-4'
+        cost_purchase: 874,
+        quantity_mtbf: 1168,
+        Date: '2010-6-2'
     },
     {
+        idData: '233',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -4676,11 +4910,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1205,
-        quantity_mtbf: 297,
-        Date: '2002-7-2'
+        cost_purchase: 553,
+        quantity_mtbf: 771,
+        Date: '2000-7-6'
     },
     {
+        idData: '234',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -4696,11 +4931,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 727,
-        quantity_mtbf: 396,
-        Date: '1981-1-15'
+        cost_purchase: 582,
+        quantity_mtbf: 811,
+        Date: '1983-12-5'
     },
     {
+        idData: '235',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -4716,11 +4952,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 324,
-        quantity_mtbf: 803,
-        Date: '2015-11-5'
+        cost_purchase: 339,
+        quantity_mtbf: 233,
+        Date: '1975-11-27'
     },
     {
+        idData: '236',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -4736,11 +4973,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 384,
-        quantity_mtbf: 1249,
-        Date: '1978-12-6'
+        cost_purchase: 417,
+        quantity_mtbf: 749,
+        Date: '1981-9-1'
     },
     {
+        idData: '237',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -4756,11 +4994,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 877,
-        quantity_mtbf: 695,
-        Date: '2002-2-26'
+        cost_purchase: 1154,
+        quantity_mtbf: 448,
+        Date: '2002-9-8'
     },
     {
+        idData: '238',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -4776,11 +5015,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1010,
-        quantity_mtbf: 1028,
-        Date: '2001-9-7'
+        cost_purchase: 696,
+        quantity_mtbf: 118,
+        Date: '1995-7-26'
     },
     {
+        idData: '239',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -4796,11 +5036,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 431,
-        quantity_mtbf: 979,
-        Date: '1976-9-25'
+        cost_purchase: 1183,
+        quantity_mtbf: 900,
+        Date: '1996-4-18'
     },
     {
+        idData: '240',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -4816,11 +5057,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 11,
-        quantity_mtbf: 286,
-        Date: '1995-2-5'
+        cost_purchase: 470,
+        quantity_mtbf: 250,
+        Date: '1980-12-28'
     },
     {
+        idData: '241',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -4836,11 +5078,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 665,
-        quantity_mtbf: 1250,
-        Date: '1993-11-24'
+        cost_purchase: 865,
+        quantity_mtbf: 990,
+        Date: '1988-5-19'
     },
     {
+        idData: '242',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -4856,11 +5099,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1165,
-        quantity_mtbf: 437,
-        Date: '1987-8-7'
+        cost_purchase: 543,
+        quantity_mtbf: 1183,
+        Date: '1979-11-11'
     },
     {
+        idData: '243',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -4876,11 +5120,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1026,
-        quantity_mtbf: 1272,
-        Date: '1998-4-17'
+        cost_purchase: 1154,
+        quantity_mtbf: 976,
+        Date: '1994-3-26'
     },
     {
+        idData: '244',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -4896,11 +5141,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 533,
-        quantity_mtbf: 851,
-        Date: '1979-4-14'
+        cost_purchase: 1288,
+        quantity_mtbf: 996,
+        Date: '1987-4-11'
     },
     {
+        idData: '245',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -4916,11 +5162,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 725,
-        quantity_mtbf: 158,
-        Date: '1994-10-14'
+        cost_purchase: 558,
+        quantity_mtbf: 309,
+        Date: '1992-4-17'
     },
     {
+        idData: '246',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -4936,11 +5183,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1056,
-        quantity_mtbf: 971,
-        Date: '2012-6-23'
+        cost_purchase: 450,
+        quantity_mtbf: 167,
+        Date: '2004-5-9'
     },
     {
+        idData: '247',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -4956,11 +5204,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 874,
-        quantity_mtbf: 186,
-        Date: '1981-8-25'
+        cost_purchase: 813,
+        quantity_mtbf: 1058,
+        Date: '1989-10-27'
     },
     {
+        idData: '248',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -4976,11 +5225,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 471,
-        quantity_mtbf: 1161,
-        Date: '2000-6-8'
+        cost_purchase: 111,
+        quantity_mtbf: 1237,
+        Date: '1985-12-5'
     },
     {
+        idData: '249',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -4996,11 +5246,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1043,
-        quantity_mtbf: 160,
-        Date: '2005-4-11'
+        cost_purchase: 505,
+        quantity_mtbf: 792,
+        Date: '1999-10-21'
     },
     {
+        idData: '250',
         AssetType: 'eq',
         AssetStandard: 'A-SUN-COMPUTER',
         AssetStatus: 'miss',
@@ -5016,11 +5267,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1265,
-        quantity_mtbf: 612,
-        Date: '1978-2-8'
+        cost_purchase: 579,
+        quantity_mtbf: 574,
+        Date: '2002-5-14'
     },
     {
+        idData: '251',
         AssetType: 'eq',
         AssetStandard: 'A-XEROX-COPIER-1',
         AssetStatus: 'miss',
@@ -5036,11 +5288,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 762,
-        quantity_mtbf: 1156,
-        Date: '1993-1-22'
+        cost_purchase: 1059,
+        quantity_mtbf: 8,
+        Date: '1979-12-11'
     },
     {
+        idData: '252',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5056,11 +5309,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 454,
-        quantity_mtbf: 90,
-        Date: '2008-9-29'
+        cost_purchase: 258,
+        quantity_mtbf: 855,
+        Date: '1982-7-14'
     },
     {
+        idData: '253',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5076,11 +5330,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 174,
-        quantity_mtbf: 325,
-        Date: '1983-3-8'
+        cost_purchase: 878,
+        quantity_mtbf: 235,
+        Date: '2000-11-5'
     },
     {
+        idData: '254',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5096,11 +5351,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 323,
-        quantity_mtbf: 107,
-        Date: '1981-7-13'
+        cost_purchase: 866,
+        quantity_mtbf: 919,
+        Date: '2013-11-16'
     },
     {
+        idData: '255',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5116,11 +5372,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 452,
-        quantity_mtbf: 567,
-        Date: '1989-9-25'
+        cost_purchase: 631,
+        quantity_mtbf: 364,
+        Date: '1984-11-12'
     },
     {
+        idData: '256',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5136,11 +5393,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1148,
-        quantity_mtbf: 536,
-        Date: '1996-7-8'
+        cost_purchase: 494,
+        quantity_mtbf: 1171,
+        Date: '1990-3-15'
     },
     {
+        idData: '257',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5156,11 +5414,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 68,
-        quantity_mtbf: 852,
-        Date: '1979-2-6'
+        cost_purchase: 489,
+        quantity_mtbf: 164,
+        Date: '1988-1-15'
     },
     {
+        idData: '258',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5176,11 +5435,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 677,
-        quantity_mtbf: 664,
-        Date: '2005-8-12'
+        cost_purchase: 522,
+        quantity_mtbf: 515,
+        Date: '2014-3-11'
     },
     {
+        idData: '259',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5196,11 +5456,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1127,
-        quantity_mtbf: 229,
-        Date: '1993-5-19'
+        cost_purchase: 837,
+        quantity_mtbf: 991,
+        Date: '2000-3-22'
     },
     {
+        idData: '260',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5216,11 +5477,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 862,
-        quantity_mtbf: 1233,
-        Date: '1997-12-12'
+        cost_purchase: 15,
+        quantity_mtbf: 876,
+        Date: '1996-3-23'
     },
     {
+        idData: '261',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5236,11 +5498,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1063,
-        quantity_mtbf: 1175,
-        Date: '2002-2-20'
+        cost_purchase: 783,
+        quantity_mtbf: 885,
+        Date: '1983-3-14'
     },
     {
+        idData: '262',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5256,11 +5519,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 970,
-        quantity_mtbf: 166,
-        Date: '1993-10-21'
+        cost_purchase: 254,
+        quantity_mtbf: 31,
+        Date: '1984-8-8'
     },
     {
+        idData: '263',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5276,11 +5540,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1046,
-        quantity_mtbf: 713,
-        Date: '2014-6-13'
+        cost_purchase: 1082,
+        quantity_mtbf: 250,
+        Date: '1982-4-9'
     },
     {
+        idData: '264',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5296,11 +5561,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 376,
-        quantity_mtbf: 691,
-        Date: '1983-7-16'
+        cost_purchase: 1235,
+        quantity_mtbf: 97,
+        Date: '1997-2-18'
     },
     {
+        idData: '265',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5316,11 +5582,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 224,
-        quantity_mtbf: 1148,
-        Date: '1989-1-12'
+        cost_purchase: 338,
+        quantity_mtbf: 758,
+        Date: '2004-2-26'
     },
     {
+        idData: '266',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5336,11 +5603,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1285,
-        quantity_mtbf: 271,
-        Date: '2015-5-28'
+        cost_purchase: 912,
+        quantity_mtbf: 392,
+        Date: '1975-10-28'
     },
     {
+        idData: '267',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5356,11 +5624,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1013,
-        quantity_mtbf: 698,
-        Date: '1997-8-29'
+        cost_purchase: 321,
+        quantity_mtbf: 1196,
+        Date: '1980-2-12'
     },
     {
+        idData: '268',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5376,11 +5645,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 823,
-        quantity_mtbf: 808,
-        Date: '2015-5-10'
+        cost_purchase: 491,
+        quantity_mtbf: 857,
+        Date: '1992-7-10'
     },
     {
+        idData: '269',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5396,11 +5666,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 797,
-        quantity_mtbf: 1075,
-        Date: '1998-11-23'
+        cost_purchase: 732,
+        quantity_mtbf: 987,
+        Date: '1990-6-30'
     },
     {
+        idData: '270',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5416,11 +5687,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 264,
-        quantity_mtbf: 701,
-        Date: '1989-7-3'
+        cost_purchase: 306,
+        quantity_mtbf: 919,
+        Date: '2006-6-21'
     },
     {
+        idData: '271',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5436,11 +5708,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 950,
-        quantity_mtbf: 426,
-        Date: '2003-10-28'
+        cost_purchase: 110,
+        quantity_mtbf: 369,
+        Date: '1978-5-18'
     },
     {
+        idData: '272',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5456,11 +5729,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 400,
-        quantity_mtbf: 159,
-        Date: '1995-3-26'
+        cost_purchase: 366,
+        quantity_mtbf: 195,
+        Date: '2015-10-12'
     },
     {
+        idData: '273',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5476,11 +5750,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 309,
-        quantity_mtbf: 521,
-        Date: '1993-11-22'
+        cost_purchase: 1114,
+        quantity_mtbf: 578,
+        Date: '1991-1-14'
     },
     {
+        idData: '274',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5496,11 +5771,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 903,
-        quantity_mtbf: 22,
-        Date: '1975-12-23'
+        cost_purchase: 978,
+        quantity_mtbf: 650,
+        Date: '2013-11-24'
     },
     {
+        idData: '275',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5516,11 +5792,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 809,
-        quantity_mtbf: 1107,
-        Date: '2001-6-9'
+        cost_purchase: 537,
+        quantity_mtbf: 896,
+        Date: '1982-9-12'
     },
     {
+        idData: '276',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5536,11 +5813,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 35,
+        cost_purchase: 400,
         quantity_mtbf: 814,
-        Date: '1984-11-13'
+        Date: '1983-7-28'
     },
     {
+        idData: '277',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5556,11 +5834,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 598,
-        quantity_mtbf: 33,
-        Date: '2002-3-26'
+        cost_purchase: 777,
+        quantity_mtbf: 1003,
+        Date: '2005-6-8'
     },
     {
+        idData: '278',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5576,11 +5855,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 849,
-        quantity_mtbf: 887,
-        Date: '1992-2-22'
+        cost_purchase: 1090,
+        quantity_mtbf: 175,
+        Date: '2000-1-7'
     },
     {
+        idData: '279',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5596,11 +5876,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 187,
-        quantity_mtbf: 289,
-        Date: '2014-10-9'
+        cost_purchase: 1054,
+        quantity_mtbf: 228,
+        Date: '1988-1-11'
     },
     {
+        idData: '280',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5616,11 +5897,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 343,
-        quantity_mtbf: 760,
-        Date: '1999-5-13'
+        cost_purchase: 1072,
+        quantity_mtbf: 628,
+        Date: '1996-1-25'
     },
     {
+        idData: '281',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5636,11 +5918,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1249,
-        quantity_mtbf: 931,
-        Date: '2005-4-13'
+        cost_purchase: 299,
+        quantity_mtbf: 770,
+        Date: '1986-2-28'
     },
     {
+        idData: '282',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5656,11 +5939,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1183,
-        quantity_mtbf: 604,
-        Date: '2004-5-3'
+        cost_purchase: 582,
+        quantity_mtbf: 1172,
+        Date: '1979-5-11'
     },
     {
+        idData: '283',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5676,11 +5960,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 582,
-        quantity_mtbf: 877,
-        Date: '1995-6-14'
+        cost_purchase: 751,
+        quantity_mtbf: 103,
+        Date: '1998-9-24'
     },
     {
+        idData: '284',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5696,11 +5981,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 822,
-        quantity_mtbf: 670,
-        Date: '2009-4-4'
+        cost_purchase: 851,
+        quantity_mtbf: 593,
+        Date: '1978-8-3'
     },
     {
+        idData: '285',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5716,11 +6002,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 30,
-        quantity_mtbf: 1168,
-        Date: '2011-1-8'
+        cost_purchase: 973,
+        quantity_mtbf: 964,
+        Date: '1978-9-9'
     },
     {
+        idData: '286',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'miss',
@@ -5736,11 +6023,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1167,
-        quantity_mtbf: 52,
-        Date: '1991-4-21'
+        cost_purchase: 1082,
+        quantity_mtbf: 1150,
+        Date: '1990-10-9'
     },
     {
+        idData: '287',
         AssetType: 'eq',
         AssetStandard: 'A-XEROX-COPIER-1',
         AssetStatus: 'miss',
@@ -5756,11 +6044,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1265,
-        quantity_mtbf: 161,
-        Date: '1986-12-4'
+        cost_purchase: 686,
+        quantity_mtbf: 395,
+        Date: '1986-3-16'
     },
     {
+        idData: '288',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'miss',
@@ -5776,11 +6065,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 283,
-        quantity_mtbf: 637,
-        Date: '2000-3-12'
+        cost_purchase: 766,
+        quantity_mtbf: 414,
+        Date: '1978-11-6'
     },
     {
+        idData: '289',
         AssetType: 'eq',
         AssetStandard: 'A-HP-LASERJET2',
         AssetStatus: 'miss',
@@ -5796,11 +6086,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 776,
-        quantity_mtbf: 812,
-        Date: '2014-7-13'
+        cost_purchase: 520,
+        quantity_mtbf: 59,
+        Date: '1992-10-30'
     },
     {
+        idData: '290',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'miss',
@@ -5816,11 +6107,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1157,
-        quantity_mtbf: 525,
-        Date: '2005-6-1'
+        cost_purchase: 216,
+        quantity_mtbf: 504,
+        Date: '2001-1-24'
     },
     {
+        idData: '291',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'miss',
@@ -5836,11 +6128,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1110,
-        quantity_mtbf: 354,
-        Date: '1999-5-26'
+        cost_purchase: 572,
+        quantity_mtbf: 586,
+        Date: '2006-6-29'
     },
     {
+        idData: '292',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'miss',
@@ -5856,11 +6149,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1182,
-        quantity_mtbf: 417,
-        Date: '1978-11-1'
+        cost_purchase: 860,
+        quantity_mtbf: 742,
+        Date: '1999-9-29'
     },
     {
+        idData: '293',
         AssetType: 'eq',
         AssetStandard: 'A-SUN-COMPUTER',
         AssetStatus: 'miss',
@@ -5876,11 +6170,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1114,
-        quantity_mtbf: 471,
-        Date: '1986-1-22'
+        cost_purchase: 359,
+        quantity_mtbf: 99,
+        Date: '1975-12-2'
     },
     {
+        idData: '294',
         AssetType: 'eq',
         AssetStandard: 'A-SUN-COMPUTER',
         AssetStatus: 'miss',
@@ -5896,11 +6191,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 973,
-        quantity_mtbf: 981,
-        Date: '2008-6-3'
+        cost_purchase: 915,
+        quantity_mtbf: 617,
+        Date: '2001-11-28'
     },
     {
+        idData: '295',
         AssetType: 'eq',
         AssetStandard: 'A-IBM-PS2',
         AssetStatus: 'miss',
@@ -5916,11 +6212,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1148,
-        quantity_mtbf: 1236,
-        Date: '2010-4-9'
+        cost_purchase: 106,
+        quantity_mtbf: 316,
+        Date: '2003-8-9'
     },
     {
+        idData: '296',
         AssetType: 'eq',
         AssetStandard: 'A-HP-LASERJET2',
         AssetStatus: 'miss',
@@ -5936,11 +6233,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 622,
-        quantity_mtbf: 508,
-        Date: '2003-5-5'
+        cost_purchase: 1103,
+        quantity_mtbf: 505,
+        Date: '2001-8-6'
     },
     {
+        idData: '297',
         AssetType: 'eq',
         AssetStandard: 'A-SUN-COMPUTER',
         AssetStatus: 'miss',
@@ -5956,11 +6254,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 733,
-        quantity_mtbf: 803,
-        Date: '2010-12-7'
+        cost_purchase: 1214,
+        quantity_mtbf: 977,
+        Date: '1981-6-18'
     },
     {
+        idData: '298',
         AssetType: 'eq',
         AssetStandard: 'A-SUN-COMPUTER',
         AssetStatus: 'miss',
@@ -5976,11 +6275,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 751,
-        quantity_mtbf: 19,
-        Date: '2015-8-4'
+        cost_purchase: 621,
+        quantity_mtbf: 640,
+        Date: '1996-8-8'
     },
     {
+        idData: '299',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'miss',
@@ -5996,11 +6296,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 542,
-        quantity_mtbf: 1095,
-        Date: '1988-10-1'
+        cost_purchase: 1087,
+        quantity_mtbf: 493,
+        Date: '1978-5-7'
     },
     {
+        idData: '300',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'miss',
@@ -6016,11 +6317,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 876,
-        quantity_mtbf: 731,
-        Date: '2001-8-13'
+        cost_purchase: 743,
+        quantity_mtbf: 1012,
+        Date: '1990-12-29'
     },
     {
+        idData: '301',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'miss',
@@ -6036,11 +6338,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 999,
-        quantity_mtbf: 233,
-        Date: '2001-8-15'
+        cost_purchase: 1027,
+        quantity_mtbf: 386,
+        Date: '2012-7-9'
     },
     {
+        idData: '302',
         AssetType: 'eq',
         AssetStandard: 'A-SUN-COMPUTER',
         AssetStatus: 'miss',
@@ -6056,11 +6359,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1292,
-        quantity_mtbf: 941,
-        Date: '2015-5-28'
+        cost_purchase: 976,
+        quantity_mtbf: 872,
+        Date: '1975-12-2'
     },
     {
+        idData: '303',
         AssetType: 'eq',
         AssetStandard: 'A-SUN-COMPUTER',
         AssetStatus: 'miss',
@@ -6076,11 +6380,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1239,
-        quantity_mtbf: 1282,
-        Date: '2000-1-22'
+        cost_purchase: 1114,
+        quantity_mtbf: 550,
+        Date: '1981-1-18'
     },
     {
+        idData: '304',
         AssetType: 'eq',
         AssetStandard: 'A-SUN-COMPUTER',
         AssetStatus: 'miss',
@@ -6096,11 +6401,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 848,
-        quantity_mtbf: 437,
-        Date: '1975-10-28'
+        cost_purchase: 129,
+        quantity_mtbf: 382,
+        Date: '2002-4-21'
     },
     {
+        idData: '305',
         AssetType: 'eq',
         AssetStandard: 'A-SUN-COMPUTER',
         AssetStatus: 'miss',
@@ -6116,11 +6422,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1049,
-        quantity_mtbf: 212,
-        Date: '1985-8-23'
+        cost_purchase: 237,
+        quantity_mtbf: 677,
+        Date: '1985-4-22'
     },
     {
+        idData: '306',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'miss',
@@ -6136,11 +6443,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 111,
-        quantity_mtbf: 674,
-        Date: '1993-4-18'
+        cost_purchase: 955,
+        quantity_mtbf: 995,
+        Date: '2012-9-25'
     },
     {
+        idData: '307',
         AssetType: 'eq',
         AssetStandard: 'A-IBM-PS2',
         AssetStatus: 'miss',
@@ -6156,11 +6464,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 431,
-        quantity_mtbf: 1118,
-        Date: '1975-11-18'
+        cost_purchase: 13,
+        quantity_mtbf: 568,
+        Date: '2004-8-26'
     },
     {
+        idData: '308',
         AssetType: 'eq',
         AssetStandard: 'A-IBM-PS2',
         AssetStatus: 'miss',
@@ -6176,11 +6485,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 950,
-        quantity_mtbf: 896,
-        Date: '1990-7-29'
+        cost_purchase: 57,
+        quantity_mtbf: 1012,
+        Date: '1984-7-18'
     },
     {
+        idData: '309',
         AssetType: 'eq',
         AssetStandard: 'A-HP-LASERJET2',
         AssetStatus: 'miss',
@@ -6196,51 +6506,54 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1049,
-        quantity_mtbf: 767,
-        Date: '2009-10-24'
-    },
-    {
-        AssetType: 'eq',
-        AssetStandard: 'A-IBM-PS2',
-        AssetStatus: 'miss',
-        TitleDescription: '',
-        GeoRegionID: 'AMER',
-        CountryCode: 'USA',
-        StateCode: 'MA',
-        CityCode: 'BOSTON',
-        SiteCode: '',
-        BuildingCode: 'SRL',
-        FloorCode: '01',
-        RoomCode: '124',
-        BusinessUnit: '',
-        DivisionCode: '',
-        DepartmentCode: '',
-        cost_purchase: 789,
-        quantity_mtbf: 111,
-        Date: '1997-7-4'
-    },
-    {
-        AssetType: 'eq',
-        AssetStandard: 'A-HP-LASERJET2',
-        AssetStatus: 'miss',
-        TitleDescription: '',
-        GeoRegionID: 'AMER',
-        CountryCode: 'USA',
-        StateCode: 'MA',
-        CityCode: 'BOSTON',
-        SiteCode: '',
-        BuildingCode: 'SRL',
-        FloorCode: '01',
-        RoomCode: '124',
-        BusinessUnit: '',
-        DivisionCode: '',
-        DepartmentCode: '',
-        cost_purchase: 1204,
+        cost_purchase: 1210,
         quantity_mtbf: 1140,
-        Date: '2011-12-6'
+        Date: '1991-1-19'
     },
     {
+        idData: '310',
+        AssetType: 'eq',
+        AssetStandard: 'A-IBM-PS2',
+        AssetStatus: 'miss',
+        TitleDescription: '',
+        GeoRegionID: 'AMER',
+        CountryCode: 'USA',
+        StateCode: 'MA',
+        CityCode: 'BOSTON',
+        SiteCode: '',
+        BuildingCode: 'SRL',
+        FloorCode: '01',
+        RoomCode: '124',
+        BusinessUnit: '',
+        DivisionCode: '',
+        DepartmentCode: '',
+        cost_purchase: 814,
+        quantity_mtbf: 653,
+        Date: '1986-5-1'
+    },
+    {
+        idData: '311',
+        AssetType: 'eq',
+        AssetStandard: 'A-HP-LASERJET2',
+        AssetStatus: 'miss',
+        TitleDescription: '',
+        GeoRegionID: 'AMER',
+        CountryCode: 'USA',
+        StateCode: 'MA',
+        CityCode: 'BOSTON',
+        SiteCode: '',
+        BuildingCode: 'SRL',
+        FloorCode: '01',
+        RoomCode: '124',
+        BusinessUnit: '',
+        DivisionCode: '',
+        DepartmentCode: '',
+        cost_purchase: 487,
+        quantity_mtbf: 234,
+        Date: '1982-4-29'
+    },
+    {
+        idData: '312',
         AssetType: 'eq',
         AssetStandard: 'A-IBM-PS2',
         AssetStatus: 'miss',
@@ -6256,11 +6569,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 821,
-        quantity_mtbf: 93,
-        Date: '1992-6-14'
+        cost_purchase: 487,
+        quantity_mtbf: 657,
+        Date: '1985-6-25'
     },
     {
+        idData: '313',
         AssetType: 'eq',
         AssetStandard: 'A-HP-LASERJET2',
         AssetStatus: 'miss',
@@ -6276,11 +6590,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 546,
-        quantity_mtbf: 659,
-        Date: '1995-2-25'
+        cost_purchase: 1161,
+        quantity_mtbf: 577,
+        Date: '2014-4-13'
     },
     {
+        idData: '314',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'miss',
@@ -6293,74 +6608,78 @@ var data = [
         BuildingCode: 'SRL',
         FloorCode: '01',
         RoomCode: '127',
-        BusinessUnit: '',
-        DivisionCode: '',
-        DepartmentCode: '',
-        cost_purchase: 619,
-        quantity_mtbf: 462,
-        Date: '2012-10-22'
-    },
-    {
-        AssetType: 'eq',
-        AssetStandard: 'A-HP-LASERJET2',
-        AssetStatus: 'miss',
-        TitleDescription: '',
-        GeoRegionID: 'AMER',
-        CountryCode: 'USA',
-        StateCode: 'MA',
-        CityCode: 'BOSTON',
-        SiteCode: '',
-        BuildingCode: 'SRL',
-        FloorCode: '01',
-        RoomCode: '127',
-        BusinessUnit: '',
-        DivisionCode: '',
-        DepartmentCode: '',
-        cost_purchase: 709,
-        quantity_mtbf: 264,
-        Date: '2012-5-19'
-    },
-    {
-        AssetType: 'eq',
-        AssetStandard: 'A-HP-LASERJET2',
-        AssetStatus: 'miss',
-        TitleDescription: '',
-        GeoRegionID: 'AMER',
-        CountryCode: 'USA',
-        StateCode: 'MA',
-        CityCode: 'BOSTON',
-        SiteCode: '',
-        BuildingCode: 'SRL',
-        FloorCode: '01',
-        RoomCode: '128',
-        BusinessUnit: '',
-        DivisionCode: '',
-        DepartmentCode: '',
-        cost_purchase: 95,
-        quantity_mtbf: 980,
-        Date: '1984-5-30'
-    },
-    {
-        AssetType: 'eq',
-        AssetStandard: 'A-STD-PC',
-        AssetStatus: 'miss',
-        TitleDescription: '',
-        GeoRegionID: 'AMER',
-        CountryCode: 'USA',
-        StateCode: 'MA',
-        CityCode: 'BOSTON',
-        SiteCode: '',
-        BuildingCode: 'SRL',
-        FloorCode: '01',
-        RoomCode: '128',
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
         cost_purchase: 1235,
-        quantity_mtbf: 426,
-        Date: '1987-1-3'
+        quantity_mtbf: 1008,
+        Date: '2014-9-27'
     },
     {
+        idData: '315',
+        AssetType: 'eq',
+        AssetStandard: 'A-HP-LASERJET2',
+        AssetStatus: 'miss',
+        TitleDescription: '',
+        GeoRegionID: 'AMER',
+        CountryCode: 'USA',
+        StateCode: 'MA',
+        CityCode: 'BOSTON',
+        SiteCode: '',
+        BuildingCode: 'SRL',
+        FloorCode: '01',
+        RoomCode: '127',
+        BusinessUnit: '',
+        DivisionCode: '',
+        DepartmentCode: '',
+        cost_purchase: 1074,
+        quantity_mtbf: 127,
+        Date: '1975-9-10'
+    },
+    {
+        idData: '316',
+        AssetType: 'eq',
+        AssetStandard: 'A-HP-LASERJET2',
+        AssetStatus: 'miss',
+        TitleDescription: '',
+        GeoRegionID: 'AMER',
+        CountryCode: 'USA',
+        StateCode: 'MA',
+        CityCode: 'BOSTON',
+        SiteCode: '',
+        BuildingCode: 'SRL',
+        FloorCode: '01',
+        RoomCode: '128',
+        BusinessUnit: '',
+        DivisionCode: '',
+        DepartmentCode: '',
+        cost_purchase: 627,
+        quantity_mtbf: 27,
+        Date: '1982-12-6'
+    },
+    {
+        idData: '317',
+        AssetType: 'eq',
+        AssetStandard: 'A-STD-PC',
+        AssetStatus: 'miss',
+        TitleDescription: '',
+        GeoRegionID: 'AMER',
+        CountryCode: 'USA',
+        StateCode: 'MA',
+        CityCode: 'BOSTON',
+        SiteCode: '',
+        BuildingCode: 'SRL',
+        FloorCode: '01',
+        RoomCode: '128',
+        BusinessUnit: '',
+        DivisionCode: '',
+        DepartmentCode: '',
+        cost_purchase: 616,
+        quantity_mtbf: 503,
+        Date: '1988-10-26'
+    },
+    {
+        idData: '318',
         AssetType: 'eq',
         AssetStandard: 'A-IBM-PS2',
         AssetStatus: 'miss',
@@ -6376,11 +6695,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 826,
-        quantity_mtbf: 877,
-        Date: '1997-8-22'
+        cost_purchase: 777,
+        quantity_mtbf: 187,
+        Date: '1994-10-9'
     },
     {
+        idData: '319',
         AssetType: 'eq',
         AssetStandard: 'A-HP-LASERJET2',
         AssetStatus: 'miss',
@@ -6396,11 +6716,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 361,
-        quantity_mtbf: 241,
-        Date: '1987-1-6'
+        cost_purchase: 910,
+        quantity_mtbf: 1287,
+        Date: '1982-1-11'
     },
     {
+        idData: '320',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'miss',
@@ -6416,11 +6737,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 477,
-        quantity_mtbf: 1131,
-        Date: '2008-6-11'
+        cost_purchase: 927,
+        quantity_mtbf: 1108,
+        Date: '1985-9-1'
     },
     {
+        idData: '321',
         AssetType: 'eq',
         AssetStandard: 'A-IBM-PS2',
         AssetStatus: 'miss',
@@ -6436,11 +6758,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 923,
-        quantity_mtbf: 537,
-        Date: '1983-8-31'
+        cost_purchase: 1269,
+        quantity_mtbf: 533,
+        Date: '2004-1-3'
     },
     {
+        idData: '322',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'miss',
@@ -6456,11 +6779,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1231,
-        quantity_mtbf: 937,
-        Date: '2010-2-5'
+        cost_purchase: 380,
+        quantity_mtbf: 729,
+        Date: '2015-6-14'
     },
     {
+        idData: '323',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'miss',
@@ -6476,11 +6800,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1125,
-        quantity_mtbf: 1247,
-        Date: '2005-3-18'
+        cost_purchase: 661,
+        quantity_mtbf: 108,
+        Date: '2004-11-17'
     },
     {
+        idData: '324',
         AssetType: 'eq',
         AssetStandard: 'A-SUN-COMPUTER',
         AssetStatus: 'miss',
@@ -6496,11 +6821,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 77,
-        quantity_mtbf: 914,
-        Date: '1992-2-1'
+        cost_purchase: 492,
+        quantity_mtbf: 647,
+        Date: '2007-11-15'
     },
     {
+        idData: '325',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'miss',
@@ -6516,11 +6842,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1153,
-        quantity_mtbf: 1155,
-        Date: '2001-10-27'
+        cost_purchase: 921,
+        quantity_mtbf: 908,
+        Date: '2004-5-30'
     },
     {
+        idData: '326',
         AssetType: 'eq',
         AssetStandard: 'A-HP-LASERJET2',
         AssetStatus: 'miss',
@@ -6536,11 +6863,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 270,
-        quantity_mtbf: 1075,
-        Date: '1988-6-10'
+        cost_purchase: 730,
+        quantity_mtbf: 1247,
+        Date: '2004-3-14'
     },
     {
+        idData: '327',
         AssetType: 'eq',
         AssetStandard: 'A-HP-LASERJET2',
         AssetStatus: 'miss',
@@ -6556,11 +6884,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 307,
-        quantity_mtbf: 766,
-        Date: '2013-2-20'
+        cost_purchase: 978,
+        quantity_mtbf: 91,
+        Date: '1993-3-20'
     },
     {
+        idData: '328',
         AssetType: 'eq',
         AssetStandard: 'A-HP-LASERJET2',
         AssetStatus: 'miss',
@@ -6576,11 +6905,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 827,
-        quantity_mtbf: 1158,
-        Date: '1977-5-7'
+        cost_purchase: 525,
+        quantity_mtbf: 793,
+        Date: '2002-7-12'
     },
     {
+        idData: '329',
         AssetType: 'eq',
         AssetStandard: 'A-HP-LASERJET2',
         AssetStatus: 'miss',
@@ -6596,11 +6926,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 711,
-        quantity_mtbf: 1199,
-        Date: '2012-12-4'
+        cost_purchase: 1198,
+        quantity_mtbf: 319,
+        Date: '2002-2-11'
     },
     {
+        idData: '330',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'miss',
@@ -6616,11 +6947,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 396,
-        quantity_mtbf: 580,
-        Date: '2002-5-3'
+        cost_purchase: 1011,
+        quantity_mtbf: 537,
+        Date: '2008-9-7'
     },
     {
+        idData: '331',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'miss',
@@ -6636,11 +6968,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 664,
-        quantity_mtbf: 387,
-        Date: '2006-2-4'
+        cost_purchase: 615,
+        quantity_mtbf: 421,
+        Date: '1982-10-9'
     },
     {
+        idData: '332',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'miss',
@@ -6656,11 +6989,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1027,
-        quantity_mtbf: 785,
-        Date: '2004-8-7'
+        cost_purchase: 608,
+        quantity_mtbf: 111,
+        Date: '2001-7-20'
     },
     {
+        idData: '333',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'miss',
@@ -6676,11 +7010,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 117,
-        quantity_mtbf: 431,
-        Date: '1976-2-6'
+        cost_purchase: 50,
+        quantity_mtbf: 928,
+        Date: '1986-3-18'
     },
     {
+        idData: '334',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'miss',
@@ -6696,11 +7031,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 739,
-        quantity_mtbf: 6,
-        Date: '2013-7-1'
+        cost_purchase: 380,
+        quantity_mtbf: 809,
+        Date: '1994-12-3'
     },
     {
+        idData: '335',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'miss',
@@ -6716,11 +7052,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 292,
-        quantity_mtbf: 73,
-        Date: '2003-7-5'
+        cost_purchase: 1091,
+        quantity_mtbf: 1169,
+        Date: '1984-3-24'
     },
     {
+        idData: '336',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'miss',
@@ -6736,11 +7073,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 535,
-        quantity_mtbf: 808,
-        Date: '2005-1-25'
+        cost_purchase: 103,
+        quantity_mtbf: 1222,
+        Date: '1975-12-4'
     },
     {
+        idData: '337',
         AssetType: 'eq',
         AssetStandard: 'A-STD-PC',
         AssetStatus: 'miss',
@@ -6756,11 +7094,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 291,
-        quantity_mtbf: 957,
-        Date: '1980-3-4'
+        cost_purchase: 213,
+        quantity_mtbf: 1005,
+        Date: '2008-5-5'
     },
     {
+        idData: '338',
         AssetType: 'eq',
         AssetStandard: 'A-SUN-COMPUTER',
         AssetStatus: 'miss',
@@ -6776,11 +7115,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 488,
-        quantity_mtbf: 667,
-        Date: '2014-1-9'
+        cost_purchase: 683,
+        quantity_mtbf: 1254,
+        Date: '1984-3-23'
     },
     {
+        idData: '339',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -6796,11 +7136,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'HUMAN RESOURCES',
         DepartmentCode: 'NEW ENGLAND',
-        cost_purchase: 1209,
-        quantity_mtbf: 1184,
-        Date: '2009-1-24'
+        cost_purchase: 1153,
+        quantity_mtbf: 1057,
+        Date: '1983-6-14'
     },
     {
+        idData: '340',
         AssetType: 'eq',
         AssetStandard: 'BOI',
         AssetStatus: 'in',
@@ -6816,11 +7157,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'FACILITIES',
         DepartmentCode: 'REGIONAL',
-        cost_purchase: 268,
-        quantity_mtbf: 598,
-        Date: '2008-3-20'
+        cost_purchase: 1296,
+        quantity_mtbf: 1053,
+        Date: '2014-3-22'
     },
     {
+        idData: '341',
         AssetType: 'eq',
         AssetStandard: 'REFRIG',
         AssetStatus: 'in',
@@ -6836,11 +7178,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 582,
-        quantity_mtbf: 1004,
-        Date: '1981-6-12'
+        cost_purchase: 85,
+        quantity_mtbf: 589,
+        Date: '1985-3-2'
     },
     {
+        idData: '342',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -6856,11 +7199,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 608,
-        quantity_mtbf: 854,
-        Date: '1992-4-19'
+        cost_purchase: 88,
+        quantity_mtbf: 166,
+        Date: '2007-4-9'
     },
     {
+        idData: '343',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -6876,11 +7220,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1294,
-        quantity_mtbf: 320,
-        Date: '1988-3-2'
+        cost_purchase: 697,
+        quantity_mtbf: 680,
+        Date: '1984-4-2'
     },
     {
+        idData: '344',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -6896,11 +7241,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 673,
-        quantity_mtbf: 469,
-        Date: '2005-6-6'
+        cost_purchase: 349,
+        quantity_mtbf: 525,
+        Date: '1979-4-13'
     },
     {
+        idData: '345',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -6916,11 +7262,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 898,
-        quantity_mtbf: 967,
-        Date: '1997-8-15'
+        cost_purchase: 1277,
+        quantity_mtbf: 1283,
+        Date: '1984-2-14'
     },
     {
+        idData: '346',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -6936,11 +7283,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 167,
-        quantity_mtbf: 461,
-        Date: '2008-4-8'
+        cost_purchase: 288,
+        quantity_mtbf: 591,
+        Date: '2004-6-11'
     },
     {
+        idData: '347',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -6956,11 +7304,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1145,
-        quantity_mtbf: 1196,
-        Date: '1988-4-4'
+        cost_purchase: 277,
+        quantity_mtbf: 391,
+        Date: '1998-1-23'
     },
     {
+        idData: '348',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -6976,11 +7325,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 468,
-        quantity_mtbf: 536,
-        Date: '1981-2-15'
+        cost_purchase: 494,
+        quantity_mtbf: 849,
+        Date: '1991-6-17'
     },
     {
+        idData: '349',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -6996,11 +7346,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 809,
-        quantity_mtbf: 446,
-        Date: '1990-2-16'
+        cost_purchase: 1224,
+        quantity_mtbf: 270,
+        Date: '1978-11-10'
     },
     {
+        idData: '350',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -7016,11 +7367,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 820,
-        quantity_mtbf: 694,
-        Date: '2015-7-4'
+        cost_purchase: 679,
+        quantity_mtbf: 1032,
+        Date: '1981-11-13'
     },
     {
+        idData: '351',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -7036,11 +7388,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 509,
-        quantity_mtbf: 72,
-        Date: '2000-5-10'
+        cost_purchase: 1027,
+        quantity_mtbf: 982,
+        Date: '1983-4-28'
     },
     {
+        idData: '352',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -7056,11 +7409,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 623,
-        quantity_mtbf: 1081,
-        Date: '2007-1-31'
+        cost_purchase: 855,
+        quantity_mtbf: 1051,
+        Date: '1989-1-11'
     },
     {
+        idData: '353',
         AssetType: 'eq',
         AssetStandard: 'SUN',
         AssetStatus: 'in',
@@ -7076,11 +7430,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 620,
-        quantity_mtbf: 761,
-        Date: '2015-2-8'
+        cost_purchase: 806,
+        quantity_mtbf: 807,
+        Date: '1976-9-28'
     },
     {
+        idData: '354',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -7096,11 +7451,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 785,
-        quantity_mtbf: 650,
-        Date: '1997-9-14'
+        cost_purchase: 1034,
+        quantity_mtbf: 1272,
+        Date: '1995-11-19'
     },
     {
+        idData: '355',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -7116,11 +7472,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 279,
-        quantity_mtbf: 160,
-        Date: '1981-4-19'
+        cost_purchase: 707,
+        quantity_mtbf: 571,
+        Date: '1992-11-29'
     },
     {
+        idData: '356',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -7136,11 +7493,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 1249,
-        quantity_mtbf: 827,
-        Date: '1982-6-5'
+        cost_purchase: 939,
+        quantity_mtbf: 141,
+        Date: '1986-11-25'
     },
     {
+        idData: '357',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -7156,11 +7514,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 932,
-        quantity_mtbf: 1097,
-        Date: '1975-5-3'
+        cost_purchase: 323,
+        quantity_mtbf: 1257,
+        Date: '1990-2-13'
     },
     {
+        idData: '358',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -7176,11 +7535,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 1298,
-        quantity_mtbf: 960,
-        Date: '1978-2-2'
+        cost_purchase: 452,
+        quantity_mtbf: 27,
+        Date: '2011-7-26'
     },
     {
+        idData: '359',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -7196,11 +7556,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 1078,
-        quantity_mtbf: 174,
-        Date: '1985-5-19'
+        cost_purchase: 333,
+        quantity_mtbf: 443,
+        Date: '1999-7-31'
     },
     {
+        idData: '360',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -7216,11 +7577,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 791,
-        quantity_mtbf: 1096,
-        Date: '2011-10-1'
+        cost_purchase: 713,
+        quantity_mtbf: 670,
+        Date: '2006-12-1'
     },
     {
+        idData: '361',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -7236,11 +7598,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 1057,
-        quantity_mtbf: 270,
-        Date: '1990-4-16'
+        cost_purchase: 580,
+        quantity_mtbf: 1155,
+        Date: '2008-2-29'
     },
     {
+        idData: '362',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -7256,11 +7619,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 408,
-        quantity_mtbf: 624,
-        Date: '2005-7-2'
+        cost_purchase: 832,
+        quantity_mtbf: 1107,
+        Date: '2001-4-15'
     },
     {
+        idData: '363',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -7276,11 +7640,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 1205,
-        quantity_mtbf: 75,
-        Date: '1989-4-1'
+        cost_purchase: 882,
+        quantity_mtbf: 811,
+        Date: '1984-1-19'
     },
     {
+        idData: '364',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -7296,11 +7661,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 963,
-        quantity_mtbf: 394,
-        Date: '1999-1-9'
+        cost_purchase: 946,
+        quantity_mtbf: 1122,
+        Date: '1975-1-15'
     },
     {
+        idData: '365',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -7316,11 +7682,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 490,
-        quantity_mtbf: 1251,
-        Date: '1990-8-23'
+        cost_purchase: 512,
+        quantity_mtbf: 1134,
+        Date: '1984-9-8'
     },
     {
+        idData: '366',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -7336,11 +7703,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 1158,
-        quantity_mtbf: 763,
-        Date: '1984-10-17'
+        cost_purchase: 30,
+        quantity_mtbf: 884,
+        Date: '1992-7-17'
     },
     {
+        idData: '367',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -7356,11 +7724,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 364,
-        quantity_mtbf: 873,
-        Date: '1988-6-19'
+        cost_purchase: 379,
+        quantity_mtbf: 265,
+        Date: '1997-7-8'
     },
     {
+        idData: '368',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -7376,11 +7745,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 89,
-        quantity_mtbf: 511,
-        Date: '2011-8-1'
+        cost_purchase: 26,
+        quantity_mtbf: 402,
+        Date: '1986-6-18'
     },
     {
+        idData: '369',
         AssetType: 'eq',
         AssetStandard: 'A-XEROX-COPIER-1',
         AssetStatus: 'in',
@@ -7396,11 +7766,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 381,
-        quantity_mtbf: 827,
-        Date: '2002-6-7'
+        cost_purchase: 1033,
+        quantity_mtbf: 336,
+        Date: '1988-4-5'
     },
     {
+        idData: '370',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -7416,11 +7787,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 234,
-        quantity_mtbf: 534,
-        Date: '1990-2-1'
+        cost_purchase: 659,
+        quantity_mtbf: 1190,
+        Date: '1980-3-26'
     },
     {
+        idData: '371',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -7436,11 +7808,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 835,
-        quantity_mtbf: 24,
-        Date: '1992-3-3'
+        cost_purchase: 945,
+        quantity_mtbf: 376,
+        Date: '1995-1-13'
     },
     {
+        idData: '372',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -7456,11 +7829,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 191,
-        quantity_mtbf: 738,
-        Date: '2003-12-27'
+        cost_purchase: 1117,
+        quantity_mtbf: 706,
+        Date: '2011-4-3'
     },
     {
+        idData: '373',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -7476,11 +7850,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 1018,
-        quantity_mtbf: 639,
-        Date: '1998-3-25'
+        cost_purchase: 345,
+        quantity_mtbf: 148,
+        Date: '1999-6-23'
     },
     {
+        idData: '374',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -7496,11 +7871,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 829,
-        quantity_mtbf: 48,
-        Date: '2003-2-12'
+        cost_purchase: 269,
+        quantity_mtbf: 319,
+        Date: '1976-9-30'
     },
     {
+        idData: '375',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -7516,11 +7892,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 1198,
-        quantity_mtbf: 807,
-        Date: '1994-7-18'
+        cost_purchase: 1238,
+        quantity_mtbf: 468,
+        Date: '2014-5-12'
     },
     {
+        idData: '376',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -7536,11 +7913,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 758,
-        quantity_mtbf: 636,
-        Date: '1976-11-15'
+        cost_purchase: 516,
+        quantity_mtbf: 782,
+        Date: '1986-9-26'
     },
     {
+        idData: '377',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -7556,11 +7934,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 955,
-        quantity_mtbf: 1024,
-        Date: '2003-1-2'
+        cost_purchase: 857,
+        quantity_mtbf: 9,
+        Date: '1987-11-1'
     },
     {
+        idData: '378',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -7576,11 +7955,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 937,
-        quantity_mtbf: 239,
-        Date: '1976-8-25'
+        cost_purchase: 452,
+        quantity_mtbf: 1172,
+        Date: '1978-6-11'
     },
     {
+        idData: '379',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -7596,11 +7976,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 963,
-        quantity_mtbf: 1298,
-        Date: '1977-3-21'
+        cost_purchase: 151,
+        quantity_mtbf: 1048,
+        Date: '2013-11-6'
     },
     {
+        idData: '380',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -7616,11 +7997,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 1175,
-        quantity_mtbf: 546,
-        Date: '1997-12-15'
+        cost_purchase: 170,
+        quantity_mtbf: 1294,
+        Date: '1975-6-26'
     },
     {
+        idData: '381',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -7636,11 +8018,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 1098,
-        quantity_mtbf: 391,
-        Date: '2014-4-21'
+        cost_purchase: 1161,
+        quantity_mtbf: 1212,
+        Date: '1985-5-1'
     },
     {
+        idData: '382',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -7656,11 +8039,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 160,
-        quantity_mtbf: 327,
-        Date: '1986-10-11'
+        cost_purchase: 761,
+        quantity_mtbf: 873,
+        Date: '2001-2-1'
     },
     {
+        idData: '383',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -7676,11 +8060,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 302,
-        quantity_mtbf: 486,
-        Date: '2010-5-2'
+        cost_purchase: 542,
+        quantity_mtbf: 56,
+        Date: '1982-2-7'
     },
     {
+        idData: '384',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -7696,11 +8081,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 463,
-        quantity_mtbf: 59,
-        Date: '2015-5-4'
+        cost_purchase: 1062,
+        quantity_mtbf: 58,
+        Date: '2015-1-16'
     },
     {
+        idData: '385',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -7716,11 +8102,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 1008,
-        quantity_mtbf: 787,
-        Date: '1989-1-23'
+        cost_purchase: 1232,
+        quantity_mtbf: 50,
+        Date: '2007-5-21'
     },
     {
+        idData: '386',
         AssetType: 'eq',
         AssetStandard: 'A-XEROX-COPIER-1',
         AssetStatus: 'in',
@@ -7736,11 +8123,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 579,
-        quantity_mtbf: 252,
-        Date: '1989-6-25'
+        cost_purchase: 293,
+        quantity_mtbf: 1296,
+        Date: '2008-5-23'
     },
     {
+        idData: '387',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -7756,11 +8144,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 1239,
-        quantity_mtbf: 258,
-        Date: '2015-11-12'
+        cost_purchase: 1083,
+        quantity_mtbf: 823,
+        Date: '1976-7-8'
     },
     {
+        idData: '388',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -7776,11 +8165,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 262,
-        quantity_mtbf: 1033,
-        Date: '1982-1-8'
+        cost_purchase: 1025,
+        quantity_mtbf: 205,
+        Date: '1989-11-16'
     },
     {
+        idData: '389',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -7796,11 +8186,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 79,
-        quantity_mtbf: 969,
-        Date: '1986-4-22'
+        cost_purchase: 38,
+        quantity_mtbf: 126,
+        Date: '2001-1-3'
     },
     {
+        idData: '390',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -7816,11 +8207,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 906,
-        quantity_mtbf: 567,
-        Date: '1992-3-21'
+        cost_purchase: 763,
+        quantity_mtbf: 735,
+        Date: '1978-5-6'
     },
     {
+        idData: '391',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -7836,11 +8228,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 545,
-        quantity_mtbf: 915,
-        Date: '1994-2-19'
+        cost_purchase: 543,
+        quantity_mtbf: 628,
+        Date: '2015-5-19'
     },
     {
+        idData: '392',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -7856,11 +8249,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 496,
-        quantity_mtbf: 982,
-        Date: '1985-11-21'
+        cost_purchase: 1183,
+        quantity_mtbf: 45,
+        Date: '2002-6-7'
     },
     {
+        idData: '393',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -7876,11 +8270,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 493,
-        quantity_mtbf: 523,
-        Date: '2005-6-24'
+        cost_purchase: 618,
+        quantity_mtbf: 548,
+        Date: '2004-4-18'
     },
     {
+        idData: '394',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -7896,11 +8291,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 1107,
-        quantity_mtbf: 640,
-        Date: '2015-5-21'
+        cost_purchase: 28,
+        quantity_mtbf: 370,
+        Date: '1994-9-25'
     },
     {
+        idData: '395',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -7916,11 +8312,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 1236,
-        quantity_mtbf: 1150,
-        Date: '1995-3-14'
+        cost_purchase: 1112,
+        quantity_mtbf: 154,
+        Date: '2012-5-9'
     },
     {
+        idData: '396',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -7936,11 +8333,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 847,
-        quantity_mtbf: 383,
-        Date: '2013-2-19'
+        cost_purchase: 252,
+        quantity_mtbf: 1285,
+        Date: '1990-7-27'
     },
     {
+        idData: '397',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -7956,11 +8354,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 951,
-        quantity_mtbf: 988,
-        Date: '2003-4-19'
+        cost_purchase: 167,
+        quantity_mtbf: 664,
+        Date: '1989-4-6'
     },
     {
+        idData: '398',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -7976,11 +8375,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 735,
-        quantity_mtbf: 445,
-        Date: '2002-4-22'
+        cost_purchase: 29,
+        quantity_mtbf: 1033,
+        Date: '1981-5-21'
     },
     {
+        idData: '399',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -7996,11 +8396,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 1164,
-        quantity_mtbf: 1164,
-        Date: '1996-10-30'
+        cost_purchase: 914,
+        quantity_mtbf: 245,
+        Date: '1985-2-5'
     },
     {
+        idData: '400',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -8016,11 +8417,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 437,
-        quantity_mtbf: 532,
-        Date: '2002-11-22'
+        cost_purchase: 165,
+        quantity_mtbf: 289,
+        Date: '1980-2-27'
     },
     {
+        idData: '401',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -8036,11 +8438,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 177,
-        quantity_mtbf: 770,
-        Date: '2012-5-2'
+        cost_purchase: 385,
+        quantity_mtbf: 211,
+        Date: '1981-9-20'
     },
     {
+        idData: '402',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -8056,11 +8459,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 339,
-        quantity_mtbf: 411,
-        Date: '1981-2-11'
+        cost_purchase: 387,
+        quantity_mtbf: 1189,
+        Date: '1980-9-25'
     },
     {
+        idData: '403',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -8076,11 +8480,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 229,
-        quantity_mtbf: 507,
-        Date: '2010-5-7'
+        cost_purchase: 175,
+        quantity_mtbf: 519,
+        Date: '1995-7-6'
     },
     {
+        idData: '404',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -8096,11 +8501,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 696,
-        quantity_mtbf: 698,
-        Date: '1991-12-29'
+        cost_purchase: 998,
+        quantity_mtbf: 34,
+        Date: '2012-6-22'
     },
     {
+        idData: '405',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -8116,11 +8522,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 762,
-        quantity_mtbf: 1203,
-        Date: '1984-3-14'
+        cost_purchase: 284,
+        quantity_mtbf: 248,
+        Date: '1979-2-20'
     },
     {
+        idData: '406',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -8136,11 +8543,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 160,
-        quantity_mtbf: 1293,
-        Date: '2015-3-10'
+        cost_purchase: 1135,
+        quantity_mtbf: 26,
+        Date: '1977-9-5'
     },
     {
+        idData: '407',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -8156,11 +8564,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 392,
-        quantity_mtbf: 609,
-        Date: '1990-2-5'
+        cost_purchase: 285,
+        quantity_mtbf: 734,
+        Date: '2013-11-1'
     },
     {
+        idData: '408',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -8176,11 +8585,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 1,
-        quantity_mtbf: 183,
-        Date: '1990-11-15'
+        cost_purchase: 751,
+        quantity_mtbf: 533,
+        Date: '1992-5-26'
     },
     {
+        idData: '409',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -8196,11 +8606,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 1194,
-        quantity_mtbf: 478,
-        Date: '1988-7-29'
+        cost_purchase: 29,
+        quantity_mtbf: 717,
+        Date: '1995-2-23'
     },
     {
+        idData: '410',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -8216,11 +8627,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 1133,
-        quantity_mtbf: 1078,
-        Date: '2009-6-19'
+        cost_purchase: 255,
+        quantity_mtbf: 1293,
+        Date: '1991-3-30'
     },
     {
+        idData: '411',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -8236,11 +8648,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 679,
-        quantity_mtbf: 1122,
-        Date: '1997-7-4'
+        cost_purchase: 29,
+        quantity_mtbf: 693,
+        Date: '1978-10-26'
     },
     {
+        idData: '412',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -8256,11 +8669,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 123,
-        quantity_mtbf: 1158,
-        Date: '2006-1-3'
+        cost_purchase: 246,
+        quantity_mtbf: 1079,
+        Date: '2013-12-22'
     },
     {
+        idData: '413',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -8276,11 +8690,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 1239,
-        quantity_mtbf: 196,
-        Date: '1980-8-15'
+        cost_purchase: 1098,
+        quantity_mtbf: 308,
+        Date: '1993-2-12'
     },
     {
+        idData: '414',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -8296,11 +8711,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 601,
-        quantity_mtbf: 252,
-        Date: '2011-11-4'
+        cost_purchase: 1130,
+        quantity_mtbf: 420,
+        Date: '2013-5-21'
     },
     {
+        idData: '415',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -8316,11 +8732,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 822,
-        quantity_mtbf: 1116,
-        Date: '1976-7-17'
+        cost_purchase: 794,
+        quantity_mtbf: 1291,
+        Date: '1976-9-8'
     },
     {
+        idData: '416',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -8336,11 +8753,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 1169,
-        quantity_mtbf: 215,
-        Date: '2011-11-28'
+        cost_purchase: 590,
+        quantity_mtbf: 1092,
+        Date: '1999-11-15'
     },
     {
+        idData: '417',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -8356,11 +8774,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 533,
-        quantity_mtbf: 375,
-        Date: '1991-5-12'
+        cost_purchase: 1260,
+        quantity_mtbf: 475,
+        Date: '2003-10-10'
     },
     {
+        idData: '418',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -8376,11 +8795,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'DISTRIBUTION',
-        cost_purchase: 390,
-        quantity_mtbf: 1075,
-        Date: '1975-11-26'
+        cost_purchase: 350,
+        quantity_mtbf: 333,
+        Date: '1975-10-29'
     },
     {
+        idData: '419',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -8396,11 +8816,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'MARKETING',
-        cost_purchase: 576,
-        quantity_mtbf: 86,
-        Date: '1978-6-24'
+        cost_purchase: 242,
+        quantity_mtbf: 1294,
+        Date: '2007-5-17'
     },
     {
+        idData: '420',
         AssetType: 'eq',
         AssetStandard: 'SUN',
         AssetStatus: 'in',
@@ -8416,11 +8837,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'MARKETING',
-        cost_purchase: 753,
-        quantity_mtbf: 1286,
-        Date: '2008-2-17'
+        cost_purchase: 1169,
+        quantity_mtbf: 100,
+        Date: '1995-12-11'
     },
     {
+        idData: '421',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -8436,11 +8858,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'MARKETING',
-        cost_purchase: 1126,
-        quantity_mtbf: 410,
-        Date: '2003-3-23'
+        cost_purchase: 849,
+        quantity_mtbf: 1293,
+        Date: '1977-1-9'
     },
     {
+        idData: '422',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -8456,11 +8879,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'MARKETING',
-        cost_purchase: 1177,
-        quantity_mtbf: 34,
-        Date: '1982-5-31'
+        cost_purchase: 86,
+        quantity_mtbf: 865,
+        Date: '1980-1-27'
     },
     {
+        idData: '423',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -8476,11 +8900,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'MARKETING',
-        cost_purchase: 990,
-        quantity_mtbf: 854,
-        Date: '1998-10-2'
+        cost_purchase: 318,
+        quantity_mtbf: 226,
+        Date: '2000-5-1'
     },
     {
+        idData: '424',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -8496,11 +8921,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'MARKETING',
-        cost_purchase: 1290,
-        quantity_mtbf: 342,
-        Date: '1986-10-1'
+        cost_purchase: 1000,
+        quantity_mtbf: 733,
+        Date: '2002-8-14'
     },
     {
+        idData: '425',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -8516,11 +8942,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'MARKETING',
-        cost_purchase: 987,
-        quantity_mtbf: 553,
-        Date: '1997-12-17'
+        cost_purchase: 1212,
+        quantity_mtbf: 796,
+        Date: '1993-5-10'
     },
     {
+        idData: '426',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -8536,11 +8963,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'MARKETING',
-        cost_purchase: 551,
-        quantity_mtbf: 686,
-        Date: '1980-1-17'
+        cost_purchase: 1004,
+        quantity_mtbf: 198,
+        Date: '1994-1-20'
     },
     {
+        idData: '427',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -8556,11 +8984,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'MARKETING',
-        cost_purchase: 31,
-        quantity_mtbf: 658,
-        Date: '2006-5-20'
+        cost_purchase: 1290,
+        quantity_mtbf: 171,
+        Date: '1975-8-26'
     },
     {
+        idData: '428',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -8576,11 +9005,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'MARKETING',
-        cost_purchase: 1153,
-        quantity_mtbf: 354,
-        Date: '1999-10-15'
+        cost_purchase: 260,
+        quantity_mtbf: 992,
+        Date: '2000-5-19'
     },
     {
+        idData: '429',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -8596,11 +9026,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'MARKETING',
-        cost_purchase: 648,
-        quantity_mtbf: 481,
-        Date: '2004-7-29'
+        cost_purchase: 1264,
+        quantity_mtbf: 608,
+        Date: '1981-10-27'
     },
     {
+        idData: '430',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -8616,11 +9047,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'MARKETING',
-        cost_purchase: 472,
-        quantity_mtbf: 33,
-        Date: '2010-11-12'
+        cost_purchase: 91,
+        quantity_mtbf: 1166,
+        Date: '1996-9-11'
     },
     {
+        idData: '431',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -8636,11 +9068,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'MARKETING',
-        cost_purchase: 1205,
-        quantity_mtbf: 445,
-        Date: '1981-12-17'
+        cost_purchase: 689,
+        quantity_mtbf: 579,
+        Date: '1981-6-26'
     },
     {
+        idData: '432',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -8656,11 +9089,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'MARKETING',
-        cost_purchase: 1176,
-        quantity_mtbf: 946,
-        Date: '1989-12-1'
+        cost_purchase: 539,
+        quantity_mtbf: 293,
+        Date: '2004-3-18'
     },
     {
+        idData: '433',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -8676,11 +9110,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'MARKETING',
-        cost_purchase: 34,
-        quantity_mtbf: 1244,
-        Date: '1997-1-2'
+        cost_purchase: 957,
+        quantity_mtbf: 44,
+        Date: '2001-8-18'
     },
     {
+        idData: '434',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -8696,11 +9131,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'MARKETING',
-        cost_purchase: 760,
-        quantity_mtbf: 18,
-        Date: '1995-6-12'
+        cost_purchase: 65,
+        quantity_mtbf: 1110,
+        Date: '1999-3-2'
     },
     {
+        idData: '435',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -8716,11 +9152,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'MARKETING',
-        cost_purchase: 220,
-        quantity_mtbf: 226,
-        Date: '1997-9-23'
+        cost_purchase: 385,
+        quantity_mtbf: 419,
+        Date: '2011-9-6'
     },
     {
+        idData: '436',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -8736,11 +9173,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'MARKETING',
-        cost_purchase: 907,
-        quantity_mtbf: 1109,
-        Date: '1985-2-19'
+        cost_purchase: 292,
+        quantity_mtbf: 35,
+        Date: '1982-3-7'
     },
     {
+        idData: '437',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -8756,11 +9194,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'MARKETING',
-        cost_purchase: 1024,
-        quantity_mtbf: 1146,
-        Date: '1990-12-20'
+        cost_purchase: 847,
+        quantity_mtbf: 156,
+        Date: '1995-2-10'
     },
     {
+        idData: '438',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -8776,11 +9215,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'MARKETING',
-        cost_purchase: 1252,
-        quantity_mtbf: 269,
-        Date: '1983-9-9'
+        cost_purchase: 445,
+        quantity_mtbf: 35,
+        Date: '2007-5-29'
     },
     {
+        idData: '439',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -8796,11 +9236,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'MARKETING',
-        cost_purchase: 1244,
-        quantity_mtbf: 90,
-        Date: '2002-3-11'
+        cost_purchase: 607,
+        quantity_mtbf: 681,
+        Date: '1979-8-8'
     },
     {
+        idData: '440',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -8816,11 +9257,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'MARKETING',
-        cost_purchase: 169,
-        quantity_mtbf: 386,
-        Date: '2009-12-19'
+        cost_purchase: 761,
+        quantity_mtbf: 872,
+        Date: '1987-2-21'
     },
     {
+        idData: '441',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -8836,11 +9278,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'MARKETING',
-        cost_purchase: 206,
-        quantity_mtbf: 259,
-        Date: '2001-7-28'
+        cost_purchase: 608,
+        quantity_mtbf: 398,
+        Date: '2007-10-11'
     },
     {
+        idData: '442',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -8856,11 +9299,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'MARKETING',
-        cost_purchase: 564,
-        quantity_mtbf: 270,
-        Date: '2007-10-15'
+        cost_purchase: 507,
+        quantity_mtbf: 1298,
+        Date: '1984-8-24'
     },
     {
+        idData: '443',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -8876,11 +9320,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'MARKETING',
-        cost_purchase: 566,
-        quantity_mtbf: 484,
-        Date: '1999-9-14'
+        cost_purchase: 288,
+        quantity_mtbf: 393,
+        Date: '1975-3-23'
     },
     {
+        idData: '444',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -8896,11 +9341,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'MARKETING',
-        cost_purchase: 185,
-        quantity_mtbf: 1175,
-        Date: '1991-8-11'
+        cost_purchase: 1101,
+        quantity_mtbf: 1089,
+        Date: '1998-2-15'
     },
     {
+        idData: '445',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -8916,11 +9362,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'MARKETING',
-        cost_purchase: 522,
-        quantity_mtbf: 36,
-        Date: '2005-6-24'
+        cost_purchase: 215,
+        quantity_mtbf: 657,
+        Date: '1985-4-19'
     },
     {
+        idData: '446',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -8936,11 +9383,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'MARKETING',
-        cost_purchase: 428,
-        quantity_mtbf: 96,
-        Date: '2007-1-13'
+        cost_purchase: 368,
+        quantity_mtbf: 934,
+        Date: '2006-9-28'
     },
     {
+        idData: '447',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -8956,11 +9404,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 913,
-        quantity_mtbf: 721,
-        Date: '2002-6-18'
+        cost_purchase: 1203,
+        quantity_mtbf: 4,
+        Date: '2011-12-17'
     },
     {
+        idData: '448',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -8976,11 +9425,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 82,
-        quantity_mtbf: 681,
-        Date: '1981-2-22'
+        cost_purchase: 710,
+        quantity_mtbf: 271,
+        Date: '1986-10-9'
     },
     {
+        idData: '449',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -8996,11 +9446,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 534,
-        quantity_mtbf: 232,
-        Date: '1979-7-19'
+        cost_purchase: 755,
+        quantity_mtbf: 1093,
+        Date: '1978-7-10'
     },
     {
+        idData: '450',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -9016,11 +9467,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 1299,
-        quantity_mtbf: 1045,
-        Date: '1977-7-20'
+        cost_purchase: 1207,
+        quantity_mtbf: 274,
+        Date: '2009-12-4'
     },
     {
+        idData: '451',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -9036,11 +9488,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 94,
-        quantity_mtbf: 1273,
-        Date: '1989-11-11'
+        cost_purchase: 161,
+        quantity_mtbf: 1190,
+        Date: '2002-11-25'
     },
     {
+        idData: '452',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -9056,11 +9509,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 123,
-        quantity_mtbf: 761,
-        Date: '1981-10-12'
+        cost_purchase: 348,
+        quantity_mtbf: 794,
+        Date: '2002-11-29'
     },
     {
+        idData: '453',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -9076,11 +9530,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 946,
-        quantity_mtbf: 742,
-        Date: '1994-2-24'
+        cost_purchase: 504,
+        quantity_mtbf: 969,
+        Date: '2012-1-25'
     },
     {
+        idData: '454',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -9096,11 +9551,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 961,
-        quantity_mtbf: 184,
-        Date: '1991-6-15'
+        cost_purchase: 650,
+        quantity_mtbf: 1135,
+        Date: '2000-8-10'
     },
     {
+        idData: '455',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -9116,11 +9572,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 705,
-        quantity_mtbf: 884,
-        Date: '1977-7-23'
+        cost_purchase: 1026,
+        quantity_mtbf: 226,
+        Date: '1995-2-12'
     },
     {
+        idData: '456',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -9136,11 +9593,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 409,
-        quantity_mtbf: 558,
-        Date: '2008-5-3'
+        cost_purchase: 386,
+        quantity_mtbf: 584,
+        Date: '1983-9-30'
     },
     {
+        idData: '457',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -9156,11 +9614,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 312,
-        quantity_mtbf: 86,
-        Date: '1995-12-16'
+        cost_purchase: 1146,
+        quantity_mtbf: 519,
+        Date: '2012-3-7'
     },
     {
+        idData: '458',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -9176,11 +9635,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 1127,
-        quantity_mtbf: 947,
-        Date: '1980-6-16'
+        cost_purchase: 559,
+        quantity_mtbf: 292,
+        Date: '2012-9-10'
     },
     {
+        idData: '459',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -9196,11 +9656,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 1181,
-        quantity_mtbf: 906,
-        Date: '1980-1-31'
+        cost_purchase: 73,
+        quantity_mtbf: 540,
+        Date: '1993-9-29'
     },
     {
+        idData: '460',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -9216,11 +9677,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 381,
-        quantity_mtbf: 850,
-        Date: '1980-12-28'
+        cost_purchase: 5,
+        quantity_mtbf: 564,
+        Date: '2013-11-9'
     },
     {
+        idData: '461',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -9236,11 +9698,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 1060,
-        quantity_mtbf: 885,
-        Date: '2006-9-23'
+        cost_purchase: 242,
+        quantity_mtbf: 276,
+        Date: '1990-6-16'
     },
     {
+        idData: '462',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -9256,11 +9719,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 795,
-        quantity_mtbf: 184,
-        Date: '2005-7-8'
+        cost_purchase: 896,
+        quantity_mtbf: 1027,
+        Date: '2014-7-1'
     },
     {
+        idData: '463',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -9276,11 +9740,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 1098,
-        quantity_mtbf: 811,
-        Date: '1981-5-21'
+        cost_purchase: 51,
+        quantity_mtbf: 658,
+        Date: '2004-12-6'
     },
     {
+        idData: '464',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -9296,11 +9761,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 196,
-        quantity_mtbf: 304,
-        Date: '1990-1-13'
+        cost_purchase: 132,
+        quantity_mtbf: 844,
+        Date: '1986-6-10'
     },
     {
+        idData: '465',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -9316,11 +9782,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 1065,
-        quantity_mtbf: 571,
-        Date: '1978-1-17'
+        cost_purchase: 745,
+        quantity_mtbf: 174,
+        Date: '1980-7-20'
     },
     {
+        idData: '466',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -9336,11 +9803,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 1034,
-        quantity_mtbf: 1013,
-        Date: '2011-11-27'
+        cost_purchase: 580,
+        quantity_mtbf: 814,
+        Date: '1992-8-6'
     },
     {
+        idData: '467',
         AssetType: 'eq',
         AssetStandard: 'A-PC',
         AssetStatus: 'in',
@@ -9356,11 +9824,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 90,
-        quantity_mtbf: 424,
-        Date: '2001-10-1'
+        cost_purchase: 773,
+        quantity_mtbf: 488,
+        Date: '1989-9-23'
     },
     {
+        idData: '468',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -9376,11 +9845,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 292,
-        quantity_mtbf: 232,
-        Date: '2011-10-16'
+        cost_purchase: 711,
+        quantity_mtbf: 718,
+        Date: '1989-7-28'
     },
     {
+        idData: '469',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -9396,11 +9866,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 137,
-        quantity_mtbf: 1102,
-        Date: '1996-3-18'
+        cost_purchase: 50,
+        quantity_mtbf: 1012,
+        Date: '2007-9-5'
     },
     {
+        idData: '470',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -9416,11 +9887,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 624,
-        quantity_mtbf: 1124,
-        Date: '2004-6-23'
+        cost_purchase: 795,
+        quantity_mtbf: 618,
+        Date: '1987-7-31'
     },
     {
+        idData: '471',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -9436,11 +9908,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 822,
-        quantity_mtbf: 1,
-        Date: '1978-6-2'
+        cost_purchase: 1043,
+        quantity_mtbf: 1266,
+        Date: '2006-12-27'
     },
     {
+        idData: '472',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -9456,11 +9929,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 470,
-        quantity_mtbf: 937,
-        Date: '1987-9-26'
+        cost_purchase: 63,
+        quantity_mtbf: 1289,
+        Date: '1982-6-1'
     },
     {
+        idData: '473',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -9476,11 +9950,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 927,
-        quantity_mtbf: 1169,
-        Date: '1992-1-1'
+        cost_purchase: 272,
+        quantity_mtbf: 1084,
+        Date: '1989-12-7'
     },
     {
+        idData: '474',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -9496,11 +9971,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 1084,
-        quantity_mtbf: 828,
-        Date: '1991-2-28'
+        cost_purchase: 1087,
+        quantity_mtbf: 684,
+        Date: '1980-7-26'
     },
     {
+        idData: '475',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -9516,11 +9992,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 893,
-        quantity_mtbf: 434,
-        Date: '2006-5-2'
+        cost_purchase: 744,
+        quantity_mtbf: 419,
+        Date: '1978-8-12'
     },
     {
+        idData: '476',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -9536,11 +10013,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 800,
-        quantity_mtbf: 927,
-        Date: '2004-6-2'
+        cost_purchase: 199,
+        quantity_mtbf: 215,
+        Date: '1996-11-24'
     },
     {
+        idData: '477',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -9556,11 +10034,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 1151,
-        quantity_mtbf: 449,
-        Date: '1986-1-7'
+        cost_purchase: 1088,
+        quantity_mtbf: 644,
+        Date: '2008-2-12'
     },
     {
+        idData: '478',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -9576,11 +10055,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 1285,
-        quantity_mtbf: 509,
-        Date: '1996-1-4'
+        cost_purchase: 33,
+        quantity_mtbf: 1185,
+        Date: '2010-2-15'
     },
     {
+        idData: '479',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -9596,11 +10076,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 478,
-        quantity_mtbf: 1239,
-        Date: '2000-1-20'
+        cost_purchase: 295,
+        quantity_mtbf: 621,
+        Date: '1987-10-27'
     },
     {
+        idData: '480',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -9616,11 +10097,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 963,
-        quantity_mtbf: 135,
-        Date: '1993-10-27'
+        cost_purchase: 743,
+        quantity_mtbf: 1145,
+        Date: '2010-8-22'
     },
     {
+        idData: '481',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -9636,11 +10118,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 546,
-        quantity_mtbf: 658,
-        Date: '1983-5-9'
+        cost_purchase: 837,
+        quantity_mtbf: 1105,
+        Date: '1979-5-19'
     },
     {
+        idData: '482',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -9656,11 +10139,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 419,
-        quantity_mtbf: 135,
-        Date: '2000-10-24'
+        cost_purchase: 391,
+        quantity_mtbf: 853,
+        Date: '2011-10-21'
     },
     {
+        idData: '483',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -9676,11 +10160,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 1149,
-        quantity_mtbf: 696,
-        Date: '1999-9-11'
+        cost_purchase: 945,
+        quantity_mtbf: 871,
+        Date: '2006-12-10'
     },
     {
+        idData: '484',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -9696,11 +10181,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 468,
-        quantity_mtbf: 1188,
-        Date: '1989-4-19'
+        cost_purchase: 1111,
+        quantity_mtbf: 659,
+        Date: '2010-12-3'
     },
     {
+        idData: '485',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -9716,11 +10202,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 1093,
-        quantity_mtbf: 895,
-        Date: '2009-10-3'
+        cost_purchase: 1107,
+        quantity_mtbf: 1141,
+        Date: '1983-5-19'
     },
     {
+        idData: '486',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -9736,11 +10223,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 810,
-        quantity_mtbf: 79,
-        Date: '2006-10-29'
+        cost_purchase: 243,
+        quantity_mtbf: 360,
+        Date: '2001-12-12'
     },
     {
+        idData: '487',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -9756,11 +10244,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 283,
-        quantity_mtbf: 557,
-        Date: '2010-10-5'
+        cost_purchase: 1045,
+        quantity_mtbf: 686,
+        Date: '2003-6-8'
     },
     {
+        idData: '488',
         AssetType: 'eq',
         AssetStandard: 'PHONE',
         AssetStatus: 'in',
@@ -9776,11 +10265,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: 'ACCESSORIES',
         DepartmentCode: 'SALES',
-        cost_purchase: 29,
-        quantity_mtbf: 1059,
-        Date: '2000-10-3'
+        cost_purchase: 820,
+        quantity_mtbf: 276,
+        Date: '2010-1-3'
     },
     {
+        idData: '489',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-CONF',
         AssetStatus: 'stor',
@@ -9796,11 +10286,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 415,
-        quantity_mtbf: 1158,
-        Date: '1982-3-31'
+        cost_purchase: 213,
+        quantity_mtbf: 906,
+        Date: '2009-5-30'
     },
     {
+        idData: '490',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-EXEC',
         AssetStatus: 'stor',
@@ -9816,11 +10307,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 556,
-        quantity_mtbf: 1228,
-        Date: '2014-2-19'
+        cost_purchase: 755,
+        quantity_mtbf: 267,
+        Date: '2012-1-9'
     },
     {
+        idData: '491',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-EXEC',
         AssetStatus: 'stor',
@@ -9836,11 +10328,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1027,
-        quantity_mtbf: 668,
-        Date: '1985-9-7'
+        cost_purchase: 870,
+        quantity_mtbf: 748,
+        Date: '1998-5-26'
     },
     {
+        idData: '492',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-EXEC',
         AssetStatus: 'stor',
@@ -9856,11 +10349,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 710,
-        quantity_mtbf: 631,
-        Date: '1996-5-18'
+        cost_purchase: 100,
+        quantity_mtbf: 326,
+        Date: '2011-4-28'
     },
     {
+        idData: '493',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-WORKSTATION',
         AssetStatus: 'stor',
@@ -9876,11 +10370,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1070,
-        quantity_mtbf: 108,
-        Date: '1994-2-9'
+        cost_purchase: 1275,
+        quantity_mtbf: 366,
+        Date: '2006-6-18'
     },
     {
+        idData: '494',
         AssetType: 'ta',
         AssetStandard: 'DESK-STD',
         AssetStatus: 'stor',
@@ -9896,11 +10391,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1162,
-        quantity_mtbf: 941,
-        Date: '1995-10-30'
+        cost_purchase: 1025,
+        quantity_mtbf: 129,
+        Date: '1978-12-5'
     },
     {
+        idData: '495',
         AssetType: 'ta',
         AssetStandard: 'COPIER',
         AssetStatus: 'stor',
@@ -9916,11 +10412,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 438,
-        quantity_mtbf: 1083,
-        Date: '1999-5-10'
+        cost_purchase: 456,
+        quantity_mtbf: 826,
+        Date: '2007-7-21'
     },
     {
+        idData: '496',
         AssetType: 'ta',
         AssetStandard: 'FAX',
         AssetStatus: 'stor',
@@ -9936,11 +10433,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1054,
-        quantity_mtbf: 198,
-        Date: '1996-8-15'
+        cost_purchase: 423,
+        quantity_mtbf: 728,
+        Date: '2002-4-16'
     },
     {
+        idData: '497',
         AssetType: 'ta',
         AssetStandard: 'PHONE',
         AssetStatus: 'stor',
@@ -9956,11 +10454,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 140,
-        quantity_mtbf: 489,
-        Date: '1993-9-9'
+        cost_purchase: 269,
+        quantity_mtbf: 949,
+        Date: '2004-10-7'
     },
     {
+        idData: '498',
         AssetType: 'ta',
         AssetStandard: 'TABLE-CONF-120',
         AssetStatus: 'stor',
@@ -9976,11 +10475,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 578,
-        quantity_mtbf: 165,
-        Date: '2001-11-30'
+        cost_purchase: 1081,
+        quantity_mtbf: 1238,
+        Date: '1978-5-5'
     },
     {
+        idData: '499',
         AssetType: 'ta',
         AssetStandard: 'TABLE-END',
         AssetStatus: 'stor',
@@ -9996,11 +10496,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 882,
-        quantity_mtbf: 336,
-        Date: '2014-1-27'
+        cost_purchase: 876,
+        quantity_mtbf: 510,
+        Date: '1987-1-20'
     },
     {
+        idData: '500',
         AssetType: 'ta',
         AssetStandard: 'TABLE-END',
         AssetStatus: 'stor',
@@ -10016,11 +10517,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1087,
-        quantity_mtbf: 232,
-        Date: '1998-4-25'
+        cost_purchase: 344,
+        quantity_mtbf: 701,
+        Date: '1985-5-10'
     },
     {
+        idData: '501',
         AssetType: 'ta',
         AssetStandard: 'TABLE-END',
         AssetStatus: 'stor',
@@ -10036,11 +10538,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 701,
-        quantity_mtbf: 1195,
-        Date: '1996-2-14'
+        cost_purchase: 1272,
+        quantity_mtbf: 429,
+        Date: '2000-2-14'
     },
     {
+        idData: '502',
         AssetType: 'ta',
         AssetStandard: 'TABLE-END',
         AssetStatus: 'stor',
@@ -10056,11 +10559,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 1034,
-        quantity_mtbf: 1298,
-        Date: '2010-3-8'
+        cost_purchase: 876,
+        quantity_mtbf: 903,
+        Date: '1984-5-8'
     },
     {
+        idData: '503',
         AssetType: 'ta',
         AssetStandard: 'TABLE-END',
         AssetStatus: 'stor',
@@ -10076,11 +10580,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 924,
-        quantity_mtbf: 722,
-        Date: '1998-2-23'
+        cost_purchase: 177,
+        quantity_mtbf: 1138,
+        Date: '1989-9-6'
     },
     {
+        idData: '504',
         AssetType: 'ta',
         AssetStandard: 'TABLE-END',
         AssetStatus: 'stor',
@@ -10096,11 +10601,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 644,
-        quantity_mtbf: 595,
-        Date: '1997-1-19'
+        cost_purchase: 469,
+        quantity_mtbf: 402,
+        Date: '2005-2-14'
     },
     {
+        idData: '505',
         AssetType: 'ta',
         AssetStandard: 'TABLE-END',
         AssetStatus: 'stor',
@@ -10116,11 +10622,12 @@ var data = [
         BusinessUnit: '',
         DivisionCode: '',
         DepartmentCode: '',
-        cost_purchase: 421,
-        quantity_mtbf: 226,
-        Date: '1981-4-16'
+        cost_purchase: 1123,
+        quantity_mtbf: 1056,
+        Date: '1998-11-29'
     },
     {
+        idData: '506',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-EXEC',
         AssetStatus: 'in',
@@ -10136,11 +10643,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 94,
-        quantity_mtbf: 619,
-        Date: '1996-5-1'
+        cost_purchase: 972,
+        quantity_mtbf: 688,
+        Date: '2013-7-8'
     },
     {
+        idData: '507',
         AssetType: 'ta',
         AssetStandard: 'DESK-EXEC',
         AssetStatus: 'in',
@@ -10156,11 +10664,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 683,
-        quantity_mtbf: 1035,
-        Date: '1987-9-28'
+        cost_purchase: 1165,
+        quantity_mtbf: 477,
+        Date: '2015-9-28'
     },
     {
+        idData: '508',
         AssetType: 'ta',
         AssetStandard: 'DESK-EXEC',
         AssetStatus: 'in',
@@ -10176,11 +10685,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 408,
-        quantity_mtbf: 1178,
-        Date: '1988-11-29'
+        cost_purchase: 275,
+        quantity_mtbf: 90,
+        Date: '1982-2-6'
     },
     {
+        idData: '509',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-EXEC',
         AssetStatus: 'in',
@@ -10196,11 +10706,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 1247,
-        quantity_mtbf: 1087,
-        Date: '1975-5-13'
+        cost_purchase: 1005,
+        quantity_mtbf: 65,
+        Date: '2009-6-10'
     },
     {
+        idData: '510',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-EXEC',
         AssetStatus: 'in',
@@ -10216,11 +10727,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 365,
-        quantity_mtbf: 1042,
-        Date: '2003-4-11'
+        cost_purchase: 877,
+        quantity_mtbf: 579,
+        Date: '2013-5-27'
     },
     {
+        idData: '511',
         AssetType: 'ta',
         AssetStandard: 'DESK-EXEC',
         AssetStatus: 'in',
@@ -10236,11 +10748,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 833,
-        quantity_mtbf: 827,
-        Date: '1995-3-16'
+        cost_purchase: 1146,
+        quantity_mtbf: 982,
+        Date: '1984-8-21'
     },
     {
+        idData: '512',
         AssetType: 'ta',
         AssetStandard: 'DESK-EXEC',
         AssetStatus: 'in',
@@ -10256,11 +10769,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 750,
-        quantity_mtbf: 11,
-        Date: '1987-7-13'
+        cost_purchase: 204,
+        quantity_mtbf: 282,
+        Date: '1995-2-28'
     },
     {
+        idData: '513',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-EXEC',
         AssetStatus: 'in',
@@ -10276,11 +10790,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 1141,
-        quantity_mtbf: 613,
-        Date: '1995-1-25'
+        cost_purchase: 718,
+        quantity_mtbf: 814,
+        Date: '2003-8-28'
     },
     {
+        idData: '514',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-OFFICE',
         AssetStatus: 'in',
@@ -10296,11 +10811,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 1239,
-        quantity_mtbf: 1094,
-        Date: '1996-3-1'
+        cost_purchase: 91,
+        quantity_mtbf: 97,
+        Date: '1999-11-14'
     },
     {
+        idData: '515',
         AssetType: 'ta',
         AssetStandard: 'COUCH',
         AssetStatus: 'in',
@@ -10316,11 +10832,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 1279,
-        quantity_mtbf: 1164,
-        Date: '2007-10-26'
+        cost_purchase: 905,
+        quantity_mtbf: 882,
+        Date: '2005-6-21'
     },
     {
+        idData: '516',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-OFFICE',
         AssetStatus: 'in',
@@ -10336,11 +10853,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 177,
-        quantity_mtbf: 80,
-        Date: '1983-3-16'
+        cost_purchase: 700,
+        quantity_mtbf: 1003,
+        Date: '1998-12-29'
     },
     {
+        idData: '517',
         AssetType: 'ta',
         AssetStandard: 'DESK-EXEC',
         AssetStatus: 'in',
@@ -10356,11 +10874,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 71,
-        quantity_mtbf: 325,
-        Date: '1993-6-23'
+        cost_purchase: 562,
+        quantity_mtbf: 55,
+        Date: '1985-4-14'
     },
     {
+        idData: '518',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-EXEC',
         AssetStatus: 'in',
@@ -10376,11 +10895,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 527,
-        quantity_mtbf: 1131,
-        Date: '1987-8-18'
+        cost_purchase: 294,
+        quantity_mtbf: 442,
+        Date: '1994-10-4'
     },
     {
+        idData: '519',
         AssetType: 'ta',
         AssetStandard: 'FILE-LATERAL3',
         AssetStatus: 'in',
@@ -10396,11 +10916,12 @@ var data = [
         BusinessUnit: 'MANUFACTURING',
         DivisionCode: 'SOFTWARE SOLN.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 933,
-        quantity_mtbf: 712,
-        Date: '2008-6-5'
+        cost_purchase: 1171,
+        quantity_mtbf: 497,
+        Date: '1991-9-21'
     },
     {
+        idData: '520',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-EXEC',
         AssetStatus: 'in',
@@ -10416,11 +10937,12 @@ var data = [
         BusinessUnit: 'SERVICES',
         DivisionCode: 'SOFTWARE APP.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 1007,
-        quantity_mtbf: 348,
-        Date: '1975-10-22'
+        cost_purchase: 150,
+        quantity_mtbf: 137,
+        Date: '2003-1-26'
     },
     {
+        idData: '521',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-OFFICE',
         AssetStatus: 'in',
@@ -10436,11 +10958,12 @@ var data = [
         BusinessUnit: 'SERVICES',
         DivisionCode: 'SOFTWARE APP.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 763,
-        quantity_mtbf: 568,
-        Date: '2003-11-8'
+        cost_purchase: 1197,
+        quantity_mtbf: 623,
+        Date: '1990-6-5'
     },
     {
+        idData: '522',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-OFFICE',
         AssetStatus: 'in',
@@ -10456,71 +10979,54 @@ var data = [
         BusinessUnit: 'SERVICES',
         DivisionCode: 'SOFTWARE APP.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 520,
-        quantity_mtbf: 213,
-        Date: '1983-11-20'
-    },
-    {
-        AssetType: 'ta',
-        AssetStandard: 'DESK-EXEC',
-        AssetStatus: 'in',
-        TitleDescription: '',
-        GeoRegionID: 'AMER',
-        CountryCode: 'USA',
-        StateCode: 'PA',
-        CityCode: 'PHILADELPHIA',
-        SiteCode: 'MARKET',
-        BuildingCode: 'HQ',
-        FloorCode: '18',
-        RoomCode: '117',
-        BusinessUnit: 'SERVICES',
-        DivisionCode: 'SOFTWARE APP.',
-        DepartmentCode: 'ENGINEERING',
-        cost_purchase: 989,
-        quantity_mtbf: 435,
-        Date: '1985-9-21'
-    },
-    {
-        AssetType: 'ta',
-        AssetStandard: 'FILE-LATERAL3',
-        AssetStatus: 'in',
-        TitleDescription: '',
-        GeoRegionID: 'AMER',
-        CountryCode: 'USA',
-        StateCode: 'PA',
-        CityCode: 'PHILADELPHIA',
-        SiteCode: 'MARKET',
-        BuildingCode: 'HQ',
-        FloorCode: '18',
-        RoomCode: '118',
-        BusinessUnit: 'SERVICES',
-        DivisionCode: 'SOFTWARE APP.',
-        DepartmentCode: 'ENGINEERING',
-        cost_purchase: 815,
-        quantity_mtbf: 404,
-        Date: '2002-2-26'
-    },
-    {
-        AssetType: 'ta',
-        AssetStandard: 'CHAIR-OFFICE',
-        AssetStatus: 'in',
-        TitleDescription: '',
-        GeoRegionID: 'AMER',
-        CountryCode: 'USA',
-        StateCode: 'PA',
-        CityCode: 'PHILADELPHIA',
-        SiteCode: 'MARKET',
-        BuildingCode: 'HQ',
-        FloorCode: '18',
-        RoomCode: '118',
-        BusinessUnit: 'SERVICES',
-        DivisionCode: 'SOFTWARE APP.',
-        DepartmentCode: 'ENGINEERING',
-        cost_purchase: 81,
+        cost_purchase: 305,
         quantity_mtbf: 699,
-        Date: '1992-1-22'
+        Date: '1976-5-29'
     },
     {
+        idData: '523',
+        AssetType: 'ta',
+        AssetStandard: 'DESK-EXEC',
+        AssetStatus: 'in',
+        TitleDescription: '',
+        GeoRegionID: 'AMER',
+        CountryCode: 'USA',
+        StateCode: 'PA',
+        CityCode: 'PHILADELPHIA',
+        SiteCode: 'MARKET',
+        BuildingCode: 'HQ',
+        FloorCode: '18',
+        RoomCode: '117',
+        BusinessUnit: 'SERVICES',
+        DivisionCode: 'SOFTWARE APP.',
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 1153,
+        quantity_mtbf: 1035,
+        Date: '2000-2-13'
+    },
+    {
+        idData: '524',
+        AssetType: 'ta',
+        AssetStandard: 'FILE-LATERAL3',
+        AssetStatus: 'in',
+        TitleDescription: '',
+        GeoRegionID: 'AMER',
+        CountryCode: 'USA',
+        StateCode: 'PA',
+        CityCode: 'PHILADELPHIA',
+        SiteCode: 'MARKET',
+        BuildingCode: 'HQ',
+        FloorCode: '18',
+        RoomCode: '118',
+        BusinessUnit: 'SERVICES',
+        DivisionCode: 'SOFTWARE APP.',
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 863,
+        quantity_mtbf: 1092,
+        Date: '1993-10-5'
+    },
+    {
+        idData: '525',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-OFFICE',
         AssetStatus: 'in',
@@ -10536,11 +11042,33 @@ var data = [
         BusinessUnit: 'SERVICES',
         DivisionCode: 'SOFTWARE APP.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 217,
-        quantity_mtbf: 1095,
-        Date: '2005-12-21'
+        cost_purchase: 674,
+        quantity_mtbf: 991,
+        Date: '2004-7-12'
     },
     {
+        idData: '526',
+        AssetType: 'ta',
+        AssetStandard: 'CHAIR-OFFICE',
+        AssetStatus: 'in',
+        TitleDescription: '',
+        GeoRegionID: 'AMER',
+        CountryCode: 'USA',
+        StateCode: 'PA',
+        CityCode: 'PHILADELPHIA',
+        SiteCode: 'MARKET',
+        BuildingCode: 'HQ',
+        FloorCode: '18',
+        RoomCode: '118',
+        BusinessUnit: 'SERVICES',
+        DivisionCode: 'SOFTWARE APP.',
+        DepartmentCode: 'ENGINEERING',
+        cost_purchase: 233,
+        quantity_mtbf: 811,
+        Date: '2014-3-6'
+    },
+    {
+        idData: '527',
         AssetType: 'ta',
         AssetStandard: 'DESK-EXEC',
         AssetStatus: 'in',
@@ -10556,11 +11084,12 @@ var data = [
         BusinessUnit: 'SERVICES',
         DivisionCode: 'SOFTWARE APP.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 1271,
-        quantity_mtbf: 46,
-        Date: '1981-11-10'
+        cost_purchase: 932,
+        quantity_mtbf: 1065,
+        Date: '2015-10-31'
     },
     {
+        idData: '528',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-EXEC',
         AssetStatus: 'in',
@@ -10576,11 +11105,12 @@ var data = [
         BusinessUnit: 'SERVICES',
         DivisionCode: 'SOFTWARE APP.',
         DepartmentCode: 'ENGINEERING',
-        cost_purchase: 698,
-        quantity_mtbf: 1173,
-        Date: '2007-8-16'
+        cost_purchase: 854,
+        quantity_mtbf: 290,
+        Date: '1982-9-20'
     },
     {
+        idData: '529',
         AssetType: 'ta',
         AssetStandard: 'CREDENZA',
         AssetStatus: 'in',
@@ -10596,11 +11126,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 446,
-        quantity_mtbf: 1023,
-        Date: '1996-12-26'
+        cost_purchase: 226,
+        quantity_mtbf: 594,
+        Date: '1985-3-20'
     },
     {
+        idData: '530',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -10616,11 +11147,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 158,
-        quantity_mtbf: 312,
-        Date: '1982-1-8'
+        cost_purchase: 186,
+        quantity_mtbf: 662,
+        Date: '1992-6-14'
     },
     {
+        idData: '531',
         AssetType: 'ta',
         AssetStandard: 'DESK-EXEC',
         AssetStatus: 'in',
@@ -10636,11 +11168,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 783,
-        quantity_mtbf: 850,
-        Date: '2012-3-14'
+        cost_purchase: 1047,
+        quantity_mtbf: 372,
+        Date: '2009-5-24'
     },
     {
+        idData: '532',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -10656,11 +11189,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 615,
-        quantity_mtbf: 557,
-        Date: '1978-9-28'
+        cost_purchase: 797,
+        quantity_mtbf: 242,
+        Date: '1997-2-24'
     },
     {
+        idData: '533',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -10676,11 +11210,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 49,
-        quantity_mtbf: 15,
-        Date: '1980-2-19'
+        cost_purchase: 357,
+        quantity_mtbf: 1269,
+        Date: '2008-8-26'
     },
     {
+        idData: '534',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -10696,11 +11231,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 549,
-        quantity_mtbf: 358,
-        Date: '1987-8-3'
+        cost_purchase: 126,
+        quantity_mtbf: 1111,
+        Date: '1984-3-15'
     },
     {
+        idData: '535',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -10716,11 +11252,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 508,
-        quantity_mtbf: 577,
-        Date: '2005-5-5'
+        cost_purchase: 183,
+        quantity_mtbf: 1133,
+        Date: '1976-5-10'
     },
     {
+        idData: '536',
         AssetType: 'ta',
         AssetStandard: 'DESK-EXEC',
         AssetStatus: 'in',
@@ -10736,11 +11273,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 246,
-        quantity_mtbf: 535,
-        Date: '2003-4-29'
+        cost_purchase: 219,
+        quantity_mtbf: 509,
+        Date: '2002-8-24'
     },
     {
+        idData: '537',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -10756,11 +11294,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 80,
-        quantity_mtbf: 17,
-        Date: '1976-5-6'
+        cost_purchase: 1214,
+        quantity_mtbf: 740,
+        Date: '1993-5-17'
     },
     {
+        idData: '538',
         AssetType: 'ta',
         AssetStandard: 'CREDENZA',
         AssetStatus: 'in',
@@ -10776,11 +11315,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 279,
-        quantity_mtbf: 266,
-        Date: '1976-3-2'
+        cost_purchase: 682,
+        quantity_mtbf: 523,
+        Date: '2010-11-11'
     },
     {
+        idData: '539',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -10796,11 +11336,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 308,
-        quantity_mtbf: 538,
-        Date: '1989-9-30'
+        cost_purchase: 678,
+        quantity_mtbf: 804,
+        Date: '2012-10-6'
     },
     {
+        idData: '540',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -10816,11 +11357,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 321,
-        quantity_mtbf: 706,
-        Date: '2003-3-21'
+        cost_purchase: 429,
+        quantity_mtbf: 982,
+        Date: '1997-4-29'
     },
     {
+        idData: '541',
         AssetType: 'ta',
         AssetStandard: 'DESK-EXEC',
         AssetStatus: 'in',
@@ -10836,11 +11378,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1098,
-        quantity_mtbf: 835,
-        Date: '1981-8-7'
+        cost_purchase: 1251,
+        quantity_mtbf: 299,
+        Date: '1984-9-29'
     },
     {
+        idData: '542',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -10856,11 +11399,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1013,
-        quantity_mtbf: 581,
-        Date: '1986-2-17'
+        cost_purchase: 722,
+        quantity_mtbf: 1214,
+        Date: '1982-12-26'
     },
     {
+        idData: '543',
         AssetType: 'ta',
         AssetStandard: 'CREDENZA',
         AssetStatus: 'in',
@@ -10876,11 +11420,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 947,
-        quantity_mtbf: 382,
-        Date: '2010-10-18'
+        cost_purchase: 650,
+        quantity_mtbf: 1188,
+        Date: '2013-9-9'
     },
     {
+        idData: '544',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LOUNGE',
         AssetStatus: 'in',
@@ -10896,11 +11441,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 109,
-        quantity_mtbf: 26,
-        Date: '1993-8-7'
+        cost_purchase: 71,
+        quantity_mtbf: 797,
+        Date: '1982-9-26'
     },
     {
+        idData: '545',
         AssetType: 'ta',
         AssetStandard: 'TABLE-END',
         AssetStatus: 'in',
@@ -10916,11 +11462,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 927,
-        quantity_mtbf: 653,
-        Date: '1975-1-8'
+        cost_purchase: 500,
+        quantity_mtbf: 5,
+        Date: '2002-10-16'
     },
     {
+        idData: '546',
         AssetType: 'ta',
         AssetStandard: 'COUCH-CLOTH',
         AssetStatus: 'in',
@@ -10936,11 +11483,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 686,
-        quantity_mtbf: 1210,
-        Date: '1985-8-2'
+        cost_purchase: 217,
+        quantity_mtbf: 577,
+        Date: '2008-11-7'
     },
     {
+        idData: '547',
         AssetType: 'ta',
         AssetStandard: 'WORKSTN-LARGE',
         AssetStatus: 'in',
@@ -10956,11 +11504,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 555,
-        quantity_mtbf: 696,
-        Date: '1991-2-3'
+        cost_purchase: 311,
+        quantity_mtbf: 787,
+        Date: '1978-7-20'
     },
     {
+        idData: '548',
         AssetType: 'ta',
         AssetStandard: 'PARTITION-66X1X36',
         AssetStatus: 'in',
@@ -10976,11 +11525,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 865,
-        quantity_mtbf: 1213,
-        Date: '1996-8-25'
+        cost_purchase: 390,
+        quantity_mtbf: 825,
+        Date: '2010-5-4'
     },
     {
+        idData: '549',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -10996,11 +11546,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1252,
-        quantity_mtbf: 1263,
-        Date: '2012-11-3'
+        cost_purchase: 1126,
+        quantity_mtbf: 64,
+        Date: '2000-11-9'
     },
     {
+        idData: '550',
         AssetType: 'ta',
         AssetStandard: 'COUCH-CLOTH',
         AssetStatus: 'in',
@@ -11016,11 +11567,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 164,
-        quantity_mtbf: 974,
-        Date: '1998-4-26'
+        cost_purchase: 342,
+        quantity_mtbf: 1184,
+        Date: '1991-12-24'
     },
     {
+        idData: '551',
         AssetType: 'ta',
         AssetStandard: 'TABLE-END',
         AssetStatus: 'in',
@@ -11036,11 +11588,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1186,
-        quantity_mtbf: 457,
-        Date: '1994-9-3'
+        cost_purchase: 910,
+        quantity_mtbf: 1051,
+        Date: '2011-4-5'
     },
     {
+        idData: '552',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LOUNGE',
         AssetStatus: 'in',
@@ -11056,11 +11609,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1196,
-        quantity_mtbf: 804,
-        Date: '2008-5-12'
+        cost_purchase: 909,
+        quantity_mtbf: 841,
+        Date: '2014-6-22'
     },
     {
+        idData: '553',
         AssetType: 'ta',
         AssetStandard: 'CREDENZA',
         AssetStatus: 'in',
@@ -11076,11 +11630,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 454,
-        quantity_mtbf: 981,
-        Date: '1991-9-20'
+        cost_purchase: 772,
+        quantity_mtbf: 1023,
+        Date: '1975-4-23'
     },
     {
+        idData: '554',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -11096,11 +11651,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1015,
-        quantity_mtbf: 1254,
-        Date: '2005-12-7'
+        cost_purchase: 897,
+        quantity_mtbf: 193,
+        Date: '1998-5-13'
     },
     {
+        idData: '555',
         AssetType: 'ta',
         AssetStandard: 'DESK-EXEC',
         AssetStatus: 'in',
@@ -11116,11 +11672,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1066,
-        quantity_mtbf: 432,
-        Date: '2001-10-7'
+        cost_purchase: 383,
+        quantity_mtbf: 332,
+        Date: '2015-5-14'
     },
     {
+        idData: '556',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -11136,11 +11693,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 866,
-        quantity_mtbf: 1208,
-        Date: '2012-12-7'
+        cost_purchase: 912,
+        quantity_mtbf: 721,
+        Date: '2002-7-25'
     },
     {
+        idData: '557',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -11156,11 +11714,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 703,
-        quantity_mtbf: 751,
-        Date: '1980-12-23'
+        cost_purchase: 166,
+        quantity_mtbf: 503,
+        Date: '1982-10-13'
     },
     {
+        idData: '558',
         AssetType: 'ta',
         AssetStandard: 'WORKSTN-SMALL',
         AssetStatus: 'in',
@@ -11176,11 +11735,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 514,
-        quantity_mtbf: 1248,
-        Date: '1989-2-19'
+        cost_purchase: 711,
+        quantity_mtbf: 749,
+        Date: '1984-4-23'
     },
     {
+        idData: '559',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -11196,11 +11756,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1136,
-        quantity_mtbf: 35,
-        Date: '1999-11-8'
+        cost_purchase: 949,
+        quantity_mtbf: 882,
+        Date: '2013-10-26'
     },
     {
+        idData: '560',
         AssetType: 'ta',
         AssetStandard: 'WORKSTN-SMALL',
         AssetStatus: 'in',
@@ -11216,11 +11777,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 909,
-        quantity_mtbf: 967,
-        Date: '1994-11-6'
+        cost_purchase: 892,
+        quantity_mtbf: 469,
+        Date: '2002-8-31'
     },
     {
+        idData: '561',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -11236,11 +11798,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1206,
-        quantity_mtbf: 523,
-        Date: '1998-12-5'
+        cost_purchase: 1198,
+        quantity_mtbf: 628,
+        Date: '1992-10-7'
     },
     {
+        idData: '562',
         AssetType: 'ta',
         AssetStandard: 'COUCH-CLOTH',
         AssetStatus: 'in',
@@ -11256,11 +11819,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 731,
-        quantity_mtbf: 1154,
-        Date: '1994-12-18'
+        cost_purchase: 612,
+        quantity_mtbf: 179,
+        Date: '1988-7-22'
     },
     {
+        idData: '563',
         AssetType: 'ta',
         AssetStandard: 'TABLE-END',
         AssetStatus: 'in',
@@ -11276,11 +11840,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1190,
-        quantity_mtbf: 335,
-        Date: '2001-2-24'
+        cost_purchase: 916,
+        quantity_mtbf: 942,
+        Date: '1998-12-29'
     },
     {
+        idData: '564',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LOUNGE',
         AssetStatus: 'in',
@@ -11296,11 +11861,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1280,
-        quantity_mtbf: 684,
-        Date: '1992-8-26'
+        cost_purchase: 198,
+        quantity_mtbf: 427,
+        Date: '2008-10-21'
     },
     {
+        idData: '565',
         AssetType: 'ta',
         AssetStandard: 'CREDENZA',
         AssetStatus: 'in',
@@ -11316,11 +11882,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 452,
-        quantity_mtbf: 365,
-        Date: '2002-12-26'
+        cost_purchase: 351,
+        quantity_mtbf: 1157,
+        Date: '2008-5-6'
     },
     {
+        idData: '566',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -11336,11 +11903,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 314,
-        quantity_mtbf: 345,
-        Date: '1997-6-3'
+        cost_purchase: 697,
+        quantity_mtbf: 614,
+        Date: '1984-12-28'
     },
     {
+        idData: '567',
         AssetType: 'ta',
         AssetStandard: 'DESK-EXEC',
         AssetStatus: 'in',
@@ -11356,11 +11924,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 374,
-        quantity_mtbf: 647,
-        Date: '2002-11-5'
+        cost_purchase: 463,
+        quantity_mtbf: 544,
+        Date: '1980-8-13'
     },
     {
+        idData: '568',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -11376,11 +11945,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 820,
-        quantity_mtbf: 641,
-        Date: '2006-4-16'
+        cost_purchase: 73,
+        quantity_mtbf: 200,
+        Date: '1977-11-25'
     },
     {
+        idData: '569',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -11396,11 +11966,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 938,
-        quantity_mtbf: 210,
-        Date: '2011-6-5'
+        cost_purchase: 689,
+        quantity_mtbf: 1181,
+        Date: '1983-6-15'
     },
     {
+        idData: '570',
         AssetType: 'ta',
         AssetStandard: 'CREDENZA',
         AssetStatus: 'in',
@@ -11416,11 +11987,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 128,
-        quantity_mtbf: 1265,
-        Date: '2003-1-28'
+        cost_purchase: 442,
+        quantity_mtbf: 926,
+        Date: '1982-3-22'
     },
     {
+        idData: '571',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -11436,11 +12008,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 666,
-        quantity_mtbf: 154,
-        Date: '2003-11-28'
+        cost_purchase: 291,
+        quantity_mtbf: 1178,
+        Date: '1980-5-21'
     },
     {
+        idData: '572',
         AssetType: 'ta',
         AssetStandard: 'DESK-EXEC',
         AssetStatus: 'in',
@@ -11456,11 +12029,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 260,
-        quantity_mtbf: 495,
-        Date: '2014-2-8'
+        cost_purchase: 415,
+        quantity_mtbf: 169,
+        Date: '2001-3-25'
     },
     {
+        idData: '573',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -11476,11 +12050,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1087,
-        quantity_mtbf: 778,
-        Date: '2001-9-24'
+        cost_purchase: 392,
+        quantity_mtbf: 796,
+        Date: '1979-3-21'
     },
     {
+        idData: '574',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -11496,11 +12071,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 508,
-        quantity_mtbf: 1103,
-        Date: '1986-12-4'
+        cost_purchase: 411,
+        quantity_mtbf: 1108,
+        Date: '2005-4-22'
     },
     {
+        idData: '575',
         AssetType: 'ta',
         AssetStandard: 'COUCH-CLOTH',
         AssetStatus: 'in',
@@ -11516,11 +12092,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 183,
-        quantity_mtbf: 916,
-        Date: '1978-12-24'
+        cost_purchase: 76,
+        quantity_mtbf: 940,
+        Date: '1983-8-11'
     },
     {
+        idData: '576',
         AssetType: 'ta',
         AssetStandard: 'TABLE-END',
         AssetStatus: 'in',
@@ -11536,11 +12113,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 78,
-        quantity_mtbf: 1217,
-        Date: '2011-2-10'
+        cost_purchase: 1175,
+        quantity_mtbf: 244,
+        Date: '2011-5-15'
     },
     {
+        idData: '577',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LOUNGE',
         AssetStatus: 'in',
@@ -11556,11 +12134,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 354,
-        quantity_mtbf: 496,
-        Date: '2001-11-18'
+        cost_purchase: 472,
+        quantity_mtbf: 1173,
+        Date: '1994-8-30'
     },
     {
+        idData: '578',
         AssetType: 'ta',
         AssetStandard: 'CREDENZA',
         AssetStatus: 'in',
@@ -11576,11 +12155,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1068,
-        quantity_mtbf: 664,
-        Date: '2010-12-12'
+        cost_purchase: 1286,
+        quantity_mtbf: 282,
+        Date: '1995-7-8'
     },
     {
+        idData: '579',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -11596,11 +12176,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1026,
-        quantity_mtbf: 43,
-        Date: '1980-6-4'
+        cost_purchase: 440,
+        quantity_mtbf: 731,
+        Date: '2002-2-12'
     },
     {
+        idData: '580',
         AssetType: 'ta',
         AssetStandard: 'DESK-EXEC',
         AssetStatus: 'in',
@@ -11616,11 +12197,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 913,
-        quantity_mtbf: 119,
-        Date: '1999-11-14'
+        cost_purchase: 1224,
+        quantity_mtbf: 1130,
+        Date: '1987-4-4'
     },
     {
+        idData: '581',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -11636,11 +12218,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1001,
-        quantity_mtbf: 331,
-        Date: '1983-6-17'
+        cost_purchase: 826,
+        quantity_mtbf: 470,
+        Date: '2007-9-2'
     },
     {
+        idData: '582',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -11656,11 +12239,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 803,
-        quantity_mtbf: 701,
-        Date: '2014-4-29'
+        cost_purchase: 1141,
+        quantity_mtbf: 526,
+        Date: '1993-6-9'
     },
     {
+        idData: '583',
         AssetType: 'ta',
         AssetStandard: 'WORKSTN-LARGE',
         AssetStatus: 'in',
@@ -11676,11 +12260,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 118,
-        quantity_mtbf: 522,
-        Date: '1990-10-2'
+        cost_purchase: 935,
+        quantity_mtbf: 298,
+        Date: '2003-3-30'
     },
     {
+        idData: '584',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -11696,11 +12281,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 834,
-        quantity_mtbf: 56,
-        Date: '1983-4-2'
+        cost_purchase: 258,
+        quantity_mtbf: 922,
+        Date: '2001-11-29'
     },
     {
+        idData: '585',
         AssetType: 'ta',
         AssetStandard: 'PARTITION-66X1X36',
         AssetStatus: 'in',
@@ -11716,11 +12302,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1231,
-        quantity_mtbf: 1172,
-        Date: '1996-3-6'
+        cost_purchase: 431,
+        quantity_mtbf: 512,
+        Date: '1981-4-16'
     },
     {
+        idData: '586',
         AssetType: 'ta',
         AssetStandard: 'CREDENZA',
         AssetStatus: 'in',
@@ -11736,11 +12323,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 311,
-        quantity_mtbf: 926,
-        Date: '1998-11-28'
+        cost_purchase: 60,
+        quantity_mtbf: 1068,
+        Date: '2000-7-28'
     },
     {
+        idData: '587',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -11756,11 +12344,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1207,
-        quantity_mtbf: 944,
-        Date: '1979-12-19'
+        cost_purchase: 441,
+        quantity_mtbf: 1265,
+        Date: '1988-12-23'
     },
     {
+        idData: '588',
         AssetType: 'ta',
         AssetStandard: 'DESK-EXEC',
         AssetStatus: 'in',
@@ -11776,11 +12365,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 301,
-        quantity_mtbf: 1053,
-        Date: '1996-3-12'
+        cost_purchase: 178,
+        quantity_mtbf: 21,
+        Date: '2001-12-16'
     },
     {
+        idData: '589',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -11796,11 +12386,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 263,
-        quantity_mtbf: 236,
-        Date: '2012-8-21'
+        cost_purchase: 214,
+        quantity_mtbf: 443,
+        Date: '1994-8-7'
     },
     {
+        idData: '590',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -11816,11 +12407,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 67,
-        quantity_mtbf: 413,
-        Date: '1978-9-10'
+        cost_purchase: 1086,
+        quantity_mtbf: 121,
+        Date: '1986-7-3'
     },
     {
+        idData: '591',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -11836,11 +12428,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1127,
-        quantity_mtbf: 178,
-        Date: '1995-9-7'
+        cost_purchase: 531,
+        quantity_mtbf: 390,
+        Date: '1975-9-6'
     },
     {
+        idData: '592',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -11856,11 +12449,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 502,
-        quantity_mtbf: 835,
-        Date: '1982-2-10'
+        cost_purchase: 351,
+        quantity_mtbf: 711,
+        Date: '2013-10-1'
     },
     {
+        idData: '593',
         AssetType: 'ta',
         AssetStandard: 'DESK-EXEC',
         AssetStatus: 'in',
@@ -11876,11 +12470,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 288,
-        quantity_mtbf: 397,
-        Date: '1999-1-20'
+        cost_purchase: 1281,
+        quantity_mtbf: 453,
+        Date: '2013-3-7'
     },
     {
+        idData: '594',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -11896,11 +12491,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1291,
-        quantity_mtbf: 1177,
-        Date: '2007-8-10'
+        cost_purchase: 143,
+        quantity_mtbf: 589,
+        Date: '1986-9-19'
     },
     {
+        idData: '595',
         AssetType: 'ta',
         AssetStandard: 'CREDENZA',
         AssetStatus: 'in',
@@ -11916,11 +12512,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 879,
-        quantity_mtbf: 157,
-        Date: '1992-4-6'
+        cost_purchase: 558,
+        quantity_mtbf: 1090,
+        Date: '1988-1-17'
     },
     {
+        idData: '596',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-CONF',
         AssetStatus: 'in',
@@ -11936,11 +12533,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 915,
-        quantity_mtbf: 895,
-        Date: '2015-9-18'
+        cost_purchase: 1060,
+        quantity_mtbf: 1258,
+        Date: '1996-6-2'
     },
     {
+        idData: '597',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-CONF',
         AssetStatus: 'in',
@@ -11956,11 +12554,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 596,
-        quantity_mtbf: 9,
-        Date: '1995-7-24'
+        cost_purchase: 1257,
+        quantity_mtbf: 611,
+        Date: '1994-2-2'
     },
     {
+        idData: '598',
         AssetType: 'ta',
         AssetStandard: 'TABLE-ROUND-36',
         AssetStatus: 'in',
@@ -11976,11 +12575,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 265,
-        quantity_mtbf: 335,
-        Date: '2011-10-6'
+        cost_purchase: 100,
+        quantity_mtbf: 1121,
+        Date: '1990-7-12'
     },
     {
+        idData: '599',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-CONF',
         AssetStatus: 'in',
@@ -11996,11 +12596,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 651,
-        quantity_mtbf: 858,
-        Date: '1980-2-23'
+        cost_purchase: 37,
+        quantity_mtbf: 1189,
+        Date: '2013-1-7'
     },
     {
+        idData: '600',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-CONF',
         AssetStatus: 'in',
@@ -12016,11 +12617,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 377,
-        quantity_mtbf: 566,
-        Date: '1995-1-18'
+        cost_purchase: 533,
+        quantity_mtbf: 94,
+        Date: '1995-9-19'
     },
     {
+        idData: '601',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-CONF',
         AssetStatus: 'in',
@@ -12036,11 +12638,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1243,
-        quantity_mtbf: 452,
-        Date: '1984-12-2'
+        cost_purchase: 538,
+        quantity_mtbf: 789,
+        Date: '2005-5-3'
     },
     {
+        idData: '602',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-CONF',
         AssetStatus: 'in',
@@ -12056,11 +12659,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1172,
-        quantity_mtbf: 310,
-        Date: '1994-1-10'
+        cost_purchase: 677,
+        quantity_mtbf: 864,
+        Date: '1988-11-9'
     },
     {
+        idData: '603',
         AssetType: 'ta',
         AssetStandard: 'TABLE-CONF-120',
         AssetStatus: 'in',
@@ -12076,11 +12680,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 606,
-        quantity_mtbf: 451,
-        Date: '1978-3-19'
+        cost_purchase: 881,
+        quantity_mtbf: 108,
+        Date: '1989-1-13'
     },
     {
+        idData: '604',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-CONF',
         AssetStatus: 'in',
@@ -12096,11 +12701,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 10,
-        quantity_mtbf: 710,
-        Date: '1992-2-29'
+        cost_purchase: 1102,
+        quantity_mtbf: 506,
+        Date: '2009-7-7'
     },
     {
+        idData: '605',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-CONF',
         AssetStatus: 'in',
@@ -12116,11 +12722,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 196,
-        quantity_mtbf: 15,
-        Date: '1988-9-19'
+        cost_purchase: 995,
+        quantity_mtbf: 1265,
+        Date: '2006-3-24'
     },
     {
+        idData: '606',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-CONF',
         AssetStatus: 'in',
@@ -12136,11 +12743,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 401,
-        quantity_mtbf: 790,
-        Date: '2000-2-8'
+        cost_purchase: 69,
+        quantity_mtbf: 1296,
+        Date: '1994-11-13'
     },
     {
+        idData: '607',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-CONF',
         AssetStatus: 'in',
@@ -12156,11 +12764,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1275,
-        quantity_mtbf: 501,
-        Date: '1995-12-31'
+        cost_purchase: 944,
+        quantity_mtbf: 1103,
+        Date: '2011-3-31'
     },
     {
+        idData: '608',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-CONF',
         AssetStatus: 'in',
@@ -12176,11 +12785,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 291,
-        quantity_mtbf: 823,
-        Date: '1987-5-13'
+        cost_purchase: 600,
+        quantity_mtbf: 437,
+        Date: '2005-3-27'
     },
     {
+        idData: '609',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-CONF',
         AssetStatus: 'in',
@@ -12196,11 +12806,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1129,
-        quantity_mtbf: 1267,
-        Date: '1990-10-22'
+        cost_purchase: 119,
+        quantity_mtbf: 431,
+        Date: '2008-11-6'
     },
     {
+        idData: '610',
         AssetType: 'ta',
         AssetStandard: 'TABLE-CONF-120',
         AssetStatus: 'in',
@@ -12216,11 +12827,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 414,
-        quantity_mtbf: 1021,
-        Date: '2006-7-21'
+        cost_purchase: 544,
+        quantity_mtbf: 482,
+        Date: '2015-10-17'
     },
     {
+        idData: '611',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-CONF',
         AssetStatus: 'in',
@@ -12236,11 +12848,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 530,
-        quantity_mtbf: 957,
-        Date: '1993-9-17'
+        cost_purchase: 156,
+        quantity_mtbf: 969,
+        Date: '2012-7-1'
     },
     {
+        idData: '612',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-CONF',
         AssetStatus: 'in',
@@ -12256,11 +12869,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 477,
-        quantity_mtbf: 1075,
-        Date: '1998-10-18'
+        cost_purchase: 365,
+        quantity_mtbf: 640,
+        Date: '2006-9-4'
     },
     {
+        idData: '613',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-CONF',
         AssetStatus: 'in',
@@ -12276,11 +12890,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 258,
-        quantity_mtbf: 715,
-        Date: '1998-2-5'
+        cost_purchase: 752,
+        quantity_mtbf: 101,
+        Date: '2003-1-17'
     },
     {
+        idData: '614',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-CONF',
         AssetStatus: 'in',
@@ -12296,11 +12911,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 331,
-        quantity_mtbf: 1198,
-        Date: '1994-12-11'
+        cost_purchase: 1111,
+        quantity_mtbf: 1129,
+        Date: '1998-4-9'
     },
     {
+        idData: '615',
         AssetType: 'ta',
         AssetStandard: 'DESK-EXEC',
         AssetStatus: 'in',
@@ -12316,11 +12932,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 679,
-        quantity_mtbf: 1266,
-        Date: '1996-7-29'
+        cost_purchase: 1166,
+        quantity_mtbf: 357,
+        Date: '2015-4-26'
     },
     {
+        idData: '616',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -12336,11 +12953,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 403,
-        quantity_mtbf: 704,
-        Date: '1993-1-14'
+        cost_purchase: 1283,
+        quantity_mtbf: 325,
+        Date: '2000-11-18'
     },
     {
+        idData: '617',
         AssetType: 'ta',
         AssetStandard: 'COUCH',
         AssetStatus: 'in',
@@ -12356,11 +12974,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1158,
-        quantity_mtbf: 801,
-        Date: '1984-11-25'
+        cost_purchase: 1209,
+        quantity_mtbf: 993,
+        Date: '1993-10-17'
     },
     {
+        idData: '618',
         AssetType: 'ta',
         AssetStandard: 'CREDENZA',
         AssetStatus: 'in',
@@ -12376,11 +12995,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 469,
-        quantity_mtbf: 676,
-        Date: '1978-1-24'
+        cost_purchase: 883,
+        quantity_mtbf: 1042,
+        Date: '1999-8-8'
     },
     {
+        idData: '619',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-OFFICE',
         AssetStatus: 'in',
@@ -12396,11 +13016,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 306,
-        quantity_mtbf: 192,
-        Date: '1987-1-5'
+        cost_purchase: 1012,
+        quantity_mtbf: 787,
+        Date: '1998-12-6'
     },
     {
+        idData: '620',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-EXEC',
         AssetStatus: 'in',
@@ -12416,11 +13037,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 229,
-        quantity_mtbf: 1136,
-        Date: '1992-12-26'
+        cost_purchase: 1129,
+        quantity_mtbf: 1174,
+        Date: '1984-11-11'
     },
     {
+        idData: '621',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-OFFICE',
         AssetStatus: 'in',
@@ -12436,11 +13058,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 388,
-        quantity_mtbf: 582,
-        Date: '1982-7-22'
+        cost_purchase: 650,
+        quantity_mtbf: 936,
+        Date: '2014-5-31'
     },
     {
+        idData: '622',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-OFFICE',
         AssetStatus: 'in',
@@ -12456,11 +13079,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 982,
-        quantity_mtbf: 864,
-        Date: '1995-1-3'
+        cost_purchase: 894,
+        quantity_mtbf: 592,
+        Date: '1995-6-24'
     },
     {
+        idData: '623',
         AssetType: 'ta',
         AssetStandard: 'DESK-EXEC',
         AssetStatus: 'in',
@@ -12476,11 +13100,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1056,
-        quantity_mtbf: 125,
-        Date: '1998-6-3'
+        cost_purchase: 1022,
+        quantity_mtbf: 1063,
+        Date: '1982-9-23'
     },
     {
+        idData: '624',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-EXEC',
         AssetStatus: 'in',
@@ -12496,11 +13121,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 920,
-        quantity_mtbf: 96,
-        Date: '2005-6-9'
+        cost_purchase: 315,
+        quantity_mtbf: 154,
+        Date: '1977-3-14'
     },
     {
+        idData: '625',
         AssetType: 'ta',
         AssetStandard: 'FILE-LATERAL3',
         AssetStatus: 'in',
@@ -12516,11 +13142,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1018,
-        quantity_mtbf: 741,
-        Date: '1979-3-6'
+        cost_purchase: 12,
+        quantity_mtbf: 963,
+        Date: '2004-3-21'
     },
     {
+        idData: '626',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-OFFICE',
         AssetStatus: 'in',
@@ -12536,11 +13163,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 506,
-        quantity_mtbf: 683,
-        Date: '2013-1-26'
+        cost_purchase: 1002,
+        quantity_mtbf: 906,
+        Date: '2003-12-1'
     },
     {
+        idData: '627',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-OFFICE',
         AssetStatus: 'in',
@@ -12556,11 +13184,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 445,
-        quantity_mtbf: 656,
-        Date: '2010-12-1'
+        cost_purchase: 645,
+        quantity_mtbf: 52,
+        Date: '2000-5-16'
     },
     {
+        idData: '628',
         AssetType: 'ta',
         AssetStandard: 'DESK-EXEC',
         AssetStatus: 'in',
@@ -12576,11 +13205,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 36,
-        quantity_mtbf: 287,
-        Date: '1977-7-13'
+        cost_purchase: 1237,
+        quantity_mtbf: 869,
+        Date: '2010-3-22'
     },
     {
+        idData: '629',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-EXEC',
         AssetStatus: 'in',
@@ -12596,11 +13226,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1274,
-        quantity_mtbf: 97,
-        Date: '2002-8-6'
+        cost_purchase: 425,
+        quantity_mtbf: 38,
+        Date: '1984-7-19'
     },
     {
+        idData: '630',
         AssetType: 'ta',
         AssetStandard: 'FILE-LATERAL3',
         AssetStatus: 'in',
@@ -12616,11 +13247,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 53,
-        quantity_mtbf: 1191,
-        Date: '1976-8-27'
+        cost_purchase: 113,
+        quantity_mtbf: 780,
+        Date: '2012-1-3'
     },
     {
+        idData: '631',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-CONF',
         AssetStatus: 'in',
@@ -12636,11 +13268,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 121,
-        quantity_mtbf: 111,
-        Date: '2001-11-16'
+        cost_purchase: 296,
+        quantity_mtbf: 1273,
+        Date: '1986-3-5'
     },
     {
+        idData: '632',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-CONF',
         AssetStatus: 'in',
@@ -12656,11 +13289,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 31,
-        quantity_mtbf: 229,
-        Date: '2009-2-8'
+        cost_purchase: 640,
+        quantity_mtbf: 639,
+        Date: '2014-9-5'
     },
     {
+        idData: '633',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-CONF',
         AssetStatus: 'in',
@@ -12676,11 +13310,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 912,
-        quantity_mtbf: 996,
-        Date: '2000-2-15'
+        cost_purchase: 1282,
+        quantity_mtbf: 1044,
+        Date: '2014-7-27'
     },
     {
+        idData: '634',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-CONF',
         AssetStatus: 'in',
@@ -12696,11 +13331,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 931,
-        quantity_mtbf: 475,
-        Date: '1996-10-22'
+        cost_purchase: 87,
+        quantity_mtbf: 1251,
+        Date: '1997-6-20'
     },
     {
+        idData: '635',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-CONF',
         AssetStatus: 'in',
@@ -12716,11 +13352,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 32,
-        quantity_mtbf: 914,
-        Date: '1974-12-2'
+        cost_purchase: 221,
+        quantity_mtbf: 857,
+        Date: '1976-10-6'
     },
     {
+        idData: '636',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-CONF',
         AssetStatus: 'in',
@@ -12736,11 +13373,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 518,
-        quantity_mtbf: 937,
-        Date: '1989-10-27'
+        cost_purchase: 724,
+        quantity_mtbf: 632,
+        Date: '1999-5-29'
     },
     {
+        idData: '637',
         AssetType: 'ta',
         AssetStandard: 'TABLE-CONF-120',
         AssetStatus: 'in',
@@ -12756,11 +13394,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1039,
-        quantity_mtbf: 577,
-        Date: '2006-10-29'
+        cost_purchase: 601,
+        quantity_mtbf: 669,
+        Date: '2000-7-4'
     },
     {
+        idData: '638',
         AssetType: 'ta',
         AssetStandard: 'FILE-LATERAL3',
         AssetStatus: 'in',
@@ -12776,11 +13415,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 634,
-        quantity_mtbf: 1248,
-        Date: '1994-2-24'
+        cost_purchase: 1131,
+        quantity_mtbf: 520,
+        Date: '1991-8-25'
     },
     {
+        idData: '639',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -12796,11 +13436,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1274,
-        quantity_mtbf: 913,
-        Date: '1996-2-15'
+        cost_purchase: 75,
+        quantity_mtbf: 1072,
+        Date: '1996-2-3'
     },
     {
+        idData: '640',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -12816,11 +13457,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 20,
-        quantity_mtbf: 133,
-        Date: '1989-10-3'
+        cost_purchase: 918,
+        quantity_mtbf: 988,
+        Date: '2002-8-10'
     },
     {
+        idData: '641',
         AssetType: 'ta',
         AssetStandard: 'DESK-EXEC',
         AssetStatus: 'in',
@@ -12836,11 +13478,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 1095,
-        quantity_mtbf: 235,
-        Date: '1983-5-5'
+        cost_purchase: 1085,
+        quantity_mtbf: 957,
+        Date: '2007-8-12'
     },
     {
+        idData: '642',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-EXEC',
         AssetStatus: 'in',
@@ -12856,11 +13499,12 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 180,
-        quantity_mtbf: 1237,
-        Date: '1998-2-28'
+        cost_purchase: 1118,
+        quantity_mtbf: 203,
+        Date: '1978-4-22'
     },
     {
+        idData: '643',
         AssetType: 'ta',
         AssetStandard: 'CHAIR-LARGE',
         AssetStatus: 'in',
@@ -12876,10 +13520,11 @@ var data = [
         BusinessUnit: 'CORPORATE',
         DivisionCode: 'EXECUTIVE',
         DepartmentCode: 'MANAGEMENT',
-        cost_purchase: 760,
-        quantity_mtbf: 1019,
-        Date: '2013-1-13'
+        cost_purchase: 654,
+        quantity_mtbf: 377,
+        Date: '2003-9-9'
     }
+
 
 ];
 

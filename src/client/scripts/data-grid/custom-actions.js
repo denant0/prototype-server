@@ -1,6 +1,7 @@
 var classStyle = require('./metadata/sample-cell-style-metadata');
 webix.ARCHIBUS = {};
 
+
 /*
  Map of events used in the grid user
  */
@@ -25,22 +26,7 @@ webix.actions = {
         webix.message('You click button 2');
     },
     buttonClick3: function(event,object,cell,d){
-        if(typeof webix.ARCHIBUS.editRows != 'undefined'){
-            this.eachColumn(
-                function (columnId){
-                    this.removeCellCss(webix.ARCHIBUS.editRows,columnId,"row-edited");
-                }
-            );
-        }
-        this.eachColumn(
-            function (columnId){
-                this.addCellCss(object.row,columnId,"row-edited");
-            }
-        );
-
-
-        webix.ARCHIBUS.editRows = object.row;
-        webix.message('Edit');
+        webix.message('You click button 3');
     },
     buttonClick4: function(){
         webix.message('You click button 4');

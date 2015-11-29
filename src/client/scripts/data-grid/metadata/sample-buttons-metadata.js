@@ -1,7 +1,7 @@
 var buttonsMetadata = [
     {
         icon: 'style/icons/cog_edit.png',
-        class: 'editclass',
+        class: 'editclasss',
         function: 'buttonClick1',
         condition: [
             {

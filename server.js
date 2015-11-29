@@ -13,6 +13,7 @@ var db = dataBaseServer.use({
 });
 
 
+
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.bodyParser());
 /*
@@ -36,13 +37,38 @@ app.get('/server/data', function(req, res){
         res.send(results);
     });
 });
+app.post('/server/data/save', function(req, res){
+
+    db.class.get('AssetGrid')
+        .then(function (MyClass) {
+            MyClass.property.list()
+                .then(function (properties) {
+                    var data = {};
+                    for(var index in properties){
+                        if(properties[index].name != 'Date')
+                            data[properties[index].name] = req.body[properties[index].name];
+                    }
+                    db.update('AssetGrid').set(data).where({idData: req.body.idData}).scalar()
+                        .then(function (total) {
+
+                            res.send('Updata');
+                        });
+                });
+        });
+
+    /*db.update('AssetGrid').set(req.body).where({idData: req.body.idData}).scalar()
+        .then(function (total) {
+            console.log('updated', total, 'users');
+        });
+*/
+});
 
 app.listen(8000);
 /*
  To build the query to filter the data
-    @param filter: object with data to filter
-    @param startQuery: start request
-* */
+ @param filter: object with data to filter
+ @param startQuery: start request
+ * */
 function getRequestFilter(filter, startQuery){
     var query = startQuery;
     var index = 0;
@@ -71,8 +97,8 @@ function getRequestFilter(filter, startQuery){
 }
 /*
  To build the query to sort the data
-    @param sort: object with data to sort
-    @param startQuery: start request
+ @param sort: object with data to sort
+ @param startQuery: start request
  */
 function getRequestSorting(sort, startQuery){
     var query = startQuery;
