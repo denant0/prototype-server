@@ -85,7 +85,7 @@ server.list()
                                 type: 'String'
                             }, {
                                 name: 'Date',
-                                type: 'Date'
+                                type: 'String'
                             }, {
                                 name: 'cost_purchase',
                                 type: 'Integer'

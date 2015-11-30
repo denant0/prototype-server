@@ -19,7 +19,7 @@ var data = [
         DepartmentCode: '',
         cost_purchase: 45,
         quantity_mtbf: 266,
-        Date: '1978-7-29'
+        Date: '1978-07-29 00:00'
     },
     {
         idData: '1',

@@ -38,15 +38,13 @@ app.get('/server/data', function(req, res){
     });
 });
 app.post('/server/data/save', function(req, res){
-
     db.class.get('AssetGrid')
         .then(function (MyClass) {
             MyClass.property.list()
                 .then(function (properties) {
                     var data = {};
                     for(var index in properties){
-                        if(properties[index].name != 'Date')
-                            data[properties[index].name] = req.body[properties[index].name];
+                        data[properties[index].name] = req.body[properties[index].name];
                     }
                     db.update('AssetGrid').set(data).where({idData: req.body.idData}).scalar()
                         .then(function (total) {
@@ -55,12 +53,6 @@ app.post('/server/data/save', function(req, res){
                         });
                 });
         });
-
-    /*db.update('AssetGrid').set(req.body).where({idData: req.body.idData}).scalar()
-        .then(function (total) {
-            console.log('updated', total, 'users');
-        });
-*/
 });
 
 app.listen(8000);

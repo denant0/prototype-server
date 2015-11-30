@@ -4,7 +4,7 @@ Users:
 For correct operation of the server you need to install npm modules using npm install in the root directory.
 
 Developers:
-For correct operation of the server you need to install npm modules using npm install package-dev.jcon in the root directory.
+For correct operation of the server you need copy from folder package-dev file package.json and  to install npm modules using npm install in the root directory.
 
 
 Run app for Windows x64: Start the file start-application-x64.

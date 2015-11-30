@@ -469,7 +469,7 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                     onSelectChange: 'selectValue'
                 },
                 editing: true,
-                firstRightFixedColumn: 'Date',
+                firstRightFixedColumn: 'Action',
                 lastLeftFixedColumn: 'quantity_mtbf'
             });
 
@@ -494,9 +494,15 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                     text: {
                         view: "popup",
                         body: { view: "textarea", width: 250, height: 50 }
+                    },
+                    date: {
+                        view: "popup",
+                        body: { view: "datepicker", icons: true, weekNumber: true, timepicker: true }
                     }
                 };
                 webix.ARCHIBUS.editRows = [];
+                webix.ARCHIBUS.group = {};
+                webix.ARCHIBUS.group.tooltip = {};
                 this.id = config.id;
                 this.dataTypeToFilterTypeMapping = {
                     text: 'serverFilter',
@@ -558,9 +564,9 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                         checkboxRefresh: true,
                         on: webixActionsGrid,
                         url: config.dataSource,
-
                         footer: true,
-                        navigation: true
+                        navigation: true,
+                        tooltip: true
                     };
 
                     var configGroup = {
@@ -598,7 +604,6 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                         }
                     }
                     if (this.existsField(config.firstRightFixedColumn)) {
-
                         for (var index = 0; index < webixColumns.columns.length; index++) {
                             if (webixColumns.columns[index].id == config.firstRightFixedColumn) {
                                 rightSplit = webixColumns.columns.length - index;
@@ -699,6 +704,9 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                                     break;
                                 }
                             }
+                        },
+                        onTouchStart: function onTouchStart(obj) {
+                            var t = 0;
                         }
                     };
                     for (var event in events) {
@@ -828,11 +836,12 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
 
                                     break;
                                 case 'date':
-                                    //webixColumn.format = webix.Date.dateToStr("%m/%d/%y");
+                                    webixColumn.format = webix.Date.dateToStr("%m/%d/%y");
                                     webixColumn.editor = 'date';
+                                    webixColumn.map = "(date)#" + webixColumn.id + "#";
                                     break;
                                 case 'text':
-                                    webixColumn.editor = 'popup';
+                                    webixColumn.editor = 'text';
 
                                     break;
                                 case 'enum':
@@ -845,6 +854,16 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                         webixColumn.header = this.createColumnHeader(ARCHIBUSColumn.title, ARCHIBUSColumn.dataType, ARCHIBUSColumn.action);
                         webixColumn.cssFormat = this.createColumnCssFormat(ARCHIBUSColumn.cssClass);
                         webixColumn.template = this.templateColumnsCell;
+                        webixColumn.tooltip = function (rowItem, rowInfo, a, b, c) {
+                            if (rowItem.$group) {
+                                for (var item in webix.ARCHIBUS.group.tooltip) {
+                                    if (item == rowItem.id && webix.ARCHIBUS.group.tooltip[item]) {
+                                        return 'Continues on the next page';
+                                    }
+                                }
+                            }
+                            return "";
+                        };
 
                         if (this.existsField(ARCHIBUSColumn.width)) {
                             webixColumn.width = ARCHIBUSColumn.width;
@@ -918,7 +937,8 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                         var count = cellElement.$count;
                         var result = cellInfo.treetable(cellElement, cellInfo) + " " + this.id + ": " + cellElement.value + " ( " + count + " assets )";
                         var freeItems = webix.ARCHIBUS.pageSize - rowNumber;
-                        if (cellElement.open) if (freeItems < cellElement.$count) result += " (Continues on the next page)";
+                        if (cellElement.open) if (freeItems < cellElement.$count) webix.ARCHIBUS.group.tooltip[cellElement.id] = true;else webix.ARCHIBUS.group.tooltip[cellElement.id] = false;else webix.ARCHIBUS.group.tooltip[cellElement.id] = false;
+
                         if (typeof webix.groupTotalLine != 'undefined') {
                             result += '<span style="float: right;">';
                             for (var i in webix.groupTotalLine) {
