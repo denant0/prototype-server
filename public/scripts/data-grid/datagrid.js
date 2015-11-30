@@ -497,7 +497,7 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                     },
                     date: {
                         view: "popup",
-                        body: { view: "datepicker", icons: true, weekNumber: true, timepicker: true }
+                        body: { view: "calendar", icons: true, weekNumber: true, timepicker: true }
                     }
                 };
                 webix.ARCHIBUS.editRows = [];

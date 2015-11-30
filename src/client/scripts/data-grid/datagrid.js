@@ -47,7 +47,7 @@ class DataGrid{
             },
             date:{
                 view:"popup",
-                body:{ view:"datepicker", icons:true, weekNumber:true, timepicker:true }
+                body:{ view:"calendar", icons:true, weekNumber:true, timepicker:true }
             }
         };
         webix.ARCHIBUS.editRows = [];
