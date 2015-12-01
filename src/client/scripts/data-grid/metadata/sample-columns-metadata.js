@@ -7,7 +7,7 @@ var ARCHIBUSColumns = [
         title: 'Asset Type',
         groupBy: true,
         sortBy: 'asc', // or 'desc'
-        dataType: 'text'
+        dataType: 'enum'
     },
     {
         id: 'cost_purchase',
@@ -33,7 +33,7 @@ var ARCHIBUSColumns = [
         id: 'AssetStatus',
         title: 'Asset Status',
         width: 200,
-        dataType: 'text'
+        dataType: 'enum'
     },
     {
         id: 'TitleDescription',

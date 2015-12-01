@@ -55,6 +55,14 @@ app.post('/server/data/save', function(req, res){
         });
 });
 
+app.post('/server/data/prop', function(req, res){
+    var query = 'select '+ req.body.id +' from AssetGrid GROUP BY ' + req.body.id;
+    console.log(query);
+    db.query(query).then(function (results) {
+        res.send(results);
+    });
+});
+
 app.listen(8000);
 /*
  To build the query to filter the data

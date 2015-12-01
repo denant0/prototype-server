@@ -503,6 +503,7 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                 webix.ARCHIBUS.editRows = [];
                 webix.ARCHIBUS.group = {};
                 webix.ARCHIBUS.group.tooltip = {};
+                webix.ARCHIBUS.data = {};
                 this.id = config.id;
                 this.dataTypeToFilterTypeMapping = {
                     text: 'serverFilter',
@@ -720,7 +721,7 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                     var ARCHIBUSColumns = config.columns;
                     var webixColumns = [];
                     var webixGroupBy = {};
-
+                    webix.ARCHIBUS.data.collection = [];
                     webixColumns[0] = {
                         id: "ch1",
                         header: "",
@@ -823,6 +824,9 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                         if (this.existsField(ARCHIBUSColumn.id)) {
                             webixColumn.id = ARCHIBUSColumn.id;
                         }
+                        webixColumn.header = this.createColumnHeader(ARCHIBUSColumn.title, ARCHIBUSColumn.dataType, ARCHIBUSColumn.action);
+                        webixColumn.cssFormat = this.createColumnCssFormat(ARCHIBUSColumn.cssClass);
+                        webixColumn.template = this.templateColumnsCell;
                         if (this.existsField(ARCHIBUSColumn.dataType)) {
                             switch (ARCHIBUSColumn.dataType) {
                                 case 'number':
@@ -846,14 +850,44 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                                     break;
                                 case 'enum':
                                     webixColumn.editor = 'combo';
-                                    webixColumn.collection = [{ id: 'USA', value: "USA" }, { id: 'BRA', value: "BRA" }, { id: 'CAN', value: "CAN" }, { id: 'MEX', value: "MEX" }, { id: 'ARG', value: "ARG" }];
+                                    webix.ARCHIBUS.data.collection[webix.ARCHIBUS.data.collection.length] = webixColumn.id;
+                                    webix.ajax().post("server/data/prop", { id: webixColumn.id }, function (response) {
+                                        var obj = JSON.parse(response);
+                                        var collection = [];
+                                        collection[collection.length] = { id: "", value: "" };
+                                        var id;
+                                        for (var index in webix.ARCHIBUS.data.collection) {
+                                            for (var indexObj in obj) {
+                                                var element = obj[indexObj];
+                                                for (var item in element) {
+                                                    if (webix.ARCHIBUS.data.collection[index] == item) {
+                                                        id = item;
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                        }
+
+                                        for (var index in obj) {
+                                            collection[collection.length] = { id: obj[index][id], value: obj[index][id] };
+                                        }
+
+                                        for (var index in webixColumns) {
+                                            if (webixColumns[index].id == id) {
+                                                var collectionHeader = collection.slice();
+                                                var collectionEdit = collection.slice();
+                                                collectionEdit.splice(0, 1);
+                                                webixColumns[index].collection = collectionEdit;
+                                                webixColumns[index].header[1].options = collectionHeader;
+                                            }
+                                        }
+                                    });
+                                    break;
                             }
                         } else {
                             ARCHIBUSColumn.dataType = 'String';
                         }
-                        webixColumn.header = this.createColumnHeader(ARCHIBUSColumn.title, ARCHIBUSColumn.dataType, ARCHIBUSColumn.action);
-                        webixColumn.cssFormat = this.createColumnCssFormat(ARCHIBUSColumn.cssClass);
-                        webixColumn.template = this.templateColumnsCell;
+
                         webixColumn.tooltip = function (rowItem, rowInfo, a, b, c) {
                             if (rowItem.$group) {
                                 for (var item in webix.ARCHIBUS.group.tooltip) {
@@ -1077,7 +1111,7 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
             title: 'Asset Type',
             groupBy: true,
             sortBy: 'asc', // or 'desc'
-            dataType: 'text'
+            dataType: 'enum'
         }, {
             id: 'cost_purchase',
             title: 'Purchase Cost',
@@ -1099,7 +1133,7 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
             id: 'AssetStatus',
             title: 'Asset Status',
             width: 200,
-            dataType: 'text'
+            dataType: 'enum'
         }, {
             id: 'TitleDescription',
             title: 'Title Description',
