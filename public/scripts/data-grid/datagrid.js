@@ -2,9 +2,9 @@
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : typeof obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 (function e(t, n, r) {
     function s(o, u) {
@@ -57,401 +57,8 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                 }
             }
         };
-    }, { "./metadata/sample-cell-style-metadata": 7 }], 2: [function (require, module, exports) {
-        /*
-         Load data from the response received
-         */
-        webix.TreeDataLoader._loadNextA = function (count, start, callback, url, now) {
-            var config = this._settings;
-            if (config.datathrottle && !now) {
-                if (this._throttle_request) window.clearTimeout(this._throttle_request);
-                this._throttle_request = webix.delay(function () {
-                    this.loadNext(count, start, callback, url, true);
-                }, this, 0, config.datathrottle);
-                return;
-            }
-
-            if (!start && start !== 0) start = this.count();
-            if (!count) count = config.datafetch || this.count();
-
-            this.data.url = this.data.url || url;
-            if (this.callEvent("onDataRequest", [start, count, callback, url]) && this.data.url) this.data.feed.call(this, start, count, callback);
-        };
-
-        /*
-         Create form the flow of the request
-         */
-        webix.TreeDataLoader._feed_commonA = function (from, count, callback) {
-            var url = this.data.url;
-            if (from < 0) from = 0;
-            var final_callback = [this._feed_callback, callback];
-            if (url && typeof url != "string") {
-                var details = { from: from, count: count };
-                if (this.getState) {
-                    var state = this.getState();
-                    details.sort = state.sort;
-                    details.filter = state.filter;
-                }
-
-                this.load(url, final_callback, details);
-            } else {
-                var finalurl = url + (url.indexOf("?") == -1 ? "?" : "&") + (this.count() ? "continue=true" : "");
-                if (count != -1) finalurl += "&count=" + count;
-                if (from) finalurl += "&start=" + from;
-
-                if (this.getState) {
-                    var state = this.getState();
-                    if (state.sort) {
-                        if (typeof this.___multisort != 'undefined' && this.___multisort) {
-                            for (var key in state.sort) finalurl += "&sort[" + state.sort[key].id + "]=" + state.sort[key].dir;
-                        } else {
-                            finalurl += "&sort[" + state.sort.id + "]=" + state.sort.dir;
-                        }
-                    }
-
-                    if (state.filter) for (var key in state.filter) finalurl += "&filter[" + key + "]=" + state.filter[key];
-                }
-                this.load(finalurl, final_callback);
-            }
-        };
-
-        /*
-         Data loading
-         */
-        webix.TreeDataLoader._feed_callback = function () {
-            //after loading check if we have some ignored requests
-            var temp = this._load_count;
-            var last = this._feed_last;
-            this._load_count = false;
-            if ((typeof temp === "undefined" ? "undefined" : _typeof(temp)) == "object" && (temp[0] != last[0] || temp[1] != last[1])) this.data.feed.apply(this, temp); //load last ignored request
-        };
-
-        webix.TreeDataLoader.load = function (url, call) {
-            var ajax = webix.AtomDataLoader.load.apply(this, arguments);
-
-            //prepare data feed for dyn. loading
-            if (!this.data.url) this.data.url = url;
-
-            return ajax;
-        };
-
-        webix.TreeDataLoader._onLoad = function (text, xml, loader) {
-            var data;
-            if (loader === -1) data = this.data.driver.toObject(xml);else {
-                //ignore data loading command if data was reloaded
-                this._ajax_queue.remove(loader);
-                data = this.data.driver.toObject(text, xml);
-            }
-
-            if (data) this.data._parse(data);else return this._onLoadError(text, xml, loader);
-
-            //data loaded, view rendered, call onready handler
-            this._call_onready();
-
-            this.callEvent("onAfterLoad", []);
-            this.waitData.resolve();
-        };
-
-        webix.DataState = {
-            getState: function getState() {
-                var cols_n = this.config.columns.length;
-                var columns = this.config.columns;
-                var settings = {
-                    ids: [],
-                    size: [],
-                    select: this.getSelectedId(true),
-                    scroll: this.getScrollState(),
-                    sort: this._multisortMap
-                };
-                for (var i = 0; i < cols_n; i++) {
-                    settings.ids.push(columns[i].id);
-                    settings.size.push(columns[i].width);
-                }
-                if (typeof this.___multisort == 'undefined' || !this.___multisort) {
-                    if (this._last_sorted) {
-                        settings.sort = {
-                            id: this._last_sorted,
-                            dir: this._last_order
-                        };
-                    }
-                }
-
-                if (this._filter_elements) {
-                    var filter = {};
-                    var any_filter = 0;
-                    for (var key in this._filter_elements) {
-                        if (this._hidden_column_hash[key]) continue;
-
-                        var f = this._filter_elements[key];
-                        f[1].value = filter[key] = f[2].getValue(f[0]);
-                        any_filter = 1;
-                    }
-                    if (any_filter) settings.filter = filter;
-                }
-
-                settings.hidden = [];
-                for (var key in this._hidden_column_hash) settings.hidden.push(key);
-
-                return settings;
-            }
-        };
-
-        webix.AtomDataLoader.url_setter = function (value) {
-            if (typeof value == "string" && value.indexOf("->") != -1) {
-                var parts = value.split("->");
-                value = webix.proxy(parts[0], parts[1]);
-            }
-
-            if (!this._ready_for_data) return value;
-            this.load(value, this._settings.datatype);
-            return value;
-        };
-    }, {}], 3: [function (require, module, exports) {
-        webix.ui.datafilter.sumTotalGroup = /*webix.extend({
-                                            refresh:function(master, node, value){
-                                            var result = 0;
-                                            master.data.each(function(obj){
-                                            if (obj.$level == 2) result += obj[value.columnId];
-                                            });
-                                            node.firstChild.innerHTML = result;
-                                            }
-                                            }, webix.ui.datafilter.summColumn);*/
-        {
-            getValue: function getValue(node) {
-                return node.firstChild.innerHTML;
-            },
-            setValue: function setValue() {},
-            refresh: function refresh(master, node, value) {
-                var result = 0;
-                master.mapGroupsCells(null, value.columnId, null, 1, function (value) {
-                    value = value * 1;
-                    if (!isNaN(value)) result += value;
-
-                    return value;
-                });
-
-                if (value.format) result = value.format(result);
-                if (value.template) result = value.template({ value: result });
-
-                node.firstChild.innerHTML = result;
-            },
-            trackCells: true,
-            render: function render(master, config) {
-                if (config.template) config.template = webix.template(config.template);
-                return "";
-            }
-        };
-    }, {}], 4: [function (require, module, exports) {
-        webix.protoUI({
-            name: 'customDataTable',
-            $init: function $init(config) {
-                this.___multisort = config.multisort;
-                this._multisort_isDelete = false;
-                this._multisort_count = 0;
-                if (this.___multisort) {
-                    this._multisortMap = [];
-                }
-            },
-            _on_header_click: function _on_header_click(column) {
-                var col = this.getColumnConfig(column);
-                if (!col.sort) return;
-
-                var order = 'asc';
-                if (typeof this.___multisort == 'undefined' || !this.___multisort) {
-                    if (col.id == this._last_sorted) order = this._last_order == "asc" ? "desc" : "asc";
-                } else {
-                    for (var number in this._multisortMap) {
-                        if (this._multisortMap[number].id == column) {
-                            order = this._multisortMap[number].dir == "asc" ? "desc" : "asc";
-                            break;
-                        }
-                    }
-                }
-                this._sort(col.id, order, col.sort);
-            },
-            markSorting: function markSorting(column, order) {
-                if (typeof this.___multisort != 'undefined' && this.___multisort) {
-                    this.markMultiSorting(column, order);
-                } else {
-                    this.markSingSorting(column, order);
-                }
-            },
-            markSingSorting: function markSingSorting(column, order) {
-                if (!this._sort_sign) this._sort_sign = webix.html.create("DIV");
-                webix.html.remove(this._sort_sign);
-
-                if (order) {
-                    var cell = this._get_header_cell(this.getColumnIndex(column));
-                    if (cell) {
-                        this._sort_sign.className = "webix_ss_sort_" + order;
-                        cell.style.position = "relative";
-                        cell.appendChild(this._sort_sign);
-                    }
-                    this._last_sorted = column;
-                    this._last_order = order;
-                } else {
-                    this._last_sorted = this._last_order = null;
-                }
-            },
-            markMultiSorting: function markMultiSorting(column, order) {
-
-                if (this._multisortMap.length == 0 && !this._multisort_isDelete) {
-                    this._multisortMap[0] = {
-                        id: column,
-                        dir: order,
-                        html: '',
-                        onClick: 0,
-                        numberInQuery: 1
-                    };
-                    this.createMarkSorting(0, column, order, true);
-                } else {
-                    if (this._multisort_isDelete) {
-                        if (this._multisort_count == 1) {
-                            this._multisort_count = 0;
-                            this._multisort_isDelete = false;
-                            this._last_order = '';
-                            for (var number in this._multisortMap) this.createMarkSorting(number, this._multisortMap[number].id, this._multisortMap[number].dir, false);
-                        } else {
-                            this._multisort_count++;
-                        }
-                    } else {
-                        var isAdded = true;
-                        for (var number in this._multisortMap) {
-                            var element = this._multisortMap[number];
-                            if (element.id != column) {
-                                this.createMarkSorting(number, element.id, element.dir, false);
-                            } else {
-                                isAdded = false;
-                                this._multisortMap[number].dir = order;
-                                this._multisortMap[number].onClick++;
-                                this._multisortMap[number].numberInQuery = 1;
-                                this.createMarkSorting(number, column, order, true);
-                            }
-                        }
-                        if (isAdded) {
-                            this._multisortMap[this._multisortMap.length] = {
-                                id: column,
-                                dir: order,
-                                html: '',
-                                onClick: 0
-                            };
-                            this.createMarkSorting(this._multisortMap.length - 1, column, order, true);
-                        } else {
-                            var numberDelete = -1;
-                            for (var number in this._multisortMap) {
-                                if (this._multisortMap[number].onClick == 6) {
-                                    numberDelete = number;
-                                    break;
-                                }
-                            }
-                            if (numberDelete != -1) {
-                                //webix.html.remove(this._multisortMap[numberDelete].html);
-                                this._multisortMap.splice(numberDelete, 1);
-                                this._multisort_isDelete = true;
-                            }
-                        }
-                    }
-                }
-            },
-            createHtmlMarkSotring: function createHtmlMarkSotring(order) {
-                var htmlElement = webix.html.create("DIV");
-                if (order) {
-                    htmlElement.className = "webix_ss_sort_" + order;
-                }
-                return htmlElement;
-            },
-            createMarkSorting: function createMarkSorting(index, column, order, isAddLast) {
-                webix.html.remove(this._multisortMap[index].html);
-                this._multisortMap[index].html = this.createHtmlMarkSotring(order);
-                if (order) {
-                    var cell = this._get_header_cell(this.getColumnIndex(column));
-                    if (cell) {
-                        cell.style.position = "relative";
-                        cell.appendChild(this._multisortMap[index].html);
-                    }
-                    if (isAddLast) {
-                        this._last_sorted = column;
-                        this._last_order = order;
-                    }
-                } else {
-                    if (isAddLast) {
-                        this._last_sorted = this._last_order = null;
-                    }
-                }
-            },
-            _sort: function _sort(col_id, direction, type) {
-                direction = direction || "asc";
-                this.markSorting(col_id, direction);
-                if (type == "server") {
-                    this.loadNext(-1, 0, {
-                        "before": function before() {
-                            var url = this.data.url;
-                            this.clearAll();
-                            this.data.url = url;
-                        }
-                    }, 0, 1);
-                } else {
-                    if (type == "text") {
-                        this.data.each(function (obj) {
-                            obj.$text = this.getText(obj.id, col_id);
-                        }, this);
-                        type = "string";col_id = "$text";
-                    }
-
-                    if (typeof type == "function") this.data.sort(type, direction);else this.data.sort(col_id, direction, type || "string");
-                }
-            },
-            mapGroupsCells: function mapGroupsCells(startrow, startcol, numrows, numcols, callback) {
-                if (startrow === null && this.data.order.length > 0) startrow = this.data.order[0];
-                if (startcol === null) startcol = this.columnId(0);
-                if (numrows === null) numrows = this.data.order.length;
-                if (numcols === null) numcols = this._settings.columns.length;
-
-                if (!this.exists(startrow)) return;
-                startrow = this.getIndexById(startrow);
-                startcol = this.getColumnIndex(startcol);
-                if (startcol === null) return;
-
-                for (var i = 0; i < numrows && startrow + i < this.data.order.length; i++) {
-                    var row_ind = startrow + i;
-                    var row_id = this.data.order[row_ind];
-                    var item = this.getItem(row_id);
-                    var col_id = this.columnId(numcols);
-                    for (var j = 0; j < numcols && startcol + j < this._settings.columns.length; j++) {
-                        var col_ind = startcol + j;
-                        var col_id = this.columnId(col_ind);
-                        var flag = true;
-                        for (var num_mas in webix.groupTotalLine) {
-                            if (col_id == webix.groupTotalLine[num_mas].id) {
-                                callback(item[webix.groupTotalLine[num_mas].id + "Sum"]);
-                                flag = false;
-                            }
-                        }
-                        if (flag) {
-                            item[col_id] = callback(item[col_id], row_id, col_id, i, j);
-                        }
-                    }
-                }
-            },
-            _custom_tab_handler: function _custom_tab_handler(tab, e) {
-                if (this._settings.editable && !this._in_edit_mode) {
-                    //if we have focus in some custom input inside of datatable
-                    if (e.target && e.target.tagName == "INPUT") return true;
-
-                    var selection = this.getSelectedId(true);
-                    if (selection.length == 1) {
-                        //this.editNext(tab, selection[0]);
-                        return false;
-                    }
-                }
-                return true;
-            }
-        }, webix.ui.treetable, webix.PagingAbility);
-    }, {}], 5: [function (require, module, exports) {
+    }, { "./metadata/sample-cell-style-metadata": 4 }], 2: [function (require, module, exports) {
         require('./custom-actions');
-        require('./custom-filter-sort');
-        require('./custom-prototype-grid');
-        require('./custom-function-calc');
 
         var columnsMetadata = require('./metadata/sample-columns-metadata');
 
@@ -500,6 +107,64 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                         body: { view: "calendar", icons: true, weekNumber: true, timepicker: true }
                     }
                 };
+                if (!webix.ui.datafilter.sumTotalGroup) {
+                    webix.ui.datafilter.sumTotalGroup = {
+                        getValue: function getValue(node) {
+                            return node.firstChild.innerHTML;
+                        },
+                        setValue: function setValue() {},
+                        refresh: function refresh(master, node, value) {
+                            var result = 0;
+                            master.mapGroupsCells(null, value.columnId, null, 1, function (value) {
+                                value = value * 1;
+                                if (!isNaN(value)) result += value;
+
+                                return value;
+                            });
+
+                            if (value.format) result = value.format(result);
+                            if (value.template) result = value.template({ value: result });
+
+                            node.firstChild.innerHTML = result;
+                        },
+                        trackCells: true,
+                        render: function render(master, config) {
+                            if (config.template) config.template = webix.template(config.template);
+                            return "";
+                        }
+                    };
+                }
+                if (!webix.ui.customDataTable) {
+                    webix.protoUI({
+                        name: 'customDataTable',
+                        $init: function $init(config) {
+                            this.___multisort = config.multisort;
+                            this._multisort_isDelete = false;
+                            this._multisort_count = 0;
+                            if (this.___multisort) {
+                                this._multisortMap = [];
+                            }
+                        },
+                        _custom_tab_handler: this.tabHhandler,
+                        _on_header_click: this.headerClick,
+                        markSorting: this.markSorting,
+                        markSingSorting: this.markSingSorting,
+                        markMultiSorting: this.markMultiSorting,
+                        createHtmlMarkSotring: this.createHtmlMarkSotring,
+                        createMarkSorting: this.createMarkSorting,
+                        mapGroupsCells: this.calculationCellValue
+                    }, webix.ui.treetable);
+
+                    webix.TreeDataLoader._loadNextA = this.treeLoadData;
+                    webix.TreeDataLoader._feed_commonA = this.treeFeedCommon;
+                    webix.TreeDataLoader._feed_callback = this.treeFeedCallback;
+                    webix.TreeDataLoader._onLoad = this.treeOnLoad;
+
+                    webix.DataState = {
+                        getState: this.getStateDataGrid
+                    };
+                }
+
                 webix.ARCHIBUS.editRows = [];
                 webix.ARCHIBUS.group = {};
                 webix.ARCHIBUS.group.tooltip = {};
@@ -1039,11 +704,320 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
                     }
                     return cellValue;
                 }
+            }, {
+                key: "markSorting",
+                value: function markSorting(column, order) {
+                    if (typeof this.___multisort != 'undefined' && this.___multisort) {
+                        this.markMultiSorting(column, order);
+                    } else {
+                        this.markSingSorting(column, order);
+                    }
+                }
+            }, {
+                key: "markSingSorting",
+                value: function markSingSorting(column, order) {
+                    if (!this._sort_sign) this._sort_sign = webix.html.create("DIV");
+                    webix.html.remove(this._sort_sign);
+
+                    if (order) {
+                        var cell = this._get_header_cell(this.getColumnIndex(column));
+                        if (cell) {
+                            this._sort_sign.className = "webix_ss_sort_" + order;
+                            cell.style.position = "relative";
+                            cell.appendChild(this._sort_sign);
+                        }
+                        this._last_sorted = column;
+                        this._last_order = order;
+                    } else {
+                        this._last_sorted = this._last_order = null;
+                    }
+                }
+            }, {
+                key: "markMultiSorting",
+                value: function markMultiSorting(column, order) {
+
+                    if (this._multisortMap.length == 0 && !this._multisort_isDelete) {
+                        this._multisortMap[0] = {
+                            id: column,
+                            dir: order,
+                            html: '',
+                            onClick: 0,
+                            numberInQuery: 1
+                        };
+                        this.createMarkSorting(0, column, order, true);
+                    } else {
+                        if (this._multisort_isDelete) {
+                            if (this._multisort_count == 1) {
+                                this._multisort_count = 0;
+                                this._multisort_isDelete = false;
+                                this._last_order = '';
+                                for (var number in this._multisortMap) this.createMarkSorting(number, this._multisortMap[number].id, this._multisortMap[number].dir, false);
+                            } else {
+                                this._multisort_count++;
+                            }
+                        } else {
+                            var isAdded = true;
+                            for (var number in this._multisortMap) {
+                                var element = this._multisortMap[number];
+                                if (element.id != column) {
+                                    this.createMarkSorting(number, element.id, element.dir, false);
+                                } else {
+                                    isAdded = false;
+                                    this._multisortMap[number].dir = order;
+                                    this._multisortMap[number].onClick++;
+                                    this._multisortMap[number].numberInQuery = 1;
+                                    this.createMarkSorting(number, column, order, true);
+                                }
+                            }
+                            if (isAdded) {
+                                this._multisortMap[this._multisortMap.length] = {
+                                    id: column,
+                                    dir: order,
+                                    html: '',
+                                    onClick: 0
+                                };
+                                this.createMarkSorting(this._multisortMap.length - 1, column, order, true);
+                            } else {
+                                var numberDelete = -1;
+                                for (var number in this._multisortMap) {
+                                    if (this._multisortMap[number].onClick == 2) {
+                                        numberDelete = number;
+                                        break;
+                                    }
+                                }
+                                if (numberDelete != -1) {
+                                    webix.html.remove(this._multisortMap[numberDelete].html);
+                                    this._multisortMap.splice(numberDelete, 1);
+                                    this._multisort_isDelete = false;
+                                }
+                            }
+                        }
+                    }
+                }
+            }, {
+                key: "createHtmlMarkSotring",
+                value: function createHtmlMarkSotring(order) {
+                    var htmlElement = webix.html.create("DIV");
+                    if (order) {
+                        htmlElement.className = "webix_ss_sort_" + order;
+                    }
+                    return htmlElement;
+                }
+            }, {
+                key: "createMarkSorting",
+                value: function createMarkSorting(index, column, order, isAddLast) {
+                    webix.html.remove(this._multisortMap[index].html);
+                    this._multisortMap[index].html = this.createHtmlMarkSotring(order);
+                    if (order) {
+                        var cell = this._get_header_cell(this.getColumnIndex(column));
+                        if (cell) {
+                            cell.style.position = "relative";
+                            cell.appendChild(this._multisortMap[index].html);
+                        }
+                        if (isAddLast) {
+                            this._last_sorted = column;
+                            this._last_order = order;
+                        }
+                    } else {
+                        if (isAddLast) {
+                            this._last_sorted = this._last_order = null;
+                        }
+                    }
+                }
+            }, {
+                key: "tabHhandler",
+                value: function tabHhandler(tab, e) {
+                    if (this._settings.editable && !this._in_edit_mode) {
+                        //if we have focus in some custom input inside of datatable
+                        if (e.target && e.target.tagName == "INPUT") return true;
+
+                        var selection = this.getSelectedId(true);
+                        if (selection.length == 1) {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+            }, {
+                key: "headerClick",
+                value: function headerClick(column) {
+                    var col = this.getColumnConfig(column);
+                    if (!col.sort) return;
+
+                    var order = 'asc';
+                    if (typeof this.___multisort == 'undefined' || !this.___multisort) {
+                        if (col.id == this._last_sorted) order = this._last_order == "asc" ? "desc" : "asc";
+                    } else {
+                        for (var number in this._multisortMap) {
+                            if (this._multisortMap[number].id == column) {
+                                order = this._multisortMap[number].dir == "asc" ? "desc" : "asc";
+                                break;
+                            }
+                        }
+                    }
+                    this._sort(col.id, order, col.sort);
+                }
+            }, {
+                key: "calculationCellValue",
+                value: function calculationCellValue(startrow, startcol, numrows, numcols, callback) {
+                    if (startrow === null && this.data.order.length > 0) startrow = this.data.order[0];
+                    if (startcol === null) startcol = this.columnId(0);
+                    if (numrows === null) numrows = this.data.order.length;
+                    if (numcols === null) numcols = this._settings.columns.length;
+
+                    if (!this.exists(startrow)) return;
+                    startrow = this.getIndexById(startrow);
+                    startcol = this.getColumnIndex(startcol);
+                    if (startcol === null) return;
+
+                    for (var i = 0; i < numrows && startrow + i < this.data.order.length; i++) {
+                        var row_ind = startrow + i;
+                        var row_id = this.data.order[row_ind];
+                        var item = this.getItem(row_id);
+                        var col_id = this.columnId(numcols);
+                        for (var j = 0; j < numcols && startcol + j < this._settings.columns.length; j++) {
+                            var col_ind = startcol + j;
+                            var col_id = this.columnId(col_ind);
+                            var flag = true;
+                            for (var num_mas in webix.groupTotalLine) {
+                                if (col_id == webix.groupTotalLine[num_mas].id) {
+                                    callback(item[webix.groupTotalLine[num_mas].id + "Sum"]);
+                                    flag = false;
+                                }
+                            }
+                            if (flag) {
+                                item[col_id] = callback(item[col_id], row_id, col_id, i, j);
+                            }
+                        }
+                    }
+                }
+            }, {
+                key: "treeLoadData",
+                value: function treeLoadData(count, start, callback, url, now) {
+                    var config = this._settings;
+                    if (config.datathrottle && !now) {
+                        if (this._throttle_request) window.clearTimeout(this._throttle_request);
+                        this._throttle_request = webix.delay(function () {
+                            this.loadNext(count, start, callback, url, true);
+                        }, this, 0, config.datathrottle);
+                        return;
+                    }
+
+                    if (!start && start !== 0) start = this.count();
+                    if (!count) count = config.datafetch || this.count();
+
+                    this.data.url = this.data.url || url;
+                    if (this.callEvent("onDataRequest", [start, count, callback, url]) && this.data.url) this.data.feed.call(this, start, count, callback);
+                }
+            }, {
+                key: "treeFeedCommon",
+                value: function treeFeedCommon(from, count, callback) {
+                    var url = this.data.url;
+                    if (from < 0) from = 0;
+                    var final_callback = [this._feed_callback, callback];
+                    if (url && typeof url != "string") {
+                        var details = { from: from, count: count };
+                        if (this.getState) {
+                            var state = this.getState();
+                            details.sort = state.sort;
+                            details.filter = state.filter;
+                        }
+
+                        this.load(url, final_callback, details);
+                    } else {
+                        var finalurl = url + (url.indexOf("?") == -1 ? "?" : "&") + (this.count() ? "continue=true" : "");
+                        if (count != -1) finalurl += "&count=" + count;
+                        if (from) finalurl += "&start=" + from;
+
+                        if (this.getState) {
+                            var state = this.getState();
+                            if (state.sort) {
+                                if (typeof this.___multisort != 'undefined' && this.___multisort) {
+                                    for (var key in state.sort) finalurl += "&sort[" + state.sort[key].id + "]=" + state.sort[key].dir;
+                                } else {
+                                    finalurl += "&sort[" + state.sort.id + "]=" + state.sort.dir;
+                                }
+                            }
+
+                            if (state.filter) for (var key in state.filter) finalurl += "&filter[" + key + "]=" + state.filter[key];
+                        }
+                        this.load(finalurl, final_callback);
+                    }
+                }
+            }, {
+                key: "treeFeedCallback",
+                value: function treeFeedCallback() {
+                    //after loading check if we have some ignored requests
+                    var temp = this._load_count;
+                    var last = this._feed_last;
+                    this._load_count = false;
+                    if ((typeof temp === "undefined" ? "undefined" : _typeof(temp)) == "object" && (temp[0] != last[0] || temp[1] != last[1])) this.data.feed.apply(this, temp); //load last ignored request
+                }
+            }, {
+                key: "treeOnLoad",
+                value: function treeOnLoad(text, xml, loader) {
+                    var data;
+                    if (loader === -1) data = this.data.driver.toObject(xml);else {
+                        //ignore data loading command if data was reloaded
+                        this._ajax_queue.remove(loader);
+                        data = this.data.driver.toObject(text, xml);
+                    }
+
+                    if (data) this.data._parse(data);else return this._onLoadError(text, xml, loader);
+
+                    //data loaded, view rendered, call onready handler
+                    this._call_onready();
+
+                    this.callEvent("onAfterLoad", []);
+                    this.waitData.resolve();
+                }
+            }, {
+                key: "getStateDataGrid",
+                value: function getStateDataGrid() {
+                    var cols_n = this.config.columns.length;
+                    var columns = this.config.columns;
+                    var settings = {
+                        ids: [],
+                        size: [],
+                        select: this.getSelectedId(true),
+                        scroll: this.getScrollState(),
+                        sort: this._multisortMap
+                    };
+                    for (var i = 0; i < cols_n; i++) {
+                        settings.ids.push(columns[i].id);
+                        settings.size.push(columns[i].width);
+                    }
+                    if (typeof this.___multisort == 'undefined' || !this.___multisort) {
+                        if (this._last_sorted) {
+                            settings.sort = {
+                                id: this._last_sorted,
+                                dir: this._last_order
+                            };
+                        }
+                    }
+                    if (this._filter_elements) {
+                        var filter = {};
+                        var any_filter = 0;
+                        for (var key in this._filter_elements) {
+                            if (this._hidden_column_hash[key]) continue;
+
+                            var f = this._filter_elements[key];
+                            f[1].value = filter[key] = f[2].getValue(f[0]);
+                            any_filter = 1;
+                        }
+                        if (any_filter) settings.filter = filter;
+                    }
+
+                    settings.hidden = [];
+                    for (var key in this._hidden_column_hash) settings.hidden.push(key);
+
+                    return settings;
+                }
             }]);
 
             return DataGrid;
         })();
-    }, { "./custom-actions": 1, "./custom-filter-sort": 2, "./custom-function-calc": 3, "./custom-prototype-grid": 4, "./metadata/sample-columns-metadata": 8 }], 6: [function (require, module, exports) {
+    }, { "./custom-actions": 1, "./metadata/sample-columns-metadata": 5 }], 3: [function (require, module, exports) {
         var buttonsMetadata = [{
             icon: 'style/icons/cog_edit.png',
             class: 'editclasss',
@@ -1082,7 +1056,7 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
         }];
 
         module.exports = buttonsMetadata;
-    }, {}], 7: [function (require, module, exports) {
+    }, {}], 4: [function (require, module, exports) {
         var classStyle = {
             CountryCode: [{
                 cellText: 'USA',
@@ -1103,7 +1077,7 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
         };
 
         module.exports = classStyle;
-    }, {}], 8: [function (require, module, exports) {
+    }, {}], 5: [function (require, module, exports) {
         var buttonMetadata = require('./sample-buttons-metadata');
 
         var ARCHIBUSColumns = [{
@@ -1208,4 +1182,4 @@ function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : ty
         }];
 
         module.exports = ARCHIBUSColumns;
-    }, { "./sample-buttons-metadata": 6 }] }, {}, [5]);
+    }, { "./sample-buttons-metadata": 3 }] }, {}, [2]);
