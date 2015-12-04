@@ -35,6 +35,8 @@ function resize(objects){
 }
 
 
+
+
 class DataGrid{
 
     constructor(config) {
@@ -91,23 +93,23 @@ class DataGrid{
                         this._multisortMap = [];
                     }
                 },
-                _custom_tab_handler: this.tabHhandler,
-                _on_header_click: this.headerClick,
-                markSorting: this.markSorting,
-                markSingSorting: this.markSingSorting,
-                markMultiSorting: this.markMultiSorting,
-                createHtmlMarkSotring: this.createHtmlMarkSotring,
-                createMarkSorting: this.createMarkSorting,
-                mapGroupsCells: this.calculationCellValue
+                _custom_tab_handler: this.eventHandlerTab,
+                _on_header_click: this.eventHandlerHeaderClick,
+                markSorting: this.doStartSorting,
+                markSingSorting: this.doStartSingSorting,
+                markMultiSorting: this.doStartMultiSorting,
+                createHtmlMarkSotring: this.addDivInColumnHeader,
+                createMarkSorting: this.doReLabelingSorting,
+                mapGroupsCells: this.calculationColumnValue
             }, webix.ui.treetable);
 
-            webix.TreeDataLoader._loadNextA = this.treeLoadData;
-            webix.TreeDataLoader._feed_commonA = this.treeFeedCommon;
-            webix.TreeDataLoader._feed_callback = this.treeFeedCallback;
-            webix.TreeDataLoader._onLoad = this.treeOnLoad;
+            webix.TreeDataLoader._loadNextA = this.doLoadData;
+            webix.TreeDataLoader._feed_commonA = this.createUrlAndLoadData;
+            webix.TreeDataLoader._feed_callback = this.doCheckExistenceData;
+            webix.TreeDataLoader._onLoad = this.parseData;
 
             webix.DataState = {
-                getState: this.getStateDataGrid
+                getState: this.getStateGridData
             };
         }
 
@@ -125,7 +127,7 @@ class DataGrid{
             enum: 'serverSelectFilter'
         };
         webix.ARCHIBUS.pageSize = config.pageSize;
-        this.configurationSizeGrid(config.container, config.width, config.height);
+        this.configurationGridSize(config.container, config.width, config.height);
 
         var nameGrid = config.container + 'Grid';
         var namePaging = config.container + 'Paging';
@@ -143,13 +145,15 @@ class DataGrid{
             ]
         });
 
-        var configGrid  = this.confiturationGrid(config);
+        var configGrid  = this.createGridConfiguration(config);
         this.dataTable = new webix.ui(configGrid);
     }
-
-    confiturationGrid(config){
-        var webixColumns = this.createWebixColumns(config);
-        var webixActionsGrid = this.configurationActionsGrid(config);
+    /*
+     To form a configuration for the component webix.ui.treetable
+     */
+    createGridConfiguration(config){
+        var webixColumns = this.createColumns(config);
+        var webixActionsGrid = this.configureGridActions(config);
 
         var nameGrid = config.container + 'Grid';
         var namePaging = config.container + 'Paging';
@@ -160,6 +164,7 @@ class DataGrid{
         var configGrid = {
             container: nameGrid,
             view: "customDataTable",
+            css:"my_style",
             columns: webixColumns.columns,
             pager: {
                 template: "{common.first()}{common.prev()}{common.pages()}{common.next()}{common.last()}",
@@ -186,11 +191,11 @@ class DataGrid{
             $group: {}
         };
 
-        if(this.existsField(webixColumns.group.id)){
+        if(this.isExistsField(webixColumns.group.id)){
             configGroup.$group.by = webixColumns.group.id;
             configGrid.scheme = configGroup;
         }
-        if(this.existsField(webixColumns.group.footer)){
+        if(this.isExistsField(webixColumns.group.footer)){
             configGroup.$group.map = {};
             webix.groupTotalLine = webixColumns.group.footer;
             for(var i in webix.groupTotalLine){
@@ -199,7 +204,7 @@ class DataGrid{
             configGrid.scheme = configGroup;
         }
 
-        if(this.existsField(config.editing)){
+        if(this.isExistsField(config.editing)){
             if(config.editing){
                 configGrid.editable = true;
                 configGrid.editaction = "custom";
@@ -207,7 +212,7 @@ class DataGrid{
                 leftSplit++;
             }
         }
-        if(this.existsField(config.lastLeftFixedColumn)){
+        if(this.isExistsField(config.lastLeftFixedColumn)){
             leftSplit = 1;
             for(var index = 0; index <webixColumns.columns.length;index++){
                 if(webixColumns.columns[index].id == config.lastLeftFixedColumn){
@@ -216,7 +221,7 @@ class DataGrid{
                 }
             }
         }
-        if(this.existsField(config.firstRightFixedColumn)){
+        if(this.isExistsField(config.firstRightFixedColumn)){
             for(var index = 0; index <webixColumns.columns.length;index++){
                 if(webixColumns.columns[index].id == config.firstRightFixedColumn){
                     rightSplit = webixColumns.columns.length - index;
@@ -228,8 +233,10 @@ class DataGrid{
         configGrid.leftSplit = leftSplit;
         return configGrid;
     }
-
-    configurationSizeGrid(container, width, height){
+    /*
+     Customize the size the grid view depending on the set values in the config
+     */
+    configurationGridSize(container, width, height){
         if(typeof width != 'undefined'){
             document.getElementById(container).style.width = width + "px";
         }
@@ -243,8 +250,10 @@ class DataGrid{
             document.getElementById(container).style.height = "90%";
         }
     }
-
-    configurationActionsGrid(config){
+    /*
+     Customize the actions the grid view depending on the set function in the config
+     */
+    configureGridActions(config){
         var events = config.events;
         var webixActionsGrid = {
             onCheck: function (row, column, value) {
@@ -331,8 +340,10 @@ class DataGrid{
         }
         return webixActionsGrid;
     }
-
-    createWebixColumns(config){
+    /*
+     To create a configuration list of columns for grid
+     */
+    createColumns(config){
         var ARCHIBUSColumns = config.columns;
         var webixColumns = [];
         var webixGroupBy = {};
@@ -344,7 +355,7 @@ class DataGrid{
             template: "{common.checkbox()}",
             footer:{text:"Total:"}
         };
-        if(this.existsField(config.editing)) {
+        if(this.isExistsField(config.editing)) {
             if (config.editing) {
                 webix.ARCHIBUS.editButtonMap = [
                     {
@@ -444,7 +455,7 @@ class DataGrid{
                     id: 'edit',
                     header: "",
                     width: 60,
-                    template: this.templateEditColumn
+                    template: this.renderEditColumn
                 };
             }
         }
@@ -452,13 +463,13 @@ class DataGrid{
         for(var numberColumn in ARCHIBUSColumns){
             var ARCHIBUSColumn = ARCHIBUSColumns[numberColumn];
             var webixColumn = {};
-            if(this.existsField(ARCHIBUSColumn.id)){
+            if(this.isExistsField(ARCHIBUSColumn.id)){
                 webixColumn.id = ARCHIBUSColumn.id;
             }
-            webixColumn.header = this.createColumnHeader(ARCHIBUSColumn.title, ARCHIBUSColumn.dataType, ARCHIBUSColumn.action);
-            webixColumn.cssFormat = this.createColumnCssFormat(ARCHIBUSColumn.cssClass);
-            webixColumn.template = this.templateColumnsCell;
-            if(this.existsField(ARCHIBUSColumn.dataType)){
+            webixColumn.header = this.configureColumnHeader(ARCHIBUSColumn.title, ARCHIBUSColumn.dataType, ARCHIBUSColumn.action);
+            webixColumn.cssFormat = this.configureColumnStyle(ARCHIBUSColumn.cssClass);
+            webixColumn.template = this.renderColumnsCell;
+            if(this.isExistsField(ARCHIBUSColumn.dataType)){
                 switch (ARCHIBUSColumn.dataType){
                     case 'number': webixColumn.format = webix.i18n.numberFormat;
                         webixColumn.editor = 'text';
@@ -530,27 +541,27 @@ class DataGrid{
                 return "";
             }
 
-            if(this.existsField(ARCHIBUSColumn.width)){
+            if(this.isExistsField(ARCHIBUSColumn.width)){
                 webixColumn.width = ARCHIBUSColumn.width;
             }
             else{
                 webixColumn.adjust = "data";
             }
-            if(this.existsField(ARCHIBUSColumn.action)){
+            if(this.isExistsField(ARCHIBUSColumn.action)){
                 webix.buttonsMap = ARCHIBUSColumn.action;
-                webixColumn.template = this.templateActionButtonsColumn;
+                webixColumn.template = this.renderActionButtonsColumn;
             }
             else{
                 webixColumn.sort = "server";
             }
-            if(this.existsField(ARCHIBUSColumn.groupBy)){
-                webixColumn.template = this.templateGroupColumn;
+            if(this.isExistsField(ARCHIBUSColumn.groupBy)){
+                webixColumn.template = this.renderColumnGroup;
                 webixGroupBy.id =  ARCHIBUSColumn.id;
 
             }
-            if(this.existsField(ARCHIBUSColumn.showTotals)){
+            if(this.isExistsField(ARCHIBUSColumn.showTotals)){
                 webixColumn.footer = { content:"sumTotalGroup" };
-                if(!this.existsField(webixGroupBy.footer)){
+                if(!this.isExistsField(webixGroupBy.footer)){
                     webixGroupBy.footer = [];
                 }
                 var i = webixGroupBy.footer.length;
@@ -568,13 +579,17 @@ class DataGrid{
             group: webixGroupBy
         };
     }
-
-    existsField(field){
+    /*
+     Do check for the existence of the field. True - the field exists, false - doesn't exist
+     */
+    isExistsField(field){
         return typeof field != 'undefined'
     }
-
-    createColumnHeader (title, dataType, action){
-        if(this.existsField(action)){
+    /*
+     Customize the header column the grid view depending on the set values in the config
+     */
+    configureColumnHeader (title, dataType, action){
+        if(this.isExistsField(action)){
             return title;
         }
         var filterView;
@@ -588,9 +603,11 @@ class DataGrid{
             {content:filterView}
         ];
     }
-
-    createColumnCssFormat(cssClass){
-        if(this.existsField(cssClass)){
+    /*
+     Customize the style column the grid view depending on the set values in the config
+     */
+    configureColumnStyle(cssClass){
+        if(this.isExistsField(cssClass)){
             return webix.actions[cssClass];
         }
         else{
@@ -601,8 +618,10 @@ class DataGrid{
             };
         }
     }
-
-    templateGroupColumn(cellElement, cellInfo, cellValue, b, rowNumber){
+    /*
+     Do perform the formation of column for groups
+     */
+    renderColumnGroup(cellElement, cellInfo, cellValue, b, rowNumber){
         if (cellElement.$group) {
             var count = cellElement.$count;
             var result = cellInfo.treetable(cellElement, cellInfo) + " " + this.id +": " + cellElement.value + " ( " + count + " assets )";
@@ -631,8 +650,10 @@ class DataGrid{
 
         return cellValue;
     }
-
-    templateActionButtonsColumn(cellElement, cellInfo){
+    /*
+     Do perform the formation of the action buttons in the column
+     */
+    renderActionButtonsColumn(cellElement, cellInfo){
         if(cellElement.$group){
             return ' ';
         }
@@ -650,8 +671,10 @@ class DataGrid{
         }
         return result;
     }
-
-    templateEditColumn(cellElement, cellInfo){
+    /*
+     Do perform the formation of the action buttons edits in the column
+     */
+    renderEditColumn(cellElement, cellInfo){
         if(cellElement.$group){
             return ' ';
         }
@@ -664,8 +687,10 @@ class DataGrid{
         }
         return "<img class='editStartClass' src='style/icons/cog_edit.png'/>";
     }
-
-    templateColumnsCell(cellElement, cellInfo, cellValue){
+    /*
+     Do perform the formation of the cell in the column
+     */
+    renderColumnsCell(cellElement, cellInfo, cellValue){
         if(cellElement.$group){
             var result = "<span>";
             for(var i in webix.groupTotalLine) {
@@ -684,8 +709,10 @@ class DataGrid{
         }
         return cellValue;
     }
-
-    markSorting(column, order){
+    /*
+     Do perform the formation of the object data to sort and display the marker sorting
+     */
+    doStartSorting(column, order){
         if(typeof this.___multisort != 'undefined'  && this.___multisort){
             this.markMultiSorting(column,order);
         }
@@ -693,8 +720,10 @@ class DataGrid{
             this.markSingSorting(column,order);
         }
     }
-
-    markSingSorting(column, order){
+    /*
+     To perform a single sorting
+     */
+    doStartSingSorting(column, order){
         if (!this._sort_sign)
             this._sort_sign = webix.html.create("DIV");
         webix.html.remove(this._sort_sign);
@@ -712,8 +741,10 @@ class DataGrid{
             this._last_sorted = this._last_order = null;
         }
     }
-
-    markMultiSorting(column, order){
+    /*
+     To perform a multi sorting
+     */
+    doStartMultiSorting(column, order){
 
         if(this._multisortMap.length == 0 && !this._multisort_isDelete){
             this._multisortMap[0] = {
@@ -779,16 +810,20 @@ class DataGrid{
             }
         }
     }
-
-    createHtmlMarkSotring(order){
+    /*
+     Do add the <div> element for marking the position of the sorting
+     */
+    addDivInColumnHeader(order){
         var htmlElement = webix.html.create("DIV");
         if (order){
             htmlElement.className = "webix_ss_sort_"+order;
         }
         return htmlElement;
     }
-
-    createMarkSorting(index, column, order, isAddLast){
+    /*
+     Do add action in the <div> element for marking the position of the sorting
+     */
+    doReLabelingSorting(index, column, order, isAddLast){
         webix.html.remove(this._multisortMap[index].html);
         this._multisortMap[index].html = this.createHtmlMarkSotring(order);
         if (order){
@@ -808,8 +843,10 @@ class DataGrid{
             }
         }
     }
-
-    tabHhandler(tab, e){
+    /*
+     Handling the keyboard event "Tab"
+     */
+    eventHandlerTab(tab, e){
         if (this._settings.editable && !this._in_edit_mode){
             //if we have focus in some custom input inside of datatable
             if (e.target && e.target.tagName == "INPUT") return true;
@@ -821,8 +858,10 @@ class DataGrid{
         }
         return true;
     }
-
-    headerClick(column){
+    /*
+     Event handling clicking on the column header
+     */
+    eventHandlerHeaderClick(column){
         var col = this.getColumnConfig(column);
         if (!col.sort) return;
 
@@ -841,8 +880,10 @@ class DataGrid{
         }
         this._sort(col.id, order, col.sort);
     }
-
-    calculationCellValue(startrow, startcol, numrows, numcols, callback) {
+    /*
+     Do perform calculations on data in column
+     */
+    calculationColumnValue(startrow, startcol, numrows, numcols, callback) {
         if (startrow === null && this.data.order.length > 0) startrow = this.data.order[0];
         if (startcol === null) startcol = this.columnId(0);
         if (numrows === null) numrows = this.data.order.length;
@@ -875,9 +916,10 @@ class DataGrid{
             }
         }
     }
-
-
-    treeLoadData(count, start, callback, url, now){
+    /*
+     Do load data
+     */
+    doLoadData(count, start, callback, url, now){
         var config = this._settings;
         if (config.datathrottle && !now){
             if (this._throttle_request)
@@ -896,8 +938,10 @@ class DataGrid{
         if (this.callEvent("onDataRequest", [start,count,callback,url]) && this.data.url)
             this.data.feed.call(this, start, count, callback);
     };
-
-    treeFeedCommon(from, count, callback){
+    /*
+     Do perform the query on the server and load the data from the response from the server
+     */
+    createUrlAndLoadData(from, count, callback){
         var url = this.data.url;
         if (from<0) from = 0;
         var final_callback = [
@@ -940,8 +984,10 @@ class DataGrid{
             this.load(finalurl, final_callback);
         }
     }
-
-    treeFeedCallback(){
+    /*
+     Do check for data loading
+     */
+    doCheckExistenceData(){
         //after loading check if we have some ignored requests
         var temp = this._load_count;
         var last = this._feed_last;
@@ -949,8 +995,10 @@ class DataGrid{
         if (typeof temp =="object" && (temp[0]!=last[0] || temp[1]!=last[1]))
             this.data.feed.apply(this, temp);	//load last ignored request
     }
-
-    treeOnLoad(text,xml,loader){
+    /*
+     Do parse the loaded data
+     */
+    parseData(text,xml,loader){
         var data;
         if (loader === -1)
             data = this.data.driver.toObject(xml);
@@ -971,9 +1019,10 @@ class DataGrid{
         this.callEvent("onAfterLoad",[]);
         this.waitData.resolve();
     }
-
-
-    getStateDataGrid(){
+    /*
+     Obtain the configuration status of the data grid
+     */
+    getStateGridData(){
         var cols_n = this.config.columns.length;
         var columns = this.config.columns;
         var settings = {

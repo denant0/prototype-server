@@ -10,26 +10,32 @@
 
     <script type="text/javascript" src="scripts/data-grid/datagrid.js"></script>
 </head>
-<style type="text/css">
-    body, html{
-        height:99%;
-    }
-    .row-marked{
-        background-color: #ffa;
-    }
-    .row-edited{
-        background-color: #a5bcd6;
-    }
-    .group{
-        float: right;
-    }
-    .webix_view{
-        font-size:11px;
-    }
-</style>
+
 <body>
     <div id="projectsGridContainer" ></div>
-    <div id="projectsGridContainer1" ></div>
-
+    <style type="text/css">
+        body, html{
+            height:99%;
+        }
+        .row-marked{
+            background-color: #ffa;
+        }
+        .row-edited{
+            background-color: #a5bcd6;
+        }
+        .group{
+            float: right;
+        }
+        .my_style .webix_column > div{
+            font-size:11px;
+            padding:0 2px;
+        }
+        .my_style .webix_ss_header td{
+            font-size:11px;
+        }
+        .my_style .webix_ss_footer td{
+            font-size:11px;
+        }
+    </style>
 </body>
 </html>

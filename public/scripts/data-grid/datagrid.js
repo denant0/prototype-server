@@ -145,23 +145,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                 this._multisortMap = [];
                             }
                         },
-                        _custom_tab_handler: this.tabHhandler,
-                        _on_header_click: this.headerClick,
-                        markSorting: this.markSorting,
-                        markSingSorting: this.markSingSorting,
-                        markMultiSorting: this.markMultiSorting,
-                        createHtmlMarkSotring: this.createHtmlMarkSotring,
-                        createMarkSorting: this.createMarkSorting,
-                        mapGroupsCells: this.calculationCellValue
+                        _custom_tab_handler: this.eventHandlerTab,
+                        _on_header_click: this.eventHandlerHeaderClick,
+                        markSorting: this.doStartSorting,
+                        markSingSorting: this.doStartSingSorting,
+                        markMultiSorting: this.doStartMultiSorting,
+                        createHtmlMarkSotring: this.addDivInColumnHeader,
+                        createMarkSorting: this.doReLabelingSorting,
+                        mapGroupsCells: this.calculationColumnValue
                     }, webix.ui.treetable);
 
-                    webix.TreeDataLoader._loadNextA = this.treeLoadData;
-                    webix.TreeDataLoader._feed_commonA = this.treeFeedCommon;
-                    webix.TreeDataLoader._feed_callback = this.treeFeedCallback;
-                    webix.TreeDataLoader._onLoad = this.treeOnLoad;
+                    webix.TreeDataLoader._loadNextA = this.doLoadData;
+                    webix.TreeDataLoader._feed_commonA = this.createUrlAndLoadData;
+                    webix.TreeDataLoader._feed_callback = this.doCheckExistenceData;
+                    webix.TreeDataLoader._onLoad = this.parseData;
 
                     webix.DataState = {
-                        getState: this.getStateDataGrid
+                        getState: this.getStateGridData
                     };
                 }
 
@@ -179,7 +179,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     enum: 'serverSelectFilter'
                 };
                 webix.ARCHIBUS.pageSize = config.pageSize;
-                this.configurationSizeGrid(config.container, config.width, config.height);
+                this.configurationGridSize(config.container, config.width, config.height);
 
                 var nameGrid = config.container + 'Grid';
                 var namePaging = config.container + 'Paging';
@@ -194,15 +194,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     }]
                 });
 
-                var configGrid = this.confiturationGrid(config);
+                var configGrid = this.createGridConfiguration(config);
                 this.dataTable = new webix.ui(configGrid);
             }
+            /*
+             To form a configuration for the component webix.ui.treetable
+             */
 
             _createClass(DataGrid, [{
-                key: "confiturationGrid",
-                value: function confiturationGrid(config) {
-                    var webixColumns = this.createWebixColumns(config);
-                    var webixActionsGrid = this.configurationActionsGrid(config);
+                key: "createGridConfiguration",
+                value: function createGridConfiguration(config) {
+                    var webixColumns = this.createColumns(config);
+                    var webixActionsGrid = this.configureGridActions(config);
 
                     var nameGrid = config.container + 'Grid';
                     var namePaging = config.container + 'Paging';
@@ -213,6 +216,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     var configGrid = {
                         container: nameGrid,
                         view: "customDataTable",
+                        css: "my_style",
                         columns: webixColumns.columns,
                         pager: {
                             template: "{common.first()}{common.prev()}{common.pages()}{common.next()}{common.last()}",
@@ -239,11 +243,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         $group: {}
                     };
 
-                    if (this.existsField(webixColumns.group.id)) {
+                    if (this.isExistsField(webixColumns.group.id)) {
                         configGroup.$group.by = webixColumns.group.id;
                         configGrid.scheme = configGroup;
                     }
-                    if (this.existsField(webixColumns.group.footer)) {
+                    if (this.isExistsField(webixColumns.group.footer)) {
                         configGroup.$group.map = {};
                         webix.groupTotalLine = webixColumns.group.footer;
                         for (var i in webix.groupTotalLine) {
@@ -252,7 +256,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         configGrid.scheme = configGroup;
                     }
 
-                    if (this.existsField(config.editing)) {
+                    if (this.isExistsField(config.editing)) {
                         if (config.editing) {
                             configGrid.editable = true;
                             configGrid.editaction = "custom";
@@ -260,7 +264,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             leftSplit++;
                         }
                     }
-                    if (this.existsField(config.lastLeftFixedColumn)) {
+                    if (this.isExistsField(config.lastLeftFixedColumn)) {
                         leftSplit = 1;
                         for (var index = 0; index < webixColumns.columns.length; index++) {
                             if (webixColumns.columns[index].id == config.lastLeftFixedColumn) {
@@ -269,7 +273,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             }
                         }
                     }
-                    if (this.existsField(config.firstRightFixedColumn)) {
+                    if (this.isExistsField(config.firstRightFixedColumn)) {
                         for (var index = 0; index < webixColumns.columns.length; index++) {
                             if (webixColumns.columns[index].id == config.firstRightFixedColumn) {
                                 rightSplit = webixColumns.columns.length - index;
@@ -281,9 +285,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     configGrid.leftSplit = leftSplit;
                     return configGrid;
                 }
+                /*
+                 Customize the size the grid view depending on the set values in the config
+                 */
+
             }, {
-                key: "configurationSizeGrid",
-                value: function configurationSizeGrid(container, width, height) {
+                key: "configurationGridSize",
+                value: function configurationGridSize(container, width, height) {
                     if (typeof width != 'undefined') {
                         document.getElementById(container).style.width = width + "px";
                     } else {
@@ -295,9 +303,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         document.getElementById(container).style.height = "90%";
                     }
                 }
+                /*
+                 Customize the actions the grid view depending on the set function in the config
+                 */
+
             }, {
-                key: "configurationActionsGrid",
-                value: function configurationActionsGrid(config) {
+                key: "configureGridActions",
+                value: function configureGridActions(config) {
                     var events = config.events;
                     var webixActionsGrid = {
                         onCheck: function onCheck(row, column, value) {
@@ -380,9 +392,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     }
                     return webixActionsGrid;
                 }
+                /*
+                 To create a configuration list of columns for grid
+                 */
+
             }, {
-                key: "createWebixColumns",
-                value: function createWebixColumns(config) {
+                key: "createColumns",
+                value: function createColumns(config) {
                     var ARCHIBUSColumns = config.columns;
                     var webixColumns = [];
                     var webixGroupBy = {};
@@ -394,7 +410,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         template: "{common.checkbox()}",
                         footer: { text: "Total:" }
                     };
-                    if (this.existsField(config.editing)) {
+                    if (this.isExistsField(config.editing)) {
                         if (config.editing) {
                             webix.ARCHIBUS.editButtonMap = [{
                                 class: 'editStartClass',
@@ -478,7 +494,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                 id: 'edit',
                                 header: "",
                                 width: 60,
-                                template: this.templateEditColumn
+                                template: this.renderEditColumn
                             };
                         }
                     }
@@ -486,13 +502,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     for (var numberColumn in ARCHIBUSColumns) {
                         var ARCHIBUSColumn = ARCHIBUSColumns[numberColumn];
                         var webixColumn = {};
-                        if (this.existsField(ARCHIBUSColumn.id)) {
+                        if (this.isExistsField(ARCHIBUSColumn.id)) {
                             webixColumn.id = ARCHIBUSColumn.id;
                         }
-                        webixColumn.header = this.createColumnHeader(ARCHIBUSColumn.title, ARCHIBUSColumn.dataType, ARCHIBUSColumn.action);
-                        webixColumn.cssFormat = this.createColumnCssFormat(ARCHIBUSColumn.cssClass);
-                        webixColumn.template = this.templateColumnsCell;
-                        if (this.existsField(ARCHIBUSColumn.dataType)) {
+                        webixColumn.header = this.configureColumnHeader(ARCHIBUSColumn.title, ARCHIBUSColumn.dataType, ARCHIBUSColumn.action);
+                        webixColumn.cssFormat = this.configureColumnStyle(ARCHIBUSColumn.cssClass);
+                        webixColumn.template = this.renderColumnsCell;
+                        if (this.isExistsField(ARCHIBUSColumn.dataType)) {
                             switch (ARCHIBUSColumn.dataType) {
                                 case 'number':
                                     webixColumn.format = webix.i18n.numberFormat;
@@ -564,24 +580,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             return "";
                         };
 
-                        if (this.existsField(ARCHIBUSColumn.width)) {
+                        if (this.isExistsField(ARCHIBUSColumn.width)) {
                             webixColumn.width = ARCHIBUSColumn.width;
                         } else {
                             webixColumn.adjust = "data";
                         }
-                        if (this.existsField(ARCHIBUSColumn.action)) {
+                        if (this.isExistsField(ARCHIBUSColumn.action)) {
                             webix.buttonsMap = ARCHIBUSColumn.action;
-                            webixColumn.template = this.templateActionButtonsColumn;
+                            webixColumn.template = this.renderActionButtonsColumn;
                         } else {
                             webixColumn.sort = "server";
                         }
-                        if (this.existsField(ARCHIBUSColumn.groupBy)) {
-                            webixColumn.template = this.templateGroupColumn;
+                        if (this.isExistsField(ARCHIBUSColumn.groupBy)) {
+                            webixColumn.template = this.renderColumnGroup;
                             webixGroupBy.id = ARCHIBUSColumn.id;
                         }
-                        if (this.existsField(ARCHIBUSColumn.showTotals)) {
+                        if (this.isExistsField(ARCHIBUSColumn.showTotals)) {
                             webixColumn.footer = { content: "sumTotalGroup" };
-                            if (!this.existsField(webixGroupBy.footer)) {
+                            if (!this.isExistsField(webixGroupBy.footer)) {
                                 webixGroupBy.footer = [];
                             }
                             var i = webixGroupBy.footer.length;
@@ -598,15 +614,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         group: webixGroupBy
                     };
                 }
+                /*
+                 Do check for the existence of the field. True - the field exists, false - doesn't exist
+                 */
+
             }, {
-                key: "existsField",
-                value: function existsField(field) {
+                key: "isExistsField",
+                value: function isExistsField(field) {
                     return typeof field != 'undefined';
                 }
+                /*
+                 Customize the header column the grid view depending on the set values in the config
+                 */
+
             }, {
-                key: "createColumnHeader",
-                value: function createColumnHeader(title, dataType, action) {
-                    if (this.existsField(action)) {
+                key: "configureColumnHeader",
+                value: function configureColumnHeader(title, dataType, action) {
+                    if (this.isExistsField(action)) {
                         return title;
                     }
                     var filterView;
@@ -617,10 +641,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     }
                     return [title, { content: filterView }];
                 }
+                /*
+                 Customize the style column the grid view depending on the set values in the config
+                 */
+
             }, {
-                key: "createColumnCssFormat",
-                value: function createColumnCssFormat(cssClass) {
-                    if (this.existsField(cssClass)) {
+                key: "configureColumnStyle",
+                value: function configureColumnStyle(cssClass) {
+                    if (this.isExistsField(cssClass)) {
                         return webix.actions[cssClass];
                     } else {
                         return function (value, obj, t, y) {
@@ -629,9 +657,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         };
                     }
                 }
+                /*
+                 Do perform the formation of column for groups
+                 */
+
             }, {
-                key: "templateGroupColumn",
-                value: function templateGroupColumn(cellElement, cellInfo, cellValue, b, rowNumber) {
+                key: "renderColumnGroup",
+                value: function renderColumnGroup(cellElement, cellInfo, cellValue, b, rowNumber) {
                     if (cellElement.$group) {
                         var count = cellElement.$count;
                         var result = cellInfo.treetable(cellElement, cellInfo) + " " + this.id + ": " + cellElement.value + " ( " + count + " assets )";
@@ -652,9 +684,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                     return cellValue;
                 }
+                /*
+                 Do perform the formation of the action buttons in the column
+                 */
+
             }, {
-                key: "templateActionButtonsColumn",
-                value: function templateActionButtonsColumn(cellElement, cellInfo) {
+                key: "renderActionButtonsColumn",
+                value: function renderActionButtonsColumn(cellElement, cellInfo) {
                     if (cellElement.$group) {
                         return ' ';
                     }
@@ -672,9 +708,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     }
                     return result;
                 }
+                /*
+                 Do perform the formation of the action buttons edits in the column
+                 */
+
             }, {
-                key: "templateEditColumn",
-                value: function templateEditColumn(cellElement, cellInfo) {
+                key: "renderEditColumn",
+                value: function renderEditColumn(cellElement, cellInfo) {
                     if (cellElement.$group) {
                         return ' ';
                     }
@@ -687,9 +727,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     }
                     return "<img class='editStartClass' src='style/icons/cog_edit.png'/>";
                 }
+                /*
+                 Do perform the formation of the cell in the column
+                 */
+
             }, {
-                key: "templateColumnsCell",
-                value: function templateColumnsCell(cellElement, cellInfo, cellValue) {
+                key: "renderColumnsCell",
+                value: function renderColumnsCell(cellElement, cellInfo, cellValue) {
                     if (cellElement.$group) {
                         var result = "<span>";
                         for (var i in webix.groupTotalLine) {
@@ -704,18 +748,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     }
                     return cellValue;
                 }
+                /*
+                 Do perform the formation of the object data to sort and display the marker sorting
+                 */
+
             }, {
-                key: "markSorting",
-                value: function markSorting(column, order) {
+                key: "doStartSorting",
+                value: function doStartSorting(column, order) {
                     if (typeof this.___multisort != 'undefined' && this.___multisort) {
                         this.markMultiSorting(column, order);
                     } else {
                         this.markSingSorting(column, order);
                     }
                 }
+                /*
+                 To perform a single sorting
+                 */
+
             }, {
-                key: "markSingSorting",
-                value: function markSingSorting(column, order) {
+                key: "doStartSingSorting",
+                value: function doStartSingSorting(column, order) {
                     if (!this._sort_sign) this._sort_sign = webix.html.create("DIV");
                     webix.html.remove(this._sort_sign);
 
@@ -732,9 +784,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         this._last_sorted = this._last_order = null;
                     }
                 }
+                /*
+                 To perform a multi sorting
+                 */
+
             }, {
-                key: "markMultiSorting",
-                value: function markMultiSorting(column, order) {
+                key: "doStartMultiSorting",
+                value: function doStartMultiSorting(column, order) {
 
                     if (this._multisortMap.length == 0 && !this._multisort_isDelete) {
                         this._multisortMap[0] = {
@@ -794,18 +850,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         }
                     }
                 }
+                /*
+                 Do add the <div> element for marking the position of the sorting
+                 */
+
             }, {
-                key: "createHtmlMarkSotring",
-                value: function createHtmlMarkSotring(order) {
+                key: "addDivInColumnHeader",
+                value: function addDivInColumnHeader(order) {
                     var htmlElement = webix.html.create("DIV");
                     if (order) {
                         htmlElement.className = "webix_ss_sort_" + order;
                     }
                     return htmlElement;
                 }
+                /*
+                 Do add action in the <div> element for marking the position of the sorting
+                 */
+
             }, {
-                key: "createMarkSorting",
-                value: function createMarkSorting(index, column, order, isAddLast) {
+                key: "doReLabelingSorting",
+                value: function doReLabelingSorting(index, column, order, isAddLast) {
                     webix.html.remove(this._multisortMap[index].html);
                     this._multisortMap[index].html = this.createHtmlMarkSotring(order);
                     if (order) {
@@ -824,9 +888,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         }
                     }
                 }
+                /*
+                 Handling the keyboard event "Tab"
+                 */
+
             }, {
-                key: "tabHhandler",
-                value: function tabHhandler(tab, e) {
+                key: "eventHandlerTab",
+                value: function eventHandlerTab(tab, e) {
                     if (this._settings.editable && !this._in_edit_mode) {
                         //if we have focus in some custom input inside of datatable
                         if (e.target && e.target.tagName == "INPUT") return true;
@@ -838,9 +906,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     }
                     return true;
                 }
+                /*
+                 Event handling clicking on the column header
+                 */
+
             }, {
-                key: "headerClick",
-                value: function headerClick(column) {
+                key: "eventHandlerHeaderClick",
+                value: function eventHandlerHeaderClick(column) {
                     var col = this.getColumnConfig(column);
                     if (!col.sort) return;
 
@@ -857,9 +929,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     }
                     this._sort(col.id, order, col.sort);
                 }
+                /*
+                 Do perform calculations on data in column
+                 */
+
             }, {
-                key: "calculationCellValue",
-                value: function calculationCellValue(startrow, startcol, numrows, numcols, callback) {
+                key: "calculationColumnValue",
+                value: function calculationColumnValue(startrow, startcol, numrows, numcols, callback) {
                     if (startrow === null && this.data.order.length > 0) startrow = this.data.order[0];
                     if (startcol === null) startcol = this.columnId(0);
                     if (numrows === null) numrows = this.data.order.length;
@@ -891,9 +967,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         }
                     }
                 }
+                /*
+                 Do load data
+                 */
+
             }, {
-                key: "treeLoadData",
-                value: function treeLoadData(count, start, callback, url, now) {
+                key: "doLoadData",
+                value: function doLoadData(count, start, callback, url, now) {
                     var config = this._settings;
                     if (config.datathrottle && !now) {
                         if (this._throttle_request) window.clearTimeout(this._throttle_request);
@@ -910,8 +990,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     if (this.callEvent("onDataRequest", [start, count, callback, url]) && this.data.url) this.data.feed.call(this, start, count, callback);
                 }
             }, {
-                key: "treeFeedCommon",
-                value: function treeFeedCommon(from, count, callback) {
+                key: "createUrlAndLoadData",
+
+                /*
+                 Do perform the query on the server and load the data from the response from the server
+                 */
+                value: function createUrlAndLoadData(from, count, callback) {
                     var url = this.data.url;
                     if (from < 0) from = 0;
                     var final_callback = [this._feed_callback, callback];
@@ -944,18 +1028,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         this.load(finalurl, final_callback);
                     }
                 }
+                /*
+                 Do check for data loading
+                 */
+
             }, {
-                key: "treeFeedCallback",
-                value: function treeFeedCallback() {
+                key: "doCheckExistenceData",
+                value: function doCheckExistenceData() {
                     //after loading check if we have some ignored requests
                     var temp = this._load_count;
                     var last = this._feed_last;
                     this._load_count = false;
                     if ((typeof temp === "undefined" ? "undefined" : _typeof(temp)) == "object" && (temp[0] != last[0] || temp[1] != last[1])) this.data.feed.apply(this, temp); //load last ignored request
                 }
+                /*
+                 Do parse the loaded data
+                 */
+
             }, {
-                key: "treeOnLoad",
-                value: function treeOnLoad(text, xml, loader) {
+                key: "parseData",
+                value: function parseData(text, xml, loader) {
                     var data;
                     if (loader === -1) data = this.data.driver.toObject(xml);else {
                         //ignore data loading command if data was reloaded
@@ -971,9 +1063,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     this.callEvent("onAfterLoad", []);
                     this.waitData.resolve();
                 }
+                /*
+                 Obtain the configuration status of the data grid
+                 */
+
             }, {
-                key: "getStateDataGrid",
-                value: function getStateDataGrid() {
+                key: "getStateGridData",
+                value: function getStateGridData() {
                     var cols_n = this.config.columns.length;
                     var columns = this.config.columns;
                     var settings = {
@@ -1089,95 +1185,78 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }, {
             id: 'cost_purchase',
             title: 'Purchase Cost',
-            width: 200,
             dataType: 'number',
             showTotals: true
         }, {
             id: 'quantity_mtbf',
             title: 'Mean Time Between Failures',
-            width: 200,
             dataType: 'integer',
             showTotals: true
         }, {
             id: 'AssetStandard',
             title: 'Asset Standard',
-            width: 200,
             dataType: 'text'
         }, {
             id: 'AssetStatus',
             title: 'Asset Status',
-            width: 200,
             dataType: 'enum'
         }, {
             id: 'TitleDescription',
             title: 'Title Description',
-            width: 200,
             dataType: 'text'
         }, {
             id: 'GeoRegionID',
             title: 'Geo-RegionID',
-            width: 200,
             dataType: 'text'
         }, {
             id: 'CountryCode',
             title: 'Country Code',
-            width: 200,
             cssClass: 'cssClassCountryCode',
             dataType: 'enum'
         }, {
             id: 'StateCode',
             title: 'State Code',
-            width: 200,
             dataType: 'text'
         }, {
             id: 'CityCode',
             title: 'City Code',
-            width: 200,
             dataType: 'text'
         }, {
             id: 'SiteCode',
             title: 'Site Code',
-            width: 200,
             dataType: 'text'
         }, {
             id: 'BuildingCode',
             title: 'Building Code',
-            width: 200,
             dataType: 'text'
         }, {
             id: 'FloorCode',
             title: 'Floor Code',
-            width: 200,
             dataType: 'text'
         }, {
             id: 'RoomCode',
             title: 'Room Code',
-            width: 200,
             dataType: 'text'
         }, {
             id: 'BusinessUnit',
             title: 'Business Unit',
-            width: 200,
             dataType: 'text'
         }, {
             id: 'DivisionCode',
             title: 'Division Code',
-            width: 200,
             dataType: 'text'
         }, {
             id: 'DepartmentCode',
             title: 'Department Code',
-            width: 200,
             dataType: 'text'
         }, {
             id: 'Date',
             title: 'Date',
-            width: 200,
             dataType: 'date',
             dateTimeFormat: ''
         }, {
             title: 'Action',
-            width: 200,
+            width: 100,
             action: buttonMetadata
         }];
 
