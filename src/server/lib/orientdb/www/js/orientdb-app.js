@@ -142,12 +142,12 @@ function dynaUnformatter(cellvalue, options, rowObject) {
 	return cellvalue;
 }
 function classFormatter(cellvalue, options, rowObject) {
-	return "<a onclick=\"openClass('" + cellvalue + "');\" class='className'>"
+	return "<a onclick=\"openClass('" + cellvalue + "');\" classes='className'>"
 			+ cellvalue + "</a>";
 }
 
 function linkFormatter(cellvalue, options, rowObject) {
-	return "<a onclick=\"openLink('" + cellvalue + "');\" class='link'>"
+	return "<a onclick=\"openLink('" + cellvalue + "');\" classes='link'>"
 			+ cellvalue + "</a>";
 }
 function linkUnformatter(cellvalue, options) {

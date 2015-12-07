@@ -495,7 +495,7 @@ function ODatabase(databasePath) {
 		}
 		$.ajax({
 			type : "GET",
-			url : this.urlPrefix + 'class/' + this.encodedDatabaseName + '/'
+			url : this.urlPrefix + 'classes/' + this.encodedDatabaseName + '/'
 					+ iClassName + this.urlSuffix,
 			context : this,
 			async : false,
@@ -519,7 +519,7 @@ function ODatabase(databasePath) {
 		}
 		$.ajax({
 			type : "POST",
-			url : this.urlPrefix + 'class/' + this.encodedDatabaseName + '/'
+			url : this.urlPrefix + 'classes/' + this.encodedDatabaseName + '/'
 					+ iClassName + this.urlSuffix,
 			context : this,
 			async : false,

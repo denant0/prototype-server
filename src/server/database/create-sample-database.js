@@ -36,7 +36,7 @@ server.list()
                     console.log('Created a database');
                     db.class.create('AssetGrid')
                         .then(function (assetClass) {
-                            console.log('Created class: ' + assetClass.name);
+                            console.log('Created classes: ' + assetClass.name);
 
                             assetClass.property.create([{
                                 name: 'AssetType',

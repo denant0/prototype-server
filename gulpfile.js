@@ -5,7 +5,7 @@ var gulp = require('gulp'),
 var babel = require("gulp-babel");
 
 gulp.task('webix', function(){
-    gulp.src('src/client/scripts/data-grid/datagrid.js')
+    gulp.src('src/client/scripts/main.js')
         .pipe(browserify({transform: 'reactify'}))
         .pipe(concat('datagrid.js'))
         .pipe(babel({

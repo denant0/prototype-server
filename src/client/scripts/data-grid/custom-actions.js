@@ -13,6 +13,16 @@ webix.actions = {
             webix.message(text);
         }
     },
+    clickCell: function(id, event){
+        if(typeof webix.ARCHIBUS.editRows != 'undefined'){
+            for(var index in  webix.ARCHIBUS.editRows){
+                var editRow = webix.ARCHIBUS.editRows[index];
+                if(editRow.id == id.row){
+                    this.editCell(id.row, id.column);
+                }
+            }
+        }
+    },
     buttonClick1: function(){
         webix.message('You click button 1');
     },

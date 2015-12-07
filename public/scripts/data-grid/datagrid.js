@@ -17,84 +17,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }return n[o].exports;
     }var i = typeof require == "function" && require;for (var o = 0; o < r.length; o++) s(r[o]);return s;
 })({ 1: [function (require, module, exports) {
-        var classStyle = require('./metadata/sample-cell-style-metadata');
-        webix.ARCHIBUS = {};
-
         /*
-         Map of events used in the grid user
-         */
-        webix.actions = {
-            selectValue: function selectValue() {
-                var id = this.getSelectedId(true);
-                if (id.length != 0) {
-                    var text = this.getItem(id)[id[0].column];
-                    webix.message(text);
-                }
-            },
-            buttonClick1: function buttonClick1() {
-                webix.message('You click button 1');
-            },
-            buttonClick2: function buttonClick2(event, object, cell, d) {
-                this.eachColumn(function (columnId) {
-                    this.removeCellCss(object.row, columnId, "row-edited");
-                });
-                webix.ARCHIBUS.editRows = "";
-                webix.message('You click button 2');
-            },
-            buttonClick3: function buttonClick3(event, object, cell, d) {
-                webix.message('You click button 3');
-            },
-            buttonClick4: function buttonClick4() {
-                webix.message('You click button 4');
-            },
-            cssClassCountryCode: function cssClassCountryCode(container, cellInfo, t, y) {
-                if (cellInfo.ch1 && !cellInfo.$group) return "row-marked";
-                var currentEnumStyle = classStyle[y];
-                for (var element in currentEnumStyle) {
-                    if (container == currentEnumStyle[element].cellText) {
-                        return currentEnumStyle[element].classStyle;
-                    }
-                }
-            }
-        };
-    }, { "./metadata/sample-cell-style-metadata": 4 }], 2: [function (require, module, exports) {
-        require('./custom-actions');
+        The class responsible for editing
+        */
 
-        var columnsMetadata = require('./metadata/sample-columns-metadata');
-
-        webix.ready(function () {
-            var dataGrid = new DataGrid({
-                id: 'projectsGrid',
-                container: 'projectsGridContainer',
-                columns: columnsMetadata,
-                sortFields: [],
-                dataSource: 'server/data',
-                //width: 700,
-                // height: 700,
-                pageSize: 100,
-                events: {
-                    onSelectChange: 'selectValue'
-                },
-                editing: true,
-                firstRightFixedColumn: 'Action',
-                lastLeftFixedColumn: 'quantity_mtbf'
-            });
-
-            resize([dataGrid]);
-        });
-
-        function resize(objects) {
-            for (var number in objects) {
-                webix.event(window, "resize", function (event) {
-                    objects[number].view.adjust();
-                    objects[number].dataTable.adjust();
-                });
-            }
-        }
-
-        var DataGrid = (function () {
-            function DataGrid(config) {
-                _classCallCheck(this, DataGrid);
+        var DataGridEdit = (function () {
+            function DataGridEdit() {
+                _classCallCheck(this, DataGridEdit);
 
                 webix.UIManager.tabControl = true;
                 webix.editors.$popup = {
@@ -107,607 +36,173 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         body: { view: "calendar", icons: true, weekNumber: true, timepicker: true }
                     }
                 };
-                if (!webix.ui.datafilter.sumTotalGroup) {
-                    webix.ui.datafilter.sumTotalGroup = {
-                        getValue: function getValue(node) {
-                            return node.firstChild.innerHTML;
-                        },
-                        setValue: function setValue() {},
-                        refresh: function refresh(master, node, value) {
-                            var result = 0;
-                            master.mapGroupsCells(null, value.columnId, null, 1, function (value) {
-                                value = value * 1;
-                                if (!isNaN(value)) result += value;
-
-                                return value;
-                            });
-
-                            if (value.format) result = value.format(result);
-                            if (value.template) result = value.template({ value: result });
-
-                            node.firstChild.innerHTML = result;
-                        },
-                        trackCells: true,
-                        render: function render(master, config) {
-                            if (config.template) config.template = webix.template(config.template);
-                            return "";
-                        }
-                    };
-                }
-                if (!webix.ui.customDataTable) {
-                    webix.protoUI({
-                        name: 'customDataTable',
-                        $init: function $init(config) {
-                            this.___multisort = config.multisort;
-                            this._multisort_isDelete = false;
-                            this._multisort_count = 0;
-                            if (this.___multisort) {
-                                this._multisortMap = [];
-                            }
-                        },
-                        _custom_tab_handler: this.eventHandlerTab,
-                        _on_header_click: this.eventHandlerHeaderClick,
-                        markSorting: this.doStartSorting,
-                        markSingSorting: this.doStartSingSorting,
-                        markMultiSorting: this.doStartMultiSorting,
-                        createHtmlMarkSotring: this.addDivInColumnHeader,
-                        createMarkSorting: this.doReLabelingSorting,
-                        mapGroupsCells: this.calculationColumnValue
-                    }, webix.ui.treetable);
-
-                    webix.TreeDataLoader._loadNextA = this.doLoadData;
-                    webix.TreeDataLoader._feed_commonA = this.createUrlAndLoadData;
-                    webix.TreeDataLoader._feed_callback = this.doCheckExistenceData;
-                    webix.TreeDataLoader._onLoad = this.parseData;
-
-                    webix.DataState = {
-                        getState: this.getStateGridData
-                    };
-                }
-
                 webix.ARCHIBUS.editRows = [];
-                webix.ARCHIBUS.group = {};
-                webix.ARCHIBUS.group.tooltip = {};
-                webix.ARCHIBUS.data = {};
-                this.id = config.id;
-                this.dataTypeToFilterTypeMapping = {
-                    text: 'serverFilter',
-                    date: 'serverFilter',
-                    time: 'serverFilter',
-                    number: 'serverFilter',
-                    integer: 'serverFilter',
-                    enum: 'serverSelectFilter'
-                };
-                webix.ARCHIBUS.pageSize = config.pageSize;
-                this.configurationGridSize(config.container, config.width, config.height);
-
-                var nameGrid = config.container + 'Grid';
-                var namePaging = config.container + 'Paging';
-
-                this.view = new webix.ui({
-                    container: config.container,
-                    rows: [{
-                        template: '<div id="' + nameGrid + '"style="height: 100%" "></div>'
-                    }, {
-                        template: '<div id="' + namePaging + '"></div>',
-                        autoheight: true
-                    }]
-                });
-
-                var configGrid = this.createGridConfiguration(config);
-                this.dataTable = new webix.ui(configGrid);
+                webix.ARCHIBUS.editButtonMap = [{
+                    class: 'editStartClass',
+                    function: this.eventEditStart
+                }, {
+                    class: 'editSuccessClass',
+                    function: this.eventEditSuccess
+                }, {
+                    class: 'editCancelClass',
+                    function: this.eventEditCancel
+                }];
             }
+
             /*
-             To form a configuration for the component webix.ui.treetable
-             */
+             Handling the click event on the button "Start editing"
+            */
 
-            _createClass(DataGrid, [{
-                key: "createGridConfiguration",
-                value: function createGridConfiguration(config) {
-                    var webixColumns = this.createColumns(config);
-                    var webixActionsGrid = this.configureGridActions(config);
-
-                    var nameGrid = config.container + 'Grid';
-                    var namePaging = config.container + 'Paging';
-
-                    var leftSplit = 1;
-                    var rightSplit = 1;
-
-                    var configGrid = {
-                        container: nameGrid,
-                        view: "customDataTable",
-                        css: "my_style",
-                        columns: webixColumns.columns,
-                        pager: {
-                            template: "{common.first()}{common.prev()}{common.pages()}{common.next()}{common.last()}",
-                            container: namePaging,
-                            size: config.pageSize,
-                            group: 5,
-                            animate: {
-                                subtype: "in"
-                            }
-                        },
-                        multisort: true,
-                        select: "cell",
-                        multiselect: true,
-                        resizeColumn: true,
-                        checkboxRefresh: true,
-                        on: webixActionsGrid,
-                        url: config.dataSource,
-                        footer: true,
-                        navigation: true,
-                        tooltip: true
+            _createClass(DataGridEdit, [{
+                key: "eventEditStart",
+                value: function eventEditStart(event, object, cell) {
+                    var isFocus = true;
+                    this.eachColumn(function (columnId) {
+                        this.addCellCss(object.row, columnId, "row-edited");
+                        var config = this.getColumnConfig(columnId);
+                        if (typeof config.editor != 'undefined' && isFocus) {
+                            this.editCell(object.row, columnId);
+                            isFocus = false;
+                        }
+                    });
+                    webix.ARCHIBUS.editRows[webix.ARCHIBUS.editRows.length] = {
+                        id: object.row,
+                        data: {}
                     };
-
-                    var configGroup = {
-                        $group: {}
-                    };
-
-                    if (this.isExistsField(webixColumns.group.id)) {
-                        configGroup.$group.by = webixColumns.group.id;
-                        configGrid.scheme = configGroup;
-                    }
-                    if (this.isExistsField(webixColumns.group.footer)) {
-                        configGroup.$group.map = {};
-                        webix.groupTotalLine = webixColumns.group.footer;
-                        for (var i in webix.groupTotalLine) {
-                            configGroup.$group.map[webix.groupTotalLine[i].id + 'Sum'] = [webix.groupTotalLine[i].id, 'sum'];
-                        }
-                        configGrid.scheme = configGroup;
-                    }
-
-                    if (this.isExistsField(config.editing)) {
-                        if (config.editing) {
-                            configGrid.editable = true;
-                            configGrid.editaction = "custom";
-                            configGrid.editMath = true;
-                            leftSplit++;
-                        }
-                    }
-                    if (this.isExistsField(config.lastLeftFixedColumn)) {
-                        leftSplit = 1;
-                        for (var index = 0; index < webixColumns.columns.length; index++) {
-                            if (webixColumns.columns[index].id == config.lastLeftFixedColumn) {
-                                leftSplit = index + 1;
-                                break;
-                            }
-                        }
-                    }
-                    if (this.isExistsField(config.firstRightFixedColumn)) {
-                        for (var index = 0; index < webixColumns.columns.length; index++) {
-                            if (webixColumns.columns[index].id == config.firstRightFixedColumn) {
-                                rightSplit = webixColumns.columns.length - index;
-                                break;
-                            }
-                        }
-                        configGrid.rightSplit = rightSplit;
-                    }
-                    configGrid.leftSplit = leftSplit;
-                    return configGrid;
                 }
+
                 /*
-                 Customize the size the grid view depending on the set values in the config
-                 */
+                 Handling the click event on the button "Successful edit"
+                */
 
             }, {
-                key: "configurationGridSize",
-                value: function configurationGridSize(container, width, height) {
-                    if (typeof width != 'undefined') {
-                        document.getElementById(container).style.width = width + "px";
-                    } else {
-                        document.getElementById(container).style.width = "100%";
-                    }
-                    if (typeof height != 'undefined') {
-                        document.getElementById(container).style.height = height + "px";
-                    } else {
-                        document.getElementById(container).style.height = "90%";
-                    }
-                }
-                /*
-                 Customize the actions the grid view depending on the set function in the config
-                 */
-
-            }, {
-                key: "configureGridActions",
-                value: function configureGridActions(config) {
-                    var events = config.events;
-                    var webixActionsGrid = {
-                        onCheck: function onCheck(row, column, value) {
-                            this.data.eachChild(row, function (item) {
-                                item[column] = value;
+                key: "eventEditSuccess",
+                value: function eventEditSuccess(event, object, cell) {
+                    this.editStop();
+                    for (var index in webix.ARCHIBUS.editRows) {
+                        var editRow = webix.ARCHIBUS.editRows[index];
+                        if (editRow.id == object.row) {
+                            this.eachColumn(function (columnId) {
+                                this.removeCellCss(editRow.id, columnId, "row-edited");
                             });
-                        },
-                        onAfterLoad: function onAfterLoad(row, column, value) {
-                            this.openAll();
-                        },
-                        onBeforeRender: function onBeforeRender() {
-                            for (var key in webix.buttonsMap) {
-                                var button = webix.buttonsMap[key];
-                                this.on_click[button.class] = webix.actions[button.function];
-                            }
+                            webix.ARCHIBUS.editRows.splice(index, 1);
+                            webix.ajax().post("server/data/save", this.getItem(object.row), function (response) {
+                                webix.message(response.status);
+                            });
+                            this.refresh();
+                            break;
+                        }
+                    }
+                }
 
-                            if (typeof webix.ARCHIBUS.editButtonMap != 'undefined') {
-                                for (var key in webix.ARCHIBUS.editButtonMap) {
-                                    var button = webix.ARCHIBUS.editButtonMap[key];
-                                    this.on_click[button.class] = button.function;
-                                }
+                /*
+                 Handling the click event on the button "Cancel edit"
+                */
+
+            }, {
+                key: "eventEditCancel",
+                value: function eventEditCancel(event, object, cell) {
+                    this.editStop();
+                    for (var index in webix.ARCHIBUS.editRows) {
+                        var editRow = webix.ARCHIBUS.editRows[index];
+                        if (editRow.id == object.row) {
+                            this.eachColumn(function (columnId) {
+                                this.removeCellCss(editRow.id, columnId, "row-edited");
+                            });
+                            var dataRow = this.getItem(object.row);
+                            for (var index in editRow.data) {
+                                dataRow[index] = editRow.data[index];
                             }
-                        },
-                        onAfterRender: function onAfterRender() {
-                            this.adjust();
-                        },
-                        onItemClick: function onItemClick(id, event) {
-                            if (typeof webix.ARCHIBUS.editRows != 'undefined') {
-                                for (var index in webix.ARCHIBUS.editRows) {
-                                    var editRow = webix.ARCHIBUS.editRows[index];
-                                    if (editRow.id == id.row) {
-                                        this.editCell(id.row, id.column);
-                                    }
+                            this.updateItem(object.row, dataRow);
+                            webix.ARCHIBUS.editRows.splice(index, 1);
+                            break;
+                        }
+                    }
+
+                    for (var index in webix.ARCHIBUS.group.groupTotalLine) {
+                        var id = webix.ARCHIBUS.group.groupTotalLine[index].id;
+                        this.eachColumn(function (columnId) {
+                            if (columnId == id) {
+                                var row = object.row;
+                                var childs = this.data.getBranch(this.getParentId(row));
+                                var sum = 0;
+                                for (var i = 0; i < childs.length; i++) {
+                                    var item = childs[i];
+                                    sum += item[id] * 1;
                                 }
+                                var idRowParent = this.getParentId(row);
+                                var parent = this.getItem(idRowParent);
+
+                                parent[id + 'Sum'] = sum;
+                                this.refresh(idRowParent);
                             }
-                        },
-                        onAfterEditStop: function onAfterEditStop(state, editor, ignoreUpdate) {
-                            if (state.value != state.old) {
-                                for (var index in webix.ARCHIBUS.editRows) {
-                                    var editRow = webix.ARCHIBUS.editRows[index];
-                                    if (editRow.id == editor.row) {
-                                        var idAdd = true;
-                                        for (var obj in webix.ARCHIBUS.editRows[index].data) {
-                                            if (obj == editor.column) {
-                                                idAdd = false;
-                                                break;
-                                            }
-                                        }
-                                        if (idAdd) webix.ARCHIBUS.editRows[index].data[editor.column] = state.old;
+                        });
+                    }
+                }
+
+                /*
+                 Handling events after have finished editing
+                */
+
+            }, {
+                key: "eventAfterEditStop",
+                value: function eventAfterEditStop(state, editor, ignoreUpdate) {
+                    if (state.value != state.old) {
+                        for (var index in webix.ARCHIBUS.editRows) {
+                            var editRow = webix.ARCHIBUS.editRows[index];
+                            if (editRow.id == editor.row) {
+                                var idAdd = true;
+                                for (var obj in webix.ARCHIBUS.editRows[index].data) {
+                                    if (obj == editor.column) {
+                                        idAdd = false;
                                         break;
                                     }
                                 }
-                            }
-
-                            for (var index in webix.groupTotalLine) {
-                                var id = webix.groupTotalLine[index].id;
-                                if (editor.column == id) {
-                                    var row = editor.row;
-                                    var childs = this.data.getBranch(this.getParentId(row));
-                                    var sum = 0;
-                                    for (var i = 0; i < childs.length; i++) {
-                                        var item = childs[i];
-                                        sum += item[id] * 1;
-                                    }
-                                    var idRowParent = this.getParentId(row);
-                                    var parent = this.getItem(idRowParent);
-
-                                    parent[id + 'Sum'] = sum;
-                                    this.refresh(idRowParent);
-                                    break;
-                                }
-                            }
-                        },
-                        onTouchStart: function onTouchStart(obj) {
-                            var t = 0;
-                        }
-                    };
-                    for (var event in events) {
-                        webixActionsGrid[event] = webix.actions[events[event]];
-                    }
-                    return webixActionsGrid;
-                }
-                /*
-                 To create a configuration list of columns for grid
-                 */
-
-            }, {
-                key: "createColumns",
-                value: function createColumns(config) {
-                    var ARCHIBUSColumns = config.columns;
-                    var webixColumns = [];
-                    var webixGroupBy = {};
-                    webix.ARCHIBUS.data.collection = [];
-                    webixColumns[0] = {
-                        id: "ch1",
-                        header: "",
-                        width: 40,
-                        template: "{common.checkbox()}",
-                        footer: { text: "Total:" }
-                    };
-                    if (this.isExistsField(config.editing)) {
-                        if (config.editing) {
-                            webix.ARCHIBUS.editButtonMap = [{
-                                class: 'editStartClass',
-                                function: function _function(event, object, cell, d) {
-                                    var isFocus = true;
-                                    this.eachColumn(function (columnId) {
-                                        this.addCellCss(object.row, columnId, "row-edited");
-                                        var config = this.getColumnConfig(columnId);
-                                        if (typeof config.editor != 'undefined' && isFocus) {
-                                            this.editCell(object.row, columnId);
-                                            isFocus = false;
-                                        }
-                                    });
-                                    webix.ARCHIBUS.editRows[webix.ARCHIBUS.editRows.length] = {
-                                        id: object.row,
-                                        data: {}
-                                    };
-                                }
-                            }, {
-                                class: 'editSuccessClass',
-                                function: function _function(event, object, cell, d) {
-                                    this.editStop();
-                                    for (var index in webix.ARCHIBUS.editRows) {
-                                        var editRow = webix.ARCHIBUS.editRows[index];
-                                        if (editRow.id == object.row) {
-                                            this.eachColumn(function (columnId) {
-                                                this.removeCellCss(editRow.id, columnId, "row-edited");
-                                            });
-                                            webix.ARCHIBUS.editRows.splice(index, 1);
-                                            webix.ajax().post("server/data/save", this.getItem(object.row), function (response) {
-                                                webix.message(response.status);
-                                            });
-                                            this.refresh();
-                                            break;
-                                        }
-                                    }
-                                }
-                            }, {
-                                class: 'editCancelClass',
-                                function: function _function(event, object, cell, d) {
-                                    this.editStop();
-                                    for (var index in webix.ARCHIBUS.editRows) {
-                                        var editRow = webix.ARCHIBUS.editRows[index];
-                                        if (editRow.id == object.row) {
-                                            this.eachColumn(function (columnId) {
-                                                this.removeCellCss(editRow.id, columnId, "row-edited");
-                                            });
-                                            var dataRow = this.getItem(object.row);
-                                            for (var index in editRow.data) {
-                                                dataRow[index] = editRow.data[index];
-                                            }
-                                            this.updateItem(object.row, dataRow);
-                                            webix.ARCHIBUS.editRows.splice(index, 1);
-                                            break;
-                                        }
-                                    }
-
-                                    for (var index in webix.groupTotalLine) {
-                                        var id = webix.groupTotalLine[index].id;
-                                        this.eachColumn(function (columnId) {
-                                            if (columnId == id) {
-                                                var row = object.row;
-                                                var childs = this.data.getBranch(this.getParentId(row));
-                                                var sum = 0;
-                                                for (var i = 0; i < childs.length; i++) {
-                                                    var item = childs[i];
-                                                    sum += item[id] * 1;
-                                                }
-                                                var idRowParent = this.getParentId(row);
-                                                var parent = this.getItem(idRowParent);
-
-                                                parent[id + 'Sum'] = sum;
-                                                this.refresh(idRowParent);
-                                            }
-                                        });
-                                    }
-                                }
-                            }];
-
-                            webixColumns[1] = {
-                                id: 'edit',
-                                header: "",
-                                width: 60,
-                                template: this.renderEditColumn
-                            };
-                        }
-                    }
-                    var index = webixColumns.length;
-                    for (var numberColumn in ARCHIBUSColumns) {
-                        var ARCHIBUSColumn = ARCHIBUSColumns[numberColumn];
-                        var webixColumn = {};
-                        if (this.isExistsField(ARCHIBUSColumn.id)) {
-                            webixColumn.id = ARCHIBUSColumn.id;
-                        }
-                        webixColumn.header = this.configureColumnHeader(ARCHIBUSColumn.title, ARCHIBUSColumn.dataType, ARCHIBUSColumn.action);
-                        webixColumn.cssFormat = this.configureColumnStyle(ARCHIBUSColumn.cssClass);
-                        webixColumn.template = this.renderColumnsCell;
-                        if (this.isExistsField(ARCHIBUSColumn.dataType)) {
-                            switch (ARCHIBUSColumn.dataType) {
-                                case 'number':
-                                    webixColumn.format = webix.i18n.numberFormat;
-                                    webixColumn.editor = 'text';
-                                    webixColumn.css = { "text-align": "right" };
-                                    break;
-                                case 'integer':
-                                    webixColumn.editor = 'text';
-                                    webixColumn.css = { "text-align": "right" };
-
-                                    break;
-                                case 'date':
-                                    webixColumn.format = webix.Date.dateToStr("%m/%d/%y");
-                                    webixColumn.editor = 'date';
-                                    webixColumn.map = "(date)#" + webixColumn.id + "#";
-                                    break;
-                                case 'text':
-                                    webixColumn.editor = 'text';
-
-                                    break;
-                                case 'enum':
-                                    webixColumn.editor = 'combo';
-                                    webix.ARCHIBUS.data.collection[webix.ARCHIBUS.data.collection.length] = webixColumn.id;
-                                    webix.ajax().post("server/data/prop", { id: webixColumn.id }, function (response) {
-                                        var obj = JSON.parse(response);
-                                        var collection = [];
-                                        collection[collection.length] = { id: "", value: "" };
-                                        var id;
-                                        for (var index in webix.ARCHIBUS.data.collection) {
-                                            for (var indexObj in obj) {
-                                                var element = obj[indexObj];
-                                                for (var item in element) {
-                                                    if (webix.ARCHIBUS.data.collection[index] == item) {
-                                                        id = item;
-                                                        break;
-                                                    }
-                                                }
-                                            }
-                                        }
-
-                                        for (var index in obj) {
-                                            collection[collection.length] = { id: obj[index][id], value: obj[index][id] };
-                                        }
-
-                                        for (var index in webixColumns) {
-                                            if (webixColumns[index].id == id) {
-                                                var collectionHeader = collection.slice();
-                                                var collectionEdit = collection.slice();
-                                                collectionEdit.splice(0, 1);
-                                                webixColumns[index].collection = collectionEdit;
-                                                webixColumns[index].header[1].options = collectionHeader;
-                                            }
-                                        }
-                                    });
-                                    break;
-                            }
-                        } else {
-                            ARCHIBUSColumn.dataType = 'String';
-                        }
-
-                        webixColumn.tooltip = function (rowItem, rowInfo, a, b, c) {
-                            if (rowItem.$group) {
-                                for (var item in webix.ARCHIBUS.group.tooltip) {
-                                    if (item == rowItem.id && webix.ARCHIBUS.group.tooltip[item]) {
-                                        return 'Continues on the next page';
-                                    }
-                                }
-                            }
-                            return "";
-                        };
-
-                        if (this.isExistsField(ARCHIBUSColumn.width)) {
-                            webixColumn.width = ARCHIBUSColumn.width;
-                        } else {
-                            webixColumn.adjust = "data";
-                        }
-                        if (this.isExistsField(ARCHIBUSColumn.action)) {
-                            webix.buttonsMap = ARCHIBUSColumn.action;
-                            webixColumn.template = this.renderActionButtonsColumn;
-                        } else {
-                            webixColumn.sort = "server";
-                        }
-                        if (this.isExistsField(ARCHIBUSColumn.groupBy)) {
-                            webixColumn.template = this.renderColumnGroup;
-                            webixGroupBy.id = ARCHIBUSColumn.id;
-                        }
-                        if (this.isExistsField(ARCHIBUSColumn.showTotals)) {
-                            webixColumn.footer = { content: "sumTotalGroup" };
-                            if (!this.isExistsField(webixGroupBy.footer)) {
-                                webixGroupBy.footer = [];
-                            }
-                            var i = webixGroupBy.footer.length;
-                            webixGroupBy.footer[i] = {};
-                            webixGroupBy.footer[i].id = ARCHIBUSColumn.id;
-                            webixGroupBy.footer[i].title = ARCHIBUSColumn.title;
-                            webixGroupBy.footer[i].type = ARCHIBUSColumn.dataType;
-                        }
-                        webixColumns[index] = webixColumn;
-                        index++;
-                    }
-                    return {
-                        columns: webixColumns,
-                        group: webixGroupBy
-                    };
-                }
-                /*
-                 Do check for the existence of the field. True - the field exists, false - doesn't exist
-                 */
-
-            }, {
-                key: "isExistsField",
-                value: function isExistsField(field) {
-                    return typeof field != 'undefined';
-                }
-                /*
-                 Customize the header column the grid view depending on the set values in the config
-                 */
-
-            }, {
-                key: "configureColumnHeader",
-                value: function configureColumnHeader(title, dataType, action) {
-                    if (this.isExistsField(action)) {
-                        return title;
-                    }
-                    var filterView;
-                    for (var type in this.dataTypeToFilterTypeMapping) {
-                        if (type === dataType) {
-                            filterView = this.dataTypeToFilterTypeMapping[type];
-                        }
-                    }
-                    return [title, { content: filterView }];
-                }
-                /*
-                 Customize the style column the grid view depending on the set values in the config
-                 */
-
-            }, {
-                key: "configureColumnStyle",
-                value: function configureColumnStyle(cssClass) {
-                    if (this.isExistsField(cssClass)) {
-                        return webix.actions[cssClass];
-                    } else {
-                        return function (value, obj, t, y) {
-                            if (obj.ch1 && !obj.$group) return "row-marked";
-                            return "";
-                        };
-                    }
-                }
-                /*
-                 Do perform the formation of column for groups
-                 */
-
-            }, {
-                key: "renderColumnGroup",
-                value: function renderColumnGroup(cellElement, cellInfo, cellValue, b, rowNumber) {
-                    if (cellElement.$group) {
-                        var count = cellElement.$count;
-                        var result = cellInfo.treetable(cellElement, cellInfo) + " " + this.id + ": " + cellElement.value + " ( " + count + " assets )";
-                        var freeItems = webix.ARCHIBUS.pageSize - rowNumber;
-                        if (cellElement.open) if (freeItems < cellElement.$count) webix.ARCHIBUS.group.tooltip[cellElement.id] = true;else webix.ARCHIBUS.group.tooltip[cellElement.id] = false;else webix.ARCHIBUS.group.tooltip[cellElement.id] = false;
-
-                        if (typeof webix.groupTotalLine != 'undefined') {
-                            result += '<span style="float: right;">';
-                            for (var i in webix.groupTotalLine) {
-                                if (webix.groupTotalLine[i].type == 'number') {
-                                    result += webix.groupTotalLine[i].title + ": " + webix.i18n.numberFormat(cellElement[webix.groupTotalLine[i].id + "Sum"]) + " ";
-                                } else result += webix.groupTotalLine[i].title + ": " + cellElement[webix.groupTotalLine[i].id + "Sum"] + "      ";
-                            }
-                            result += "</span>";
-                        }
-                        return result;
-                    }
-
-                    return cellValue;
-                }
-                /*
-                 Do perform the formation of the action buttons in the column
-                 */
-
-            }, {
-                key: "renderActionButtonsColumn",
-                value: function renderActionButtonsColumn(cellElement, cellInfo) {
-                    if (cellElement.$group) {
-                        return ' ';
-                    }
-                    var result = "";
-                    for (var number in webix.buttonsMap) {
-                        var button = webix.buttonsMap[number];
-                        var conditions = button.condition;
-                        for (var element in conditions) {
-                            var condition = conditions[element];
-                            if (cellElement[condition.column] == condition.value) {
-                                result = result + "<img class='" + button.class + "' src='" + button.icon + "'/>";
+                                if (idAdd) webix.ARCHIBUS.editRows[index].data[editor.column] = state.old;
                                 break;
                             }
                         }
                     }
-                    return result;
+
+                    for (var index in webix.ARCHIBUS.group.groupTotalLine) {
+                        var id = webix.ARCHIBUS.group.groupTotalLine[index].id;
+                        if (editor.column == id) {
+                            var row = editor.row;
+                            var childs = this.data.getBranch(this.getParentId(row));
+                            var sum = 0;
+                            for (var i = 0; i < childs.length; i++) {
+                                var item = childs[i];
+                                sum += item[id] * 1;
+                            }
+                            var idRowParent = this.getParentId(row);
+                            var parent = this.getItem(idRowParent);
+
+                            parent[id + 'Sum'] = sum;
+                            this.refresh(idRowParent);
+                            break;
+                        }
+                    }
                 }
+
+                /*
+                 Handling the keyboard event "Tab"
+                 */
+
+            }, {
+                key: "eventHandlerTab",
+                value: function eventHandlerTab(tab, e) {
+                    if (this._settings.editable && !this._in_edit_mode) {
+                        //if we have focus in some custom input inside of datatable
+                        if (e.target && e.target.tagName == "INPUT") return true;
+
+                        var selection = this.getSelectedId(true);
+                        if (selection.length == 1) {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+
                 /*
                  Do perform the formation of the action buttons edits in the column
                  */
@@ -727,6 +222,127 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     }
                     return "<img class='editStartClass' src='style/icons/cog_edit.png'/>";
                 }
+            }]);
+
+            return DataGridEdit;
+        })();
+
+        module.exports = DataGridEdit;
+    }, {}], 2: [function (require, module, exports) {
+        /*
+        The class responsible for the grouping of data
+        */
+
+        var DataGridGroups = (function () {
+            function DataGridGroups() {
+                _classCallCheck(this, DataGridGroups);
+
+                webix.ARCHIBUS.group = {};
+                webix.ARCHIBUS.group.tooltip = {};
+
+                webix.ui.datafilter.sumTotalGroup = {
+                    getValue: function getValue(node) {
+                        return node.firstChild.innerHTML;
+                    },
+                    setValue: function setValue() {},
+                    refresh: function refresh(master, node, value) {
+                        var result = 0;
+                        master.mapGroupsCells(null, value.columnId, null, 1, function (value) {
+                            value = value * 1;
+                            if (!isNaN(value)) result += value;
+
+                            return value;
+                        });
+
+                        if (value.format) result = value.format(result);
+                        if (value.template) result = value.template({ value: result });
+
+                        node.firstChild.innerHTML = result;
+                    },
+                    trackCells: true,
+                    render: function render(master, config) {
+                        if (config.template) config.template = webix.template(config.template);
+                        return "";
+                    }
+                };
+            }
+            /*
+            Do perform the configuration of the grid to group the data
+            	@groupId: the ID of the column by which want to group data
+            	@groupHeader: column IDs for which want to calculate the total amount
+            */
+
+            _createClass(DataGridGroups, [{
+                key: "configureGroup",
+                value: function configureGroup(groupId, groupHeader) {
+                    var configurationGroup = {
+                        $group: {}
+                    };
+
+                    if (typeof groupId != 'undefined') {
+                        configurationGroup.$group.by = groupId;
+                    }
+                    if (typeof groupHeader != 'undefined') {
+                        configurationGroup.$group.map = {};
+                        webix.ARCHIBUS.group.groupTotalLine = groupHeader;
+                        for (var i in groupHeader) {
+                            configurationGroup.$group.map[groupHeader[i].id + 'Sum'] = [groupHeader[i].id, 'sum'];
+                        }
+                    }
+                    return configurationGroup;
+                }
+                /*
+                Do perform the configuration columns to display the total amount of column data
+                	@webixGroupBy: configuration columns to display the total amount of column data
+                	@ARCHIBUSColumn: the configuration column 
+                */
+
+            }, {
+                key: "configureTotalGroup",
+                value: function configureTotalGroup(webixGroupBy, ARCHIBUSColumn) {
+                    var configurationTotalGroup = webixGroupBy;
+
+                    if (!configurationTotalGroup.header) {
+                        configurationTotalGroup.header = [];
+                    }
+                    var index = configurationTotalGroup.header.length;
+                    configurationTotalGroup.header[index] = {};
+                    configurationTotalGroup.header[index].id = ARCHIBUSColumn.id;
+                    configurationTotalGroup.header[index].title = ARCHIBUSColumn.title;
+                    configurationTotalGroup.header[index].type = ARCHIBUSColumn.dataType;
+
+                    return {
+                        footer: { content: "sumTotalGroup" },
+                        header: configurationTotalGroup
+                    };
+                }
+                /*
+                 Do perform the formation of column for groups
+                 */
+
+            }, {
+                key: "renderColumnGroup",
+                value: function renderColumnGroup(cellElement, cellInfo, cellValue, b, rowNumber) {
+                    if (cellElement.$group) {
+                        var count = cellElement.$count;
+                        var result = cellInfo.treetable(cellElement, cellInfo) + " " + this.id + ": " + cellElement.value + " ( " + count + " assets )";
+                        var freeItems = webix.ARCHIBUS.pageSize - rowNumber;
+                        if (cellElement.open) if (freeItems < cellElement.$count) webix.ARCHIBUS.group.tooltip[cellElement.id] = true;else webix.ARCHIBUS.group.tooltip[cellElement.id] = false;else webix.ARCHIBUS.group.tooltip[cellElement.id] = false;
+
+                        if (typeof webix.ARCHIBUS.group.groupTotalLine != 'undefined') {
+                            result += '<span style="float: right;">';
+                            for (var i in webix.ARCHIBUS.group.groupTotalLine) {
+                                if (webix.ARCHIBUS.group.groupTotalLine[i].type == 'number') {
+                                    result += webix.ARCHIBUS.group.groupTotalLine[i].title + ": " + webix.i18n.numberFormat(cellElement[webix.ARCHIBUS.group.groupTotalLine[i].id + "Sum"]) + " ";
+                                } else result += webix.ARCHIBUS.group.groupTotalLine[i].title + ": " + cellElement[webix.ARCHIBUS.group.groupTotalLine[i].id + "Sum"] + "      ";
+                            }
+                            result += "</span>";
+                        }
+                        return result;
+                    }
+
+                    return cellValue;
+                }
                 /*
                  Do perform the formation of the cell in the column
                  */
@@ -736,11 +352,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 value: function renderColumnsCell(cellElement, cellInfo, cellValue) {
                     if (cellElement.$group) {
                         var result = "<span>";
-                        for (var i in webix.groupTotalLine) {
-                            if (webix.groupTotalLine[i].id == this.id) {
-                                if (webix.groupTotalLine[i].type == 'number') {
-                                    result += "Total: " + webix.i18n.numberFormat(cellElement[webix.groupTotalLine[i].id + "Sum"]);
-                                } else result += "Total: " + cellElement[webix.groupTotalLine[i].id + "Sum"];
+                        for (var i in webix.ARCHIBUS.group.groupTotalLine) {
+                            if (webix.ARCHIBUS.group.groupTotalLine[i].id == this.id) {
+                                if (webix.ARCHIBUS.group.groupTotalLine[i].type == 'number') {
+                                    result += "Total: " + webix.i18n.numberFormat(cellElement[webix.ARCHIBUS.group.groupTotalLine[i].id + "Sum"]);
+                                } else result += "Total: " + cellElement[webix.ARCHIBUS.group.groupTotalLine[i].id + "Sum"];
                             }
                         }
                         result += "</span>";
@@ -748,187 +364,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     }
                     return cellValue;
                 }
-                /*
-                 Do perform the formation of the object data to sort and display the marker sorting
-                 */
 
-            }, {
-                key: "doStartSorting",
-                value: function doStartSorting(column, order) {
-                    if (typeof this.___multisort != 'undefined' && this.___multisort) {
-                        this.markMultiSorting(column, order);
-                    } else {
-                        this.markSingSorting(column, order);
-                    }
-                }
-                /*
-                 To perform a single sorting
-                 */
-
-            }, {
-                key: "doStartSingSorting",
-                value: function doStartSingSorting(column, order) {
-                    if (!this._sort_sign) this._sort_sign = webix.html.create("DIV");
-                    webix.html.remove(this._sort_sign);
-
-                    if (order) {
-                        var cell = this._get_header_cell(this.getColumnIndex(column));
-                        if (cell) {
-                            this._sort_sign.className = "webix_ss_sort_" + order;
-                            cell.style.position = "relative";
-                            cell.appendChild(this._sort_sign);
-                        }
-                        this._last_sorted = column;
-                        this._last_order = order;
-                    } else {
-                        this._last_sorted = this._last_order = null;
-                    }
-                }
-                /*
-                 To perform a multi sorting
-                 */
-
-            }, {
-                key: "doStartMultiSorting",
-                value: function doStartMultiSorting(column, order) {
-
-                    if (this._multisortMap.length == 0 && !this._multisort_isDelete) {
-                        this._multisortMap[0] = {
-                            id: column,
-                            dir: order,
-                            html: '',
-                            onClick: 0,
-                            numberInQuery: 1
-                        };
-                        this.createMarkSorting(0, column, order, true);
-                    } else {
-                        if (this._multisort_isDelete) {
-                            if (this._multisort_count == 1) {
-                                this._multisort_count = 0;
-                                this._multisort_isDelete = false;
-                                this._last_order = '';
-                                for (var number in this._multisortMap) this.createMarkSorting(number, this._multisortMap[number].id, this._multisortMap[number].dir, false);
-                            } else {
-                                this._multisort_count++;
-                            }
-                        } else {
-                            var isAdded = true;
-                            for (var number in this._multisortMap) {
-                                var element = this._multisortMap[number];
-                                if (element.id != column) {
-                                    this.createMarkSorting(number, element.id, element.dir, false);
-                                } else {
-                                    isAdded = false;
-                                    this._multisortMap[number].dir = order;
-                                    this._multisortMap[number].onClick++;
-                                    this._multisortMap[number].numberInQuery = 1;
-                                    this.createMarkSorting(number, column, order, true);
-                                }
-                            }
-                            if (isAdded) {
-                                this._multisortMap[this._multisortMap.length] = {
-                                    id: column,
-                                    dir: order,
-                                    html: '',
-                                    onClick: 0
-                                };
-                                this.createMarkSorting(this._multisortMap.length - 1, column, order, true);
-                            } else {
-                                var numberDelete = -1;
-                                for (var number in this._multisortMap) {
-                                    if (this._multisortMap[number].onClick == 2) {
-                                        numberDelete = number;
-                                        break;
-                                    }
-                                }
-                                if (numberDelete != -1) {
-                                    webix.html.remove(this._multisortMap[numberDelete].html);
-                                    this._multisortMap.splice(numberDelete, 1);
-                                    this._multisort_isDelete = false;
-                                }
-                            }
-                        }
-                    }
-                }
-                /*
-                 Do add the <div> element for marking the position of the sorting
-                 */
-
-            }, {
-                key: "addDivInColumnHeader",
-                value: function addDivInColumnHeader(order) {
-                    var htmlElement = webix.html.create("DIV");
-                    if (order) {
-                        htmlElement.className = "webix_ss_sort_" + order;
-                    }
-                    return htmlElement;
-                }
-                /*
-                 Do add action in the <div> element for marking the position of the sorting
-                 */
-
-            }, {
-                key: "doReLabelingSorting",
-                value: function doReLabelingSorting(index, column, order, isAddLast) {
-                    webix.html.remove(this._multisortMap[index].html);
-                    this._multisortMap[index].html = this.createHtmlMarkSotring(order);
-                    if (order) {
-                        var cell = this._get_header_cell(this.getColumnIndex(column));
-                        if (cell) {
-                            cell.style.position = "relative";
-                            cell.appendChild(this._multisortMap[index].html);
-                        }
-                        if (isAddLast) {
-                            this._last_sorted = column;
-                            this._last_order = order;
-                        }
-                    } else {
-                        if (isAddLast) {
-                            this._last_sorted = this._last_order = null;
-                        }
-                    }
-                }
-                /*
-                 Handling the keyboard event "Tab"
-                 */
-
-            }, {
-                key: "eventHandlerTab",
-                value: function eventHandlerTab(tab, e) {
-                    if (this._settings.editable && !this._in_edit_mode) {
-                        //if we have focus in some custom input inside of datatable
-                        if (e.target && e.target.tagName == "INPUT") return true;
-
-                        var selection = this.getSelectedId(true);
-                        if (selection.length == 1) {
-                            return false;
-                        }
-                    }
-                    return true;
-                }
-                /*
-                 Event handling clicking on the column header
-                 */
-
-            }, {
-                key: "eventHandlerHeaderClick",
-                value: function eventHandlerHeaderClick(column) {
-                    var col = this.getColumnConfig(column);
-                    if (!col.sort) return;
-
-                    var order = 'asc';
-                    if (typeof this.___multisort == 'undefined' || !this.___multisort) {
-                        if (col.id == this._last_sorted) order = this._last_order == "asc" ? "desc" : "asc";
-                    } else {
-                        for (var number in this._multisortMap) {
-                            if (this._multisortMap[number].id == column) {
-                                order = this._multisortMap[number].dir == "asc" ? "desc" : "asc";
-                                break;
-                            }
-                        }
-                    }
-                    this._sort(col.id, order, col.sort);
-                }
                 /*
                  Do perform calculations on data in column
                  */
@@ -955,9 +391,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             var col_ind = startcol + j;
                             var col_id = this.columnId(col_ind);
                             var flag = true;
-                            for (var num_mas in webix.groupTotalLine) {
-                                if (col_id == webix.groupTotalLine[num_mas].id) {
-                                    callback(item[webix.groupTotalLine[num_mas].id + "Sum"]);
+                            for (var num_mas in webix.ARCHIBUS.group.groupTotalLine) {
+                                if (col_id == webix.ARCHIBUS.group.groupTotalLine[num_mas].id) {
+                                    callback(item[webix.ARCHIBUS.group.groupTotalLine[num_mas].id + "Sum"]);
                                     flag = false;
                                 }
                             }
@@ -967,11 +403,31 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         }
                     }
                 }
-                /*
-                 Do load data
-                 */
+            }]);
 
-            }, {
+            return DataGridGroups;
+        })();
+
+        module.exports = DataGridGroups;
+    }, {}], 3: [function (require, module, exports) {
+        var DataGridLoad = (function () {
+            function DataGridLoad() {
+                _classCallCheck(this, DataGridLoad);
+
+                webix.TreeDataLoader._loadNextA = this.doLoadData;
+                webix.TreeDataLoader._feed_commonA = this.createUrlAndLoadData;
+                webix.TreeDataLoader._feed_callback = this.doCheckExistenceData;
+                webix.TreeDataLoader._onLoad = this.parseData;
+
+                webix.DataState = {
+                    getState: this.getStateGridData
+                };
+            }
+            /*
+             Do load data
+             */
+
+            _createClass(DataGridLoad, [{
                 key: "doLoadData",
                 value: function doLoadData(count, start, callback, url, now) {
                     var config = this._settings;
@@ -989,12 +445,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     this.data.url = this.data.url || url;
                     if (this.callEvent("onDataRequest", [start, count, callback, url]) && this.data.url) this.data.feed.call(this, start, count, callback);
                 }
-            }, {
-                key: "createUrlAndLoadData",
-
                 /*
                  Do perform the query on the server and load the data from the response from the server
                  */
+
+            }, {
+                key: "createUrlAndLoadData",
                 value: function createUrlAndLoadData(from, count, callback) {
                     var url = this.data.url;
                     if (from < 0) from = 0;
@@ -1109,11 +565,733 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                     return settings;
                 }
+
+                /*
+                Do loading collections from the server
+                	@currentId: the column ID for which to load the collection
+                	@columns: the configuration list columns
+                */
+
+            }, {
+                key: "doLoadCollectionFromServer",
+                value: function doLoadCollectionFromServer(currentId, columns) {
+                    webix.ajax().post("server/data/prop", { id: currentId }, function (response) {
+                        var obj = JSON.parse(response);
+                        var collection = [];
+                        collection[collection.length] = { id: "", value: "" };
+                        var id;
+                        for (var index in webix.ARCHIBUS.data.collection) {
+                            for (var indexObj in obj) {
+                                var element = obj[indexObj];
+                                for (var item in element) {
+                                    if (webix.ARCHIBUS.data.collection[index] == item) {
+                                        id = item;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+
+                        for (var index in obj) {
+                            collection[collection.length] = { id: obj[index][id], value: obj[index][id] };
+                        }
+
+                        for (var index in columns) {
+                            if (columns[index].id == id) {
+                                var collectionHeader = collection.slice();
+                                var collectionEdit = collection.slice();
+                                collectionEdit.splice(0, 1);
+                                columns[index].collection = collectionEdit;
+                                columns[index].header[1].options = collectionHeader;
+                            }
+                        }
+                    });
+                }
+            }]);
+
+            return DataGridLoad;
+        })();
+
+        ;
+
+        module.exports = DataGridLoad;
+    }, {}], 4: [function (require, module, exports) {
+        var DataGridLoad = require('./datagrid-load-data'),
+            DataGridSort = require('./datagrid-sort'),
+            DataGridEdit = require('./datagrid-edit'),
+            DataGridGroups = require('./datagrid-groups');
+
+        var DataGridPrototype = function DataGridPrototype(configurationGrid) {
+            _classCallCheck(this, DataGridPrototype);
+
+            this.dataGridLoad = new DataGridLoad();
+            this.dataGridSort = new DataGridSort();
+            this.dataGridEdit = new DataGridEdit();
+            this.dataGridGroups = new DataGridGroups();
+
+            webix.protoUI({
+                name: 'customDataTable',
+                $init: function $init(config) {
+                    this.___multisort = config.multisort;
+                    this._multisort_isDelete = false;
+                    this._multisort_count = 0;
+                    if (this.___multisort) {
+                        this._multisortMap = [];
+                    }
+                },
+                _custom_tab_handler: this.dataGridEdit.eventHandlerTab,
+                _on_header_click: this.dataGridSort.eventHandlerHeaderClick,
+                markSorting: this.dataGridSort.doStartSorting,
+                markSingSorting: this.dataGridSort.doStartSingSorting,
+                markMultiSorting: this.dataGridSort.doStartMultiSorting,
+                createHtmlMarkSotring: this.dataGridSort.addDivInColumnHeader,
+                createMarkSorting: this.dataGridSort.doReLabelingSorting,
+                mapGroupsCells: this.dataGridGroups.calculationColumnValue
+            }, webix.ui.treetable);
+        };
+
+        module.exports = DataGridPrototype;
+    }, { "./datagrid-edit": 1, "./datagrid-groups": 2, "./datagrid-load-data": 3, "./datagrid-sort": 5 }], 5: [function (require, module, exports) {
+        var DataGridSort = (function () {
+            function DataGridSort() {
+                _classCallCheck(this, DataGridSort);
+            }
+            /*
+             Do perform the formation of the object data to sort and display the marker sorting
+            @column: column configuration
+            @order: the sort order
+             */
+
+            _createClass(DataGridSort, [{
+                key: "doStartSorting",
+                value: function doStartSorting(column, order) {
+                    if (typeof this.___multisort != 'undefined' && this.___multisort) {
+                        this.markMultiSorting(column, order);
+                    } else {
+                        this.markSingSorting(column, order);
+                    }
+                }
+                /*
+                 To perform a single sorting
+                @column: column configuration
+                @order: the sort order
+                 */
+
+            }, {
+                key: "doStartSingSorting",
+                value: function doStartSingSorting(column, order) {
+                    if (!this._sort_sign) this._sort_sign = webix.html.create("DIV");
+                    webix.html.remove(this._sort_sign);
+
+                    if (order) {
+                        var cell = this._get_header_cell(this.getColumnIndex(column));
+                        if (cell) {
+                            this._sort_sign.className = "webix_ss_sort_" + order;
+                            cell.style.position = "relative";
+                            cell.appendChild(this._sort_sign);
+                        }
+                        this._last_sorted = column;
+                        this._last_order = order;
+                    } else {
+                        this._last_sorted = this._last_order = null;
+                    }
+                }
+                /*
+                 To perform a multi sorting
+                @column: column configuration
+                @order: the sort order
+                 */
+
+            }, {
+                key: "doStartMultiSorting",
+                value: function doStartMultiSorting(column, order) {
+
+                    if (this._multisortMap.length == 0 && !this._multisort_isDelete) {
+                        this._multisortMap[0] = {
+                            id: column,
+                            dir: order,
+                            html: '',
+                            onClick: 0,
+                            numberInQuery: 1
+                        };
+                        this.createMarkSorting(0, column, order, true);
+                    } else {
+                        if (this._multisort_isDelete) {
+                            if (this._multisort_count == 1) {
+                                this._multisort_count = 0;
+                                this._multisort_isDelete = false;
+                                this._last_order = '';
+                                for (var number in this._multisortMap) this.createMarkSorting(number, this._multisortMap[number].id, this._multisortMap[number].dir, false);
+                            } else {
+                                this._multisort_count++;
+                            }
+                        } else {
+                            var isAdded = true;
+                            for (var number in this._multisortMap) {
+                                var element = this._multisortMap[number];
+                                if (element.id != column) {
+                                    this.createMarkSorting(number, element.id, element.dir, false);
+                                } else {
+                                    isAdded = false;
+                                    this._multisortMap[number].dir = order;
+                                    this._multisortMap[number].onClick++;
+                                    this._multisortMap[number].numberInQuery = 1;
+                                    this.createMarkSorting(number, column, order, true);
+                                }
+                            }
+                            if (isAdded) {
+                                this._multisortMap[this._multisortMap.length] = {
+                                    id: column,
+                                    dir: order,
+                                    html: '',
+                                    onClick: 0
+                                };
+                                this.createMarkSorting(this._multisortMap.length - 1, column, order, true);
+                            } else {
+                                var numberDelete = -1;
+                                for (var number in this._multisortMap) {
+                                    if (this._multisortMap[number].onClick == 2) {
+                                        numberDelete = number;
+                                        break;
+                                    }
+                                }
+                                if (numberDelete != -1) {
+                                    webix.html.remove(this._multisortMap[numberDelete].html);
+                                    this._multisortMap.splice(numberDelete, 1);
+                                    this._multisort_isDelete = false;
+                                }
+                            }
+                        }
+                    }
+                }
+                /*
+                 Do add the <div> element for marking the position of the sorting
+                @order: the sort order
+                 */
+
+            }, {
+                key: "addDivInColumnHeader",
+                value: function addDivInColumnHeader(order) {
+                    var htmlElement = webix.html.create("DIV");
+                    if (order) {
+                        htmlElement.className = "webix_ss_sort_" + order;
+                    }
+                    return htmlElement;
+                }
+                /*
+                 Do add action in the <div> element for marking the position of the sorting
+                @index: the index in the data array of multisort
+                @column: column configuration
+                @order: the sort order
+                @isAddLast: clicking on the last element
+                 */
+
+            }, {
+                key: "doReLabelingSorting",
+                value: function doReLabelingSorting(index, column, order, isAddLast) {
+                    webix.html.remove(this._multisortMap[index].html);
+                    this._multisortMap[index].html = this.createHtmlMarkSotring(order);
+                    if (order) {
+                        var cell = this._get_header_cell(this.getColumnIndex(column));
+                        if (cell) {
+                            cell.style.position = "relative";
+                            cell.appendChild(this._multisortMap[index].html);
+                        }
+                        if (isAddLast) {
+                            this._last_sorted = column;
+                            this._last_order = order;
+                        }
+                    } else {
+                        if (isAddLast) {
+                            this._last_sorted = this._last_order = null;
+                        }
+                    }
+                }
+                /*
+                 Event handling clicking on the column header
+                @column: column configuration
+                 */
+
+            }, {
+                key: "eventHandlerHeaderClick",
+                value: function eventHandlerHeaderClick(column) {
+                    var col = this.getColumnConfig(column);
+                    if (!col.sort) return;
+
+                    var order = 'asc';
+                    if (typeof this.___multisort == 'undefined' || !this.___multisort) {
+                        if (col.id == this._last_sorted) order = this._last_order == "asc" ? "desc" : "asc";
+                    } else {
+                        for (var number in this._multisortMap) {
+                            if (this._multisortMap[number].id == column) {
+                                order = this._multisortMap[number].dir == "asc" ? "desc" : "asc";
+                                break;
+                            }
+                        }
+                    }
+                    this._sort(col.id, order, col.sort);
+                }
+            }]);
+
+            return DataGridSort;
+        })();
+
+        module.exports = DataGridSort;
+    }, {}], 6: [function (require, module, exports) {
+        var classStyle = require('./metadata/sample-cell-style-metadata');
+        webix.ARCHIBUS = {};
+
+        /*
+         Map of events used in the grid user
+         */
+        webix.actions = {
+            selectValue: function selectValue() {
+                var id = this.getSelectedId(true);
+                if (id.length != 0) {
+                    var text = this.getItem(id)[id[0].column];
+                    webix.message(text);
+                }
+            },
+            clickCell: function clickCell(id, event) {
+                if (typeof webix.ARCHIBUS.editRows != 'undefined') {
+                    for (var index in webix.ARCHIBUS.editRows) {
+                        var editRow = webix.ARCHIBUS.editRows[index];
+                        if (editRow.id == id.row) {
+                            this.editCell(id.row, id.column);
+                        }
+                    }
+                }
+            },
+            buttonClick1: function buttonClick1() {
+                webix.message('You click button 1');
+            },
+            buttonClick2: function buttonClick2(event, object, cell, d) {
+                this.eachColumn(function (columnId) {
+                    this.removeCellCss(object.row, columnId, "row-edited");
+                });
+                webix.ARCHIBUS.editRows = "";
+                webix.message('You click button 2');
+            },
+            buttonClick3: function buttonClick3(event, object, cell, d) {
+                webix.message('You click button 3');
+            },
+            buttonClick4: function buttonClick4() {
+                webix.message('You click button 4');
+            },
+            cssClassCountryCode: function cssClassCountryCode(container, cellInfo, t, y) {
+                if (cellInfo.ch1 && !cellInfo.$group) return "row-marked";
+                var currentEnumStyle = classStyle[y];
+                for (var element in currentEnumStyle) {
+                    if (container == currentEnumStyle[element].cellText) {
+                        return currentEnumStyle[element].classStyle;
+                    }
+                }
+            }
+        };
+    }, { "./metadata/sample-cell-style-metadata": 9 }], 7: [function (require, module, exports) {
+        require('./custom-actions');
+
+        var DataGridPrototype = require('./classes/datagrid-prototype');
+
+        var DataGrid = (function () {
+            function DataGrid(config) {
+                _classCallCheck(this, DataGrid);
+
+                webix.ARCHIBUS.data = {};
+                webix.ARCHIBUS.data.collection = [];
+                webix.ARCHIBUS.pageSize = config.pageSize;
+
+                var prototypeGrid = new DataGridPrototype(),
+                    nameGrid = config.container + 'Grid',
+                    namePaging = config.container + 'Paging';
+
+                this.dataGridEdit = prototypeGrid.dataGridEdit;
+                this.dataGridGroups = prototypeGrid.dataGridGroups;
+                this.dataGridLoad = prototypeGrid.dataGridLoad;
+                this.id = config.id;
+                this.dataTypeToFilterTypeMapping = {
+                    text: 'serverFilter',
+                    date: 'serverFilter',
+                    time: 'serverFilter',
+                    number: 'serverFilter',
+                    integer: 'serverFilter',
+                    enum: 'serverSelectFilter'
+                };
+                this.configurationGridSize(config.container, config.width, config.height);
+
+                this.view = new webix.ui({
+                    container: config.container,
+                    rows: [{
+                        template: '<div id="' + nameGrid + '"style="height: 100%" "></div>'
+                    }, {
+                        template: '<div id="' + namePaging + '"></div>',
+                        autoheight: true
+                    }]
+                });
+                this.dataTable = new webix.ui(this.createGridConfiguration(config));
+            }
+            /*
+             To form a configuration for the component webix.ui.treetable
+            @config: custom configuration
+             */
+
+            _createClass(DataGrid, [{
+                key: "createGridConfiguration",
+                value: function createGridConfiguration(config) {
+                    var webixColumns = this.createColumns(config),
+                        webixActionsGrid = this.configureGridActions(config);
+
+                    var nameGrid = config.container + 'Grid',
+                        namePaging = config.container + 'Paging';
+
+                    var gridConfiguration = {
+                        container: nameGrid,
+                        view: "customDataTable",
+                        css: "my_style",
+                        columns: webixColumns.columns,
+                        pager: {
+                            template: "{common.first()}{common.prev()}{common.pages()}{common.next()}{common.last()}",
+                            container: namePaging,
+                            size: config.pageSize,
+                            group: 5,
+                            animate: {
+                                subtype: "in"
+                            }
+                        },
+                        multisort: true,
+                        select: "cell",
+                        multiselect: true,
+                        resizeColumn: true,
+                        checkboxRefresh: true,
+                        on: webixActionsGrid,
+                        url: config.dataSource,
+                        footer: true,
+                        navigation: true,
+                        tooltip: true
+                    };
+
+                    gridConfiguration.scheme = this.dataGridGroups.configureGroup(webixColumns.group.id, webixColumns.group.header);
+                    gridConfiguration.leftSplit = this.getLeftSplit(webixColumns.columns, config.lastLeftFixedColumn, config.editing);
+                    gridConfiguration.rightSplit = this.getRigthSplit(webixColumns.columns, config.firstRightFixedColumn);
+
+                    if (config.editing) {
+                        gridConfiguration.editable = true;
+                        gridConfiguration.editaction = "custom";
+                    }
+                    return gridConfiguration;
+                }
+
+                /*
+                 Get the number of columns that want to split  the left side
+                	@columns: the configuration list columns
+                	@id: the ID of the last column that need to split 
+                	@isEdit: the flag edit
+                */
+
+            }, {
+                key: "getLeftSplit",
+                value: function getLeftSplit(columns, id, isEdit) {
+
+                    var leftSplit = 1;
+                    if (isEdit) leftSplit++;
+
+                    if (id) {
+                        leftSplit = 1;
+                        for (var index = 0; index < columns.length; index++) {
+                            if (columns[index].id == id) {
+                                leftSplit = index + 1;
+                                break;
+                            }
+                        }
+                    }
+                    return leftSplit;
+                }
+                /*
+                 Get the number of columns that want to split  the rigth side
+                	@columns: the configuration list columns
+                	@id: the ID of the last column that need to split 
+                */
+
+            }, {
+                key: "getRigthSplit",
+                value: function getRigthSplit(columns, id) {
+                    var rightSplit = 0;
+                    if (id) {
+                        rightSplit = 1;
+                        for (var index = 0; index < columns.length; index++) {
+                            if (columns[index].id == id) {
+                                rightSplit = columns.length - index;
+                                break;
+                            }
+                        }
+                    }
+                    return rightSplit;
+                }
+                /*
+                 Customize the size the grid view depending on the set values in the config
+                @container: the name container grid
+                @width: the width container grid
+                @height: the height container grid
+                 */
+
+            }, {
+                key: "configurationGridSize",
+                value: function configurationGridSize(container, width, height) {
+                    if (width) {
+                        document.getElementById(container).style.width = width + "px";
+                    } else {
+                        document.getElementById(container).style.width = "100%";
+                    }
+                    if (height) {
+                        document.getElementById(container).style.height = height + "px";
+                    } else {
+                        document.getElementById(container).style.height = "90%";
+                    }
+                }
+                /*
+                 Customize the actions the grid view depending on the set function in the config
+                @config: custom configuration
+                 */
+
+            }, {
+                key: "configureGridActions",
+                value: function configureGridActions(config) {
+                    var events = config.events;
+                    var webixActionsGrid = {
+                        onCheck: function onCheck(row, column, value) {
+                            this.data.eachChild(row, function (item) {
+                                item[column] = value;
+                            });
+                        },
+                        onAfterLoad: function onAfterLoad(row, column, value) {
+                            this.openAll();
+                        },
+                        onBeforeRender: function onBeforeRender() {
+                            for (var key in webix.ARCHIBUS.buttonsMap) {
+                                var button = webix.ARCHIBUS.buttonsMap[key];
+                                this.on_click[button.class] = webix.actions[button.function];
+                            }
+
+                            if (typeof webix.ARCHIBUS.editButtonMap != 'undefined') {
+                                for (var key in webix.ARCHIBUS.editButtonMap) {
+                                    var button = webix.ARCHIBUS.editButtonMap[key];
+                                    this.on_click[button.class] = button.function;
+                                }
+                            }
+                        },
+                        onAfterRender: function onAfterRender() {
+                            this.adjust();
+                        }
+                    };
+                    for (var event in events) {
+                        webixActionsGrid[event] = webix.actions[events[event]];
+                    }
+                    if (config.editing) {
+                        webixActionsGrid['onAfterEditStop'] = this.dataGridEdit.eventAfterEditStop;
+                    }
+
+                    return webixActionsGrid;
+                }
+                /*
+                 To create a configuration list of columns for grid
+                @config: custom configuration
+                 */
+
+            }, {
+                key: "createColumns",
+                value: function createColumns(config) {
+                    var ARCHIBUSColumns = config.columns;
+                    var webixColumns = [];
+                    var webixGroupBy = {};
+
+                    webixColumns[0] = this.configureCheckboxColumn(ARCHIBUSColumns);
+                    if (config.editing) webixColumns[1] = {
+                        id: 'edit',
+                        header: "",
+                        width: 60,
+                        template: this.dataGridEdit.renderEditColumn
+                    };
+
+                    var index = webixColumns.length;
+                    for (var numberColumn in ARCHIBUSColumns) {
+                        var ARCHIBUSColumn = ARCHIBUSColumns[numberColumn];
+                        var webixColumn = {};
+
+                        if (ARCHIBUSColumn.id) {
+                            webixColumn.id = ARCHIBUSColumn.id;
+                        }
+                        webixColumn.header = this.configureColumnHeader(ARCHIBUSColumn.title, ARCHIBUSColumn.dataType, ARCHIBUSColumn.action);
+                        webixColumn.cssFormat = this.configureColumnStyle(ARCHIBUSColumn.cssClass);
+                        webixColumn.template = this.dataGridGroups.renderColumnsCell;
+                        webixColumn.tooltip = this.renderTooltip;
+
+                        if (ARCHIBUSColumn.dataType) {
+                            switch (ARCHIBUSColumn.dataType) {
+                                case 'number':
+                                    webixColumn.format = webix.i18n.numberFormat;
+                                    webixColumn.editor = 'text';
+                                    webixColumn.css = { "text-align": "right" };
+                                    break;
+                                case 'integer':
+                                    webixColumn.editor = 'text';
+                                    webixColumn.css = { "text-align": "right" };
+
+                                    break;
+                                case 'date':
+                                    webixColumn.format = webix.Date.dateToStr("%m/%d/%y");
+                                    webixColumn.editor = 'date';
+                                    webixColumn.map = "(date)#" + webixColumn.id + "#";
+                                    break;
+                                case 'text':
+                                    webixColumn.editor = 'text';
+
+                                    break;
+                                case 'enum':
+                                    webixColumn.editor = 'combo';
+                                    webix.ARCHIBUS.data.collection[webix.ARCHIBUS.data.collection.length] = webixColumn.id;
+                                    this.dataGridLoad.doLoadCollectionFromServer(webixColumn.id, webixColumns);
+                                    break;
+                            }
+                        } else {
+                            ARCHIBUSColumn.dataType = 'String';
+                        }
+                        if (ARCHIBUSColumn.width) {
+                            webixColumn.width = ARCHIBUSColumn.width;
+                        } else {
+                            webixColumn.adjust = "data";
+                        }
+                        if (ARCHIBUSColumn.action) {
+                            webix.ARCHIBUS.buttonsMap = ARCHIBUSColumn.action;
+                            webixColumn.template = this.renderActionButtonsColumn;
+                        } else {
+                            webixColumn.sort = "server";
+                        }
+                        if (ARCHIBUSColumn.groupBy) {
+                            webixColumn.template = this.dataGridGroups.renderColumnGroup;
+                            webixGroupBy.id = ARCHIBUSColumn.id;
+                        }
+                        if (ARCHIBUSColumn.showTotals) {
+                            var configurationTotalGroup = this.dataGridGroups.configureTotalGroup(webixGroupBy, ARCHIBUSColumn);
+                            webixColumn.footer = configurationTotalGroup.footer;
+                            webixGroupBy = configurationTotalGroup.header;
+                        }
+                        webixColumns[index] = webixColumn;
+                        index++;
+                    }
+                    return {
+                        columns: webixColumns,
+                        group: webixGroupBy
+                    };
+                }
+                /*
+                Do perform configuration settings for display checkboxes column 
+                	@ARCHIBUSColumns: configuration columns
+                */
+
+            }, {
+                key: "configureCheckboxColumn",
+                value: function configureCheckboxColumn(ARCHIBUSColumns) {
+                    var configureCheckbox = {
+                        id: "ch1",
+                        header: "",
+                        width: 40,
+                        template: "{common.checkbox()}"
+                    };
+
+                    var isCalcTotalGroup = false;
+                    for (var index in ARCHIBUSColumns) {
+                        if (ARCHIBUSColumns[index].showTotals) {
+                            isCalcTotalGroup = true;
+                            break;
+                        }
+                    }
+                    if (isCalcTotalGroup) configureCheckbox['footer'] = { text: "Total:" };
+
+                    return configureCheckbox;
+                }
+
+                /*
+                 Customize the header column the grid view depending on the set values in the config
+                @title: the name of the header
+                @dataType: the type column
+                @actions: the actions column
+                 */
+
+            }, {
+                key: "configureColumnHeader",
+                value: function configureColumnHeader(title, dataType, actions) {
+                    if (actions) {
+                        return title;
+                    }
+                    var filterView;
+                    for (var type in this.dataTypeToFilterTypeMapping) {
+                        if (type === dataType) {
+                            filterView = this.dataTypeToFilterTypeMapping[type];
+                        }
+                    }
+                    return [title, { content: filterView }];
+                }
+                /*
+                 Customize the style column the grid view depending on the set values in the config
+                @cssClass: the style column 
+                 */
+
+            }, {
+                key: "configureColumnStyle",
+                value: function configureColumnStyle(cssClass) {
+                    if (cssClass) {
+                        return webix.actions[cssClass];
+                    } else {
+                        return function (value, obj, t, y) {
+                            if (obj.ch1 && !obj.$group) return "row-marked";
+                            return "";
+                        };
+                    }
+                }
+
+                /*
+                 Do perform the formation of the action buttons in the column
+                 */
+
+            }, {
+                key: "renderActionButtonsColumn",
+                value: function renderActionButtonsColumn(cellElement, cellInfo) {
+                    if (cellElement.$group) {
+                        return ' ';
+                    }
+                    var result = "";
+                    for (var number in webix.ARCHIBUS.buttonsMap) {
+                        var button = webix.ARCHIBUS.buttonsMap[number];
+                        var conditions = button.condition;
+                        for (var element in conditions) {
+                            var condition = conditions[element];
+                            if (cellElement[condition.column] == condition.value) {
+                                result = result + "<img class='" + button.class + "' src='" + button.icon + "'/>";
+                                break;
+                            }
+                        }
+                    }
+                    return result;
+                }
+            }, {
+                key: "renderTooltip",
+                value: function renderTooltip(rowItem, rowInfo) {
+                    if (rowItem.$group) {
+                        for (var item in webix.ARCHIBUS.group.tooltip) {
+                            if (item == rowItem.id && webix.ARCHIBUS.group.tooltip[item]) {
+                                return 'Continues on the next page';
+                            }
+                        }
+                    }
+                    return "";
+                }
             }]);
 
             return DataGrid;
         })();
-    }, { "./custom-actions": 1, "./metadata/sample-columns-metadata": 5 }], 3: [function (require, module, exports) {
+
+        module.exports = DataGrid;
+    }, { "./classes/datagrid-prototype": 4, "./custom-actions": 6 }], 8: [function (require, module, exports) {
         var buttonsMetadata = [{
             icon: 'style/icons/cog_edit.png',
             class: 'editclasss',
@@ -1152,7 +1330,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }];
 
         module.exports = buttonsMetadata;
-    }, {}], 4: [function (require, module, exports) {
+    }, {}], 9: [function (require, module, exports) {
         var classStyle = {
             CountryCode: [{
                 cellText: 'USA',
@@ -1173,7 +1351,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         };
 
         module.exports = classStyle;
-    }, {}], 5: [function (require, module, exports) {
+    }, {}], 10: [function (require, module, exports) {
         var buttonMetadata = require('./sample-buttons-metadata');
 
         var ARCHIBUSColumns = [{
@@ -1261,4 +1439,38 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }];
 
         module.exports = ARCHIBUSColumns;
-    }, { "./sample-buttons-metadata": 3 }] }, {}, [2]);
+    }, { "./sample-buttons-metadata": 8 }], 11: [function (require, module, exports) {
+        var DataGrid = require('./data-grid/datagrid');
+        var columnsMetadata = require('./data-grid/metadata/sample-columns-metadata');
+
+        webix.ready(function () {
+            var dataGrid = new DataGrid({
+                id: 'projectsGrid',
+                container: 'projectsGridContainer',
+                columns: columnsMetadata,
+                sortFields: [],
+                dataSource: 'server/data',
+                //width: 700,
+                // height: 700,
+                pageSize: 100,
+                events: {
+                    onSelectChange: 'selectValue',
+                    onItemClick: 'clickCell'
+                },
+                editing: true,
+                firstRightFixedColumn: 'Action',
+                lastLeftFixedColumn: 'quantity_mtbf'
+            });
+
+            resize([dataGrid]);
+        });
+
+        function resize(objects) {
+            for (var number in objects) {
+                webix.event(window, "resize", function (event) {
+                    objects[number].view.adjust();
+                    objects[number].dataTable.adjust();
+                });
+            }
+        }
+    }, { "./data-grid/datagrid": 7, "./data-grid/metadata/sample-columns-metadata": 10 }] }, {}, [11]);
