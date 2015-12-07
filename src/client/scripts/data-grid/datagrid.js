@@ -1,21 +1,46 @@
 require('./custom-actions');
 
-var DataGridPrototype = require('./classes/datagrid-prototype');
+var DataGridLoad = require('./datagrid-load-data'),
+    DataGridSort = require('./datagrid-sort'),
+    DataGridEdit = require('./datagrid-edit'),
+    DataGridGroups = require('./datagrid-groups');
 
-class DataGrid{
 
-    constructor(config) {
+class DataGrid {
+
+    constructor (config) {
         webix.ARCHIBUS.data = {};
         webix.ARCHIBUS.data.collection = [];
         webix.ARCHIBUS.pageSize = config.pageSize;
 
-        var prototypeGrid = new DataGridPrototype(),
-            nameGrid = config.container + 'Grid',
+        var nameGrid = config.container + 'Grid',
             namePaging = config.container + 'Paging';
 
-        this.dataGridEdit = prototypeGrid.dataGridEdit;
-        this.dataGridGroups = prototypeGrid.dataGridGroups;
-        this.dataGridLoad = prototypeGrid.dataGridLoad;
+        this.dataGridLoad = new DataGridLoad();
+        this.dataGridSort = new DataGridSort();
+        this.dataGridEdit = new DataGridEdit();
+        this.dataGridGroups = new DataGridGroups();
+
+        webix.protoUI ({
+            name: 'customDataTable',
+            $init: function (config) {
+                this.___multisort = config.multisort;
+                this._multisort_count = 0;
+                if (this.___multisort) {
+                    this._multisortMap = [];
+                }
+            },
+            _custom_tab_handler: this.dataGridEdit.eventHandlerTab,
+            _on_header_click: this.dataGridSort.eventHandlerHeaderClick,
+            markSorting: this.dataGridSort.doStartSorting,
+            doStartSingSorting: this.dataGridSort.doStartSingSorting,
+            doStartMultiSorting: this.dataGridSort.doStartMultiSorting,
+            doReLabelingSorting: this.dataGridSort.doReLabelingSorting,
+            doRemoveColumn: this.dataGridSort.doRemoveColumn,
+            addDivInColumnHeader: this.dataGridSort.addDivInColumnHeader,
+            calculationColumnValue: this.dataGridGroups.calculationColumnValue
+        }, webix.ui.treetable);
+
         this.id = config.id;
         this.dataTypeToFilterTypeMapping = {
             text: 'serverFilter',
@@ -45,7 +70,7 @@ class DataGrid{
      To form a configuration for the component webix.ui.treetable
 		@config: custom configuration
      */
-    createGridConfiguration(config){
+    createGridConfiguration (config) {
         var webixColumns = this.createColumns(config),
             webixActionsGrid = this.configureGridActions(config);
 
@@ -82,7 +107,7 @@ class DataGrid{
         gridConfiguration.leftSplit = this.getLeftSplit(webixColumns.columns, config.lastLeftFixedColumn, config.editing);
         gridConfiguration.rightSplit = this.getRigthSplit(webixColumns.columns, config.firstRightFixedColumn);
 
-        if(config.editing){
+        if (config.editing) {
             gridConfiguration.editable = true;
             gridConfiguration.editaction = "custom";
         }
@@ -95,15 +120,15 @@ class DataGrid{
 		@id: the ID of the last column that need to split 
 		@isEdit: the flag edit
 	*/
-    getLeftSplit(columns, id, isEdit){
+    getLeftSplit (columns, id, isEdit) {
 
         var leftSplit = 1;
-        if(isEdit)
+        if (isEdit) {
             leftSplit++;
-
-        if(id){
+        }
+        if (id) {
             leftSplit = 1;
-            for(var index = 0; index <columns.length;index++){
+            for(var index = 0; index <columns.length;index++) {
                 if(columns[index].id == id){
                     leftSplit = index + 1;
                     break;
@@ -117,11 +142,11 @@ class DataGrid{
 		@columns: the configuration list columns
 		@id: the ID of the last column that need to split 
 	*/
-    getRigthSplit(columns, id){
+    getRigthSplit (columns, id) {
         var rightSplit = 0;
-        if(id){
+        if (id) {
             rightSplit = 1;
-            for(var index = 0; index <columns.length;index++){
+            for(var index = 0; index <columns.length;index++) {
                 if(columns[index].id == id){
                     rightSplit = columns.length - index;
                     break;
@@ -136,14 +161,14 @@ class DataGrid{
 		@width: the width container grid
 		@height: the height container grid
      */
-    configurationGridSize(container, width, height){
-        if(width){
+    configurationGridSize (container, width, height) {
+        if (width) {
             document.getElementById(container).style.width = width + "px";
         }
-        else{
+        else {
             document.getElementById(container).style.width = "100%";
         }
-        if(height){
+        if (height) {
             document.getElementById(container).style.height = height + "px";
         }
         else{
@@ -154,7 +179,7 @@ class DataGrid{
      Customize the actions the grid view depending on the set function in the config
 		@config: custom configuration
      */
-    configureGridActions(config){
+    configureGridActions (config) {
         var events = config.events;
         var webixActionsGrid = {
             onCheck: function (row, column, value) {
@@ -172,7 +197,7 @@ class DataGrid{
                     this.on_click[button.class] = webix.actions[button.function];
                 }
 
-                if(typeof webix.ARCHIBUS.editButtonMap != 'undefined'){
+                if (typeof webix.ARCHIBUS.editButtonMap != 'undefined') {
                     for (var key in webix.ARCHIBUS.editButtonMap) {
                         var button = webix.ARCHIBUS.editButtonMap[key];
                         this.on_click[button.class] = button.function;
@@ -180,15 +205,17 @@ class DataGrid{
                 }
 
             },
-            onAfterRender: function (){
+            onAfterRender: function () {
                 this.adjust();
             }
         };
-        for(var event in events){
+        for (var event in events) {
             webixActionsGrid[event] = webix.actions[events[event]];
         }
-        if(config.editing){
+        if (config.editing) {
             webixActionsGrid['onAfterEditStop'] = this.dataGridEdit.eventAfterEditStop;
+            webixActionsGrid['onUpdataData'] = this.dataGridLoad.doUpdataData;
+            webixActionsGrid['onRecalculateTotalColumn'] = this.dataGridGroups.recalculateTotalColumn;
         }
 
         return webixActionsGrid;
@@ -197,28 +224,27 @@ class DataGrid{
      To create a configuration list of columns for grid
 		@config: custom configuration
      */
-    createColumns(config){
+    createColumns (config) {
         var ARCHIBUSColumns = config.columns;
         var webixColumns = [];
         var webixGroupBy = {};
 
 
         webixColumns[0] = this.configureCheckboxColumn(ARCHIBUSColumns);
-        if(config.editing)
+        if (config.editing) {
             webixColumns[1] = {
                 id: 'edit',
                 header: "",
                 width: 60,
                 template:  this.dataGridEdit.renderEditColumn
             };
-
-
+        }
         var index = webixColumns.length;
-        for(var numberColumn in ARCHIBUSColumns){
+        for (var numberColumn in ARCHIBUSColumns) {
             var ARCHIBUSColumn = ARCHIBUSColumns[numberColumn];
             var webixColumn = {};
 
-            if(ARCHIBUSColumn.id){
+            if (ARCHIBUSColumn.id) {
                 webixColumn.id = ARCHIBUSColumn.id;
             }
             webixColumn.header = this.configureColumnHeader(ARCHIBUSColumn.title, ARCHIBUSColumn.dataType, ARCHIBUSColumn.action);
@@ -226,8 +252,8 @@ class DataGrid{
             webixColumn.template = this.dataGridGroups.renderColumnsCell;
             webixColumn.tooltip = this.renderTooltip;
 
-            if(ARCHIBUSColumn.dataType){
-                switch (ARCHIBUSColumn.dataType){
+            if (ARCHIBUSColumn.dataType) {
+                switch (ARCHIBUSColumn.dataType) {
                     case 'number': webixColumn.format = webix.i18n.numberFormat;
                         webixColumn.editor = 'text';
                         webixColumn.css = {"text-align":"right" };
@@ -252,27 +278,25 @@ class DataGrid{
                         this.dataGridLoad.doLoadCollectionFromServer(webixColumn.id, webixColumns);
                         break;
                 }
-            }else{
+            } else {
                 ARCHIBUSColumn.dataType = 'String';
             }
-            if(ARCHIBUSColumn.width){
+            if (ARCHIBUSColumn.width) {
                 webixColumn.width = ARCHIBUSColumn.width;
-            }
-            else{
+            } else {
                 webixColumn.adjust = "data";
             }
-            if(ARCHIBUSColumn.action){
+            if (ARCHIBUSColumn.action) {
                 webix.ARCHIBUS.buttonsMap = ARCHIBUSColumn.action;
                 webixColumn.template = this.renderActionButtonsColumn;
-            }
-            else{
+            } else {
                 webixColumn.sort = "server";
             }
-            if(ARCHIBUSColumn.groupBy){
+            if (ARCHIBUSColumn.groupBy) {
                 webixColumn.template = this.dataGridGroups.renderColumnGroup;
                 webixGroupBy.id =  ARCHIBUSColumn.id;
             }
-            if(ARCHIBUSColumn.showTotals){
+            if (ARCHIBUSColumn.showTotals) {
                 var configurationTotalGroup = this.dataGridGroups.configureTotalGroup(webixGroupBy, ARCHIBUSColumn);
                 webixColumn.footer = configurationTotalGroup.footer;
                 webixGroupBy = configurationTotalGroup.header;
@@ -289,7 +313,7 @@ class DataGrid{
 	Do perform configuration settings for display checkboxes column 
 		@ARCHIBUSColumns: configuration columns
 	*/
-    configureCheckboxColumn(ARCHIBUSColumns){
+    configureCheckboxColumn (ARCHIBUSColumns) {
         var configureCheckbox = {
             id: "ch1",
             header: "",
@@ -298,15 +322,15 @@ class DataGrid{
         };
 
         var isCalcTotalGroup = false;
-        for(var index in ARCHIBUSColumns){
-            if(ARCHIBUSColumns[index].showTotals){
+        for (var index in ARCHIBUSColumns) {
+            if (ARCHIBUSColumns[index].showTotals) {
                 isCalcTotalGroup = true;
                 break;
             }
         }
-        if(isCalcTotalGroup)
+        if (isCalcTotalGroup){
             configureCheckbox['footer'] = {text:"Total:"};
-
+        }
         return configureCheckbox;
     }
 
@@ -316,13 +340,13 @@ class DataGrid{
 		@dataType: the type column
 		@actions: the actions column
      */
-    configureColumnHeader (title, dataType, actions){
-        if(actions){
+    configureColumnHeader (title, dataType, actions) {
+        if (actions) {
             return title;
         }
         var filterView;
-        for(var type in this.dataTypeToFilterTypeMapping){
-            if(type === dataType){
+        for (var type in this.dataTypeToFilterTypeMapping) {
+            if (type === dataType) {
                 filterView = this.dataTypeToFilterTypeMapping[type];
             }
         }
@@ -335,12 +359,11 @@ class DataGrid{
      Customize the style column the grid view depending on the set values in the config
 		@cssClass: the style column 
      */
-    configureColumnStyle(cssClass){
-        if(cssClass){
+    configureColumnStyle (cssClass) {
+        if (cssClass) {
             return webix.actions[cssClass];
-        }
-        else{
-            return function (value, obj, t, y){
+        } else {
+            return function (value, obj) {
                 if (obj.ch1 && !obj.$group)
                     return "row-marked";
                 return "";
@@ -351,17 +374,17 @@ class DataGrid{
     /*
      Do perform the formation of the action buttons in the column
      */
-    renderActionButtonsColumn(cellElement, cellInfo){
-        if(cellElement.$group){
+    renderActionButtonsColumn (cellElement, cellInfo) {
+        if (cellElement.$group) {
             return ' ';
         }
         var result = "";
-        for(var number in webix.ARCHIBUS.buttonsMap){
+        for (var number in webix.ARCHIBUS.buttonsMap) {
             var button = webix.ARCHIBUS.buttonsMap[number];
             var conditions = button.condition;
-            for(var element in conditions){
+            for (var element in conditions) {
                 var condition = conditions[element];
-                if(cellElement[condition.column] == condition.value){
+                if (cellElement[condition.column] == condition.value) {
                     result = result + "<img class='" + button.class + "' src='" + button.icon + "'/>"
                     break;
                 }
@@ -371,10 +394,10 @@ class DataGrid{
     }
 
 
-    renderTooltip(rowItem, rowInfo){
-        if(rowItem.$group){
-            for(var item in webix.ARCHIBUS.group.tooltip){
-                if(item == rowItem.id && webix.ARCHIBUS.group.tooltip[item]){
+    renderTooltip (rowItem, rowInfo) {
+        if (rowItem.$group) {
+            for (var item in webix.ARCHIBUS.group.tooltip) {
+                if (item == rowItem.id && webix.ARCHIBUS.group.tooltip[item]) {
                     return 'Continues on the next page';
                 }
             }

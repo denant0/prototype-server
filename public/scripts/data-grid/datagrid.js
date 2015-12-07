@@ -17,6 +17,55 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }return n[o].exports;
     }var i = typeof require == "function" && require;for (var o = 0; o < r.length; o++) s(r[o]);return s;
 })({ 1: [function (require, module, exports) {
+        var classStyle = require('./metadata/sample-cell-style-metadata');
+        webix.ARCHIBUS = {};
+
+        /*
+         Map of events used in the grid user
+         */
+        webix.actions = {
+            selectValue: function selectValue() {
+                var id = this.getSelectedId(true);
+                if (id.length != 0) {
+                    var text = this.getItem(id)[id[0].column];
+                    webix.message(text);
+                }
+            },
+            clickCell: function clickCell(id, event) {
+                if (typeof webix.ARCHIBUS.editRows != 'undefined') {
+                    for (var index in webix.ARCHIBUS.editRows) {
+                        var editRow = webix.ARCHIBUS.editRows[index];
+                        if (editRow.id == id.row) {
+                            this.editCell(id.row, id.column);
+                        }
+                    }
+                }
+            },
+            buttonClick1: function buttonClick1(event, object, cell) {
+                webix.message('You click button 1');
+            },
+            buttonClick2: function buttonClick2(event, object, cell) {
+                webix.message('You click button 2');
+            },
+            buttonClick3: function buttonClick3(event, object, cell) {
+                webix.message('You click button 3');
+            },
+            buttonClick4: function buttonClick4() {
+                webix.message('You click button 4');
+            },
+            cssClassCountryCode: function cssClassCountryCode(container, cellInfo, t, y) {
+                if (cellInfo.ch1 && !cellInfo.$group) {
+                    return "row-marked";
+                }
+                var currentEnumStyle = classStyle[y];
+                for (var element in currentEnumStyle) {
+                    if (container == currentEnumStyle[element].cellText) {
+                        return currentEnumStyle[element].classStyle;
+                    }
+                }
+            }
+        };
+    }, { "./metadata/sample-cell-style-metadata": 8 }], 2: [function (require, module, exports) {
         /*
         The class responsible for editing
         */
@@ -28,12 +77,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 webix.UIManager.tabControl = true;
                 webix.editors.$popup = {
                     text: {
-                        view: "popup",
-                        body: { view: "textarea", width: 250, height: 50 }
+                        view: 'popup',
+                        body: {
+                            view: 'textarea',
+                            width: 250,
+                            height: 50
+                        }
                     },
                     date: {
-                        view: "popup",
-                        body: { view: "calendar", icons: true, weekNumber: true, timepicker: true }
+                        view: 'popup',
+                        body: {
+                            view: 'calendar',
+                            icons: true,
+                            weekNumber: true,
+                            timepicker: true
+                        }
                     }
                 };
                 webix.ARCHIBUS.editRows = [];
@@ -86,9 +144,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                 this.removeCellCss(editRow.id, columnId, "row-edited");
                             });
                             webix.ARCHIBUS.editRows.splice(index, 1);
-                            webix.ajax().post("server/data/save", this.getItem(object.row), function (response) {
-                                webix.message(response.status);
-                            });
+                            this.callEvent("onUpdataData", [this.getItem(object.row)]);
                             this.refresh();
                             break;
                         }
@@ -103,8 +159,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 key: "eventEditCancel",
                 value: function eventEditCancel(event, object, cell) {
                     this.editStop();
-                    for (var index in webix.ARCHIBUS.editRows) {
-                        var editRow = webix.ARCHIBUS.editRows[index];
+                    for (var i in webix.ARCHIBUS.editRows) {
+                        var editRow = webix.ARCHIBUS.editRows[i];
                         if (editRow.id == object.row) {
                             this.eachColumn(function (columnId) {
                                 this.removeCellCss(editRow.id, columnId, "row-edited");
@@ -114,30 +170,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                 dataRow[index] = editRow.data[index];
                             }
                             this.updateItem(object.row, dataRow);
-                            webix.ARCHIBUS.editRows.splice(index, 1);
+                            webix.ARCHIBUS.editRows.splice(i, 1);
                             break;
                         }
                     }
-
-                    for (var index in webix.ARCHIBUS.group.groupTotalLine) {
-                        var id = webix.ARCHIBUS.group.groupTotalLine[index].id;
-                        this.eachColumn(function (columnId) {
-                            if (columnId == id) {
-                                var row = object.row;
-                                var childs = this.data.getBranch(this.getParentId(row));
-                                var sum = 0;
-                                for (var i = 0; i < childs.length; i++) {
-                                    var item = childs[i];
-                                    sum += item[id] * 1;
-                                }
-                                var idRowParent = this.getParentId(row);
-                                var parent = this.getItem(idRowParent);
-
-                                parent[id + 'Sum'] = sum;
-                                this.refresh(idRowParent);
-                            }
-                        });
-                    }
+                    this.eachColumn(function (columnId) {
+                        this.callEvent("onRecalculateTotalColumn", [object.row, columnId]);
+                    });
                 }
 
                 /*
@@ -158,30 +197,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                         break;
                                     }
                                 }
-                                if (idAdd) webix.ARCHIBUS.editRows[index].data[editor.column] = state.old;
+                                if (idAdd) {
+                                    webix.ARCHIBUS.editRows[index].data[editor.column] = state.old;
+                                }
                                 break;
                             }
                         }
                     }
-
-                    for (var index in webix.ARCHIBUS.group.groupTotalLine) {
-                        var id = webix.ARCHIBUS.group.groupTotalLine[index].id;
-                        if (editor.column == id) {
-                            var row = editor.row;
-                            var childs = this.data.getBranch(this.getParentId(row));
-                            var sum = 0;
-                            for (var i = 0; i < childs.length; i++) {
-                                var item = childs[i];
-                                sum += item[id] * 1;
-                            }
-                            var idRowParent = this.getParentId(row);
-                            var parent = this.getItem(idRowParent);
-
-                            parent[id + 'Sum'] = sum;
-                            this.refresh(idRowParent);
-                            break;
-                        }
-                    }
+                    this.callEvent("onRecalculateTotalColumn", [editor.row, editor.column]);
                 }
 
                 /*
@@ -192,8 +215,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 key: "eventHandlerTab",
                 value: function eventHandlerTab(tab, e) {
                     if (this._settings.editable && !this._in_edit_mode) {
-                        //if we have focus in some custom input inside of datatable
-                        if (e.target && e.target.tagName == "INPUT") return true;
+                        if (e.target && e.target.tagName == "INPUT") {
+                            return true;
+                        }
 
                         var selection = this.getSelectedId(true);
                         if (selection.length == 1) {
@@ -214,7 +238,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         return ' ';
                     }
                     var result = "";
-                    var isEdit = true;
                     for (var index in webix.ARCHIBUS.editRows) {
                         if (webix.ARCHIBUS.editRows[index].id == cellElement.id) {
                             return "<img class='editSuccessClass' src='style/icons/success.png'/><img class='editCancelClass' src='style/icons/delete.gif'/>";
@@ -228,7 +251,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         })();
 
         module.exports = DataGridEdit;
-    }, {}], 2: [function (require, module, exports) {
+    }, {}], 3: [function (require, module, exports) {
         /*
         The class responsible for the grouping of data
         */
@@ -247,21 +270,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     setValue: function setValue() {},
                     refresh: function refresh(master, node, value) {
                         var result = 0;
-                        master.mapGroupsCells(null, value.columnId, null, 1, function (value) {
+                        master.calculationColumnValue(null, value.columnId, null, 1, function (value) {
                             value = value * 1;
-                            if (!isNaN(value)) result += value;
+                            if (!isNaN(value)) {
+                                result += value;
+                            }
 
                             return value;
                         });
 
-                        if (value.format) result = value.format(result);
-                        if (value.template) result = value.template({ value: result });
-
+                        if (value.format) {
+                            result = value.format(result);
+                        }
+                        if (value.template) {
+                            result = value.template({ value: result });
+                        }
                         node.firstChild.innerHTML = result;
                     },
                     trackCells: true,
                     render: function render(master, config) {
-                        if (config.template) config.template = webix.template(config.template);
+                        if (config.template) {
+                            config.template = webix.template(config.template);
+                        }
                         return "";
                     }
                 };
@@ -279,10 +309,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         $group: {}
                     };
 
-                    if (typeof groupId != 'undefined') {
+                    if (groupId) {
                         configurationGroup.$group.by = groupId;
                     }
-                    if (typeof groupHeader != 'undefined') {
+                    if (groupHeader) {
                         configurationGroup.$group.map = {};
                         webix.ARCHIBUS.group.groupTotalLine = groupHeader;
                         for (var i in groupHeader) {
@@ -327,20 +357,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         var count = cellElement.$count;
                         var result = cellInfo.treetable(cellElement, cellInfo) + " " + this.id + ": " + cellElement.value + " ( " + count + " assets )";
                         var freeItems = webix.ARCHIBUS.pageSize - rowNumber;
-                        if (cellElement.open) if (freeItems < cellElement.$count) webix.ARCHIBUS.group.tooltip[cellElement.id] = true;else webix.ARCHIBUS.group.tooltip[cellElement.id] = false;else webix.ARCHIBUS.group.tooltip[cellElement.id] = false;
-
-                        if (typeof webix.ARCHIBUS.group.groupTotalLine != 'undefined') {
-                            result += '<span style="float: right;">';
-                            for (var i in webix.ARCHIBUS.group.groupTotalLine) {
-                                if (webix.ARCHIBUS.group.groupTotalLine[i].type == 'number') {
-                                    result += webix.ARCHIBUS.group.groupTotalLine[i].title + ": " + webix.i18n.numberFormat(cellElement[webix.ARCHIBUS.group.groupTotalLine[i].id + "Sum"]) + " ";
-                                } else result += webix.ARCHIBUS.group.groupTotalLine[i].title + ": " + cellElement[webix.ARCHIBUS.group.groupTotalLine[i].id + "Sum"] + "      ";
+                        if (cellElement.open) {
+                            if (freeItems < cellElement.$count) {
+                                webix.ARCHIBUS.group.tooltip[cellElement.id] = true;
+                            } else {
+                                webix.ARCHIBUS.group.tooltip[cellElement.id] = false;
                             }
-                            result += "</span>";
+                        } else {
+                            webix.ARCHIBUS.group.tooltip[cellElement.id] = false;
                         }
                         return result;
                     }
-
                     return cellValue;
                 }
                 /*
@@ -356,7 +383,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             if (webix.ARCHIBUS.group.groupTotalLine[i].id == this.id) {
                                 if (webix.ARCHIBUS.group.groupTotalLine[i].type == 'number') {
                                     result += "Total: " + webix.i18n.numberFormat(cellElement[webix.ARCHIBUS.group.groupTotalLine[i].id + "Sum"]);
-                                } else result += "Total: " + cellElement[webix.ARCHIBUS.group.groupTotalLine[i].id + "Sum"];
+                                } else {
+                                    result += "Total: " + cellElement[webix.ARCHIBUS.group.groupTotalLine[i].id + "Sum"];
+                                }
                             }
                         }
                         result += "</span>";
@@ -372,15 +401,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }, {
                 key: "calculationColumnValue",
                 value: function calculationColumnValue(startrow, startcol, numrows, numcols, callback) {
-                    if (startrow === null && this.data.order.length > 0) startrow = this.data.order[0];
-                    if (startcol === null) startcol = this.columnId(0);
-                    if (numrows === null) numrows = this.data.order.length;
-                    if (numcols === null) numcols = this._settings.columns.length;
+                    if (startrow === null && this.data.order.length > 0) {
+                        startrow = this.data.order[0];
+                    }
+                    if (startcol === null) {
+                        startcol = this.columnId(0);
+                    }
+                    if (numrows === null) {
+                        numrows = this.data.order.length;
+                    }
+                    if (numcols === null) {
+                        numcols = this._settings.columns.length;
+                    }
 
-                    if (!this.exists(startrow)) return;
+                    if (!this.exists(startrow)) {
+                        return;
+                    }
                     startrow = this.getIndexById(startrow);
                     startcol = this.getColumnIndex(startcol);
-                    if (startcol === null) return;
+                    if (startcol === null) {
+                        return;
+                    }
 
                     for (var i = 0; i < numrows && startrow + i < this.data.order.length; i++) {
                         var row_ind = startrow + i;
@@ -403,13 +444,40 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         }
                     }
                 }
+
+                /*
+                 Recalculate the total column
+                    @row: the grid row
+                    @column: the grid column
+                 */
+
+            }, {
+                key: "recalculateTotalColumn",
+                value: function recalculateTotalColumn(row, column) {
+                    for (var index in webix.ARCHIBUS.group.groupTotalLine) {
+                        var id = webix.ARCHIBUS.group.groupTotalLine[index].id;
+                        if (column == id) {
+                            var childs = this.data.getBranch(this.getParentId(row));
+                            var sum = 0;
+                            for (var i = 0; i < childs.length; i++) {
+                                var item = childs[i];
+                                sum += item[id] * 1;
+                            }
+                            var idRowParent = this.getParentId(row);
+                            var parent = this.getItem(idRowParent);
+                            parent[id + 'Sum'] = sum;
+                            this.refresh(idRowParent);
+                            break;
+                        }
+                    }
+                }
             }]);
 
             return DataGridGroups;
         })();
 
         module.exports = DataGridGroups;
-    }, {}], 3: [function (require, module, exports) {
+    }, {}], 4: [function (require, module, exports) {
         var DataGridLoad = (function () {
             function DataGridLoad() {
                 _classCallCheck(this, DataGridLoad);
@@ -432,18 +500,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 value: function doLoadData(count, start, callback, url, now) {
                     var config = this._settings;
                     if (config.datathrottle && !now) {
-                        if (this._throttle_request) window.clearTimeout(this._throttle_request);
+                        if (this._throttle_request) {
+                            window.clearTimeout(this._throttle_request);
+                        }
                         this._throttle_request = webix.delay(function () {
                             this.loadNext(count, start, callback, url, true);
                         }, this, 0, config.datathrottle);
                         return;
                     }
 
-                    if (!start && start !== 0) start = this.count();
-                    if (!count) count = config.datafetch || this.count();
+                    if (!start && start !== 0) {
+                        start = this.count();
+                    }
+                    if (!count) {
+                        count = config.datafetch || this.count();
+                    }
 
                     this.data.url = this.data.url || url;
-                    if (this.callEvent("onDataRequest", [start, count, callback, url]) && this.data.url) this.data.feed.call(this, start, count, callback);
+                    if (this.callEvent("onDataRequest", [start, count, callback, url]) && this.data.url) {
+                        this.data.feed.call(this, start, count, callback);
+                    }
                 }
                 /*
                  Do perform the query on the server and load the data from the response from the server
@@ -453,7 +529,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 key: "createUrlAndLoadData",
                 value: function createUrlAndLoadData(from, count, callback) {
                     var url = this.data.url;
-                    if (from < 0) from = 0;
+                    if (from < 0) {
+                        from = 0;
+                    }
                     var final_callback = [this._feed_callback, callback];
                     if (url && typeof url != "string") {
                         var details = { from: from, count: count };
@@ -466,20 +544,29 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         this.load(url, final_callback, details);
                     } else {
                         var finalurl = url + (url.indexOf("?") == -1 ? "?" : "&") + (this.count() ? "continue=true" : "");
-                        if (count != -1) finalurl += "&count=" + count;
-                        if (from) finalurl += "&start=" + from;
+                        if (count != -1) {
+                            finalurl += "&count=" + count;
+                        }
+                        if (from) {
+                            finalurl += "&start=" + from;
+                        }
 
                         if (this.getState) {
                             var state = this.getState();
                             if (state.sort) {
                                 if (typeof this.___multisort != 'undefined' && this.___multisort) {
-                                    for (var key in state.sort) finalurl += "&sort[" + state.sort[key].id + "]=" + state.sort[key].dir;
+                                    for (var key in state.sort) {
+                                        finalurl += "&sort[" + state.sort[key].id + "]=" + state.sort[key].dir;
+                                    }
                                 } else {
                                     finalurl += "&sort[" + state.sort.id + "]=" + state.sort.dir;
                                 }
                             }
-
-                            if (state.filter) for (var key in state.filter) finalurl += "&filter[" + key + "]=" + state.filter[key];
+                            if (state.filter) {
+                                for (var key in state.filter) {
+                                    finalurl += "&filter[" + key + "]=" + state.filter[key];
+                                }
+                            }
                         }
                         this.load(finalurl, final_callback);
                     }
@@ -495,7 +582,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     var temp = this._load_count;
                     var last = this._feed_last;
                     this._load_count = false;
-                    if ((typeof temp === "undefined" ? "undefined" : _typeof(temp)) == "object" && (temp[0] != last[0] || temp[1] != last[1])) this.data.feed.apply(this, temp); //load last ignored request
+                    if ((typeof temp === "undefined" ? "undefined" : _typeof(temp)) == "object" && (temp[0] != last[0] || temp[1] != last[1])) {
+                        this.data.feed.apply(this, temp); //load last ignored request
+                    }
                 }
                 /*
                  Do parse the loaded data
@@ -505,17 +594,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 key: "parseData",
                 value: function parseData(text, xml, loader) {
                     var data;
-                    if (loader === -1) data = this.data.driver.toObject(xml);else {
+                    if (loader === -1) {
+                        data = this.data.driver.toObject(xml);
+                    } else {
                         //ignore data loading command if data was reloaded
                         this._ajax_queue.remove(loader);
                         data = this.data.driver.toObject(text, xml);
                     }
-
-                    if (data) this.data._parse(data);else return this._onLoadError(text, xml, loader);
-
+                    if (data) {
+                        this.data._parse(data);
+                    } else {
+                        return this._onLoadError(text, xml, loader);
+                    }
                     //data loaded, view rendered, call onready handler
                     this._call_onready();
-
                     this.callEvent("onAfterLoad", []);
                     this.waitData.resolve();
                 }
@@ -551,18 +643,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         var filter = {};
                         var any_filter = 0;
                         for (var key in this._filter_elements) {
-                            if (this._hidden_column_hash[key]) continue;
+                            if (this._hidden_column_hash[key]) {
+                                continue;
+                            }
 
                             var f = this._filter_elements[key];
                             f[1].value = filter[key] = f[2].getValue(f[0]);
                             any_filter = 1;
                         }
-                        if (any_filter) settings.filter = filter;
+                        if (any_filter) {
+                            settings.filter = filter;
+                        }
                     }
 
                     settings.hidden = [];
-                    for (var key in this._hidden_column_hash) settings.hidden.push(key);
-
+                    for (var key in this._hidden_column_hash) {
+                        settings.hidden.push(key);
+                    }
                     return settings;
                 }
 
@@ -607,6 +704,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         }
                     });
                 }
+
+                /*
+                 Do update data on the server
+                    @data: data for load
+                 */
+
+            }, {
+                key: "doUpdataData",
+                value: function doUpdataData(data) {
+                    webix.ajax().post("server/data/save", data, function (response) {
+                        webix.message(response.status);
+                    });
+                }
             }]);
 
             return DataGridLoad;
@@ -615,43 +725,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         ;
 
         module.exports = DataGridLoad;
-    }, {}], 4: [function (require, module, exports) {
-        var DataGridLoad = require('./datagrid-load-data'),
-            DataGridSort = require('./datagrid-sort'),
-            DataGridEdit = require('./datagrid-edit'),
-            DataGridGroups = require('./datagrid-groups');
-
-        var DataGridPrototype = function DataGridPrototype(configurationGrid) {
-            _classCallCheck(this, DataGridPrototype);
-
-            this.dataGridLoad = new DataGridLoad();
-            this.dataGridSort = new DataGridSort();
-            this.dataGridEdit = new DataGridEdit();
-            this.dataGridGroups = new DataGridGroups();
-
-            webix.protoUI({
-                name: 'customDataTable',
-                $init: function $init(config) {
-                    this.___multisort = config.multisort;
-                    this._multisort_isDelete = false;
-                    this._multisort_count = 0;
-                    if (this.___multisort) {
-                        this._multisortMap = [];
-                    }
-                },
-                _custom_tab_handler: this.dataGridEdit.eventHandlerTab,
-                _on_header_click: this.dataGridSort.eventHandlerHeaderClick,
-                markSorting: this.dataGridSort.doStartSorting,
-                markSingSorting: this.dataGridSort.doStartSingSorting,
-                markMultiSorting: this.dataGridSort.doStartMultiSorting,
-                createHtmlMarkSotring: this.dataGridSort.addDivInColumnHeader,
-                createMarkSorting: this.dataGridSort.doReLabelingSorting,
-                mapGroupsCells: this.dataGridGroups.calculationColumnValue
-            }, webix.ui.treetable);
-        };
-
-        module.exports = DataGridPrototype;
-    }, { "./datagrid-edit": 1, "./datagrid-groups": 2, "./datagrid-load-data": 3, "./datagrid-sort": 5 }], 5: [function (require, module, exports) {
+    }, {}], 5: [function (require, module, exports) {
         var DataGridSort = (function () {
             function DataGridSort() {
                 _classCallCheck(this, DataGridSort);
@@ -666,9 +740,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 key: "doStartSorting",
                 value: function doStartSorting(column, order) {
                     if (typeof this.___multisort != 'undefined' && this.___multisort) {
-                        this.markMultiSorting(column, order);
+                        this.doStartMultiSorting(column, order);
                     } else {
-                        this.markSingSorting(column, order);
+                        this.doStartSingSorting(column, order);
                     }
                 }
                 /*
@@ -680,7 +754,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }, {
                 key: "doStartSingSorting",
                 value: function doStartSingSorting(column, order) {
-                    if (!this._sort_sign) this._sort_sign = webix.html.create("DIV");
+                    if (!this._sort_sign) {
+                        this._sort_sign = webix.html.create("DIV");
+                    }
                     webix.html.remove(this._sort_sign);
 
                     if (order) {
@@ -705,63 +781,58 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }, {
                 key: "doStartMultiSorting",
                 value: function doStartMultiSorting(column, order) {
-
                     if (this._multisortMap.length == 0 && !this._multisort_isDelete) {
                         this._multisortMap[0] = {
                             id: column,
                             dir: order,
                             html: '',
-                            onClick: 0,
-                            numberInQuery: 1
+                            onClick: 0
                         };
-                        this.createMarkSorting(0, column, order, true);
+                        this.doReLabelingSorting(0, column, order, true);
                     } else {
-                        if (this._multisort_isDelete) {
-                            if (this._multisort_count == 1) {
-                                this._multisort_count = 0;
-                                this._multisort_isDelete = false;
-                                this._last_order = '';
-                                for (var number in this._multisortMap) this.createMarkSorting(number, this._multisortMap[number].id, this._multisortMap[number].dir, false);
+                        var isAdded = true;
+                        for (var number in this._multisortMap) {
+                            var element = this._multisortMap[number];
+                            if (element.id != column) {
+                                this.doReLabelingSorting(number, element.id, element.dir, false);
                             } else {
-                                this._multisort_count++;
-                            }
-                        } else {
-                            var isAdded = true;
-                            for (var number in this._multisortMap) {
-                                var element = this._multisortMap[number];
-                                if (element.id != column) {
-                                    this.createMarkSorting(number, element.id, element.dir, false);
-                                } else {
-                                    isAdded = false;
-                                    this._multisortMap[number].dir = order;
-                                    this._multisortMap[number].onClick++;
-                                    this._multisortMap[number].numberInQuery = 1;
-                                    this.createMarkSorting(number, column, order, true);
-                                }
-                            }
-                            if (isAdded) {
-                                this._multisortMap[this._multisortMap.length] = {
-                                    id: column,
-                                    dir: order,
-                                    html: '',
-                                    onClick: 0
-                                };
-                                this.createMarkSorting(this._multisortMap.length - 1, column, order, true);
-                            } else {
-                                var numberDelete = -1;
-                                for (var number in this._multisortMap) {
-                                    if (this._multisortMap[number].onClick == 2) {
-                                        numberDelete = number;
-                                        break;
-                                    }
-                                }
-                                if (numberDelete != -1) {
-                                    webix.html.remove(this._multisortMap[numberDelete].html);
-                                    this._multisortMap.splice(numberDelete, 1);
-                                    this._multisort_isDelete = false;
-                                }
+                                isAdded = false;
+                                this._multisortMap[number].dir = order;
+                                this._multisortMap[number].onClick++;
+                                this._multisortMap[number].numberInQuery = 1;
+                                this.doReLabelingSorting(number, column, order, true);
                             }
                         }
+                        if (isAdded) {
+                            this._multisortMap[this._multisortMap.length] = {
+                                id: column,
+                                dir: order,
+                                html: '',
+                                onClick: 0
+                            };
+                            this.doReLabelingSorting(this._multisortMap.length - 1, column, order, true);
+                        } else {
+                            this.doRemoveColumn();
+                        }
+                    }
+                }
+                /*
+                 Do remove a column from sort
+                 */
+
+            }, {
+                key: "doRemoveColumn",
+                value: function doRemoveColumn() {
+                    var numberDelete = -1;
+                    for (var number in this._multisortMap) {
+                        if (this._multisortMap[number].onClick == 2) {
+                            numberDelete = number;
+                            break;
+                        }
+                    }
+                    if (numberDelete != -1) {
+                        webix.html.remove(this._multisortMap[numberDelete].html);
+                        this._multisortMap.splice(numberDelete, 1);
                     }
                 }
                 /*
@@ -790,7 +861,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 key: "doReLabelingSorting",
                 value: function doReLabelingSorting(index, column, order, isAddLast) {
                     webix.html.remove(this._multisortMap[index].html);
-                    this._multisortMap[index].html = this.createHtmlMarkSotring(order);
+                    this._multisortMap[index].html = this.addDivInColumnHeader(order);
                     if (order) {
                         var cell = this._get_header_cell(this.getColumnIndex(column));
                         if (cell) {
@@ -816,11 +887,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 key: "eventHandlerHeaderClick",
                 value: function eventHandlerHeaderClick(column) {
                     var col = this.getColumnConfig(column);
-                    if (!col.sort) return;
+                    if (!col.sort) {
+                        return;
+                    }
 
                     var order = 'asc';
                     if (typeof this.___multisort == 'undefined' || !this.___multisort) {
-                        if (col.id == this._last_sorted) order = this._last_order == "asc" ? "desc" : "asc";
+                        if (col.id == this._last_sorted) {
+                            order = this._last_order == "asc" ? "desc" : "asc";
+                        }
                     } else {
                         for (var number in this._multisortMap) {
                             if (this._multisortMap[number].id == column) {
@@ -838,60 +913,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         module.exports = DataGridSort;
     }, {}], 6: [function (require, module, exports) {
-        var classStyle = require('./metadata/sample-cell-style-metadata');
-        webix.ARCHIBUS = {};
-
-        /*
-         Map of events used in the grid user
-         */
-        webix.actions = {
-            selectValue: function selectValue() {
-                var id = this.getSelectedId(true);
-                if (id.length != 0) {
-                    var text = this.getItem(id)[id[0].column];
-                    webix.message(text);
-                }
-            },
-            clickCell: function clickCell(id, event) {
-                if (typeof webix.ARCHIBUS.editRows != 'undefined') {
-                    for (var index in webix.ARCHIBUS.editRows) {
-                        var editRow = webix.ARCHIBUS.editRows[index];
-                        if (editRow.id == id.row) {
-                            this.editCell(id.row, id.column);
-                        }
-                    }
-                }
-            },
-            buttonClick1: function buttonClick1() {
-                webix.message('You click button 1');
-            },
-            buttonClick2: function buttonClick2(event, object, cell, d) {
-                this.eachColumn(function (columnId) {
-                    this.removeCellCss(object.row, columnId, "row-edited");
-                });
-                webix.ARCHIBUS.editRows = "";
-                webix.message('You click button 2');
-            },
-            buttonClick3: function buttonClick3(event, object, cell, d) {
-                webix.message('You click button 3');
-            },
-            buttonClick4: function buttonClick4() {
-                webix.message('You click button 4');
-            },
-            cssClassCountryCode: function cssClassCountryCode(container, cellInfo, t, y) {
-                if (cellInfo.ch1 && !cellInfo.$group) return "row-marked";
-                var currentEnumStyle = classStyle[y];
-                for (var element in currentEnumStyle) {
-                    if (container == currentEnumStyle[element].cellText) {
-                        return currentEnumStyle[element].classStyle;
-                    }
-                }
-            }
-        };
-    }, { "./metadata/sample-cell-style-metadata": 9 }], 7: [function (require, module, exports) {
         require('./custom-actions');
 
-        var DataGridPrototype = require('./classes/datagrid-prototype');
+        var DataGridLoad = require('./datagrid-load-data'),
+            DataGridSort = require('./datagrid-sort'),
+            DataGridEdit = require('./datagrid-edit'),
+            DataGridGroups = require('./datagrid-groups');
 
         var DataGrid = (function () {
             function DataGrid(config) {
@@ -901,13 +928,34 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 webix.ARCHIBUS.data.collection = [];
                 webix.ARCHIBUS.pageSize = config.pageSize;
 
-                var prototypeGrid = new DataGridPrototype(),
-                    nameGrid = config.container + 'Grid',
+                var nameGrid = config.container + 'Grid',
                     namePaging = config.container + 'Paging';
 
-                this.dataGridEdit = prototypeGrid.dataGridEdit;
-                this.dataGridGroups = prototypeGrid.dataGridGroups;
-                this.dataGridLoad = prototypeGrid.dataGridLoad;
+                this.dataGridLoad = new DataGridLoad();
+                this.dataGridSort = new DataGridSort();
+                this.dataGridEdit = new DataGridEdit();
+                this.dataGridGroups = new DataGridGroups();
+
+                webix.protoUI({
+                    name: 'customDataTable',
+                    $init: function $init(config) {
+                        this.___multisort = config.multisort;
+                        this._multisort_count = 0;
+                        if (this.___multisort) {
+                            this._multisortMap = [];
+                        }
+                    },
+                    _custom_tab_handler: this.dataGridEdit.eventHandlerTab,
+                    _on_header_click: this.dataGridSort.eventHandlerHeaderClick,
+                    markSorting: this.dataGridSort.doStartSorting,
+                    doStartSingSorting: this.dataGridSort.doStartSingSorting,
+                    doStartMultiSorting: this.dataGridSort.doStartMultiSorting,
+                    doReLabelingSorting: this.dataGridSort.doReLabelingSorting,
+                    doRemoveColumn: this.dataGridSort.doRemoveColumn,
+                    addDivInColumnHeader: this.dataGridSort.addDivInColumnHeader,
+                    calculationColumnValue: this.dataGridGroups.calculationColumnValue
+                }, webix.ui.treetable);
+
                 this.id = config.id;
                 this.dataTypeToFilterTypeMapping = {
                     text: 'serverFilter',
@@ -993,8 +1041,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 value: function getLeftSplit(columns, id, isEdit) {
 
                     var leftSplit = 1;
-                    if (isEdit) leftSplit++;
-
+                    if (isEdit) {
+                        leftSplit++;
+                    }
                     if (id) {
                         leftSplit = 1;
                         for (var index = 0; index < columns.length; index++) {
@@ -1088,6 +1137,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     }
                     if (config.editing) {
                         webixActionsGrid['onAfterEditStop'] = this.dataGridEdit.eventAfterEditStop;
+                        webixActionsGrid['onUpdataData'] = this.dataGridLoad.doUpdataData;
+                        webixActionsGrid['onRecalculateTotalColumn'] = this.dataGridGroups.recalculateTotalColumn;
                     }
 
                     return webixActionsGrid;
@@ -1105,13 +1156,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     var webixGroupBy = {};
 
                     webixColumns[0] = this.configureCheckboxColumn(ARCHIBUSColumns);
-                    if (config.editing) webixColumns[1] = {
-                        id: 'edit',
-                        header: "",
-                        width: 60,
-                        template: this.dataGridEdit.renderEditColumn
-                    };
-
+                    if (config.editing) {
+                        webixColumns[1] = {
+                            id: 'edit',
+                            header: "",
+                            width: 60,
+                            template: this.dataGridEdit.renderEditColumn
+                        };
+                    }
                     var index = webixColumns.length;
                     for (var numberColumn in ARCHIBUSColumns) {
                         var ARCHIBUSColumn = ARCHIBUSColumns[numberColumn];
@@ -1205,8 +1257,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             break;
                         }
                     }
-                    if (isCalcTotalGroup) configureCheckbox['footer'] = { text: "Total:" };
-
+                    if (isCalcTotalGroup) {
+                        configureCheckbox['footer'] = { text: "Total:" };
+                    }
                     return configureCheckbox;
                 }
 
@@ -1242,7 +1295,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     if (cssClass) {
                         return webix.actions[cssClass];
                     } else {
-                        return function (value, obj, t, y) {
+                        return function (value, obj) {
                             if (obj.ch1 && !obj.$group) return "row-marked";
                             return "";
                         };
@@ -1291,7 +1344,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         })();
 
         module.exports = DataGrid;
-    }, { "./classes/datagrid-prototype": 4, "./custom-actions": 6 }], 8: [function (require, module, exports) {
+    }, { "./custom-actions": 1, "./datagrid-edit": 2, "./datagrid-groups": 3, "./datagrid-load-data": 4, "./datagrid-sort": 5 }], 7: [function (require, module, exports) {
         var buttonsMetadata = [{
             icon: 'style/icons/cog_edit.png',
             class: 'editclasss',
@@ -1330,7 +1383,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }];
 
         module.exports = buttonsMetadata;
-    }, {}], 9: [function (require, module, exports) {
+    }, {}], 8: [function (require, module, exports) {
         var classStyle = {
             CountryCode: [{
                 cellText: 'USA',
@@ -1351,7 +1404,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         };
 
         module.exports = classStyle;
-    }, {}], 10: [function (require, module, exports) {
+    }, {}], 9: [function (require, module, exports) {
         var buttonMetadata = require('./sample-buttons-metadata');
 
         var ARCHIBUSColumns = [{
@@ -1439,7 +1492,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }];
 
         module.exports = ARCHIBUSColumns;
-    }, { "./sample-buttons-metadata": 8 }], 11: [function (require, module, exports) {
+    }, { "./sample-buttons-metadata": 7 }], 10: [function (require, module, exports) {
         var DataGrid = require('./data-grid/datagrid');
         var columnsMetadata = require('./data-grid/metadata/sample-columns-metadata');
 
@@ -1473,4 +1526,4 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 });
             }
         }
-    }, { "./data-grid/datagrid": 7, "./data-grid/metadata/sample-columns-metadata": 10 }] }, {}, [11]);
+    }, { "./data-grid/datagrid": 6, "./data-grid/metadata/sample-columns-metadata": 9 }] }, {}, [10]);

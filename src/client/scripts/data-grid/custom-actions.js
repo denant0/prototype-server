@@ -6,46 +6,42 @@ webix.ARCHIBUS = {};
  Map of events used in the grid user
  */
 webix.actions = {
-    selectValue: function(){
+    selectValue: function() {
         var id = this.getSelectedId(true);
         if (id.length != 0) {
             var text = this.getItem(id)[id[0].column];
             webix.message(text);
         }
     },
-    clickCell: function(id, event){
-        if(typeof webix.ARCHIBUS.editRows != 'undefined'){
-            for(var index in  webix.ARCHIBUS.editRows){
+    clickCell: function(id, event) {
+        if (typeof webix.ARCHIBUS.editRows != 'undefined') {
+            for (var index in  webix.ARCHIBUS.editRows) {
                 var editRow = webix.ARCHIBUS.editRows[index];
-                if(editRow.id == id.row){
+                if (editRow.id == id.row) {
                     this.editCell(id.row, id.column);
                 }
             }
         }
     },
-    buttonClick1: function(){
+    buttonClick1: function(event,object,cell) {
         webix.message('You click button 1');
     },
-    buttonClick2: function(event,object,cell,d){
-        this.eachColumn(
-            function (columnId){
-                this.removeCellCss(object.row,columnId,"row-edited");
-            }
-        );
-        webix.ARCHIBUS.editRows = "";
+    buttonClick2: function(event,object,cell) {
         webix.message('You click button 2');
     },
-    buttonClick3: function(event,object,cell,d){
+    buttonClick3: function(event,object,cell) {
         webix.message('You click button 3');
     },
     buttonClick4: function(){
         webix.message('You click button 4');
     },
-    cssClassCountryCode: function (container, cellInfo, t,y){
-        if (cellInfo.ch1 && ! cellInfo.$group) return "row-marked";
+    cssClassCountryCode: function(container, cellInfo, t,y) {
+        if (cellInfo.ch1 && ! cellInfo.$group) {
+            return "row-marked";
+        }
         var currentEnumStyle = classStyle[y];
         for(var element in currentEnumStyle){
-            if(container == currentEnumStyle[element].cellText){
+            if (container == currentEnumStyle[element].cellText) {
                 return currentEnumStyle[element].classStyle;
             }
         }
