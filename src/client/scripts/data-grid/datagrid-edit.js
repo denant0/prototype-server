@@ -40,6 +40,38 @@ class DataGridEdit{
         ];
     }
 
+    /*
+     Do add editing options in the configuration column
+        @configCurrentColumn: the configuration of the current column
+        @configColumns: the configuration of all columns filled
+        @dataType: the data type
+        @loadClass: class manages the loading of data
+     */
+    addConfigurationEditColumn(configCurrentColumn, configColumns, dataType, loadClass){
+        if (dataType) {
+            switch (dataType) {
+                case 'number':
+                    configCurrentColumn.editor = 'text';
+                    break;
+                case 'integer':
+                    configCurrentColumn.editor = 'text';
+                    break;
+                case 'date':
+                    configCurrentColumn.editor = 'date';
+                    break;
+                case 'text':
+                    configCurrentColumn.editor = 'text';
+                    break;
+                case 'enum':
+                    configCurrentColumn.editor = 'combo';
+                    webix.ARCHIBUS.data.collection[webix.ARCHIBUS.data.collection.length] = configCurrentColumn.id;
+                    loadClass.doLoadCollectionFromServer(configCurrentColumn.id, configColumns);
+                    break;
+            }
+        }
+        return configCurrentColumn;
+    }
+
 	/*
 	 Handling the click event on the button "Start editing"
 	*/
@@ -106,7 +138,7 @@ class DataGridEdit{
         }
         this.eachColumn (
             function (columnId) {
-                this.callEvent("onRecalculateTotalColumn", [object.row, columnId]);
+                this.callEvent('onRecalculateTotalColumn', [object.row, columnId]);
             }
         );
     }
@@ -133,7 +165,7 @@ class DataGridEdit{
                 }
             }
         }
-        this.callEvent("onRecalculateTotalColumn", [editor.row, editor.column]);
+        this.callEvent('onRecalculateTotalColumn', [editor.row, editor.column]);
     }
 
     /*

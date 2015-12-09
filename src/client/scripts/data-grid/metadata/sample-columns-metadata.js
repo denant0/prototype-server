@@ -96,7 +96,7 @@ var ARCHIBUSColumns = [
         id: 'Date',
         title: 'Date',
         dataType: 'date',
-        dateTimeFormat: ''
+        dateTimeFormat: '%m/%d/%y'
     },
     {
         title: 'Action',

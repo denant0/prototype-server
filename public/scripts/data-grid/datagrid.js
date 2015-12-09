@@ -108,10 +108,45 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
 
             /*
-             Handling the click event on the button "Start editing"
-            */
+             Do add editing options in the configuration column
+                @configCurrentColumn: the configuration of the current column
+                @configColumns: the configuration of all columns filled
+                @dataType: the data type
+                @loadClass: class manages the loading of data
+             */
 
             _createClass(DataGridEdit, [{
+                key: "addConfigurationEditColumn",
+                value: function addConfigurationEditColumn(configCurrentColumn, configColumns, dataType, loadClass) {
+                    if (dataType) {
+                        switch (dataType) {
+                            case 'number':
+                                configCurrentColumn.editor = 'text';
+                                break;
+                            case 'integer':
+                                configCurrentColumn.editor = 'text';
+                                break;
+                            case 'date':
+                                configCurrentColumn.editor = 'date';
+                                break;
+                            case 'text':
+                                configCurrentColumn.editor = 'text';
+                                break;
+                            case 'enum':
+                                configCurrentColumn.editor = 'combo';
+                                webix.ARCHIBUS.data.collection[webix.ARCHIBUS.data.collection.length] = configCurrentColumn.id;
+                                loadClass.doLoadCollectionFromServer(configCurrentColumn.id, configColumns);
+                                break;
+                        }
+                    }
+                    return configCurrentColumn;
+                }
+
+                /*
+                 Handling the click event on the button "Start editing"
+                */
+
+            }, {
                 key: "eventEditStart",
                 value: function eventEditStart(event, object, cell) {
                     var isFocus = true;
@@ -175,7 +210,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         }
                     }
                     this.eachColumn(function (columnId) {
-                        this.callEvent("onRecalculateTotalColumn", [object.row, columnId]);
+                        this.callEvent('onRecalculateTotalColumn', [object.row, columnId]);
                     });
                 }
 
@@ -204,7 +239,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             }
                         }
                     }
-                    this.callEvent("onRecalculateTotalColumn", [editor.row, editor.column]);
+                    this.callEvent('onRecalculateTotalColumn', [editor.row, editor.column]);
                 }
 
                 /*
@@ -931,10 +966,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 var nameGrid = config.container + 'Grid',
                     namePaging = config.container + 'Paging';
 
-                this.dataGridLoad = new DataGridLoad();
-                this.dataGridSort = new DataGridSort();
-                this.dataGridEdit = new DataGridEdit();
-                this.dataGridGroups = new DataGridGroups();
+                this._dataGridLoad = new DataGridLoad();
+                this._dataGridSort = new DataGridSort();
+                this._dataGridEdit = new DataGridEdit();
+                this._dataGridGroups = new DataGridGroups();
 
                 webix.protoUI({
                     name: 'customDataTable',
@@ -945,15 +980,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             this._multisortMap = [];
                         }
                     },
-                    _custom_tab_handler: this.dataGridEdit.eventHandlerTab,
-                    _on_header_click: this.dataGridSort.eventHandlerHeaderClick,
-                    markSorting: this.dataGridSort.doStartSorting,
-                    doStartSingSorting: this.dataGridSort.doStartSingSorting,
-                    doStartMultiSorting: this.dataGridSort.doStartMultiSorting,
-                    doReLabelingSorting: this.dataGridSort.doReLabelingSorting,
-                    doRemoveColumn: this.dataGridSort.doRemoveColumn,
-                    addDivInColumnHeader: this.dataGridSort.addDivInColumnHeader,
-                    calculationColumnValue: this.dataGridGroups.calculationColumnValue
+                    _custom_tab_handler: this._dataGridEdit.eventHandlerTab,
+                    _on_header_click: this._dataGridSort.eventHandlerHeaderClick,
+                    markSorting: this._dataGridSort.doStartSorting,
+                    doStartSingSorting: this._dataGridSort.doStartSingSorting,
+                    doStartMultiSorting: this._dataGridSort.doStartMultiSorting,
+                    doReLabelingSorting: this._dataGridSort.doReLabelingSorting,
+                    doRemoveColumn: this._dataGridSort.doRemoveColumn,
+                    addDivInColumnHeader: this._dataGridSort.addDivInColumnHeader,
+                    calculationColumnValue: this._dataGridGroups.calculationColumnValue
                 }, webix.ui.treetable);
 
                 this.id = config.id;
@@ -965,7 +1000,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     integer: 'serverFilter',
                     enum: 'serverSelectFilter'
                 };
-                this.configurationGridSize(config.container, config.width, config.height);
+                this._configurationGridSize(config.container, config.width, config.height);
 
                 this.view = new webix.ui({
                     container: config.container,
@@ -976,7 +1011,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         autoheight: true
                     }]
                 });
-                this.dataTable = new webix.ui(this.createGridConfiguration(config));
+                this.dataTable = new webix.ui(this._createGridConfiguration(config));
             }
             /*
              To form a configuration for the component webix.ui.treetable
@@ -984,10 +1019,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
              */
 
             _createClass(DataGrid, [{
-                key: "createGridConfiguration",
-                value: function createGridConfiguration(config) {
-                    var webixColumns = this.createColumns(config),
-                        webixActionsGrid = this.configureGridActions(config);
+                key: "_createGridConfiguration",
+                value: function _createGridConfiguration(config) {
+                    var webixColumns = this._createColumns(config),
+                        webixActionsGrid = this._configureGridActions(config);
 
                     var nameGrid = config.container + 'Grid',
                         namePaging = config.container + 'Paging';
@@ -1018,9 +1053,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         tooltip: true
                     };
 
-                    gridConfiguration.scheme = this.dataGridGroups.configureGroup(webixColumns.group.id, webixColumns.group.header);
-                    gridConfiguration.leftSplit = this.getLeftSplit(webixColumns.columns, config.lastLeftFixedColumn, config.editing);
-                    gridConfiguration.rightSplit = this.getRigthSplit(webixColumns.columns, config.firstRightFixedColumn);
+                    gridConfiguration.scheme = this._dataGridGroups.configureGroup(webixColumns.group.id, webixColumns.group.header);
+                    gridConfiguration.leftSplit = this._getLeftSplit(webixColumns.columns, config.lastLeftFixedColumn, config.editing);
+                    gridConfiguration.rightSplit = this._getRigthSplit(webixColumns.columns, config.firstRightFixedColumn);
 
                     if (config.editing) {
                         gridConfiguration.editable = true;
@@ -1037,8 +1072,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 */
 
             }, {
-                key: "getLeftSplit",
-                value: function getLeftSplit(columns, id, isEdit) {
+                key: "_getLeftSplit",
+                value: function _getLeftSplit(columns, id, isEdit) {
 
                     var leftSplit = 1;
                     if (isEdit) {
@@ -1062,8 +1097,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 */
 
             }, {
-                key: "getRigthSplit",
-                value: function getRigthSplit(columns, id) {
+                key: "_getRigthSplit",
+                value: function _getRigthSplit(columns, id) {
                     var rightSplit = 0;
                     if (id) {
                         rightSplit = 1;
@@ -1084,8 +1119,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                  */
 
             }, {
-                key: "configurationGridSize",
-                value: function configurationGridSize(container, width, height) {
+                key: "_configurationGridSize",
+                value: function _configurationGridSize(container, width, height) {
                     if (width) {
                         document.getElementById(container).style.width = width + "px";
                     } else {
@@ -1103,8 +1138,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                  */
 
             }, {
-                key: "configureGridActions",
-                value: function configureGridActions(config) {
+                key: "_configureGridActions",
+                value: function _configureGridActions(config) {
                     var events = config.events;
                     var webixActionsGrid = {
                         onCheck: function onCheck(row, column, value) {
@@ -1116,12 +1151,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             this.openAll();
                         },
                         onBeforeRender: function onBeforeRender() {
-                            for (var key in webix.ARCHIBUS.buttonsMap) {
-                                var button = webix.ARCHIBUS.buttonsMap[key];
-                                this.on_click[button.class] = webix.actions[button.function];
+                            if (webix.ARCHIBUS.buttonsMap) {
+                                for (var key in webix.ARCHIBUS.buttonsMap) {
+                                    var button = webix.ARCHIBUS.buttonsMap[key];
+                                    this.on_click[button.class] = webix.actions[button.function];
+                                }
                             }
-
-                            if (typeof webix.ARCHIBUS.editButtonMap != 'undefined') {
+                            if (webix.ARCHIBUS.editButtonMap) {
                                 for (var key in webix.ARCHIBUS.editButtonMap) {
                                     var button = webix.ARCHIBUS.editButtonMap[key];
                                     this.on_click[button.class] = button.function;
@@ -1136,9 +1172,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         webixActionsGrid[event] = webix.actions[events[event]];
                     }
                     if (config.editing) {
-                        webixActionsGrid['onAfterEditStop'] = this.dataGridEdit.eventAfterEditStop;
-                        webixActionsGrid['onUpdataData'] = this.dataGridLoad.doUpdataData;
-                        webixActionsGrid['onRecalculateTotalColumn'] = this.dataGridGroups.recalculateTotalColumn;
+                        webixActionsGrid['onAfterEditStop'] = this._dataGridEdit.eventAfterEditStop;
+                        webixActionsGrid['onUpdataData'] = this._dataGridLoad.doUpdataData;
+                        webixActionsGrid['onRecalculateTotalColumn'] = this._dataGridGroups.recalculateTotalColumn;
                     }
 
                     return webixActionsGrid;
@@ -1149,19 +1185,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                  */
 
             }, {
-                key: "createColumns",
-                value: function createColumns(config) {
+                key: "_createColumns",
+                value: function _createColumns(config) {
                     var ARCHIBUSColumns = config.columns;
                     var webixColumns = [];
                     var webixGroupBy = {};
 
-                    webixColumns[0] = this.configureCheckboxColumn(ARCHIBUSColumns);
+                    webixColumns[0] = this._configureCheckboxColumn(ARCHIBUSColumns);
                     if (config.editing) {
                         webixColumns[1] = {
                             id: 'edit',
                             header: "",
                             width: 60,
-                            template: this.dataGridEdit.renderEditColumn
+                            template: this._dataGridEdit.renderEditColumn
                         };
                     }
                     var index = webixColumns.length;
@@ -1172,40 +1208,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         if (ARCHIBUSColumn.id) {
                             webixColumn.id = ARCHIBUSColumn.id;
                         }
-                        webixColumn.header = this.configureColumnHeader(ARCHIBUSColumn.title, ARCHIBUSColumn.dataType, ARCHIBUSColumn.action);
-                        webixColumn.cssFormat = this.configureColumnStyle(ARCHIBUSColumn.cssClass);
-                        webixColumn.template = this.dataGridGroups.renderColumnsCell;
-                        webixColumn.tooltip = this.renderTooltip;
+                        webixColumn.header = this._configureColumnHeader(ARCHIBUSColumn.title, ARCHIBUSColumn.dataType, ARCHIBUSColumn.action);
+                        webixColumn = this._configureColumnStyle(webixColumn, ARCHIBUSColumn.cssClass, ARCHIBUSColumn.dataType, ARCHIBUSColumn.dateTimeFormat);
 
-                        if (ARCHIBUSColumn.dataType) {
-                            switch (ARCHIBUSColumn.dataType) {
-                                case 'number':
-                                    webixColumn.format = webix.i18n.numberFormat;
-                                    webixColumn.editor = 'text';
-                                    webixColumn.css = { "text-align": "right" };
-                                    break;
-                                case 'integer':
-                                    webixColumn.editor = 'text';
-                                    webixColumn.css = { "text-align": "right" };
-
-                                    break;
-                                case 'date':
-                                    webixColumn.format = webix.Date.dateToStr("%m/%d/%y");
-                                    webixColumn.editor = 'date';
-                                    webixColumn.map = "(date)#" + webixColumn.id + "#";
-                                    break;
-                                case 'text':
-                                    webixColumn.editor = 'text';
-
-                                    break;
-                                case 'enum':
-                                    webixColumn.editor = 'combo';
-                                    webix.ARCHIBUS.data.collection[webix.ARCHIBUS.data.collection.length] = webixColumn.id;
-                                    this.dataGridLoad.doLoadCollectionFromServer(webixColumn.id, webixColumns);
-                                    break;
-                            }
-                        } else {
-                            ARCHIBUSColumn.dataType = 'String';
+                        webixColumn.template = this._dataGridGroups.renderColumnsCell;
+                        webixColumn.tooltip = this._renderTooltip;
+                        if (config.editing) {
+                            webixColumn = this._dataGridEdit.addConfigurationEditColumn(webixColumn, webixColumns, ARCHIBUSColumn.dataType, this._dataGridLoad);
                         }
                         if (ARCHIBUSColumn.width) {
                             webixColumn.width = ARCHIBUSColumn.width;
@@ -1214,16 +1223,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         }
                         if (ARCHIBUSColumn.action) {
                             webix.ARCHIBUS.buttonsMap = ARCHIBUSColumn.action;
-                            webixColumn.template = this.renderActionButtonsColumn;
+                            webixColumn.template = this._renderActionButtonsColumn;
                         } else {
                             webixColumn.sort = "server";
                         }
                         if (ARCHIBUSColumn.groupBy) {
-                            webixColumn.template = this.dataGridGroups.renderColumnGroup;
+                            webixColumn.template = this._dataGridGroups.renderColumnGroup;
                             webixGroupBy.id = ARCHIBUSColumn.id;
                         }
                         if (ARCHIBUSColumn.showTotals) {
-                            var configurationTotalGroup = this.dataGridGroups.configureTotalGroup(webixGroupBy, ARCHIBUSColumn);
+                            var configurationTotalGroup = this._dataGridGroups.configureTotalGroup(webixGroupBy, ARCHIBUSColumn);
                             webixColumn.footer = configurationTotalGroup.footer;
                             webixGroupBy = configurationTotalGroup.header;
                         }
@@ -1241,8 +1250,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 */
 
             }, {
-                key: "configureCheckboxColumn",
-                value: function configureCheckboxColumn(ARCHIBUSColumns) {
+                key: "_configureCheckboxColumn",
+                value: function _configureCheckboxColumn(ARCHIBUSColumns) {
                     var configureCheckbox = {
                         id: "ch1",
                         header: "",
@@ -1271,8 +1280,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                  */
 
             }, {
-                key: "configureColumnHeader",
-                value: function configureColumnHeader(title, dataType, actions) {
+                key: "_configureColumnHeader",
+                value: function _configureColumnHeader(title, dataType, actions) {
                     if (actions) {
                         return title;
                     }
@@ -1286,20 +1295,37 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 }
                 /*
                  Customize the style column the grid view depending on the set values in the config
-                @cssClass: the style column 
+                    @configColumn: the configuration of the current column
+                @cssClass: the style column
+                @dataType: the data type
+                @dateFormat: the date format
                  */
 
             }, {
-                key: "configureColumnStyle",
-                value: function configureColumnStyle(cssClass) {
+                key: "_configureColumnStyle",
+                value: function _configureColumnStyle(configColumn, cssClass, dataType, dateFormat) {
                     if (cssClass) {
-                        return webix.actions[cssClass];
+                        configColumn.cssFormat = webix.actions[cssClass];
                     } else {
-                        return function (value, obj) {
+                        configColumn.cssFormat = function (value, obj) {
                             if (obj.ch1 && !obj.$group) return "row-marked";
                             return "";
                         };
                     }
+                    switch (dataType) {
+                        case 'number':
+                            configColumn.format = webix.i18n.numberFormat;
+                            configColumn.css = { "text-align": "right" };
+                            break;
+                        case 'integer':
+                            configColumn.css = { "text-align": "right" };
+                            break;
+                        case 'date':
+                            configColumn.format = webix.Date.dateToStr(dateFormat);
+                            configColumn.map = "(date)#" + configColumn.id + "#";
+                            break;
+                    }
+                    return configColumn;
                 }
 
                 /*
@@ -1307,8 +1333,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                  */
 
             }, {
-                key: "renderActionButtonsColumn",
-                value: function renderActionButtonsColumn(cellElement, cellInfo) {
+                key: "_renderActionButtonsColumn",
+                value: function _renderActionButtonsColumn(cellElement, cellInfo) {
                     if (cellElement.$group) {
                         return ' ';
                     }
@@ -1327,8 +1353,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     return result;
                 }
             }, {
-                key: "renderTooltip",
-                value: function renderTooltip(rowItem, rowInfo) {
+                key: "_renderTooltip",
+                value: function _renderTooltip(rowItem, rowInfo) {
                     if (rowItem.$group) {
                         for (var item in webix.ARCHIBUS.group.tooltip) {
                             if (item == rowItem.id && webix.ARCHIBUS.group.tooltip[item]) {
@@ -1484,7 +1510,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             id: 'Date',
             title: 'Date',
             dataType: 'date',
-            dateTimeFormat: ''
+            dateTimeFormat: '%m/%d/%y'
         }, {
             title: 'Action',
             width: 100,
