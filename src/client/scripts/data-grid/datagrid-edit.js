@@ -47,7 +47,7 @@ class DataGridEdit{
         @dataType: the data type
         @loadClass: class manages the loading of data
      */
-    addConfigurationEditColumn(configCurrentColumn, configColumns, dataType, loadClass){
+    configureColumnEdit(configCurrentColumn, configColumns, dataType, loadClass){
         if (dataType) {
             switch (dataType) {
                 case 'number':
@@ -144,7 +144,7 @@ class DataGridEdit{
     }
 
 	/*
-	 Handling events after have finished editing
+	 Handling customGridEvents after have finished editing
 	*/
     eventAfterEditStop (state, editor, ignoreUpdate) {
         if (state.value != state.old) {

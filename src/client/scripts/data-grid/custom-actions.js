@@ -3,7 +3,7 @@ webix.ARCHIBUS = {};
 
 
 /*
- Map of events used in the grid user
+ Map of customGridEvents used in the grid user
  */
 webix.actions = {
     selectValue: function() {

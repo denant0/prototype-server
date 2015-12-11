@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         webix.ARCHIBUS = {};
 
         /*
-         Map of events used in the grid user
+         Map of customGridEvents used in the grid user
          */
         webix.actions = {
             selectValue: function selectValue() {
@@ -116,8 +116,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
              */
 
             _createClass(DataGridEdit, [{
-                key: "addConfigurationEditColumn",
-                value: function addConfigurationEditColumn(configCurrentColumn, configColumns, dataType, loadClass) {
+                key: "configureColumnEdit",
+                value: function configureColumnEdit(configCurrentColumn, configColumns, dataType, loadClass) {
                     if (dataType) {
                         switch (dataType) {
                             case 'number':
@@ -215,7 +215,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 }
 
                 /*
-                 Handling events after have finished editing
+                 Handling customGridEvents after have finished editing
                 */
 
             }, {
@@ -1014,27 +1014,48 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 this.dataTable = new webix.ui(this._createGridConfiguration(config));
             }
             /*
-             To form a configuration for the component webix.ui.treetable
-            @config: custom configuration
+             Customize the size the grid view depending on the set values in the config
+             @container: the name container grid
+             @width: the width container grid
+             @height: the height container grid
              */
 
             _createClass(DataGrid, [{
+                key: "_configurationGridSize",
+                value: function _configurationGridSize(containerName, width, height) {
+                    if (width) {
+                        document.getElementById(containerName).style.width = width + "px";
+                    } else {
+                        document.getElementById(containerName).style.width = "100%";
+                    }
+                    if (height) {
+                        document.getElementById(containerName).style.height = height + "px";
+                    } else {
+                        document.getElementById(containerName).style.height = "90%";
+                    }
+                }
+                /*
+                 To form a configuration for the component webix.ui.treetable
+                @config: custom configuration
+                 */
+
+            }, {
                 key: "_createGridConfiguration",
                 value: function _createGridConfiguration(config) {
-                    var webixColumns = this._createColumns(config),
-                        webixActionsGrid = this._configureGridActions(config);
+                    var gridColumns = this._createGridColumns(config),
+                        gridAction = this._configureGridActions(config);
 
-                    var nameGrid = config.container + 'Grid',
-                        namePaging = config.container + 'Paging';
+                    var gridName = config.container + 'Grid',
+                        pagingName = config.container + 'Paging';
 
                     var gridConfiguration = {
-                        container: nameGrid,
+                        container: gridName,
                         view: "customDataTable",
                         css: "my_style",
-                        columns: webixColumns.columns,
+                        columns: gridColumns.columns,
                         pager: {
                             template: "{common.first()}{common.prev()}{common.pages()}{common.next()}{common.last()}",
-                            container: namePaging,
+                            container: pagingName,
                             size: config.pageSize,
                             group: 5,
                             animate: {
@@ -1046,16 +1067,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         multiselect: true,
                         resizeColumn: true,
                         checkboxRefresh: true,
-                        on: webixActionsGrid,
+                        on: gridAction,
                         url: config.dataSource,
                         footer: true,
                         navigation: true,
                         tooltip: true
                     };
 
-                    gridConfiguration.scheme = this._dataGridGroups.configureGroup(webixColumns.group.id, webixColumns.group.header);
-                    gridConfiguration.leftSplit = this._getLeftSplit(webixColumns.columns, config.lastLeftFixedColumn, config.editing);
-                    gridConfiguration.rightSplit = this._getRigthSplit(webixColumns.columns, config.firstRightFixedColumn);
+                    gridConfiguration.scheme = this._dataGridGroups.configureGroup(gridColumns.group.id, gridColumns.group.header);
+                    gridConfiguration.leftSplit = this._getLeftSplit(gridColumns.columns, config.lastLeftFixedColumn, config.editing);
+                    gridConfiguration.rightSplit = this._getRigthSplit(gridColumns.columns, config.firstRightFixedColumn);
 
                     if (config.editing) {
                         gridConfiguration.editable = true;
@@ -1063,7 +1084,177 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     }
                     return gridConfiguration;
                 }
+                /*
+                 Customize the actions the grid view depending on the set function in the config
+                 @config: custom configuration
+                 */
 
+            }, {
+                key: "_configureGridActions",
+                value: function _configureGridActions(config) {
+                    var customGridEvents = config.events;
+                    var gridActions = {
+                        onCheck: this._eventCheckCheckbox,
+                        onAfterLoad: this._eventAfterLoad,
+                        onBeforeRender: this._eventBeforeRender,
+                        onAfterRender: this._eventAfterRender
+                    };
+                    for (var event in customGridEvents) {
+                        gridActions[event] = webix.actions[customGridEvents[event]];
+                    }
+                    if (config.editing) {
+                        gridActions['onAfterEditStop'] = this._dataGridEdit.eventAfterEditStop;
+                        gridActions['onUpdataData'] = this._dataGridLoad.doUpdataData;
+                        gridActions['onRecalculateTotalColumn'] = this._dataGridGroups.recalculateTotalColumn;
+                    }
+
+                    return gridActions;
+                }
+                /*
+                 To create a configuration list of columns for grid
+                 @config: custom configuration
+                 */
+
+            }, {
+                key: "_createGridColumns",
+                value: function _createGridColumns(config) {
+                    var ARCHIBUSColumns = config.columns;
+                    var gridColumns = [];
+                    var webixGroupBy = {};
+
+                    gridColumns[0] = this._configureCheckboxColumn(ARCHIBUSColumns);
+                    if (config.editing) {
+                        gridColumns[1] = {
+                            id: 'edit',
+                            header: "",
+                            width: 60,
+                            template: this._dataGridEdit.renderEditColumn
+                        };
+                    }
+                    var index = gridColumns.length;
+                    for (var i in ARCHIBUSColumns) {
+                        var ARCHIBUSColumn = ARCHIBUSColumns[i];
+                        var gridColumn = {};
+
+                        if (ARCHIBUSColumn.id) {
+                            gridColumn.id = ARCHIBUSColumn.id;
+                        }
+                        gridColumn.header = this._configureColumnHeader(ARCHIBUSColumn.title, ARCHIBUSColumn.dataType, ARCHIBUSColumn.action);
+                        gridColumn.template = this._dataGridGroups.renderColumnsCell;
+                        gridColumn.tooltip = this._renderTooltip;
+                        gridColumn = this._configureColumnStyle(gridColumn, ARCHIBUSColumn);
+
+                        if (config.editing) {
+                            gridColumn = this._dataGridEdit.configureColumnEdit(gridColumn, gridColumns, ARCHIBUSColumn.dataType, this._dataGridLoad);
+                        }
+                        if (ARCHIBUSColumn.width) {
+                            gridColumn.width = ARCHIBUSColumn.width;
+                        } else {
+                            gridColumn.adjust = "data";
+                        }
+                        if (ARCHIBUSColumn.action) {
+                            webix.ARCHIBUS.buttonsMap = ARCHIBUSColumn.action;
+                            gridColumn.template = this._renderActionButtonsColumn;
+                        } else {
+                            gridColumn.sort = "server";
+                        }
+                        if (ARCHIBUSColumn.groupBy) {
+                            gridColumn.template = this._dataGridGroups.renderColumnGroup;
+                            webixGroupBy.id = ARCHIBUSColumn.id;
+                        }
+                        if (ARCHIBUSColumn.showTotals) {
+                            var configurationTotalGroup = this._dataGridGroups.configureTotalGroup(webixGroupBy, ARCHIBUSColumn);
+                            gridColumn.footer = configurationTotalGroup.footer;
+                            webixGroupBy = configurationTotalGroup.header;
+                        }
+                        gridColumns[index] = gridColumn;
+                        index++;
+                    }
+                    return {
+                        columns: gridColumns,
+                        group: webixGroupBy
+                    };
+                }
+                /*
+                 Do perform configuration settings for display checkboxes column
+                 @columns: configuration columns
+                 */
+
+            }, {
+                key: "_configureCheckboxColumn",
+                value: function _configureCheckboxColumn(columns) {
+                    var configureCheckbox = {
+                        id: "ch1",
+                        header: "",
+                        width: 40,
+                        template: "{common.checkbox()}"
+                    };
+
+                    var isCalcTotalGroup = false;
+                    for (var index in columns) {
+                        if (columns[index].showTotals) {
+                            isCalcTotalGroup = true;
+                            break;
+                        }
+                    }
+                    if (isCalcTotalGroup) {
+                        configureCheckbox['footer'] = { text: "Total:" };
+                    }
+                    return configureCheckbox;
+                }
+                /*
+                 Customize the header column the grid view depending on the set values in the config
+                 @title: the name of the header
+                 @dataType: the type column
+                 @actions: the actions column
+                 */
+
+            }, {
+                key: "_configureColumnHeader",
+                value: function _configureColumnHeader(title, dataType, actions) {
+                    if (actions) {
+                        return title;
+                    }
+                    var filterView;
+                    for (var type in this.dataTypeToFilterTypeMapping) {
+                        if (type === dataType) {
+                            filterView = this.dataTypeToFilterTypeMapping[type];
+                        }
+                    }
+                    return [title, { content: filterView }];
+                }
+                /*
+                 Customize the style column the grid view depending on the set values in the config
+                 @configColumn: the configuration of the current column
+                 @customConfigColumn: custom configuration
+                 */
+
+            }, {
+                key: "_configureColumnStyle",
+                value: function _configureColumnStyle(configGridColumn, customConfigColumn) {
+                    if (customConfigColumn.cssClass) {
+                        configGridColumn.cssFormat = webix.actions[customConfigColumn.cssClass];
+                    } else {
+                        configGridColumn.cssFormat = function (value, obj) {
+                            if (obj.ch1 && !obj.$group) return "row-marked";
+                            return "";
+                        };
+                    }
+                    switch (customConfigColumn.dataType) {
+                        case 'number':
+                            configGridColumn.format = webix.i18n.numberFormat;
+                            configGridColumn.css = { "text-align": "right" };
+                            break;
+                        case 'integer':
+                            configGridColumn.css = { "text-align": "right" };
+                            break;
+                        case 'date':
+                            configGridColumn.format = webix.Date.dateToStr(customConfigColumn.dateTimeFormat);
+                            configGridColumn.map = "(date)#" + configGridColumn.id + "#";
+                            break;
+                    }
+                    return configGridColumn;
+                }
                 /*
                  Get the number of columns that want to split  the left side
                 	@columns: the configuration list columns
@@ -1074,7 +1265,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }, {
                 key: "_getLeftSplit",
                 value: function _getLeftSplit(columns, id, isEdit) {
-
                     var leftSplit = 1;
                     if (isEdit) {
                         leftSplit++;
@@ -1112,223 +1302,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     return rightSplit;
                 }
                 /*
-                 Customize the size the grid view depending on the set values in the config
-                @container: the name container grid
-                @width: the width container grid
-                @height: the height container grid
-                 */
-
-            }, {
-                key: "_configurationGridSize",
-                value: function _configurationGridSize(container, width, height) {
-                    if (width) {
-                        document.getElementById(container).style.width = width + "px";
-                    } else {
-                        document.getElementById(container).style.width = "100%";
-                    }
-                    if (height) {
-                        document.getElementById(container).style.height = height + "px";
-                    } else {
-                        document.getElementById(container).style.height = "90%";
-                    }
-                }
-                /*
-                 Customize the actions the grid view depending on the set function in the config
-                @config: custom configuration
-                 */
-
-            }, {
-                key: "_configureGridActions",
-                value: function _configureGridActions(config) {
-                    var events = config.events;
-                    var webixActionsGrid = {
-                        onCheck: function onCheck(row, column, value) {
-                            this.data.eachChild(row, function (item) {
-                                item[column] = value;
-                            });
-                        },
-                        onAfterLoad: function onAfterLoad(row, column, value) {
-                            this.openAll();
-                        },
-                        onBeforeRender: function onBeforeRender() {
-                            if (webix.ARCHIBUS.buttonsMap) {
-                                for (var key in webix.ARCHIBUS.buttonsMap) {
-                                    var button = webix.ARCHIBUS.buttonsMap[key];
-                                    this.on_click[button.class] = webix.actions[button.function];
-                                }
-                            }
-                            if (webix.ARCHIBUS.editButtonMap) {
-                                for (var key in webix.ARCHIBUS.editButtonMap) {
-                                    var button = webix.ARCHIBUS.editButtonMap[key];
-                                    this.on_click[button.class] = button.function;
-                                }
-                            }
-                        },
-                        onAfterRender: function onAfterRender() {
-                            this.adjust();
-                        }
-                    };
-                    for (var event in events) {
-                        webixActionsGrid[event] = webix.actions[events[event]];
-                    }
-                    if (config.editing) {
-                        webixActionsGrid['onAfterEditStop'] = this._dataGridEdit.eventAfterEditStop;
-                        webixActionsGrid['onUpdataData'] = this._dataGridLoad.doUpdataData;
-                        webixActionsGrid['onRecalculateTotalColumn'] = this._dataGridGroups.recalculateTotalColumn;
-                    }
-
-                    return webixActionsGrid;
-                }
-                /*
-                 To create a configuration list of columns for grid
-                @config: custom configuration
-                 */
-
-            }, {
-                key: "_createColumns",
-                value: function _createColumns(config) {
-                    var ARCHIBUSColumns = config.columns;
-                    var webixColumns = [];
-                    var webixGroupBy = {};
-
-                    webixColumns[0] = this._configureCheckboxColumn(ARCHIBUSColumns);
-                    if (config.editing) {
-                        webixColumns[1] = {
-                            id: 'edit',
-                            header: "",
-                            width: 60,
-                            template: this._dataGridEdit.renderEditColumn
-                        };
-                    }
-                    var index = webixColumns.length;
-                    for (var numberColumn in ARCHIBUSColumns) {
-                        var ARCHIBUSColumn = ARCHIBUSColumns[numberColumn];
-                        var webixColumn = {};
-
-                        if (ARCHIBUSColumn.id) {
-                            webixColumn.id = ARCHIBUSColumn.id;
-                        }
-                        webixColumn.header = this._configureColumnHeader(ARCHIBUSColumn.title, ARCHIBUSColumn.dataType, ARCHIBUSColumn.action);
-                        webixColumn = this._configureColumnStyle(webixColumn, ARCHIBUSColumn.cssClass, ARCHIBUSColumn.dataType, ARCHIBUSColumn.dateTimeFormat);
-
-                        webixColumn.template = this._dataGridGroups.renderColumnsCell;
-                        webixColumn.tooltip = this._renderTooltip;
-                        if (config.editing) {
-                            webixColumn = this._dataGridEdit.addConfigurationEditColumn(webixColumn, webixColumns, ARCHIBUSColumn.dataType, this._dataGridLoad);
-                        }
-                        if (ARCHIBUSColumn.width) {
-                            webixColumn.width = ARCHIBUSColumn.width;
-                        } else {
-                            webixColumn.adjust = "data";
-                        }
-                        if (ARCHIBUSColumn.action) {
-                            webix.ARCHIBUS.buttonsMap = ARCHIBUSColumn.action;
-                            webixColumn.template = this._renderActionButtonsColumn;
-                        } else {
-                            webixColumn.sort = "server";
-                        }
-                        if (ARCHIBUSColumn.groupBy) {
-                            webixColumn.template = this._dataGridGroups.renderColumnGroup;
-                            webixGroupBy.id = ARCHIBUSColumn.id;
-                        }
-                        if (ARCHIBUSColumn.showTotals) {
-                            var configurationTotalGroup = this._dataGridGroups.configureTotalGroup(webixGroupBy, ARCHIBUSColumn);
-                            webixColumn.footer = configurationTotalGroup.footer;
-                            webixGroupBy = configurationTotalGroup.header;
-                        }
-                        webixColumns[index] = webixColumn;
-                        index++;
-                    }
-                    return {
-                        columns: webixColumns,
-                        group: webixGroupBy
-                    };
-                }
-                /*
-                Do perform configuration settings for display checkboxes column 
-                	@ARCHIBUSColumns: configuration columns
-                */
-
-            }, {
-                key: "_configureCheckboxColumn",
-                value: function _configureCheckboxColumn(ARCHIBUSColumns) {
-                    var configureCheckbox = {
-                        id: "ch1",
-                        header: "",
-                        width: 40,
-                        template: "{common.checkbox()}"
-                    };
-
-                    var isCalcTotalGroup = false;
-                    for (var index in ARCHIBUSColumns) {
-                        if (ARCHIBUSColumns[index].showTotals) {
-                            isCalcTotalGroup = true;
-                            break;
-                        }
-                    }
-                    if (isCalcTotalGroup) {
-                        configureCheckbox['footer'] = { text: "Total:" };
-                    }
-                    return configureCheckbox;
-                }
-
-                /*
-                 Customize the header column the grid view depending on the set values in the config
-                @title: the name of the header
-                @dataType: the type column
-                @actions: the actions column
-                 */
-
-            }, {
-                key: "_configureColumnHeader",
-                value: function _configureColumnHeader(title, dataType, actions) {
-                    if (actions) {
-                        return title;
-                    }
-                    var filterView;
-                    for (var type in this.dataTypeToFilterTypeMapping) {
-                        if (type === dataType) {
-                            filterView = this.dataTypeToFilterTypeMapping[type];
-                        }
-                    }
-                    return [title, { content: filterView }];
-                }
-                /*
-                 Customize the style column the grid view depending on the set values in the config
-                    @configColumn: the configuration of the current column
-                @cssClass: the style column
-                @dataType: the data type
-                @dateFormat: the date format
-                 */
-
-            }, {
-                key: "_configureColumnStyle",
-                value: function _configureColumnStyle(configColumn, cssClass, dataType, dateFormat) {
-                    if (cssClass) {
-                        configColumn.cssFormat = webix.actions[cssClass];
-                    } else {
-                        configColumn.cssFormat = function (value, obj) {
-                            if (obj.ch1 && !obj.$group) return "row-marked";
-                            return "";
-                        };
-                    }
-                    switch (dataType) {
-                        case 'number':
-                            configColumn.format = webix.i18n.numberFormat;
-                            configColumn.css = { "text-align": "right" };
-                            break;
-                        case 'integer':
-                            configColumn.css = { "text-align": "right" };
-                            break;
-                        case 'date':
-                            configColumn.format = webix.Date.dateToStr(dateFormat);
-                            configColumn.map = "(date)#" + configColumn.id + "#";
-                            break;
-                    }
-                    return configColumn;
-                }
-
-                /*
                  Do perform the formation of the action buttons in the column
                  */
 
@@ -1352,6 +1325,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     }
                     return result;
                 }
+                /*
+                 Do add tooltip to the header cell of the group
+                */
+
             }, {
                 key: "_renderTooltip",
                 value: function _renderTooltip(rowItem, rowInfo) {
@@ -1363,6 +1340,55 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         }
                     }
                     return "";
+                }
+                /*
+                 Event of checkbox selection
+                 */
+
+            }, {
+                key: "_eventCheckCheckbox",
+                value: function _eventCheckCheckbox(row, column, value) {
+                    this.data.eachChild(row, function (item) {
+                        item[column] = value;
+                    });
+                }
+                /*
+                 Event occurs each time before the view is rendered
+                 */
+
+            }, {
+                key: "_eventBeforeRender",
+                value: function _eventBeforeRender() {
+                    if (webix.ARCHIBUS.buttonsMap) {
+                        for (var key in webix.ARCHIBUS.buttonsMap) {
+                            var button = webix.ARCHIBUS.buttonsMap[key];
+                            this.on_click[button.class] = webix.actions[button.function];
+                        }
+                    }
+                    if (webix.ARCHIBUS.editButtonMap) {
+                        for (var key in webix.ARCHIBUS.editButtonMap) {
+                            var button = webix.ARCHIBUS.editButtonMap[key];
+                            this.on_click[button.class] = button.function;
+                        }
+                    }
+                }
+                /*
+                 Event after data loading is complete
+                 */
+
+            }, {
+                key: "_eventAfterLoad",
+                value: function _eventAfterLoad(row, column, value) {
+                    this.openAll();
+                }
+                /*
+                 Event occurs each time after the view is rendered
+                 */
+
+            }, {
+                key: "_eventAfterRender",
+                value: function _eventAfterRender() {
+                    this.adjust();
                 }
             }]);
 
