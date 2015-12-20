@@ -21,7 +21,8 @@ app.use(express.bodyParser());
  */
 app.get('/server/data', function(req, res){
     var query;
-    if(typeof req.query.filter === 'undefined'){
+    if(typeof req.query.filter === 'undefined' &&
+        typeof req.query.sort === 'undefined'){
         query = 'select * from AssetGrid ';
     }
     else{

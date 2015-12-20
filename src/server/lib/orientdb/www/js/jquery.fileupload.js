@@ -593,7 +593,7 @@
             namespace = namespace ? namespace : defaultNamespace;
             var fileUpload = $(this).data(namespace);
             if (fileUpload) {
-                if (typeof option === 'string') {
+                if (typeof option === 'nextId') {
                     return fileUpload.option(option, value);
                 }
                 return fileUpload.options(option);

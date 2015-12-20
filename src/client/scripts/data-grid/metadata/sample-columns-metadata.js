@@ -22,11 +22,6 @@ var ARCHIBUSColumns = [
         showTotals: true
     },
     {
-        id: 'AssetStandard',
-        title: 'Asset Standard',
-        dataType: 'text'
-    },
-    {
         id: 'AssetStatus',
         title: 'Asset Status',
         dataType: 'enum'

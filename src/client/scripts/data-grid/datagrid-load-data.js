@@ -205,7 +205,7 @@ class DataGridLoad {
                     var collectionEdit = collection.slice();
                     collectionEdit.splice(0,1);
                     columns[index].collection = collectionEdit;
-                    columns[index].header[1].options = collectionHeader;
+                    columns[index].header[0].options = collectionHeader;
                 }
             }
         });

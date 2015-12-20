@@ -9,12 +9,13 @@ var DataGridLoad = require('./datagrid-load-data'),
 class DataGrid {
 
     constructor (config) {
+        var nameGrid = config.container + 'Grid',
+            namePaging = config.container + 'Paging',
+            nameFiltering = config.container + 'Filtering';
+
         webix.ARCHIBUS.data = {};
         webix.ARCHIBUS.data.collection = [];
         webix.ARCHIBUS.pageSize = config.pageSize;
-
-        var nameGrid = config.container + 'Grid',
-            namePaging = config.container + 'Paging';
 
         this._dataGridLoad = new DataGridLoad();
         this._dataGridSort = new DataGridSort();
@@ -40,8 +41,8 @@ class DataGrid {
             addDivInColumnHeader: this._dataGridSort.addDivInColumnHeader,
             calculationColumnValue: this._dataGridGroups.calculationColumnValue
         }, webix.ui.treetable);
-
-        this.id = config.id;
+        if (!webix.env.touch && webix.ui.scrollSize)
+            webix.CustomScroll.init();
         this.dataTypeToFilterTypeMapping = {
             text: 'serverFilter',
             date: 'serverFilter',
@@ -53,8 +54,20 @@ class DataGrid {
         this._configurationGridSize(config.container, config.width, config.height);
 
         this.view = new webix.ui({
+            type: 'clean',
+            css: config.style,
             container: config.container,
             rows:[
+                {
+                    type: 'header',
+                    css: 'webix_header ' + config.style,
+                    template: config.title
+                },
+                {
+                    css: 'layoutFilter',
+                    template: '<div id="' + nameFiltering + '"style="height: 100%" "></div>',
+                    autoheight: true
+                },
                 {
                     template:'<div id="' + nameGrid + '"style="height: 100%" "></div>'
                 },
@@ -65,6 +78,8 @@ class DataGrid {
             ]
         });
         this.dataTable = new webix.ui(this._createGridConfiguration(config));
+
+        webix.ARCHIBUS.gridContainer = this.dataTable.getNode().attributes[2].nodeValue;
     }
     /*
      Customize the size the grid view depending on the set values in the config
@@ -100,7 +115,7 @@ class DataGrid {
         var gridConfiguration = {
             container: gridName,
             view: "customDataTable",
-            css:"my_style",
+            css: config.style,
             columns: gridColumns.columns,
             pager: {
                 template: "{common.first()}{common.prev()}{common.pages()}{common.next()}{common.last()}",
@@ -171,7 +186,8 @@ class DataGrid {
                 id: 'edit',
                 header: "",
                 width: 60,
-                template:  this._dataGridEdit.renderEditColumn
+                template:  this._dataGridEdit.renderEditColumn,
+                cssFormat:  this.cssFormat
             };
         }
         var index = gridColumns.length;
@@ -186,6 +202,7 @@ class DataGrid {
             gridColumn.template = this._dataGridGroups.renderColumnsCell;
             gridColumn.tooltip = this._renderTooltip;
             gridColumn = this._configureColumnStyle(gridColumn, ARCHIBUSColumn);
+            gridColumn.renderGroupTotals =this._dataGridGroups.renderGroupTotals;
             
             if (config.editing) {
                 gridColumn = this._dataGridEdit.configureColumnEdit(gridColumn, gridColumns, ARCHIBUSColumn.dataType, this._dataGridLoad);
@@ -203,12 +220,18 @@ class DataGrid {
             }
             if (ARCHIBUSColumn.groupBy) {
                 gridColumn.template = this._dataGridGroups.renderColumnGroup;
+                gridColumn.configureGroupHeaderStyle = this._dataGridGroups.configureGroupHeaderStyle;
+                gridColumn.renderGroupTitle = this._dataGridGroups.renderGroupTitle;
+
                 webixGroupBy.id =  ARCHIBUSColumn.id;
             }
             if (ARCHIBUSColumn.showTotals) {
                 var configurationTotalGroup = this._dataGridGroups.configureTotalGroup(webixGroupBy, ARCHIBUSColumn);
                 gridColumn.footer = configurationTotalGroup.footer;
                 webixGroupBy = configurationTotalGroup.header;
+            }
+            else{
+                gridColumn.footer = [{text:"", height: 20},{text:"", height: 20}];
             }
             gridColumns[index] = gridColumn;
             index++;
@@ -227,7 +250,8 @@ class DataGrid {
             id: "ch1",
             header: "",
             width: 40,
-            template: "{common.checkbox()}"
+            template: "{common.checkbox()}",
+            cssFormat:  this.cssFormat
         };
 
         var isCalcTotalGroup = false;
@@ -238,7 +262,7 @@ class DataGrid {
             }
         }
         if (isCalcTotalGroup){
-            configureCheckbox['footer'] = {text:"Total:"};
+            configureCheckbox['footer'] = {text: '<div class="footerTitle"">TOTAL</div>'};
         }
         return configureCheckbox;
     }
@@ -259,9 +283,21 @@ class DataGrid {
             }
         }
         return [
-            title,
-            {content:filterView}
+            title
         ];
+    }
+
+    cssFormat (value, obj){
+        if (obj.ch1 && obj.$group) {
+            return 'rowGroupHeaderSelect';
+        }
+        if (obj.ch1 && !obj.$group) {
+            return 'rowSelect';
+        }
+        if (!obj.ch1 && obj.$group) {
+            return 'rowGroupHeader';
+        }
+        return "";
     }
     /*
      Customize the style column the grid view depending on the set values in the config
@@ -272,16 +308,12 @@ class DataGrid {
         if (customConfigColumn.cssClass) {
             configGridColumn.cssFormat = webix.actions[customConfigColumn.cssClass];
         } else {
-            configGridColumn.cssFormat =  function (value, obj) {
-                if (obj.ch1 && !obj.$group)
-                    return "row-marked";
-                return "";
-            };
+            configGridColumn.cssFormat =  this.cssFormat;
         }
         switch (customConfigColumn.dataType) {
             case 'number':
                 configGridColumn.format = webix.i18n.numberFormat;
-                configGridColumn.css = {"text-align":"right" };
+                configGridColumn.css = {"text-align":"right"};
                 break;
             case 'integer':
                 configGridColumn.css = {"text-align":"right" };

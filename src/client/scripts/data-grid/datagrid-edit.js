@@ -77,9 +77,9 @@ class DataGridEdit{
 	*/
     eventEditStart (event,object,cell) {
         var isFocus = true;
+        this.addRowCss(object.row, 'rowEdited');
         this.eachColumn (
             function (columnId) {
-                this.addCellCss(object.row,columnId,"row-edited");
                 var config = this.getColumnConfig(columnId);
                 if (typeof config.editor != 'undefined' && isFocus) {
                     this.editCell(object.row, columnId);
@@ -101,11 +101,7 @@ class DataGridEdit{
         for (var index in  webix.ARCHIBUS.editRows) {
             var editRow = webix.ARCHIBUS.editRows[index];
             if (editRow.id == object.row) {
-                this.eachColumn (
-                    function (columnId) {
-                        this.removeCellCss(editRow.id,columnId,"row-edited");
-                    }
-                );
+                this.removeRowCss(editRow.id, 'rowEdited');
                 webix.ARCHIBUS.editRows.splice(index,1);
                 this.callEvent("onUpdataData", [this.getItem(object.row)]);
                 this.refresh();
@@ -122,11 +118,7 @@ class DataGridEdit{
         for (var i in  webix.ARCHIBUS.editRows) {
             var editRow = webix.ARCHIBUS.editRows[i];
             if (editRow.id == object.row) {
-                this.eachColumn (
-                    function (columnId) {
-                        this.removeCellCss(editRow.id,columnId,"row-edited");
-                    }
-                );
+                this.removeRowCss(editRow.id, 'rowEdited');
                 var dataRow = this.getItem(object.row);
                 for (var index in editRow.data) {
                     dataRow[index] = editRow.data[index];
@@ -195,10 +187,10 @@ class DataGridEdit{
         var result = "";
         for (var index in webix.ARCHIBUS.editRows) {
             if (webix.ARCHIBUS.editRows[index].id == cellElement.id) {
-                return "<img class='editSuccessClass' src='style/icons/success.png'/><img class='editCancelClass' src='style/icons/delete.gif'/>";
+                return "<img class='editSuccessClass' src='style/icons/success.png'/><img class='editCancelClass' src='style/icons/cansel.jpg'/>";
             }
         }
-        return "<img class='editStartClass' src='style/icons/cog_edit.png'/>";
+        return "<img class='editStartClass' src='style/icons/edit.jpg'/>";
     }
 }
 

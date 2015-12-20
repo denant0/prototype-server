@@ -91,6 +91,12 @@ class DataGridSort {
             }
         }
         if (numberDelete != -1) {
+            var columnIndex = this.getColumnIndex(this._multisortMap[numberDelete].id);
+
+            var cell = this._get_header_cell(columnIndex);
+            if (cell) {
+                cell.style.backgroundColor = ''
+            }
             webix.html.remove(this._multisortMap[numberDelete].html);
             this._multisortMap.splice(numberDelete,1);
         }
@@ -119,7 +125,8 @@ class DataGridSort {
         if (order) {
             var cell = this._get_header_cell(this.getColumnIndex(column));
             if (cell) {
-                cell.style.position = "relative";
+                cell.style.position = 'relative';
+                cell.style.backgroundColor = '#61A6F7';
                 cell.appendChild(this._multisortMap[index].html);
             }
             if (isAddLast) {

@@ -294,7 +294,7 @@
         },
         
         option: function (option, value, namespace) {
-            if (typeof option === undef || (typeof option === 'string' && typeof value === undef)) {
+            if (typeof option === undef || (typeof option === 'nextId' && typeof value === undef)) {
                 return $(this).fileUpload('option', option, value, namespace);
             }
             return this.each(function () {

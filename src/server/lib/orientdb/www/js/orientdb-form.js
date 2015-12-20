@@ -429,7 +429,7 @@ OForm.prototype.array2component = function(array, component, prefix, level) {
  *            HTML component
  */
 OForm.prototype.value2component = function(value, component) {
-	if (typeof component == "string") {
+	if (typeof component == "nextId") {
 		this.fieldTypes[component] = 'v';
 
 		// SEARCH THE COMPONENT

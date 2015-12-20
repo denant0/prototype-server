@@ -5,6 +5,8 @@ webix.ready(function(){
     var dataGrid = new DataGrid({
         id: 'projectsGrid',
         container: 'projectsGridContainer',
+        style: 'flat',
+        title: 'Asset List',
         columns: columnsMetadata,
         sortFields: [],
         dataSource: 'server/data',

@@ -36,9 +36,16 @@ webix.actions = {
         webix.message('You click button 4');
     },
     cssClassCountryCode: function(container, cellInfo, t,y) {
-        if (cellInfo.ch1 && ! cellInfo.$group) {
-            return "row-marked";
+        if (cellInfo.ch1 && cellInfo.$group) {
+            return 'rowGroupHeaderSelect';
         }
+        if (cellInfo.ch1 && !cellInfo.$group) {
+            return 'rowSelect';
+        }
+        if (!cellInfo.ch1 && cellInfo.$group) {
+            return 'rowGroupHeader';
+        }
+
         var currentEnumStyle = classStyle[y];
         for(var element in currentEnumStyle){
             if (container == currentEnumStyle[element].cellText) {

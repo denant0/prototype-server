@@ -375,7 +375,7 @@ function ODatabase(databasePath) {
 			this.open();
 
 		var rid;
-		if (typeof obj == "string")
+		if (typeof obj == "nextId")
 			rid = obj;
 		else
 			rid = obj['@rid'];
@@ -990,7 +990,7 @@ function ODatabase(databasePath) {
 			if (typeof value == 'object') {
 				this.createObjectsLinksMap(value, linkMap);
 			} else {
-				if (typeof value == 'string') {
+				if (typeof value == 'nextId') {
 					if (value.length > 0 && value.charAt(0) == '#') {
 						if (!linkMap.hasOwnProperty(value)) {
 							linkMap["foo"] = 1;

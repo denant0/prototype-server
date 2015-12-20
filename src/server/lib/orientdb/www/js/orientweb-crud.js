@@ -5,8 +5,8 @@ function OCRUD(className, options) {
     this.configFileName = 'www/configFile.js';
 
     var crud = this;
-    if (typeof options == 'string' || !options) {
-        if (typeof options == 'string') 
+    if (typeof options == 'nextId' || !options) {
+        if (typeof options == 'nextId')
             this.configFileName = options;
 
         $.getJSON(this.configFileName, function(data) {

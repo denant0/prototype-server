@@ -130,7 +130,7 @@ function buildColumnNames(table) {
 }
 
 function dynaFormatter(cellvalue, options, rowObject) {
-	if (typeof cellvalue == 'string' && cellvalue.charAt(0) == '#'
+	if (typeof cellvalue == 'nextId' && cellvalue.charAt(0) == '#'
 			&& cellvalue.indexOf(':') > -1) {
 		// LINK
 		return linkFormatter(cellvalue, options, rowObject);
@@ -157,7 +157,7 @@ function linkUnformatter(cellvalue, options) {
 	return "";
 }
 function linksFormatter(cellvalue, options, rowObject) {
-	if (typeof cellvalue == 'string') {
+	if (typeof cellvalue == 'nextId') {
 		cellvalue = cellvalue.substring(1, cellvalue.length - 1);
 		if (cellvalue.length == 0)
 			return "[]";

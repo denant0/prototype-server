@@ -401,7 +401,7 @@ webix.isDate = function(obj){
 
 //dom helpers
 
-//hash of attached customGridEvents
+//hash of attached events
 webix._events = {};
 //attach event to the DOM element
 webix.event=function(node,event,handler,master){
@@ -526,7 +526,7 @@ webix.EventSystem={
 		if (this._evs_events._block) return true;
 		
 		type = type.toLowerCase();
-		var event_stack =this._evs_events[type.toLowerCase()];	//all customGridEvents for provided name
+		var event_stack =this._evs_events[type.toLowerCase()];	//all events for provided name
 		var return_value = true;
 
 		if (webix.log)
@@ -536,7 +536,7 @@ webix.EventSystem={
 		if (event_stack)
 			for(var i=0; i<event_stack.length; i++){
 				/*
-					Call customGridEvents one by one
+					Call events one by one
 					If any event return false - result of whole event will be false
 					Handlers which are not returning anything - counted as positive
 				*/
@@ -1903,7 +1903,7 @@ webix.event(window,"unload",function(){
 	webix.destructors = [];
 	webix.ui._popups = webix.toArray();
 	
-	//detach all known DOM customGridEvents
+	//detach all known DOM events
 	for (var a in webix._events){
 		var ev = webix._events[a];
 		if (ev[0].removeEventListener)
@@ -3702,7 +3702,7 @@ webix.UIManager = {
 		'divide': 111
 	},
 	_enable: function() {
-		// attaching customGridEvents here
+		// attaching events here
 		webix.event(document.body, "click", webix.bind(this._focus_click, this));
 		webix.event(document, "keydown", webix.bind(this._keypress, this));
 		if (document.body.addEventListener)
@@ -5752,7 +5752,7 @@ webix.MouseEvents={
 		this._mouse_action_extend(config.onDblClick, "on_dblclick");
 		this._mouse_action_extend(config.onMouseMove, "on_mouse_move");
 
-		//attach dom customGridEvents if related collection is defined
+		//attach dom events if related collection is defined
 		if (this.on_click){
 			webix.event(this._contentobj,"click",this._onClick,this);
 			if (webix.env.isIE8 && this.on_dblclick)
@@ -5810,12 +5810,12 @@ webix.MouseEvents={
 	_onDblClick: function(e) {
 		return this._mouseEvent(e,this.on_dblclick,"ItemDblClick");
 	},
-	//process oncontextmenu customGridEvents
+	//process oncontextmenu events
 	_onContext: function(e) {
 		this._mouseEvent(e, this.on_context, "BeforeContextMenu", "AfterContextMenu");
 	},
 	/*
-		event throttler - ignore customGridEvents which occurs too fast
+		event throttler - ignore events which occurs too fast
 		during mouse moving there are a lot of event firing - we need no so much
 		also, mouseout can fire when moving inside the same html container - we need to ignore such fake calls
 	*/
@@ -6449,7 +6449,7 @@ webix.DragControl={
 		webix.DragControl._html=drag_container;
 		return true;
 	},
-	//helper, prevents unwanted mouse-out customGridEvents
+	//helper, prevents unwanted mouse-out events
 	_skip_mark:function(){
 		webix.DragControl._skip=true;
 	},
@@ -14988,7 +14988,7 @@ webix.EditAbility={
 			}
 		}, this));
 		
-		//property sheet has simple data object, without customGridEvents
+		//property sheet has simple data object, without events
 		if (this.data.attachEvent)
 			this.data.attachEvent("onIdChange", webix.bind(function(oldid, newid){
 				this._changeEditorId(oldid, newid);
@@ -19141,7 +19141,7 @@ webix.extend(webix.ui.datatable, {
 			_select_css:' webix_row_select',
 			_select_key:function(data){ return data.row; },
 			select:function(row_id, preserve){
-				//when we are using id from mouse customGridEvents
+				//when we are using id from mouse events
 				if (row_id) row_id = row_id.toString();
 
 				webix.assert(this.data.exists(row_id), "Incorrect id in select command: "+row_id);
@@ -19481,7 +19481,7 @@ webix.protoUI({
 		this._viewobj = webix.html.create("DIV",{
 			"class"	: "webix_resize_area webix_dir_"+dir
 		});
-		//[[COMPAT]] FF12 can produce 2 move customGridEvents
+		//[[COMPAT]] FF12 can produce 2 move events
 		webix.event(this._viewobj, webix.env.mouse.down, webix.html.stopEvent);
 
 		if(margin){
@@ -24322,7 +24322,7 @@ webix.extend(webix.ui.chart, {
 				ctx.globalAlpha = 1;
 				ctx.fillStyle = color;
 			}
-			/*creats map area (needed for customGridEvents)*/
+			/*creats map area (needed for events)*/
 			map.addSector(data[i].id,alpha0,alpha1,x0-point0.x,y0-point0.y/ky,radius,ky,sIndex);
 
 			alpha0 = alpha1;

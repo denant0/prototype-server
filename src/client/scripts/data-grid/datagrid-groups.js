@@ -29,7 +29,9 @@ class DataGridGroups{
                 if (value.template) {
                     result = value.template({value:result});
                 }
-                node.firstChild.innerHTML = result;
+                var configColumn = master.getColumnConfig(value.columnId);
+                configColumn.footer[0].heigth = 40;
+                node.firstChild.innerHTML = '<div class="groupTitleFirst">' + result + '</div>';
             },
             trackCells:true,
             render: function (master, config) {
@@ -61,8 +63,8 @@ class DataGridGroups{
             }
         }
         return configurationGroup;
-    }	
-	/*
+    }
+    /*
 	Do perform the configuration columns to display the total amount of column data
 		@webixGroupBy: configuration columns to display the total amount of column data
 		@ARCHIBUSColumn: the configuration column 
@@ -80,7 +82,7 @@ class DataGridGroups{
         configurationTotalGroup.header[index].type = ARCHIBUSColumn.dataType;
 
         return {
-            footer: { content:"sumTotalGroup" },
+            footer: [{ content:"sumTotalGroup", height: 20 }, {text: ARCHIBUSColumn.title, height: 20}],
             header: configurationTotalGroup
         }
     }
@@ -88,9 +90,9 @@ class DataGridGroups{
      Do perform the formation of column for groups
      */
     renderColumnGroup (cellElement, cellInfo, cellValue, b, rowNumber) {
+        var result;
         if (cellElement.$group) {
-            var count = cellElement.$count;
-            var result = cellInfo.treetable(cellElement, cellInfo) + " " + this.id +": " + cellElement.value + " ( " + count + " assets )";
+            result = this.renderGroupTitle(cellElement, cellInfo);
             var freeItems = webix.ARCHIBUS.pageSize - rowNumber;
             if(cellElement.open){
                 if (freeItems < cellElement.$count ){
@@ -101,31 +103,100 @@ class DataGridGroups{
             } else {
                 webix.ARCHIBUS.group.tooltip[cellElement.id] = false;
             }
-            return result;
+        } else {
+            result = cellValue;
         }
-        return cellValue;
+        this.configureGroupHeaderStyle(cellElement);
+        return result;
+    }
+    /*
+     Customize the style header group row
+     */
+    configureGroupHeaderStyle (cellElement) {
+        var gridObject = $$(webix.ARCHIBUS.gridContainer);
+
+        if (cellElement.$group) {
+            gridObject.setRowHeight(cellElement.id, 40);
+        } else {
+            var cellCheckbox = gridObject.getItemNode({ row: cellElement.id, column: 'ch1'});
+            if (cellCheckbox) {
+                var styleBorderBottom;
+                var nextRowId = gridObject.getNextId(cellElement.id,1);
+                var pattern = "0$";
+                var isAddStyle = true;
+                if(typeof nextRowId != 'string') {
+                    isAddStyle = false;
+
+                } else {
+                    for (var i = 0, length = pattern.length; i < length; i += 1) {
+                        var p = pattern[i];
+
+                        var s = nextRowId[i];
+                        if (p !== s) {
+                            isAddStyle = false;
+                            break;
+                        }
+                    }
+                }
+
+                if (isAddStyle) {
+                    styleBorderBottom = '1px solid #E4EDF9';
+                } else {
+                    styleBorderBottom = 'none';
+                }
+
+                cellCheckbox.style.borderBottom = styleBorderBottom;
+            }
+        }
+
+
+    }
+    /*
+     Do perform the formation of header for groups
+     */
+    renderGroupTitle(cellElement, cellInfo) {
+        var count = cellElement.$count;
+        return '<div class="groupTitleFirst">' +
+                    cellInfo.treetable(cellElement, cellInfo) + " " + cellElement.value +
+                '</div>' +
+                '<div class="groupTitleSecond">' +
+                    count + " assets" +
+                '</div>';
     }
     /*
      Do perform the formation of the cell in the column
      */
     renderColumnsCell (cellElement, cellInfo, cellValue) {
+        var result = "";
         if (cellElement.$group) {
-            var result = "<span>";
             for (var i in webix.ARCHIBUS.group.groupTotalLine) {
                 if (webix.ARCHIBUS.group.groupTotalLine[i].id == this.id) {
                     if (webix.ARCHIBUS.group.groupTotalLine[i].type == 'number') {
-                        result += "Total: " + webix.i18n.numberFormat(cellElement[webix.ARCHIBUS.group.groupTotalLine[i].id+"Sum"]);
+                        var value = webix.i18n.numberFormat(cellElement[webix.ARCHIBUS.group.groupTotalLine[i].id+"Sum"]);
+                        result = this.renderGroupTotals(value);
                     } else {
-                        result += "Total: " + cellElement[webix.ARCHIBUS.group.groupTotalLine[i].id+"Sum"];
+                        var value = cellElement[webix.ARCHIBUS.group.groupTotalLine[i].id+"Sum"];
+                        result = this.renderGroupTotals(value);
                     }
                 }
             }
-            result += "</span>";
-            return result;
+        } else {
+            result = cellValue
         }
-        return cellValue;
-    }
 
+        return result;
+    }
+    /*
+     Do perform the formation of header totals for groups
+     */
+    renderGroupTotals (value) {
+        return '<div class="groupTitleFirst">'+
+                    value +
+                '</div>' +
+                '<div class="groupTitleSecond">'+
+                    'Total' +
+                '</div>';
+    }
     /*
      Do perform calculations on data in column
      */
@@ -173,7 +244,6 @@ class DataGridGroups{
             }
         }
     }
-
     /*
      Recalculate the total column
         @row: the grid row

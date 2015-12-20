@@ -1,6 +1,6 @@
 var buttonsMetadata = [
     {
-        icon: 'style/icons/cog_edit.png',
+        icon: 'style/icons/edit.jpg',
         class: 'editclasss',
         function: 'buttonClick1',
         condition: [
@@ -10,7 +10,7 @@ var buttonsMetadata = [
             }
         ]
     },{
-        icon: 'style/icons/delete.gif',
+        icon: 'style/icons/cansel.jpg',
         class: 'deleteclass',
         function: 'buttonClick2',
         condition: [
@@ -20,7 +20,7 @@ var buttonsMetadata = [
             }
         ]
     },{
-        icon: 'style/icons/add.gif',
+        icon: 'style/icons/add.jpg',
         class: 'addclass',
         function: 'buttonClick3',
         condition: [
@@ -34,7 +34,7 @@ var buttonsMetadata = [
             }
         ]
     },{
-        icon: 'style/icons/information.png',
+        icon: 'style/icons/info.jpg',
         class: 'infoclass',
         function: 'buttonClick4',
         condition: [
