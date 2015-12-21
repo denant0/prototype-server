@@ -82,7 +82,7 @@ class DataGridGroups{
         configurationTotalGroup.header[index].type = ARCHIBUSColumn.dataType;
 
         return {
-            footer: [{ content:"sumTotalGroup", height: 20 }, {text: ARCHIBUSColumn.title, height: 20}],
+            footer: [{ content:"sumTotalGroup", height: 20 }, { text: ARCHIBUSColumn.title, height: 20 }],
             header: configurationTotalGroup
         }
     }

@@ -8,21 +8,24 @@ body, html { height:99%; }
 .flat .groupTitleFirst { font-size:13px; font-weight:bold; margin: 0; }
 .flat .groupTitleSecond { font-size:11px; margin-top: -10px; }
 
-.flat .footerTitle { font-size:13px; font-weight:bold; }
+.flat .footerTitle { font-size:13px; font-weight:bold; text-align: right !important; padding: 0 !important; }
 
-.flat .webix_ss_header td { background-color:#4075D3; color: #f7f7f7; border-right: none; border-left: none; font-size: 11px; font-weight: bold; }
-.flat .webix_hcell { text-align: center }
+.flat .webix_ss_header td { background-color: #37a6d3; color: #f7f7f7; border-right: none; border-left: none; font-size: 11px; font-weight: bold; }
+.flat .webix_ss_header .webix_hcell { text-align: center }
 .flat .webix_ss_vscroll_header { background-color:#4075D3; }
 
-.flat .webix_ss_footer td { font-size: 11px; border-right: none; border-left: none; background-color: #E4EDF9; }
+.flat .webix_ss_footer td { font-size: 11px;  background-color: #E4EDF9; padding: 0; }
 .flat .webix_ss_vscroll_footer { background-color:#E4EDF9; }
+.flat .webix_ss_footer .webix_hcell { text-align: right; padding: 0; }
 
-.flat .webix_cell { font-size: 11px; border-bottom: 1px solid #E4EDF9; border-right: none; border-left: none; padding:0 2px; }
+.flat .webix_cell { font-size: 12px; border-bottom: 1px solid #E4EDF9; border-right: none; border-left: none; padding:0 !important; }
 
 .flat .webix_header > div { background: #4075D3 !important; }
 .flat .webix_view { border: none; }
 
 .webix_view , .webix_dtable, .webix_ss_header, .webix_hs_left, .webix_hcell { overflow: visible; }
+
+.webix_column>div.webix_cell_select { padding:0 !important; background-color: #fff; color: #4075D3; border: 1px solid #4075D3 !important; }
 
 .webix_view .webix_tree_open:before{content:url(icons/treeOpen.jpg) !important;}
 .webix_view .webix_tree_close:before{content:url(icons/treeClose.jpg) !important;}
