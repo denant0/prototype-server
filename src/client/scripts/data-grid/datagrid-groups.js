@@ -118,7 +118,7 @@ class DataGridGroups{
         if (cellElement.$group) {
             gridObject.setRowHeight(cellElement.id, 40);
         } else {
-            var cellCheckbox = gridObject.getItemNode({ row: cellElement.id, column: 'ch1'});
+            var cellCheckbox = gridObject.getItemNode({ row: cellElement.id, column: 'checkbox'});
             if (cellCheckbox) {
                 var styleBorderBottom;
                 var nextRowId = gridObject.getNextId(cellElement.id,1);
@@ -130,7 +130,6 @@ class DataGridGroups{
                 } else {
                     for (var i = 0, length = pattern.length; i < length; i += 1) {
                         var p = pattern[i];
-
                         var s = nextRowId[i];
                         if (p !== s) {
                             isAddStyle = false;

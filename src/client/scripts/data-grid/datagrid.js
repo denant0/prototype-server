@@ -3,7 +3,8 @@ require('./custom-actions');
 var DataGridLoad = require('./datagrid-load-data'),
     DataGridSort = require('./datagrid-sort'),
     DataGridEdit = require('./datagrid-edit'),
-    DataGridGroups = require('./datagrid-groups');
+    DataGridGroups = require('./datagrid-groups'),
+    DataGridFilter = require('./datagrid-filter');
 
 
 class DataGrid {
@@ -21,6 +22,7 @@ class DataGrid {
         this._dataGridSort = new DataGridSort();
         this._dataGridEdit = new DataGridEdit();
         this._dataGridGroups = new DataGridGroups();
+        this._dataGridFilter = new DataGridFilter();
 
         webix.protoUI ({
             name: 'customDataTable',
@@ -66,7 +68,7 @@ class DataGrid {
                 {
                     css: 'layoutFilter',
                     template: '<div id="' + nameFiltering + '"style="height: 100%" "></div>',
-                    autoheight: true
+                    autoheight:true
                 },
                 {
                     template:'<div id="' + nameGrid + '"style="height: 100%" "></div>'
@@ -78,6 +80,7 @@ class DataGrid {
             ]
         });
         this.dataTable = new webix.ui(this._createGridConfiguration(config));
+        this.filterTable = this._dataGridFilter.getFilteringView(config, nameFiltering);
 
         webix.ARCHIBUS.gridContainer = this.dataTable.getNode().attributes[2].nodeValue;
     }
@@ -106,6 +109,7 @@ class DataGrid {
 		@config: custom configuration
      */
     _createGridConfiguration (config) {
+
         var gridColumns = this._createGridColumns(config),
             gridAction = this._configureGridActions(config);
 
@@ -155,11 +159,15 @@ class DataGrid {
     _configureGridActions (config) {
         var customGridEvents = config.events;
         var gridActions = {
-            onCheck: this._eventCheckCheckbox,
-            onAfterLoad: this._eventAfterLoad,
-            onBeforeRender: this._eventBeforeRender,
-            onAfterRender: this._eventAfterRender
+            onCheck: this._checkCheckbox,
+            onAfterLoad: this._afterLoad,
+            onBeforeRender: this._beforeRender,
+            onAfterRender: this._afterRender,
+            onBeforeSelect: this._beforeSelect,
+            onAfterScroll: this._afterScroll,
+            onColumnResize: this._columnResize
         };
+
         for (var event in customGridEvents) {
             gridActions[event] = webix.actions[customGridEvents[event]];
         }
@@ -168,6 +176,10 @@ class DataGrid {
             gridActions['onUpdataData'] = this._dataGridLoad.doUpdataData;
             gridActions['onRecalculateTotalColumn'] = this._dataGridGroups.recalculateTotalColumn;
         }
+        gridActions['onStartWith'] = this._startWith;
+        gridActions['onRefreshWidthColumnsFilterTable'] = this._dataGridFilter.refreshWidthColumns;
+        gridActions['onRefreshWidthColumnFilterTable'] = this._dataGridFilter.refreshWidthColumn;
+        gridActions['onSetPositionScrollFilterTable'] = this._dataGridFilter.setPositionSctoll;
 
         return gridActions;
     }
@@ -187,7 +199,7 @@ class DataGrid {
                 header: "",
                 width: 60,
                 template:  this._dataGridEdit.renderEditColumn,
-                cssFormat:  this.cssFormat
+                cssFormat:  this._configureColumnClassCss
             };
         }
         var index = gridColumns.length;
@@ -247,11 +259,11 @@ class DataGrid {
      */
     _configureCheckboxColumn (columns) {
         var configureCheckbox = {
-            id: "ch1",
+            id: "checkbox",
             header: "",
             width: 40,
             template: "{common.checkbox()}",
-            cssFormat:  this.cssFormat
+            cssFormat:  this._configureColumnClassCss
         };
 
         var isCalcTotalGroup = false;
@@ -262,7 +274,7 @@ class DataGrid {
             }
         }
         if (isCalcTotalGroup){
-            configureCheckbox['footer'] = {text: '<div class="footerTitle"">TOTAL</div>'};
+            configureCheckbox['footer'] = {text: '<div class="footerTitle"">TOTAL</div><div id="page_section"></div>'};
         }
         return configureCheckbox;
     }
@@ -287,14 +299,17 @@ class DataGrid {
         ];
     }
 
-    cssFormat (value, obj){
-        if (obj.ch1 && obj.$group) {
+    /*
+     Customize the column style class to the grid view depending on user actions
+     */
+    _configureColumnClassCss (value, obj){
+        if (obj.checkbox && obj.$group) {
             return 'rowGroupHeaderSelect';
         }
-        if (obj.ch1 && !obj.$group) {
+        if (obj.checkbox && !obj.$group) {
             return 'rowSelect';
         }
-        if (!obj.ch1 && obj.$group) {
+        if (!obj.checkbox && obj.$group) {
             return 'rowGroupHeader';
         }
         return "";
@@ -308,7 +323,7 @@ class DataGrid {
         if (customConfigColumn.cssClass) {
             configGridColumn.cssFormat = webix.actions[customConfigColumn.cssClass];
         } else {
-            configGridColumn.cssFormat =  this.cssFormat;
+            configGridColumn.cssFormat =  this._configureColumnClassCss;
         }
         switch (customConfigColumn.dataType) {
             case 'number':
@@ -325,12 +340,12 @@ class DataGrid {
         }
         return configGridColumn;
     }
-	/*
-	 Get the number of columns that want to split  the left side
-		@columns: the configuration list columns
-		@id: the ID of the last column that need to split 
-		@isEdit: the flag edit
-	*/
+    /*
+     Get the number of columns that want to split  the left side
+     @columns: the configuration list columns
+     @id: the ID of the last column that need to split
+     @isEdit: the flag edit
+     */
     _getLeftSplit (columns, id, isEdit) {
         var leftSplit = 1;
         if (isEdit) {
@@ -347,11 +362,11 @@ class DataGrid {
         }
         return leftSplit;
     }
-	/*
-	 Get the number of columns that want to split  the rigth side
-		@columns: the configuration list columns
-		@id: the ID of the last column that need to split 
-	*/
+    /*
+     Get the number of columns that want to split  the rigth side
+     @columns: the configuration list columns
+     @id: the ID of the last column that need to split
+     */
     _getRigthSplit (columns, id) {
         var rightSplit = 0;
         if (id) {
@@ -402,7 +417,7 @@ class DataGrid {
     /*
      Event of checkbox selection
      */
-    _eventCheckCheckbox (row, column, value) {
+    _checkCheckbox (row, column, value) {
         this.data.eachChild(row, function (item) {
             item[column] = value;
         })
@@ -410,7 +425,7 @@ class DataGrid {
     /*
      Event occurs each time before the view is rendered
      */
-    _eventBeforeRender () {
+    _beforeRender () {
         if (webix.ARCHIBUS.buttonsMap) {
             for (var key in webix.ARCHIBUS.buttonsMap) {
                 var button = webix.ARCHIBUS.buttonsMap[key];
@@ -427,14 +442,53 @@ class DataGrid {
     /*
      Event after data loading is complete
      */
-    _eventAfterLoad (row, column, value) {
+    _afterLoad (row, column, value) {
         this.openAll();
+        this.callEvent('onRefreshWidthColumnsFilterTable', []);
     }
     /*
      Event occurs each time after the view is rendered
      */
-    _eventAfterRender () {
+    _afterRender () {
         this.adjust();
+    }
+    /*
+     Event occurs each time before the selecting item
+     */
+    _beforeSelect (data, preserve) {
+        if (this.callEvent("onStartWith", [data.row, "0$"]) ||
+            data.column == 'action' ||
+            data.column == 'edit' ||
+            data.column == 'checkbox') {
+                return false;
+        }
+    }
+
+    _afterScroll () {
+        var position = this.getScrollState();
+        this.callEvent('onSetPositionScrollFilterTable', [position]);
+    }
+
+    _columnResize (columnId){
+        this.callEvent('onRefreshWidthColumnFilterTable', [columnId]);
+    }
+    /*
+     Event to check if the given string with the specified prefix
+     */
+    _startWith (string, prefix) {
+        if (typeof string != 'string') {
+            return false;
+
+        } else {
+            for (var i = 0, length = prefix.length; i < length; i += 1) {
+                var p = prefix[i];
+                var s = string[i];
+                if (p !== s) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
 

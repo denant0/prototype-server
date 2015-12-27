@@ -51,7 +51,7 @@ class DataGridEdit{
         if (dataType) {
             switch (dataType) {
                 case 'number':
-                    configCurrentColumn.editor = 'text';
+                    configCurrentColumn.editor = 'popup';
                     break;
                 case 'integer':
                     configCurrentColumn.editor = 'text';
@@ -64,7 +64,9 @@ class DataGridEdit{
                     break;
                 case 'enum':
                     configCurrentColumn.editor = 'combo';
-                    webix.ARCHIBUS.data.collection[webix.ARCHIBUS.data.collection.length] = configCurrentColumn.id;
+                    var length = webix.ARCHIBUS.data.collection.length;
+                    webix.ARCHIBUS.data.collection[length] = {};
+                    webix.ARCHIBUS.data.collection[length].id = configCurrentColumn.id;
                     loadClass.doLoadCollectionFromServer(configCurrentColumn.id, configColumns);
                     break;
             }

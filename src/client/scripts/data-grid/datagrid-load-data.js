@@ -183,12 +183,14 @@ class DataGridLoad {
             var collection = [];
             collection[collection.length] = {id: "", value: ""};
             var id;
+            var idIndex;
             for (var index in webix.ARCHIBUS.data.collection) {
                 for (var indexObj in obj) {
                     var element = obj[indexObj];
                     for (var item in element) {
-                        if (webix.ARCHIBUS.data.collection[index] == item) {
+                        if (webix.ARCHIBUS.data.collection[index].id == item) {
                             id = item;
+                            idIndex = index;
                             break;
                         }
                     }
@@ -198,14 +200,12 @@ class DataGridLoad {
             for (var index in obj) {
                 collection[collection.length] = {id: obj[index][id], value: obj[index][id]};
             }
-
+            webix.ARCHIBUS.data.collection[idIndex].value = collection;
             for (var index in columns) {
                 if (columns[index].id == id) {
-                    var collectionHeader = collection.slice();
                     var collectionEdit = collection.slice();
                     collectionEdit.splice(0,1);
                     columns[index].collection = collectionEdit;
-                    columns[index].header[0].options = collectionHeader;
                 }
             }
         });

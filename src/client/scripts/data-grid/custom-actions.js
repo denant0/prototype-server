@@ -12,6 +12,7 @@ webix.actions = {
             var text = this.getItem(id)[id[0].column];
             webix.message(text);
         }
+
     },
     clickCell: function(id, event) {
         if (typeof webix.ARCHIBUS.editRows != 'undefined') {

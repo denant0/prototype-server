@@ -94,6 +94,7 @@ var ARCHIBUSColumns = [
         dateTimeFormat: '%m/%d/%y'
     },
     {
+        id: 'action',
         title: 'Action',
         width: 100,
         action: buttonMetadata

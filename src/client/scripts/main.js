@@ -32,7 +32,12 @@ function resize(objects){
         webix.event(window, "resize", function (event) {
             objects[number].view.adjust();
             objects[number].dataTable.adjust();
+            objects[number].filterTable.adjust();
         });
     }
+}
+
+function filter() {
+    console.log('up');
 }
 

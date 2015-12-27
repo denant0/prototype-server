@@ -1,7 +1,7 @@
 body, html { height:99%; }
 
 .flat .rowSelect { background-color: #FFE0B4; border-bottom: 1px solid #FFD69A !important; color: #a87104; }
-.flat .rowEdited { background-color: #d6b5d0; }
+.flat .rowEdited { background-color: #FFE0B4; }
 .flat .rowGroupHeader {  background-color: #E4EDF9; }
 .flat .rowGroupHeaderSelect { background-color: #FFD69A; }
 
@@ -10,91 +10,43 @@ body, html { height:99%; }
 
 .flat .footerTitle { font-size:13px; font-weight:bold; text-align: right !important; padding: 0 !important; }
 
-.flat .webix_ss_header td { background-color: #37a6d3; color: #f7f7f7; border-right: none; border-left: none; font-size: 11px; font-weight: bold; }
+.flat .webix_ss_header td { background-color: #37a6d3; color: #f7f7f7; border-right: none; border-left: none; font-size: 12px; font-weight: bold; }
 .flat .webix_ss_header .webix_hcell { text-align: center }
 .flat .webix_ss_vscroll_header { background-color:#4075D3; }
 
 .flat .webix_ss_footer td { font-size: 11px;  background-color: #E4EDF9; padding: 0; }
 .flat .webix_ss_vscroll_footer { background-color:#E4EDF9; }
-.flat .webix_ss_footer .webix_hcell { text-align: right; padding: 0; }
+.flat .webix_ss_footer .webix_hcell { text-align: right; padding:0 4px 0 4px !important;}
 
-.flat .webix_cell { font-size: 12px; border-bottom: 1px solid #E4EDF9; border-right: none; border-left: none; padding:0 !important; }
+.flat .webix_cell { font-size: 12px; border-bottom: 1px solid #E4EDF9; border-right: none; border-left: none; padding:0 4px 0 4px !important; }
 
-.flat .webix_header > div { background: #4075D3 !important; }
+.flat .webix_header > div { background: #4075D3 !important; font-weight: bold; }
 .flat .webix_view { border: none; }
 
-.webix_view , .webix_dtable, .webix_ss_header, .webix_hs_left, .webix_hcell { overflow: visible; }
+.filterCell {text-align: center; font-style: italic; color: #61A6F7; align: center;}
 
-.webix_column>div.webix_cell_select { padding:0 !important; background-color: #fff; color: #4075D3; border: 1px solid #4075D3 !important; }
+.webix_column>div.webix_cell_select { padding:0 4px 0 4px !important; background-color: #FFE0B4; color: #a87104; border: 1px solid #FFD69A !important; }
 
 .webix_view .webix_tree_open:before{content:url(icons/treeOpen.jpg) !important;}
 .webix_view .webix_tree_close:before{content:url(icons/treeClose.jpg) !important;}
 
 .webix_layout_clean { border: 1px solid #4075D3 }
+.layoutFilter {padding: 0 !important; margin-bottom: -10px}
 
-.tooltip {
-    color: #393939;
-    display: inline-block;
-    position: relative;
-    text-indent: 0px;
-}
-.tooltip > span { /* стиль появляющейся подсказки */
-    position: absolute;
-    bottom: 100%;
-    left: -20em; /* = max-width */
-    right: -20em; /* = max-width */
-    width: -moz-max-content;
-    width: -webkit-max-content;
-    width: max-content;  /* ширина подсказки может быть не более содержимого */
-    max-width: 20em;  /* ширина подсказки может быть не более 20em */
-    max-height: 80vh; /* необязательное ограничение по высоте подсказки, 1vh — это 1% от ширины окна */
-    overflow: auto;
-    visibility: hidden;
-    margin: 0 auto .4em; /* поднята на .4em над текстом, наведя или нажав на который появится пояснение */
-    padding: .3em;
-    border: solid rgb(200,200,200);
-    font-size: 90%;
-    background: #fff;
-    line-height: normal;
-    cursor: auto;
-}
 
-.tooltip:after { /* треугольничек под подсказкой; тут тоже везде .4em */
-    content: "";
-    position: absolute;
-    top: -.4em;
-    left: 50%;
-    visibility: hidden;
-    margin: 0 0 0 -.4em;
-    border: .4em solid;
-    border-color: rgb(200,200,200) transparent transparent transparent;
-    cursor: auto;
-}
-.tooltip.left:after {
-    left: 1em;
-}
-.tooltip.right:after {
-    left: auto;
-    right: .6em; /* 1em - .4em */
-}
-.tooltip:before { /* поле между текстом, наведя или нажав на который появится пояснение, и подсказкой нужно чтобы, если перевести курсор мышки на подсказку, та не исчезла; тут тоже везде .4em */
-    content: "";
-    position: absolute;
-    top: -.4em;
-    left: 0;
-    right: 0;
-    height: .4em;
-    visibility: hidden;
-}
-.tooltip:hover > span,
-.tooltip:hover:before,
-.tooltip:hover:after,
-.tooltip:focus > span,
-.tooltip:focus:before,
-.tooltip:focus:after {
-    visibility: visible;
-    transition: 0s .4s;
-}
-.tooltip:focus { /* убрать рамку в Хроме */
-    outline: none;
-}
+.customFilterView { background-color: #FCC48B; border: 1px solid #FCC48B !important; }
+.filterValue { display:inline-block; }
+
+.ARCHIBUS_filter { width: auto; height: auto;}
+.ARCHIBUS_filter input { width: 87px; border: 2px solid #37A6D3 }
+
+.ARCHIBUS_select_filter select { width: 87px; border: 2px solid #61A6F7; text-size: 12px; }
+
+.ARCHIBUS_number_filter { height: 25px; }
+.ARCHIBUS_number_filter input { width: 50px; border: 2px solid #37A6D3; float:left; }
+.ARCHIBUS_number_filter div { padding: 2px;float:left;font-weight: bold; }
+.ARCHIBUS_number_filter select { width: 87px; border: 2px solid #61A6F7; text-size: 12px; }
+
+
+.webix_template .customFilter {width: 87px; height:20px; border: 1px solid #4075D3}
+.webix_dtable .webix_hs_left td.webix_last  {border-right: 1px solid #d0d0d0;}
