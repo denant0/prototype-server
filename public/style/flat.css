@@ -37,16 +37,15 @@ body, html { height:99%; }
 .customFilterView { background-color: #FCC48B; border: 1px solid #FCC48B !important; }
 .filterValue { display:inline-block; }
 
-.ARCHIBUS_filter { width: auto; height: auto;}
-.ARCHIBUS_filter input { width: 87px; border: 2px solid #37A6D3 }
+.ARCHIBUS_filter input { width: 87px; height: 18px; border: 2px solid #37A6D3 }
 
+.ARCHIBUS_select_filter { height: 20px; }
 .ARCHIBUS_select_filter select { width: 87px; border: 2px solid #61A6F7; text-size: 12px; }
 
-.ARCHIBUS_number_filter { height: 25px; }
+.ARCHIBUS_number_filter { height:  22px;}
 .ARCHIBUS_number_filter input { width: 50px; border: 2px solid #37A6D3; float:left; }
 .ARCHIBUS_number_filter div { padding: 2px;float:left;font-weight: bold; }
-.ARCHIBUS_number_filter select { width: 87px; border: 2px solid #61A6F7; text-size: 12px; }
+#customMinFilter { height: 18px; }
+#customMaxFilter { color: #37A6D3; font-style: italic; height: 18px; }
 
-
-.webix_template .customFilter {width: 87px; height:20px; border: 1px solid #4075D3}
 .webix_dtable .webix_hs_left td.webix_last  {border-right: 1px solid #d0d0d0;}
