@@ -9681,7 +9681,7 @@ webix.DataLoader=webix.proto({
 					finalurl += "&sort["+state.sort.id+"]="+state.sort.dir;
 				if (state.filter)
 					for (var key in state.filter)
-						finalurl +="&filter["+key+"]="+state.filter[key];
+						finalurl +="&filters["+key+"]="+state.filter[key];
 			}
 			this.load(finalurl, final_callback);
 		}
@@ -9817,7 +9817,7 @@ webix.DataLoader=webix.proto({
 					}
 				} else {
 				//url data feed
-					var urldata = "filter["+text+"]="+encodeURIComponent(filtervalue);
+					var urldata = "filters["+text+"]="+encodeURIComponent(filtervalue);
 					this.load(url+(url.indexOf("?")<0?"?":"&")+urldata, this._settings.datatype);
 				}
 				return false;
@@ -9901,7 +9901,7 @@ webix.DataMarks = {
 		refresh
 		count
 		sort
-		filter
+		filters
 		next
 		previous
 		clearAll
@@ -10474,12 +10474,12 @@ webix.DataStore.prototype={
 	/*
 		Filter datasource
 		
-		text - property, by which filter
-		value - filter mask
+		text - property, by which filters
+		value - filters mask
 		
 		or
 		
-		text  - filter method
+		text  - filters method
 		
 		Filter method will receive data object and must return true or false
 	*/
@@ -10547,7 +10547,7 @@ webix.DataStore.prototype={
 					};
 				else{
 					value = value.toString().toLowerCase();
-					filter = function(obj,value){	//default filter - string start from, case in-sensitive
+					filter = function(obj,value){	//default filters - string start from, case in-sensitive
 						webix.assert(obj, "Client side filtering can't be used with dynamic loading");
 						return (obj[text]||"").toString().toLowerCase().indexOf(value)!=-1;
 					};
@@ -12472,9 +12472,9 @@ webix.TreeStore = {
 	},
 	_filter_core:function(filter, value, preserve, filterMode){
 		//for tree we have few filtering options
-		//- filter leafs only
-		//- filter data on specific level
-		//- filter data on all levels
+		//- filters leafs only
+		//- filters data on specific level
+		//- filters data on all levels
 		//- in all cases we can show or hide empty folder
 		//- in all cases we can show or hide childs for matched item
 		
@@ -12518,7 +12518,7 @@ webix.TreeStore = {
 				child_run = true;
 			}	
 
-			//if "filter by all levels" - filter childs
+			//if "filters by all levels" - filters childs
 			if (allow || !config.level){ 
 				if (sub){
 					var newsub = this.branch[id] = this._filter_branch_rec(filter, value, sub, level+1, config);
@@ -18590,7 +18590,7 @@ webix.ui.datafilter = {
 			var id = this._comp_id;
 
 			//tabbing through filters must not trigger filtering
-			//we can improve this functionality by preserving initial filter value
+			//we can improve this functionality by preserving initial filters value
 			//and comparing new one with it
 			if ((e.which || e.keyCode) == 9) return;
 
@@ -18747,7 +18747,7 @@ webix.extend(webix.ui.datatable,{
 				var record = this._filter_elements[key];
 				var originvalue = record[2].getValue(record[0]);
 
-				//saving last filter value, for usage in getState
+				//saving last filters value, for usage in getState
 				var inputvalue = originvalue;
 				if (record[1].prepare)
 					inputvalue = record[1].prepare.call(record[2], inputvalue, record[1], this);

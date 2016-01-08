@@ -37,13 +37,10 @@ webix.actions = {
         webix.message('You click button 4');
     },
     cssClassCountryCode: function(container, cellInfo, t,y) {
-        if (cellInfo.ch1 && cellInfo.$group) {
+        if (cellInfo.checkbox && cellInfo.$group) {
             return 'rowGroupHeaderSelect';
         }
-        if (cellInfo.ch1 && !cellInfo.$group) {
-            return 'rowSelect';
-        }
-        if (!cellInfo.ch1 && cellInfo.$group) {
+        if (!cellInfo.checkbox && cellInfo.$group) {
             return 'rowGroupHeader';
         }
 

@@ -81,7 +81,7 @@ class DataGridLoad {
                 }
                 if (state.filter) {
                     for (var key in state.filter) {
-                        finalurl +="&filter["+key+"]="+state.filter[key];
+                        finalurl +="&filters["+key+"]="+state.filter[key];
                     }
                 }
             }
@@ -200,7 +200,7 @@ class DataGridLoad {
             for (var index in obj) {
                 collection[collection.length] = {id: obj[index][id], value: obj[index][id]};
             }
-            webix.ARCHIBUS.data.collection[idIndex].value = collection;
+            var collectionEdit;
             for (var index in columns) {
                 if (columns[index].id == id) {
                     var collectionEdit = collection.slice();
@@ -208,6 +208,7 @@ class DataGridLoad {
                     columns[index].collection = collectionEdit;
                 }
             }
+            webix.ARCHIBUS.data.collection[idIndex].value = collectionEdit;
         });
     }
 

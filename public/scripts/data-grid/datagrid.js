@@ -54,13 +54,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 webix.message('You click button 4');
             },
             cssClassCountryCode: function cssClassCountryCode(container, cellInfo, t, y) {
-                if (cellInfo.ch1 && cellInfo.$group) {
+                if (cellInfo.checkbox && cellInfo.$group) {
                     return 'rowGroupHeaderSelect';
                 }
-                if (cellInfo.ch1 && !cellInfo.$group) {
-                    return 'rowSelect';
-                }
-                if (!cellInfo.ch1 && cellInfo.$group) {
+                if (!cellInfo.checkbox && cellInfo.$group) {
                     return 'rowGroupHeader';
                 }
 
@@ -72,7 +69,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 }
             }
         };
-    }, { "./metadata/sample-cell-style-metadata": 9 }], 2: [function (require, module, exports) {
+    }, { "./metadata/sample-cell-style-metadata": 13 }], 2: [function (require, module, exports) {
         /*
         The class responsible for editing
         */
@@ -81,7 +78,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             function DataGridEdit() {
                 _classCallCheck(this, DataGridEdit);
 
-                webix.UIManager.tabControl = true;
                 webix.editors.$popup = {
                     text: {
                         view: 'popup',
@@ -159,6 +155,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 key: "eventEditStart",
                 value: function eventEditStart(event, object, cell) {
                     var isFocus = true;
+                    webix.UIManager.tabControl = true;
                     this.addRowCss(object.row, 'rowEdited');
                     this.eachColumn(function (columnId) {
                         var config = this.getColumnConfig(columnId);
@@ -180,6 +177,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }, {
                 key: "eventEditSuccess",
                 value: function eventEditSuccess(event, object, cell) {
+                    webix.UIManager.tabControl = false;
                     this.editStop();
                     for (var index in webix.ARCHIBUS.editRows) {
                         var editRow = webix.ARCHIBUS.editRows[index];
@@ -200,6 +198,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }, {
                 key: "eventEditCancel",
                 value: function eventEditCancel(event, object, cell) {
+                    webix.UIManager.tabControl = false;
                     this.editStop();
                     for (var i in webix.ARCHIBUS.editRows) {
                         var editRow = webix.ARCHIBUS.editRows[i];
@@ -292,66 +291,34 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         module.exports = DataGridEdit;
     }, {}], 3: [function (require, module, exports) {
+        var TextFilter = require('../data-grid/filters/text-filter'),
+            SelectFilter = require('../data-grid/filters/select-filter'),
+            NumericRangeFilter = require('../data-grid/filters/numeric-range-filter'),
+            DateRangeFilter = require('../data-grid/filters/date-range-filter');
+
         var DataGridFilter = (function () {
             function DataGridFilter() {
                 _classCallCheck(this, DataGridFilter);
 
                 webix.ARCHIBUS.currentDisplayFilter = {};
-                this._equalsList = ["any", "least", "highest"];
+
                 webix.protoUI({
                     name: 'filterPopup',
-                    _set_point: function _set_point(mode, left, top) {
-                        if (webix.ARCHIBUS.filterContainer) {
-                            var gridObject = $$(webix.ARCHIBUS.filterContainer),
-                                filterView = $$("customFilterView"),
-                                configGridCell = gridObject.getColumnConfig(webix.ARCHIBUS.currentDisplayFilter.id);
-
-                            top = top + gridObject.$height + 6;
-                            left = filterView.config.left + (configGridCell.width - filterView.config.width) / 2 + filterView.config.width / 2 - 7;
-                        }
-                        this._hide_point();
-                        document.body.appendChild(this._point_element = webix.html.create("DIV", { "class": "webix_point_" + mode }, ""));
-                        this._point_element.style.zIndex = webix.ui.zIndex();
-                        this._point_element.style.top = top + "px";
-                        this._point_element.style.left = left + "px";
-                    }
+                    show: this._doShowFilterView,
+                    _set_point: this._setAnchorPosition
                 }, webix.ui.popup);
 
-                webix.ui({
-                    view: 'filterPopup',
-                    css: 'customFilterView',
-                    id: 'customFilterView',
-                    padding: 1,
-                    relative: 'top',
-                    on: {
-                        "onHide": function onHide() {
-                            webix.ARCHIBUS.currentDisplayFilter = {};
-                        }
-                    },
-                    body: {
-                        css: 'customFilterView',
-                        template: function template() {
-                            switch (webix.ARCHIBUS.currentDisplayFilter.type) {
-                                case 'enum':
-                                    return this.renderSelectFilter();
-                                case 'text':
-                                    return this.renderTextFilter();
-                                case 'date':
-                                    return "future";
-                                case 'integer':
-                                case 'number':
-                                    return this.renderNumberFilter();
-                            }
-                        },
-                        autoheight: true,
-                        borderless: true,
-                        data: [{}],
-                        equalsList: this._equalsList,
-                        renderSelectFilter: this._renderSelectFilter,
-                        renderTextFilter: this._renderTextFilter,
-                        renderNumberFilter: this._renderNumberFilter
+                webix.protoUI({
+                    name: 'customFilterTable',
+                    _custom_tab_handler: function _custom_tab_handler(tab, e) {
+                        return false;
                     }
-                });
+                }, webix.ui.datatable);
+
+                this._registerFilter(new TextFilter());
+                this._registerFilter(new SelectFilter());
+                this._registerFilter(new NumericRangeFilter());
+                this._registerFilter(new DateRangeFilter());
             }
 
             _createClass(DataGridFilter, [{
@@ -385,25 +352,187 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     return table;
                 }
             }, {
+                key: "afterFilter",
+                value: function afterFilter() {
+                    $$(webix.ARCHIBUS.filterContainer).editStop();
+                    if (webix.ARCHIBUS.currentDisplayFilter.id) {
+                        $$(webix.ARCHIBUS.filterContainer).editCell(webix.ARCHIBUS.currentDisplayFilter.row, webix.ARCHIBUS.currentDisplayFilter.id);
+                    }
+                }
+            }, {
+                key: "_doShowFilterView",
+                value: function _doShowFilterView(node, mode, point) {
+                    if (!this.callEvent("onBeforeShow", arguments)) return false;
+
+                    this._settings.hidden = false;
+                    this._viewobj.style.zIndex = this._settings.zIndex || webix.ui.zIndex();
+                    if (this._settings.modal || this._modal) {
+                        this._modal_set(true);
+                        this._modal = null; // hidden_setter handling
+                    }
+
+                    var pos, dx, dy;
+                    mode = mode || {};
+                    if (!mode.pos) mode.pos = this._settings.relative;
+
+                    //get position of source html node
+                    //we need to show popup which pointing to that node
+                    if (node) {
+                        //if event was provided - get node info from it
+                        if ((typeof node === "undefined" ? "undefined" : _typeof(node)) == "object" && !node.tagName) {
+                            /*below logic is far from ideal*/
+                            if (node.target || node.srcElement) {
+                                pos = webix.html.pos(node);
+                                dx = 20;
+                                dy = 5;
+                            } else pos = node;
+                        } else {
+                            node = webix.toNode(node);
+                            webix.assert(node, "Not existing target for window:show");
+                            pos = webix.html.offset(node);
+                        }
+
+                        //size of body, we need to fit popup inside
+                        var x = Math.max(window.innerWidth || 0, document.body.offsetWidth);
+                        var y = Math.max(window.innerHeight || 0, document.body.offsetHeight);
+
+                        //size of node, near which popup will be rendered
+                        dx = dx || node.offsetWidth || 0;
+                        dy = dy || node.offsetHeight || 0;
+                        //size of popup element
+                        var size = this._last_size;
+
+                        var fin_x = pos.x;
+                        var fin_y = pos.y;
+                        var point_y = 0;
+                        var point_x = 0;
+
+                        if (this._settings.autofit) {
+                            var delta_x = 6;var delta_y = 6;var delta_point = 6;
+
+                            //default pointer position - top
+                            point = "top";
+                            fin_y = 0;fin_x = 0;
+                            //if we want to place menu at righ, but there is no place move it to left instead
+                            if (x - pos.x - dx < size[0] && mode.pos == "right") mode.pos = "left";
+
+                            if (mode.pos == "right") {
+                                fin_x = pos.x + delta_x + dx;
+                                delta_y = -dy;
+                                point = "left";
+                                point_y = Math.round(pos.y + dy / 2);
+                                point_x = fin_x - delta_point;
+                            } else if (mode.pos == "left") {
+                                fin_x = pos.x - delta_x - size[0] - 1;
+                                delta_y = -dy;
+                                point = "right";
+                                point_y = Math.round(pos.y + dy / 2);
+                                point_x = fin_x + size[0] + 1;
+                            } else {
+                                //left border of screen
+                                if (pos.x < 0) {
+                                    fin_x = 0;
+                                    //popup exceed the right border of screen
+                                } else if (x - pos.x > size[0]) {
+                                        fin_x = pos.x; //aligned
+                                    } else {
+                                            fin_x = x - delta_x - size[0]; //not aligned
+                                        }
+
+                                point_x = Math.round(pos.x + dx / 2);
+                                //when we have a small popup, point need to be rendered at center of popup
+                                if (point_x > fin_x + size[0]) point_x = fin_x + size[0] / 2;
+                            }
+
+                            //if height is not fixed - use default position
+                            if ((!size[1] || y - dy - pos.y - delta_y > size[1]) && mode.pos != "top") {
+                                //bottom
+                                fin_y = dy + pos.y + delta_y - 4;
+                                if (!point_y) {
+                                    point = "top";
+                                    point_y = fin_y - delta_point;
+                                }
+                            } else {
+                                //top
+                                fin_y = pos.y - delta_y - size[1];
+                                if (fin_y < 0) {
+                                    fin_y = 0;
+                                    //left|right point can be used, but there is no place for top point
+                                    if (point == "top") point = false;
+                                } else if (!point_y) {
+                                    point = "bottom";
+                                    fin_y--;
+                                    point_y = fin_y + size[1] + 1;
+                                }
+                            }
+                        }
+                        //anda
+                        var configGridCell = $$(webix.ARCHIBUS.filterContainer).getColumnConfig(webix.ARCHIBUS.currentDisplayFilter.id);
+                        fin_x = fin_x + (configGridCell.width - this.$width) / 2;
+                        fin_y = fin_y + $$(webix.ARCHIBUS.filterContainer).$height;
+                        //
+                        var deltax = mode.x || 0;
+                        var deltay = mode.y || 0;
+                        this.setPosition(fin_x + deltax, fin_y + deltay);
+                        if (this._set_point) {
+                            if (point) this._set_point(point, point_x + deltax, point_y + deltay);else this._hide_point();
+                        }
+                    } else if (this._settings.position) this._setPosition();
+
+                    this._viewobj.style.display = "block";
+                    this._hide_timer = 1;
+                    webix.delay(function () {
+                        this._hide_timer = 0;
+                    }, this, [], webix.env.touch ? 400 : 100);
+
+                    this._render_hidden_views();
+                    if (this.config.autofocus) {
+                        this._prev_focus = webix.UIManager.getFocus();
+                        webix.UIManager.setFocus(this);
+                    }
+
+                    if (-1 == webix.ui._popups.find(this)) webix.ui._popups.push(this);
+
+                    this.callEvent("onShow", []);
+                }
+            }, {
+                key: "_setAnchorPosition",
+                value: function _setAnchorPosition(mode, left, top) {
+                    if (webix.ARCHIBUS.filterContainer) {
+                        var gridObject = $$(webix.ARCHIBUS.filterContainer);
+                        top = top + gridObject.$height;
+                    }
+                    this._hide_point();
+                    document.body.appendChild(this._point_element = webix.html.create("DIV", { "class": "webix_point_" + mode }, ""));
+                    this._point_element.style.zIndex = webix.ui.zIndex();
+                    this._point_element.style.top = top + "px";
+                    this._point_element.style.left = left + "px";
+                }
+            }, {
+                key: "_registerFilter",
+                value: function _registerFilter(filter) {
+                    var configure = filter.configuration();
+                    webix.editors.$popup[configure.id] = configure.view;
+                }
+            }, {
                 key: "_createGridConfiguration",
                 value: function _createGridConfiguration(config, nameFiltering) {
                     var filterColumns = this._createGridColumns(config);
                     var dataFilter = this._createGridData(config);
                     var gridConfiguration = {
                         container: nameFiltering,
-                        view: 'datatable',
+                        view: 'customFilterTable',
+                        css: 'styleFilterTable',
                         header: false,
                         scroll: false,
                         columns: filterColumns,
+                        editable: true,
+                        editaction: 'custom',
                         autoheight: true,
                         on: {
                             onMouseMove: this._mouseMove,
                             onBeforeRender: this._beforeRender,
-                            onCreateFilterView: this._createFilterView,
-                            onRegisterFilter: this._registerFilter,
-                            onRegisterTextFilter: this._registerTextFilter,
-                            onRegisterSelectFilter: this._registerSelectFilter,
-                            onRegisterNumberFilter: this._registerNumberFilter
+                            onAfterEditStop: this._afterEditStop
                         },
                         onMouseMove: {},
                         data: [dataFilter]
@@ -440,7 +569,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     for (var number in ARCHIBUSColumns) {
                         var column = ARCHIBUSColumns[number];
                         var data = {};
-
                         data.type = column.dataType;
                         gridData[column.id] = data;
                     }
@@ -454,6 +582,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     configGridColumn.dataType = dataType;
                     configGridColumn.css = 'filterCell';
                     configGridColumn.template = this._renderFilterValue;
+                    if (dataType) {
+                        switch (dataType) {
+                            case 'number':
+                            case 'integer':
+                                configGridColumn.editor = 'numericRange';
+                                break;
+                            case 'enum':
+                                configGridColumn.editor = 'customSelect';
+                                break;
+                            case 'date':
+                                configGridColumn.editor = 'dateRange';
+                                break;
+                            default:
+                                configGridColumn.editor = 'customText';
+                                break;
+                        }
+                    }
                     return configGridColumn;
                 }
 
@@ -504,166 +649,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     return rightSplit;
                 }
             }, {
-                key: "_registerFilter",
-                value: function _registerFilter(type, rowId, columnId, view) {
-                    switch (type) {
-                        case 'text':
-                            view.callEvent('onRegisterTextFilter', [rowId, columnId]);
-                            break;
-                        case 'enum':
-                            view.callEvent('onRegisterSelectFilter', [rowId, columnId]);
-                            break;
-                        case 'number':
-                        case 'integer':
-                            view.callEvent('onRegisterNumberFilter', [rowId, columnId]);
-                            break;
-                    }
-                }
-            }, {
-                key: "_registerTextFilter",
-                value: function _registerTextFilter(row, column) {
-                    var node = document.getElementById("customFilter");
-                    var item = $$(webix.ARCHIBUS.filterContainer).getItem(row);
-                    if (item[column].value) {
-                        node.value = item[column].value;
-                    }
-                    $$(webix.ARCHIBUS.gridContainer).registerFilter(node.value, { columnId: column }, {
-                        getValue: function getValue(node) {
-                            return node;
-                        },
-                        $server: true
-
-                    });
-                    node.focus();
-                    node.onkeyup = function () {
-                        var item = $$(webix.ARCHIBUS.filterContainer).getItem(row);
-                        item[column].value = this.value;
-                        $$(webix.ARCHIBUS.filterContainer).refresh();
-                        $$(webix.ARCHIBUS.gridContainer).filterByAll();
-                    };
-                }
-            }, {
-                key: "_renderTextFilter",
-                value: function _renderTextFilter() {
-                    return '<div class="ARCHIBUS_filter">' + '<input id="customFilter" type="text" >' + '</div>';
-                }
-            }, {
-                key: "_registerSelectFilter",
-                value: function _registerSelectFilter(row, column) {
-                    var node = document.getElementById("customFilter");
-                    var item = $$(webix.ARCHIBUS.filterContainer).getItem(row);
-                    if (item[column].value) {
-                        node.value = item[column].value;
-                    }
-                    $$(webix.ARCHIBUS.gridContainer).registerFilter(node.value, { columnId: column }, {
-                        getValue: function getValue(node) {
-                            return node;
-                        },
-                        $server: true
-                    });
-                    node.onchange = function () {
-                        var item = $$(webix.ARCHIBUS.filterContainer).getItem(row);
-                        item[column].value = this.value;
-                        $$(webix.ARCHIBUS.filterContainer).refresh();
-                        $$(webix.ARCHIBUS.gridContainer).filterByAll();
-                    };
-                }
-            }, {
-                key: "_renderSelectFilter",
-                value: function _renderSelectFilter() {
-                    var result = '<div class="ARCHIBUS_select_filter"><select id="customFilter">';
-                    for (var index in webix.ARCHIBUS.data.collection) {
-                        if (webix.ARCHIBUS.currentDisplayFilter.id == webix.ARCHIBUS.data.collection[index].id) {
-                            var collection = webix.ARCHIBUS.data.collection[index].value;
-                            for (var indexCollection in collection) {
-                                result += '<option>' + collection[indexCollection].value + '</option>';
-                            }
-                            break;
-                        }
-                    }
-                    result += '</select></div>';
-                    return result;
-                }
-            }, {
-                key: "_registerNumberFilter",
-                value: function _registerNumberFilter(row, column) {
-                    var nodeValue = document.getElementById("customMinFilter");
-                    var nodeEquals = document.getElementById("customMaxFilter");
-
-                    var item = $$(webix.ARCHIBUS.filterContainer).getItem(row);
-                    if (item[column].value) {
-                        nodeValue.value = item[column].value;
-                    }
-                    if (item[column].equal) {
-                        nodeEquals.value = item[column].equal;
-                    }
-                    $$(webix.ARCHIBUS.gridContainer).registerFilter({ value: nodeValue.value, equal: nodeEquals.value }, { columnId: column }, {
-                        getValue: function getValue(node) {
-                            webix.message(node.equal);return node.value;
-                        },
-                        $server: true
-                    });
-
-                    nodeEquals.onchange = function () {
-                        var item = $$(webix.ARCHIBUS.filterContainer).getItem(row);
-                        item[column].equal = this.value;
-                        $$(webix.ARCHIBUS.filterContainer).refresh();
-                        $$(webix.ARCHIBUS.gridContainer).filterByAll();
-                    };
-
-                    nodeValue.focus();
-                    nodeValue.onkeyup = function () {
-                        var item = $$(webix.ARCHIBUS.filterContainer).getItem(row);
-                        item[column].value = this.value;
-                        $$(webix.ARCHIBUS.filterContainer).refresh();
-                        $$(webix.ARCHIBUS.gridContainer).filterByAll();
-                    };
-                }
-            }, {
-                key: "_renderNumberFilter",
-                value: function _renderNumberFilter() {
-                    var result = '<div class="ARCHIBUS_number_filter">' + '<input id="customMinFilter" type="text">' + '<div>' + 'to' + '</div>' + '<input id="customMaxFilter" type="text">';
-                    return result;
-                }
-            }, {
-                key: "_createFilterView",
-                value: function _createFilterView(node, column) {
-                    var filterView = $$("customFilterView"),
-                        body = filterView.getBody(),
-                        configGridCell = $$(webix.ARCHIBUS.filterContainer).getColumnConfig(column);
-
-                    filterView.show(node);
-                    switch (webix.ARCHIBUS.currentDisplayFilter.type) {
-                        case 'enum':
-                        case 'date':
-                            filterView.define("width", 100);
-                            break;
-                        case 'text':
-                            filterView.define("width", 105);
-                            break;
-                        case 'number':
-                        case 'integer':
-                            filterView.define("width", 137);
-                            break;
-                    }
-
-                    var left = filterView.config.left + (configGridCell.width - filterView.config.width) / 2;
-                    var top = filterView.config.top + $$(webix.ARCHIBUS.filterContainer).$height + 4;
-                    filterView.define("left", left);
-                    body.refresh();
-                    filterView.define("top", top);
-                    body.refresh();
-                }
-            }, {
                 key: "_mouseMove",
                 value: function _mouseMove(id, event, node) {
                     var item = $$(webix.ARCHIBUS.filterContainer).getItem(id),
+                        type = '';
+                    if (item) {
                         type = item[id.column].type;
-
-                    webix.ARCHIBUS.currentDisplayFilter = { id: id.column, type: type };
-                    this.callEvent('onCreateFilterView', [event.target, id.column]);
-                    this.callEvent('onCreateFilterView', [event.target, id.column]);
-                    this.callEvent('onRegisterFilter', [type, id.row, id.column, this]);
+                        this.editStop();
+                        webix.ARCHIBUS.currentDisplayFilter = { id: id.column, row: id.row, type: type };
+                        this.editCell(id.row, id.column);
+                    }
                 }
             }, {
                 key: "_beforeRender",
@@ -680,12 +675,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         webix.ARCHIBUS.currentDisplayFilter = {};
                         var item = filterGridObject.getItem(cellElement.row);
                         item[cellElement.column].value = '';
-                        if (item[cellElement.column].equal) {
-                            item[cellElement.column].equal = '';
+                        if (item[cellElement.column].maxValue) {
+                            item[cellElement.column].maxValue = '';
                         }
                         filterGridObject.refresh();
                         gridObject.filterByAll();
                     };
+                }
+            }, {
+                key: "_afterEditStop",
+                value: function _afterEditStop(state, editors) {
+                    var item = this.getItem(webix.ARCHIBUS.currentDisplayFilter.row);
+                    var newState = state.old;
+                    if (item) {
+                        if (state.value.min || state.value.max || state.value.min == '' || state.value.max == '') {
+                            newState.value = state.value.min;
+                            newState.maxValue = state.value.max;
+                        } else {
+                            newState.value = state.value;
+                        }
+                        item[webix.ARCHIBUS.currentDisplayFilter.id] = newState;
+                    }
                 }
             }, {
                 key: "_renderFilterValue",
@@ -698,19 +708,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     } else {
                         if (cellElement[id].value) {
                             result = '<div class="filterValue"><img class="filterCancelClass" src="style/icons/cansel.jpg" style="float:left;"/><div style="padding-left: 2px; float:left;">' + cellElement[id].value;
-                            if (cellElement[id].equal) {
-                                result += ' to ' + cellElement[id].equal;
+                            if (cellElement[id].type == 'number' || cellElement[id].type == 'integer') {
+                                if (cellElement[id].maxValue) {
+                                    result += ' to ' + cellElement[id].maxValue;
+                                } else {
+                                    result += ' to highest';
+                                }
                             }
+
                             result += '</div></div>';
                         } else {
-                            result = 'All values';
+                            if (cellElement[id].maxValue) {
+                                result = '<div class="filterValue">' + '<img class="filterCancelClass" src="style/icons/cansel.jpg" style="float:left;"/>' + '<div style="padding-left: 2px; float:left;"> ' + 'lowest to' + cellElement[id].maxValue + '</div>' + '</div>';
+                            } else {
+                                result = 'All values';
+                            }
                         }
-                    }
-
-                    if (webix.ARCHIBUS.gridContainer && id == webix.ARCHIBUS.currentDisplayFilter.id) {
-                        var gridObject = $$(webix.ARCHIBUS.filterContainer);
-                        gridObject.callEvent('onCreateFilterView', [this.node, id]);
-                        gridObject.callEvent('onRegisterFilter', [webix.ARCHIBUS.currentDisplayFilter.type, cellElement.id, id, gridObject]);
                     }
                     return result;
                 }
@@ -720,7 +733,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         })();
 
         module.exports = DataGridFilter;
-    }, {}], 4: [function (require, module, exports) {
+    }, { "../data-grid/filters/date-range-filter": 8, "../data-grid/filters/numeric-range-filter": 9, "../data-grid/filters/select-filter": 10, "../data-grid/filters/text-filter": 11 }], 4: [function (require, module, exports) {
         /*
         The class responsible for the grouping of data
         */
@@ -1098,7 +1111,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             }
                             if (state.filter) {
                                 for (var key in state.filter) {
-                                    finalurl += "&filter[" + key + "]=" + state.filter[key];
+                                    finalurl += "&filters[" + key + "]=" + state.filter[key];
                                 }
                             }
                         }
@@ -1228,7 +1241,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         for (var index in obj) {
                             collection[collection.length] = { id: obj[index][id], value: obj[index][id] };
                         }
-                        webix.ARCHIBUS.data.collection[idIndex].value = collection;
+                        var collectionEdit;
                         for (var index in columns) {
                             if (columns[index].id == id) {
                                 var collectionEdit = collection.slice();
@@ -1236,6 +1249,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                 columns[index].collection = collectionEdit;
                             }
                         }
+                        webix.ARCHIBUS.data.collection[idIndex].value = collectionEdit;
                     });
                 }
 
@@ -1315,40 +1329,42 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }, {
                 key: "doStartMultiSorting",
                 value: function doStartMultiSorting(column, order) {
-                    if (this._multisortMap.length == 0 && !this._multisort_isDelete) {
-                        this._multisortMap[0] = {
-                            id: column,
-                            dir: order,
-                            html: '',
-                            onClick: 0
-                        };
-                        this.doReLabelingSorting(0, column, order, true);
-                    } else {
-                        var isAdded = true;
-                        for (var number in this._multisortMap) {
-                            var element = this._multisortMap[number];
-                            if (element.id != column) {
-                                this.doReLabelingSorting(number, element.id, element.dir, false);
-                            } else {
-                                isAdded = false;
-                                this._multisortMap[number].dir = order;
-                                this._multisortMap[number].onClick++;
-                                this._multisortMap[number].numberInQuery = 1;
-                                this.doReLabelingSorting(number, column, order, true);
-                            }
-                        }
-                        if (isAdded) {
-                            this._multisortMap[this._multisortMap.length] = {
+                    if (webix.ARCHIBUS.sort) {
+                        if (this._multisortMap.length == 0 && !this._multisort_isDelete) {
+                            this._multisortMap[0] = {
                                 id: column,
                                 dir: order,
                                 html: '',
                                 onClick: 0
                             };
-                            this.doReLabelingSorting(this._multisortMap.length - 1, column, order, true);
+                            this.doReLabelingSorting(0, column, order, true);
                         } else {
-                            this.doRemoveColumn();
+                            var isAdded = true;
+                            for (var number in this._multisortMap) {
+                                var element = this._multisortMap[number];
+                                if (element.id != column) {
+                                    this.doReLabelingSorting(number, element.id, element.dir, false);
+                                } else {
+                                    isAdded = false;
+                                    this._multisortMap[number].dir = order;
+                                    this._multisortMap[number].onClick++;
+                                    this.doReLabelingSorting(number, column, order, true);
+                                }
+                            }
+                            if (isAdded) {
+                                this._multisortMap[this._multisortMap.length] = {
+                                    id: column,
+                                    dir: order,
+                                    html: '',
+                                    onClick: 0
+                                };
+                                this.doReLabelingSorting(this._multisortMap.length - 1, column, order, true);
+                            } else {
+                                this.doRemoveColumn();
+                            }
                         }
                     }
+                    webix.ARCHIBUS.sort = false;
                 }
                 /*
                  Do remove a column from sort
@@ -1427,6 +1443,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }, {
                 key: "eventHandlerHeaderClick",
                 value: function eventHandlerHeaderClick(column) {
+                    webix.ARCHIBUS.sort = true;
                     var col = this.getColumnConfig(column);
                     if (!col.sort) {
                         return;
@@ -1499,7 +1516,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     addDivInColumnHeader: this._dataGridSort.addDivInColumnHeader,
                     calculationColumnValue: this._dataGridGroups.calculationColumnValue
                 }, webix.ui.treetable);
-                if (!webix.env.touch && webix.ui.scrollSize) webix.CustomScroll.init();
+                if (!webix.env.touch && webix.ui.scrollSize) {
+                    webix.CustomScroll.init();
+                }
                 this.dataTypeToFilterTypeMapping = {
                     text: 'serverFilter',
                     date: 'serverFilter',
@@ -1512,19 +1531,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                 this.view = new webix.ui({
                     type: 'clean',
-                    css: config.style,
+                    css: config.style + ' styleLayoutDataGrid',
                     container: config.container,
+                    padding: 0,
                     rows: [{
                         type: 'header',
-                        css: 'webix_header ' + config.style,
+                        css: 'webix_header styleLayoutHeader ' + config.style,
                         template: config.title
                     }, {
-                        css: 'layoutFilter',
+                        css: 'styleLayoutFilter',
                         template: '<div id="' + nameFiltering + '"style="height: 100%" "></div>',
                         autoheight: true
                     }, {
+                        css: 'styleLayoutDataGrid',
                         template: '<div id="' + nameGrid + '"style="height: 100%" "></div>'
                     }, {
+                        css: 'styleLayoutPager',
                         template: '<div id="' + namePaging + '"></div>',
                         autoheight: true
                     }]
@@ -1576,6 +1598,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         css: config.style,
                         columns: gridColumns.columns,
                         pager: {
+                            css: 'stylePager',
                             template: "{common.first()}{common.prev()}{common.pages()}{common.next()}{common.last()}",
                             container: pagingName,
                             size: config.pageSize,
@@ -1622,7 +1645,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         onAfterRender: this._afterRender,
                         onBeforeSelect: this._beforeSelect,
                         onAfterScroll: this._afterScroll,
-                        onColumnResize: this._columnResize
+                        onColumnResize: this._columnResize,
+                        onAfterFilter: this._dataGridFilter.afterFilter
                     };
 
                     for (var event in customGridEvents) {
@@ -1702,7 +1726,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             gridColumn.footer = configurationTotalGroup.footer;
                             webixGroupBy = configurationTotalGroup.header;
                         } else {
-                            gridColumn.footer = [{ text: "", height: 20 }, { text: "", height: 20 }];
+                            if (i == ARCHIBUSColumns.length - 1) {
+                                gridColumn.footer = [{ text: '<div id="pager"></div>', height: 20 }, { text: "", height: 20 }];
+                            } else {
+                                gridColumn.footer = [{ text: "", height: 20 }, { text: "", height: 20 }];
+                            }
                         }
                         gridColumns[index] = gridColumn;
                         index++;
@@ -1736,7 +1764,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         }
                     }
                     if (isCalcTotalGroup) {
-                        configureCheckbox['footer'] = { text: '<div class="footerTitle"">TOTAL</div><div id="page_section"></div>' };
+                        configureCheckbox['footer'] = { text: '<div class="footerTitle"">TOTAL</div>' };
                     }
                     return configureCheckbox;
                 }
@@ -1994,6 +2022,528 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         module.exports = DataGrid;
     }, { "./custom-actions": 1, "./datagrid-edit": 2, "./datagrid-filter": 3, "./datagrid-groups": 4, "./datagrid-load-data": 5, "./datagrid-sort": 6 }], 8: [function (require, module, exports) {
+        var DateRangeFilter = (function () {
+            function DateRangeFilter() {
+                _classCallCheck(this, DateRangeFilter);
+
+                webix.editors.dateRange = webix.extend({
+                    popupType: 'dateRange',
+                    focus: function focus() {
+                        /*var gridObject = $$(webix.ARCHIBUS.filterContainer),
+                            item = gridObject.getItem(webix.ARCHIBUS.currentDisplayFilter.row),
+                            data = item[webix.ARCHIBUS.currentDisplayFilter.id];
+                        if (data.value) {
+                            this.getInputNode().getChildViews()[2].focus();
+                            if (data.value && data.maxValue) {
+                                this.getInputNode().getChildViews()[0].focus();
+                            }
+                        } else {
+                            this.getInputNode().getChildViews()[0].focus();
+                        }*/
+                    },
+                    getValue: function getValue() {
+                        var minInput = this.getInputNode().getChildViews()[0].getValue();
+                        var maxInput = this.getInputNode().getChildViews()[2].getValue();
+                        return { min: minInput || '', max: maxInput || '' };
+                    },
+                    setValue: function setValue(value) {
+                        var displayMinValue = '',
+                            displayMaxValue = '';
+                        var gridObject = $$(webix.ARCHIBUS.filterContainer),
+                            item = gridObject.getItem(webix.ARCHIBUS.currentDisplayFilter.row),
+                            data = item[webix.ARCHIBUS.currentDisplayFilter.id];
+                        if (data.value) {
+                            displayMinValue = data.value;
+                        }
+                        if (data.maxValue) {
+                            displayMaxValue = data.maxValue;
+                        }
+                        this.getPopup().show(this.node);
+                        var minInput = this.getInputNode().getChildViews()[0];
+                        var maxInput = this.getInputNode().getChildViews()[2];
+                        minInput.setValue(displayMinValue);
+                        maxInput.setValue(displayMaxValue);
+                    },
+                    getInputNode: function getInputNode() {
+                        return this.getPopup().getChildViews()[0];
+                    },
+                    popupInit: function popupInit(popup) {
+                        popup.getChildViews()[0].attachEvent("onSelect", function (value) {
+                            webix.callEvent("onEditEnd", [value]);
+                        });
+                    }
+                }, webix.editors.popup);
+            }
+
+            _createClass(DateRangeFilter, [{
+                key: "configuration",
+                value: function configuration() {
+                    var configurationView = {
+                        view: "filterPopup",
+                        relative: 'top',
+                        css: 'customFilterView',
+                        body: {
+                            cols: [{
+                                view: "datepicker", timepicker: true, stringResult: true, format: "%d %M %Y at %H:%i",
+                                on: {
+                                    //onChange: this._changeMinValueFilter
+                                }
+                            }, {
+                                template: 'to',
+                                width: 20,
+                                css: 'styleString'
+                            }, {
+                                view: "datepicker", timepicker: true, stringResult: true, format: "%d %M %Y at %H:%i",
+                                tabFocus: true,
+                                on: {
+                                    //onChange: this._changeMaxValueFilter
+                                }
+                            }]
+                        }
+                    };
+
+                    return {
+                        id: 'dateRange',
+                        view: configurationView
+                    };
+                }
+            }, {
+                key: "_changeMinValueFilter",
+                value: function _changeMinValueFilter(newValue, oldValue) {
+                    var gridObject = $$(webix.ARCHIBUS.filterContainer);
+                    var item = gridObject.getItem(webix.ARCHIBUS.currentDisplayFilter.row);
+                    if (newValue || newValue == '') {
+                        item[webix.ARCHIBUS.currentDisplayFilter.id].value = newValue;
+                    }
+                    $$(webix.ARCHIBUS.gridContainer).registerFilter(item[webix.ARCHIBUS.currentDisplayFilter.id], { columnId: webix.ARCHIBUS.currentDisplayFilter.id }, {
+                        $server: true,
+                        getValue: function getValue(node) {
+                            var query = '';
+                            if (node.value) {
+                                query = '{"type": "date", "min": "' + node.value + '"}';
+                            }
+                            if (node.maxValue) {
+                                query = '{"type": "date", "max": "' + node.maxValue + '"}';
+                            }
+                            if (node.value && node.maxValue) {
+                                query = '{"type": "date", "min": "' + node.value + '", "max": "' + node.maxValue + '"}';
+                            }
+                            return query;
+                        }
+                    });
+                    $$(webix.ARCHIBUS.gridContainer).filterByAll();
+                    gridObject.refresh();
+                }
+            }, {
+                key: "_changeMaxValueFilter",
+                value: function _changeMaxValueFilter(newValue, oldValue) {
+                    var gridObject = $$(webix.ARCHIBUS.filterContainer);
+                    var item = gridObject.getItem(webix.ARCHIBUS.currentDisplayFilter.row);
+                    if (newValue || newValue == '') {
+                        item[webix.ARCHIBUS.currentDisplayFilter.id].maxValue = newValue;
+                    }
+                    $$(webix.ARCHIBUS.gridContainer).registerFilter(item[webix.ARCHIBUS.currentDisplayFilter.id], { columnId: webix.ARCHIBUS.currentDisplayFilter.id }, {
+                        $server: true,
+                        getValue: function getValue(node) {
+                            var query = '';
+                            if (node.value) {
+                                query = '{"type": "date", "min": "' + node.value + '"}';
+                            }
+                            if (node.maxValue) {
+                                query = '{"type": "date", "max": "' + node.maxValue + '"}';
+                            }
+                            if (node.value && node.maxValue) {
+                                query = '{"type": "date", "min": "' + node.value + '", "max": "' + node.maxValue + '"}';
+                            }
+                            return query;
+                        }
+                    });
+                    $$(webix.ARCHIBUS.gridContainer).filterByAll();
+                    gridObject.refresh();
+                }
+            }]);
+
+            return DateRangeFilter;
+        })();
+
+        module.exports = DateRangeFilter;
+    }, {}], 9: [function (require, module, exports) {
+        var NumericRangeFilter = (function () {
+            function NumericRangeFilter() {
+                _classCallCheck(this, NumericRangeFilter);
+
+                webix.editors.numericRange = webix.extend({
+                    popupType: 'numericRange',
+                    focus: function focus() {
+                        var gridObject = $$(webix.ARCHIBUS.filterContainer),
+                            item = gridObject.getItem(webix.ARCHIBUS.currentDisplayFilter.row),
+                            data = item[webix.ARCHIBUS.currentDisplayFilter.id];
+                        if (data.value) {
+                            this.getInputNode().getChildViews()[2].focus();
+                            if (data.value && data.maxValue) {
+                                this.getInputNode().getChildViews()[0].focus();
+                            }
+                        } else {
+                            this.getInputNode().getChildViews()[0].focus();
+                        }
+                    },
+                    getValue: function getValue() {
+                        var minInput = this.getInputNode().getChildViews()[0].getValue();
+                        var maxInput = this.getInputNode().getChildViews()[2].getValue();
+                        return { min: minInput || '', max: maxInput || '' };
+                    },
+                    setValue: function setValue(value) {
+                        var displayMinValue = '',
+                            displayMaxValue = '';
+                        var gridObject = $$(webix.ARCHIBUS.filterContainer),
+                            item = gridObject.getItem(webix.ARCHIBUS.currentDisplayFilter.row),
+                            data = item[webix.ARCHIBUS.currentDisplayFilter.id];
+                        if (data.value) {
+                            displayMinValue = data.value;
+                        }
+                        if (data.maxValue) {
+                            displayMaxValue = data.maxValue;
+                        }
+                        this.getPopup().show(this.node);
+                        var minInput = this.getInputNode().getChildViews()[0];
+                        var maxInput = this.getInputNode().getChildViews()[2];
+                        minInput.setValue(displayMinValue);
+                        maxInput.setValue(displayMaxValue);
+                    },
+                    getInputNode: function getInputNode() {
+                        return this.getPopup().getChildViews()[0];
+                    },
+                    popupInit: function popupInit(popup) {
+                        popup.getChildViews()[0].attachEvent("onSelect", function (value) {
+                            webix.callEvent("onEditEnd", [value]);
+                        });
+                    }
+                }, webix.editors.popup);
+            }
+
+            _createClass(NumericRangeFilter, [{
+                key: "configuration",
+                value: function configuration() {
+                    var configurationView = {
+                        view: "filterPopup",
+                        relative: 'top',
+                        id: 'numericRangeView',
+                        css: 'styleNumericRangeFilter',
+                        body: {
+                            cols: [{
+                                view: "text",
+                                id: 'customFilter',
+                                css: 'styleMinInput',
+                                width: 70,
+                                height: 30,
+                                tabFocus: true,
+                                on: {
+                                    onChange: this._changeMinValueFilter,
+                                    onKeyPress: function onKeyPress(code, e) {
+                                        if (code == 13) {
+                                            var newValue = e.currentTarget.activeElement.value;
+                                            this.callEvent('onChange', [newValue]);
+                                        }
+                                    }
+                                }
+                            }, {
+                                template: 'to',
+                                width: 20,
+                                css: 'styleString'
+                            }, {
+                                view: "text",
+                                id: 'customFilter1',
+                                css: 'styleMaxInput',
+                                width: 70,
+                                height: 30,
+                                tabFocus: true,
+                                on: {
+                                    onChange: this._changeMaxValueFilter,
+                                    onKeyPress: function onKeyPress(code, e) {
+                                        if (code == 13) {
+                                            var newValue = e.currentTarget.activeElement.value;
+                                            this.callEvent('onChange', [newValue]);
+                                        }
+                                    }
+                                }
+                            }]
+                        }
+                    };
+
+                    return {
+                        id: 'numericRange',
+                        view: configurationView
+                    };
+                }
+            }, {
+                key: "_changeMinValueFilter",
+                value: function _changeMinValueFilter(newValue, oldValue) {
+                    var gridObject = $$(webix.ARCHIBUS.filterContainer);
+                    var item = gridObject.getItem(webix.ARCHIBUS.currentDisplayFilter.row);
+                    if (newValue || newValue == '') {
+                        item[webix.ARCHIBUS.currentDisplayFilter.id].value = newValue;
+                    }
+                    $$(webix.ARCHIBUS.gridContainer).registerFilter(item[webix.ARCHIBUS.currentDisplayFilter.id], { columnId: webix.ARCHIBUS.currentDisplayFilter.id }, {
+                        $server: true,
+                        getValue: function getValue(node) {
+                            var query = '';
+                            if (node.value) {
+                                query = '{"type": "number", "min": "' + node.value + '"}';
+                            }
+                            if (node.maxValue) {
+                                query = '{"type": "number", "max": "' + node.maxValue + '"}';
+                            }
+                            if (node.value && node.maxValue) {
+                                query = '{"type": "number", "min": "' + node.value + '", "max": "' + node.maxValue + '"}';
+                            }
+                            return query;
+                        }
+                    });
+                    $$(webix.ARCHIBUS.gridContainer).filterByAll();
+                    gridObject.refresh();
+                }
+            }, {
+                key: "_changeMaxValueFilter",
+                value: function _changeMaxValueFilter(newValue, oldValue) {
+                    var gridObject = $$(webix.ARCHIBUS.filterContainer);
+                    var item = gridObject.getItem(webix.ARCHIBUS.currentDisplayFilter.row);
+                    if (newValue || newValue == '') {
+                        item[webix.ARCHIBUS.currentDisplayFilter.id].maxValue = newValue;
+                    }
+                    $$(webix.ARCHIBUS.gridContainer).registerFilter(item[webix.ARCHIBUS.currentDisplayFilter.id], { columnId: webix.ARCHIBUS.currentDisplayFilter.id }, {
+                        $server: true,
+                        getValue: function getValue(node) {
+                            var query = '';
+                            if (node.value) {
+                                query = '{"type": "number", "min": "' + node.value + '"}';
+                            }
+                            if (node.maxValue) {
+                                query = '{"type": "number", "max": "' + node.maxValue + '"}';
+                            }
+                            if (node.value && node.maxValue) {
+                                query = '{"type": "number", "min": "' + node.value + '", "max": "' + node.maxValue + '"}';
+                            }
+                            return query;
+                        }
+                    });
+                    $$(webix.ARCHIBUS.gridContainer).filterByAll();
+                    gridObject.refresh();
+                }
+            }]);
+
+            return NumericRangeFilter;
+        })();
+
+        module.exports = NumericRangeFilter;
+    }, {}], 10: [function (require, module, exports) {
+        var SelectFilter = (function () {
+            function SelectFilter() {
+                _classCallCheck(this, SelectFilter);
+
+                webix.editors.customSelect = webix.extend({
+                    popupType: "customSelect",
+                    focus: function focus() {
+                        this.getInputNode(this.node).focus();
+                    },
+                    getValue: function getValue() {
+                        return this.getInputNode().getValue() || "";
+                    },
+                    setValue: function setValue(value) {
+                        var displayValue = '';
+                        var gridObject = $$(webix.ARCHIBUS.filterContainer);
+                        var item = gridObject.getItem(webix.ARCHIBUS.currentDisplayFilter.row);
+                        if (item[webix.ARCHIBUS.currentDisplayFilter.id].value) {
+                            displayValue = item[webix.ARCHIBUS.currentDisplayFilter.id].value;
+                        }
+                        this.getPopup().show(this.node);
+                        this.getInputNode().setValue(displayValue);
+                    },
+                    getInputNode: function getInputNode() {
+                        return this.getPopup().getChildViews()[0];
+                    }
+
+                }, webix.editors.popup);
+            }
+
+            _createClass(SelectFilter, [{
+                key: "configuration",
+                value: function configuration() {
+                    var configurationView = {
+                        view: "filterPopup",
+                        relative: 'top',
+                        css: 'styleSelectFilter',
+                        on: {
+                            onShow: this._show
+                        },
+                        body: {
+                            view: "combo",
+                            id: 'customCombo',
+                            css: 'styleSelectList',
+                            width: 100,
+                            value: 1,
+                            options: [],
+                            on: {
+                                onChange: this._changeFilter,
+                                onBeforeRender: function onBeforeRender() {
+                                    var optionsView = $$('customCombo').config.options;
+                                    webix.html.addCss($$(optionsView).$view, "styleSelectOptions");
+                                }
+                            }
+                        }
+                    };
+
+                    return {
+                        id: 'customSelect',
+                        view: configurationView
+                    };
+                }
+            }, {
+                key: "_changeFilter",
+                value: function _changeFilter(newValue, oldValue) {
+                    newValue = this.getText();
+                    var gridObject = $$(webix.ARCHIBUS.filterContainer);
+                    var item = gridObject.getItem(webix.ARCHIBUS.currentDisplayFilter.row);
+                    if (newValue) {
+                        item[webix.ARCHIBUS.currentDisplayFilter.id].value = newValue;
+                    }
+                    $$(webix.ARCHIBUS.gridContainer).registerFilter(newValue, { columnId: webix.ARCHIBUS.currentDisplayFilter.id }, {
+                        $server: true,
+                        getValue: function getValue(node) {
+                            return '{"type": "text", "value": "' + node + '"}';
+                        }
+                    });
+                    $$(webix.ARCHIBUS.gridContainer).filterByAll();
+                    gridObject.refresh();
+                }
+            }, {
+                key: "_show",
+                value: function _show() {
+                    $$('customCombo').getList().clearAll();
+                    var options;
+                    for (var index in webix.ARCHIBUS.data.collection) {
+                        if (webix.ARCHIBUS.data.collection[index].id == webix.ARCHIBUS.currentDisplayFilter.id) {
+                            options = webix.ARCHIBUS.data.collection[index].value;
+                            break;
+                        }
+                    }
+                    for (var index in options) {
+                        $$('customCombo').getList().add(options[index]);
+                    }
+                }
+            }]);
+
+            return SelectFilter;
+        })();
+
+        module.exports = SelectFilter;
+    }, {}], 11: [function (require, module, exports) {
+        var TextFilter = (function () {
+            function TextFilter() {
+                _classCallCheck(this, TextFilter);
+
+                webix.editors.customText = webix.extend({
+                    focus: function focus() {
+                        this.getInputNode(this.node).focus();
+                    },
+                    popupType: 'customText',
+                    getValue: function getValue() {
+                        return this.getInputNode().getValue() || "";
+                    },
+                    setValue: function setValue() {
+                        var displayValue = '';
+                        var gridObject = $$(webix.ARCHIBUS.filterContainer);
+                        var item = gridObject.getItem(webix.ARCHIBUS.currentDisplayFilter.row);
+                        if (item[webix.ARCHIBUS.currentDisplayFilter.id].value) {
+                            displayValue = item[webix.ARCHIBUS.currentDisplayFilter.id].value;
+                        }
+                        this.getPopup().show(this.node);
+                        this.getInputNode().setValue(displayValue);
+                    },
+                    getInputNode: function getInputNode() {
+                        return this.getPopup().getChildViews()[0];
+                    },
+                    popupInit: function popupInit(popup) {
+                        popup.getChildViews()[0].attachEvent("onSelect", function (value) {
+                            webix.callEvent("onEditEnd", [value]);
+                        });
+                    }
+                }, webix.editors.popup);
+            }
+
+            _createClass(TextFilter, [{
+                key: "configuration",
+                value: function configuration() {
+                    var configurationView = {
+                        view: "filterPopup",
+                        relative: 'top',
+                        css: 'styleTextFilter',
+                        body: {
+                            view: "text",
+                            width: 100,
+                            height: 30,
+                            css: 'styleTextInput',
+                            on: {
+                                onChange: this._changeFilter,
+                                onKeyPress: function onKeyPress(code, e) {
+                                    if (code == 13) {
+                                        var newValue = e.currentTarget.activeElement.value;
+                                        this.callEvent('onChange', [newValue]);
+                                    }
+                                }
+                            }
+                        }
+                    };
+
+                    return {
+                        id: 'customText',
+                        view: configurationView
+                    };
+                }
+            }, {
+                key: "_changeFilter",
+                value: function _changeFilter(newValue, oldValue) {
+                    var gridObject = $$(webix.ARCHIBUS.filterContainer);
+                    var item = gridObject.getItem(webix.ARCHIBUS.currentDisplayFilter.row);
+                    if (newValue) {
+                        item[webix.ARCHIBUS.currentDisplayFilter.id].value = newValue;
+                    }
+                    $$(webix.ARCHIBUS.gridContainer).registerFilter(newValue, { columnId: webix.ARCHIBUS.currentDisplayFilter.id }, {
+                        $server: true,
+                        getValue: function getValue(node) {
+                            var result = '{"type": "text", "value": "' + node + '"';
+                            var pattern = "%";
+                            var isAddStyle = true;
+
+                            for (var i = 0, length = pattern.length; i < length; i += 1) {
+                                var p = pattern[i];
+                                var s = node[i];
+                                if (p !== s) {
+                                    isAddStyle = false;
+                                    break;
+                                }
+                            }
+
+                            if (node[node.length - 1] == pattern) {
+                                result = '{"type": "text", "value": "' + node.substr(0, node.length - 1) + '", "start": "true"';
+                            }
+
+                            if (isAddStyle) {
+                                result = '{"type": "text", "value": "' + node.substr(1) + '", "end": "true"';
+                            }
+                            result += '}';
+                            return result;
+                        }
+                    });
+                    $$(webix.ARCHIBUS.gridContainer).filterByAll();
+                    gridObject.refresh();
+                }
+            }]);
+
+            return TextFilter;
+        })();
+
+        module.exports = TextFilter;
+    }, {}], 12: [function (require, module, exports) {
         var buttonsMetadata = [{
             icon: 'style/icons/edit.jpg',
             class: 'editclasss',
@@ -2032,7 +2582,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }];
 
         module.exports = buttonsMetadata;
-    }, {}], 9: [function (require, module, exports) {
+    }, {}], 13: [function (require, module, exports) {
         var classStyle = {
             CountryCode: [{
                 cellText: 'USA',
@@ -2053,7 +2603,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         };
 
         module.exports = classStyle;
-    }, {}], 10: [function (require, module, exports) {
+    }, {}], 14: [function (require, module, exports) {
         var buttonMetadata = require('./sample-buttons-metadata');
 
         var ARCHIBUSColumns = [{
@@ -2138,7 +2688,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }];
 
         module.exports = ARCHIBUSColumns;
-    }, { "./sample-buttons-metadata": 8 }], 11: [function (require, module, exports) {
+    }, { "./sample-buttons-metadata": 12 }], 15: [function (require, module, exports) {
         var DataGrid = require('./data-grid/datagrid');
         var columnsMetadata = require('./data-grid/metadata/sample-columns-metadata');
 
@@ -2162,7 +2712,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 firstRightFixedColumn: 'Action',
                 lastLeftFixedColumn: 'quantity_mtbf'
             });
-
             resize([dataGrid]);
         });
 
@@ -2175,8 +2724,4 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 });
             }
         }
-
-        function filter() {
-            console.log('up');
-        }
-    }, { "./data-grid/datagrid": 7, "./data-grid/metadata/sample-columns-metadata": 10 }] }, {}, [11]);
+    }, { "./data-grid/datagrid": 7, "./data-grid/metadata/sample-columns-metadata": 14 }] }, {}, [15]);

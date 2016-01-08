@@ -44,40 +44,42 @@ class DataGridSort {
 		@order: the sort order
      */
     doStartMultiSorting (column, order) {
-        if (this._multisortMap.length == 0 && !this._multisort_isDelete) {
-            this._multisortMap[0] = {
-                id: column,
-                dir: order,
-                html: '',
-                onClick: 0
-            };
-            this.doReLabelingSorting(0, column, order, true);
-        } else {
-            var isAdded = true;
-            for (var number in this._multisortMap) {
-                var element = this._multisortMap[number];
-                if (element.id != column) {
-                    this.doReLabelingSorting(number, element.id, element.dir, false);
-                } else {
-                    isAdded = false;
-                    this._multisortMap[number].dir = order;
-                    this._multisortMap[number].onClick++;
-                    this._multisortMap[number].numberInQuery = 1;
-                    this.doReLabelingSorting(number, column, order, true);
-                }
-            }
-            if (isAdded) {
-                this._multisortMap[this._multisortMap.length] = {
+        if(webix.ARCHIBUS.sort) {
+            if (this._multisortMap.length == 0 && !this._multisort_isDelete) {
+                this._multisortMap[0] = {
                     id: column,
                     dir: order,
                     html: '',
                     onClick: 0
                 };
-                this.doReLabelingSorting(this._multisortMap.length - 1, column, order, true);
+                this.doReLabelingSorting(0, column, order, true);
             } else {
-                this.doRemoveColumn();
+                var isAdded = true;
+                for (var number in this._multisortMap) {
+                    var element = this._multisortMap[number];
+                    if (element.id != column) {
+                        this.doReLabelingSorting(number, element.id, element.dir, false);
+                    } else {
+                        isAdded = false;
+                        this._multisortMap[number].dir = order;
+                        this._multisortMap[number].onClick++;
+                        this.doReLabelingSorting(number, column, order, true);
+                    }
+                }
+                if (isAdded) {
+                    this._multisortMap[this._multisortMap.length] = {
+                        id: column,
+                        dir: order,
+                        html: '',
+                        onClick: 0
+                    };
+                    this.doReLabelingSorting(this._multisortMap.length - 1, column, order, true);
+                } else {
+                    this.doRemoveColumn();
+                }
             }
         }
+        webix.ARCHIBUS.sort = false;
     }
     /*
      Do remove a column from sort
@@ -145,6 +147,7 @@ class DataGridSort {
 		@column: column configuration
      */
     eventHandlerHeaderClick (column) {
+        webix.ARCHIBUS.sort = true;
         var col = this.getColumnConfig(column);
         if (!col.sort) {
             return;

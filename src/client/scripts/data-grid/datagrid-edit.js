@@ -3,7 +3,6 @@ The class responsible for editing
 */
 class DataGridEdit{
     constructor () {
-        webix.UIManager.tabControl = true;
         webix.editors.$popup = {
             text: {
                 view: 'popup',
@@ -79,6 +78,7 @@ class DataGridEdit{
 	*/
     eventEditStart (event,object,cell) {
         var isFocus = true;
+        webix.UIManager.tabControl = true;
         this.addRowCss(object.row, 'rowEdited');
         this.eachColumn (
             function (columnId) {
@@ -99,6 +99,7 @@ class DataGridEdit{
 	 Handling the click event on the button "Successful edit"
 	*/
     eventEditSuccess (event,object,cell) {
+        webix.UIManager.tabControl = false;
         this.editStop();
         for (var index in  webix.ARCHIBUS.editRows) {
             var editRow = webix.ARCHIBUS.editRows[index];
@@ -116,6 +117,7 @@ class DataGridEdit{
 	 Handling the click event on the button "Cancel edit"
 	*/
     eventEditCancel (event,object,cell) {
+        webix.UIManager.tabControl = false;
         this.editStop();
         for (var i in  webix.ARCHIBUS.editRows) {
             var editRow = webix.ARCHIBUS.editRows[i];

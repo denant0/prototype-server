@@ -95,7 +95,7 @@ OCRUD.prototype.getController = function(newComponent) {
 
 OCRUD.prototype.getQuery = function() {
 	var query = "select from " + this.className;
-	var val = document.getElementById(this.className + "!filter").value;
+	var val = document.getElementById(this.className + "!filters").value;
 	
 	if (val) 
 		query += " where any() = '" + val + "'";

@@ -1,65 +1,34 @@
+var TextFilter = require('../data-grid/filters/text-filter'),
+    SelectFilter = require('../data-grid/filters/select-filter'),
+    NumericRangeFilter = require('../data-grid/filters/numeric-range-filter'),
+    DateRangeFilter = require('../data-grid/filters/date-range-filter');
+
+
 class DataGridFilter {
 
     constructor () {
         webix.ARCHIBUS.currentDisplayFilter = {};
+
         webix.protoUI ({
             name: 'filterPopup',
-            _set_point:function(mode, left, top) {
-                if (webix.ARCHIBUS.filterContainer) {
-                    var gridObject = $$(webix.ARCHIBUS.filterContainer),
-                        filterView = $$("customFilterView"),
-                        configGridCell = gridObject.getColumnConfig(webix.ARCHIBUS.currentDisplayFilter.id);
-
-                    top = top + gridObject.$height + 6;
-                    left = filterView.config.left +(configGridCell.width - filterView.config.width)/2 + filterView.config.width/2 - 7;
-                }
-                this._hide_point();
-                document.body.appendChild(this._point_element = webix.html.create("DIV",{ "class":"webix_point_"+mode },""));
-                this._point_element.style.zIndex = webix.ui.zIndex();
-                this._point_element.style.top = top+"px";
-                this._point_element.style.left = left+"px";
-            }
+            show: this._doShowFilterView,
+            _set_point: this._setAnchorPosition
         }, webix.ui.popup);
 
-
-        webix.ui({
-            view: 'filterPopup',
-            css: 'customFilterView',
-            id: 'customFilterView',
-            padding: 1,
-            relative: 'top',
-            on: {
-                "onHide": function (){
-                    webix.ARCHIBUS.currentDisplayFilter = {};
-                }
-            },
-            body: {
-                css: 'customFilterView',
-                template: function () {
-                    switch (webix.ARCHIBUS.currentDisplayFilter.type) {
-                        case 'enum':
-                            return this.renderSelectFilter();
-                        case 'text':
-                            return this.renderTextFilter();
-                        case 'date':
-                            return "future";
-                        case 'integer':
-                        case 'number':
-                            return this.renderNumberFilter();
-                    }
-                },
-                autoheight: true,
-                borderless: true,
-                data: [{}],
-                renderSelectFilter: this._renderSelectFilter,
-                renderTextFilter: this._renderTextFilter,
-                renderNumberFilter: this._renderNumberFilter
+        webix.protoUI ({
+            name: 'customFilterTable',
+            _custom_tab_handler: function (tab, e) {
+                return false;
             }
-        });
+        }, webix.ui.datatable);
+
+        this._registerFilter(new TextFilter());
+        this._registerFilter(new SelectFilter());
+        this._registerFilter(new NumericRangeFilter());
+        this._registerFilter(new DateRangeFilter());
     }
 
-    refreshWidthColumn(columnId)
-    {
+    refreshWidthColumn(columnId) {
         var gridFilter = $$(webix.ARCHIBUS.filterContainer),
             configurationColumn = this.getColumnConfig(columnId);
         gridFilter.setColumnWidth(columnId, configurationColumn.width);
@@ -85,24 +54,192 @@ class DataGridFilter {
         return table;
     }
 
+    afterFilter () {
+        $$(webix.ARCHIBUS.filterContainer).editStop();
+        if (webix.ARCHIBUS.currentDisplayFilter.id) {
+            $$(webix.ARCHIBUS.filterContainer).editCell(webix.ARCHIBUS.currentDisplayFilter.row, webix.ARCHIBUS.currentDisplayFilter.id);
+        }
+    }
+
+    _doShowFilterView(node, mode, point){
+        if(!this.callEvent("onBeforeShow",arguments))
+            return false;
+
+        this._settings.hidden = false;
+        this._viewobj.style.zIndex = (this._settings.zIndex||webix.ui.zIndex());
+        if (this._settings.modal || this._modal){
+            this._modal_set(true);
+            this._modal = null; // hidden_setter handling
+        }
+
+        var pos, dx, dy;
+        mode = mode || {};
+        if (!mode.pos)
+            mode.pos = this._settings.relative;
+
+        //get position of source html node
+        //we need to show popup which pointing to that node
+        if (node){
+            //if event was provided - get node info from it
+            if (typeof node == "object" && !node.tagName){
+                /*below logic is far from ideal*/
+                if (node.target || node.srcElement){
+                    pos = webix.html.pos(node);
+                    dx = 20;
+                    dy = 5;
+                } else
+                    pos = node;
+
+
+            } else {
+                node = webix.toNode(node);
+                webix.assert(node,"Not existing target for window:show");
+                pos = webix.html.offset(node);
+            }
+
+            //size of body, we need to fit popup inside
+            var x = Math.max(window.innerWidth || 0, document.body.offsetWidth);
+            var y = Math.max(window.innerHeight || 0, document.body.offsetHeight);
+
+            //size of node, near which popup will be rendered
+            dx = dx || node.offsetWidth  || 0;
+            dy = dy || node.offsetHeight || 0;
+            //size of popup element
+            var size = this._last_size;
+
+            var fin_x = pos.x;
+            var fin_y = pos.y;
+            var point_y=0;
+            var point_x = 0;
+
+            if (this._settings.autofit){
+                var delta_x = 6; var delta_y=6; var delta_point = 6;
+
+                //default pointer position - top
+                point = "top";
+                fin_y=0; fin_x = 0;
+                //if we want to place menu at righ, but there is no place move it to left instead
+                if (x - pos.x - dx < size[0] && mode.pos == "right")
+                    mode.pos = "left";
+
+                if (mode.pos == "right"){
+                    fin_x = pos.x+delta_x+dx;
+                    delta_y = -dy;
+                    point = "left";
+                    point_y = Math.round(pos.y+dy/2);
+                    point_x = fin_x - delta_point;
+                } else if (mode.pos == "left"){
+                    fin_x = pos.x-delta_x-size[0]-1;
+                    delta_y = -dy;
+                    point = "right";
+                    point_y = Math.round(pos.y+dy/2);
+                    point_x = fin_x + size[0]+1;
+                } else  {
+                    //left border of screen
+                    if (pos.x < 0){
+                        fin_x = 0;
+                        //popup exceed the right border of screen
+                    } else if (x-pos.x > size[0]){
+                        fin_x = pos.x; //aligned
+                    } else{
+                        fin_x = x-delta_x-size[0]; //not aligned
+                    }
+
+                    point_x = Math.round(pos.x+dx/2);
+                    //when we have a small popup, point need to be rendered at center of popup
+                    if (point_x > fin_x + size[0])
+                        point_x = fin_x + size[0]/2;
+                }
+
+                //if height is not fixed - use default position
+                if ((!size[1] || (y-dy-pos.y-delta_y > size[1])) && mode.pos != "top"){
+                    //bottom
+                    fin_y = dy+pos.y+delta_y - 4;
+                    if (!point_y){
+                        point = "top";
+                        point_y = fin_y-delta_point;
+                    }
+                } else {
+                    //top
+                    fin_y = pos.y-delta_y - size[1];
+                    if (fin_y < 0){
+                        fin_y = 0;
+                        //left|right point can be used, but there is no place for top point
+                        if (point == "top") point = false;
+                    } else if (!point_y){
+                        point = "bottom";
+                        fin_y --;
+                        point_y = fin_y+size[1]+1;
+                    }
+                }
+            }
+            //anda
+            var configGridCell = $$(webix.ARCHIBUS.filterContainer).getColumnConfig(webix.ARCHIBUS.currentDisplayFilter.id);
+            fin_x = fin_x +(configGridCell.width - this.$width)/2;
+            fin_y  = fin_y + $$(webix.ARCHIBUS.filterContainer).$height;
+            //
+            var deltax = (mode.x || 0);
+            var deltay = (mode.y || 0);
+            this.setPosition(fin_x+deltax, fin_y+deltay);
+            if (this._set_point){
+                if (point)
+                    this._set_point(point,point_x+deltax, point_y+deltay);
+                else
+                    this._hide_point();
+            }
+        } else if (this._settings.position)
+            this._setPosition();
+
+        this._viewobj.style.display = "block";
+        this._hide_timer = 1;
+        webix.delay(function(){ this._hide_timer = 0; }, this, [], (webix.env.touch ? 400 : 100 ));
+
+        this._render_hidden_views();
+        if (this.config.autofocus){
+            this._prev_focus = webix.UIManager.getFocus();
+            webix.UIManager.setFocus(this);
+        }
+
+        if (-1 == webix.ui._popups.find(this))
+            webix.ui._popups.push(this);
+
+        this.callEvent("onShow",[]);
+    }
+
+    _setAnchorPosition (mode, left, top) {
+        if (webix.ARCHIBUS.filterContainer) {
+            var gridObject = $$(webix.ARCHIBUS.filterContainer);
+            top = top + gridObject.$height;
+        }
+        this._hide_point();
+        document.body.appendChild(this._point_element = webix.html.create("DIV",{ "class":"webix_point_"+mode },""));
+        this._point_element.style.zIndex = webix.ui.zIndex();
+        this._point_element.style.top = top+"px";
+        this._point_element.style.left = left+"px";
+    }
+
+    _registerFilter (filter) {
+        var configure = filter.configuration();
+        webix.editors.$popup[configure.id] = configure.view;
+    }
+
     _createGridConfiguration (config, nameFiltering) {
         var filterColumns = this._createGridColumns(config);
         var dataFilter = this._createGridData(config);
         var gridConfiguration = {
             container: nameFiltering,
-            view: 'datatable',
+            view: 'customFilterTable',
+            css: 'styleFilterTable',
             header: false,
             scroll: false,
             columns: filterColumns,
+            editable:true,
+            editaction: 'custom',
             autoheight:true,
             on:{
                 onMouseMove: this._mouseMove,
                 onBeforeRender: this._beforeRender,
-                onCreateFilterView: this._createFilterView,
-                onRegisterFilter: this._registerFilter,
-                onRegisterTextFilter: this._registerTextFilter,
-                onRegisterSelectFilter: this._registerSelectFilter,
-                onRegisterNumberFilter: this._registerNumberFilter
+                onAfterEditStop: this._afterEditStop
             },
             onMouseMove:{},
             data: [dataFilter]
@@ -136,11 +273,9 @@ class DataGridFilter {
 
         for (var number in ARCHIBUSColumns) {
             var column = ARCHIBUSColumns[number];
-            var data = {}
-
+            var data = {};
             data.type = column.dataType;
             gridData[column.id] = data;
-
         }
         return gridData;
     }
@@ -151,6 +286,23 @@ class DataGridFilter {
         configGridColumn.dataType = dataType;
         configGridColumn.css = 'filterCell';
         configGridColumn.template = this. _renderFilterValue;
+        if (dataType) {
+            switch (dataType) {
+                case 'number':
+                case 'integer':
+                    configGridColumn.editor = 'numericRange';
+                    break;
+                case 'enum':
+                    configGridColumn.editor = 'customSelect';
+                    break;
+                case 'date':
+                    configGridColumn.editor = 'dateRange';
+                    break;
+                default:
+                    configGridColumn.editor = 'customText';
+                    break;
+            }
+        }
         return configGridColumn;
     }
 
@@ -195,174 +347,16 @@ class DataGridFilter {
         return rightSplit;
     }
 
-    _registerFilter (type,rowId, columnId, view) {
-        switch (type) {
-            case 'text':
-                view.callEvent('onRegisterTextFilter', [rowId, columnId]);
-                break;
-            case 'enum':
-                view.callEvent('onRegisterSelectFilter', [rowId, columnId]);
-                break;
-            case 'number':
-            case 'integer':
-                view.callEvent('onRegisterNumberFilter', [rowId, columnId]);
-                break;
-        }
-    }
-
-    _registerTextFilter (row, column) {
-        var node = document.getElementById("customFilter");
-        var item = $$(webix.ARCHIBUS.filterContainer).getItem(row);
-        if (item[column].value) {
-            node.value = item[column].value;
-        }
-        $$(webix.ARCHIBUS.gridContainer).registerFilter(
-            node.value,
-            { columnId: column },
-            {
-                getValue:function(node){ return node;  },
-                $server: true
-
-            }
-        );
-        node.focus();
-        node.onkeyup = function () {
-            var item = $$(webix.ARCHIBUS.filterContainer).getItem(row);
-            item[column].value =  this.value;
-            $$(webix.ARCHIBUS.filterContainer).refresh();
-            $$(webix.ARCHIBUS.gridContainer).filterByAll();
-        };
-    }
-
-    _renderTextFilter() {
-        return '<div class="ARCHIBUS_filter">' +
-            '<input id="customFilter" type="text" >' +
-            '</div>';
-    }
-
-    _registerSelectFilter (row, column) {
-        var node = document.getElementById("customFilter");
-        var item = $$(webix.ARCHIBUS.filterContainer).getItem(row);
-        if (item[column].value) {
-            node.value = item[column].value;
-        }
-        $$(webix.ARCHIBUS.gridContainer).registerFilter(
-            node.value,
-            { columnId: column },
-            {
-                getValue:function(node){ return node;  },
-                $server: true
-            }
-        );
-        node.onchange  = function () {
-            var item = $$(webix.ARCHIBUS.filterContainer).getItem(row);
-            item[column].value =  this.value;
-            $$(webix.ARCHIBUS.filterContainer).refresh();
-            $$(webix.ARCHIBUS.gridContainer).filterByAll();
-        };
-    }
-
-    _renderSelectFilter () {
-        var result = '<div class="ARCHIBUS_select_filter"><select id="customFilter">';
-        for (var index in webix.ARCHIBUS.data.collection) {
-            if (webix.ARCHIBUS.currentDisplayFilter.id == webix.ARCHIBUS.data.collection[index].id) {
-                var collection = webix.ARCHIBUS.data.collection[index].value;
-                for (var indexCollection in collection) {
-                    result += '<option>'+ collection[indexCollection].value +'</option>';
-                }
-                break;
-            }
-        }
-        result += '</select></div>';
-        return result;
-    }
-
-    _registerNumberFilter (row, column) {
-        var nodeValue = document.getElementById("customMinFilter");
-        var nodeEquals = document.getElementById("customMaxFilter");
-
-        var item = $$(webix.ARCHIBUS.filterContainer).getItem(row);
-        if (item[column].value) {
-            nodeValue.value = item[column].value;
-        }
-        if (item[column].equal) {
-            nodeEquals.value = item[column].equal;
-        }
-        $$(webix.ARCHIBUS.gridContainer).registerFilter(
-            {value: nodeValue.value, equal: nodeEquals.value},
-            { columnId: column },
-            {
-                getValue:function(node){ webix.message(node.equal); return node.value; },
-                $server: true
-            }
-        );
-
-        nodeEquals.onchange  = function () {
-            var item = $$(webix.ARCHIBUS.filterContainer).getItem(row);
-            item[column].equal =  this.value;
-            $$(webix.ARCHIBUS.filterContainer).refresh();
-            $$(webix.ARCHIBUS.gridContainer).filterByAll();
-        };
-
-        nodeValue.focus();
-        nodeValue.onkeyup = function () {
-            var item = $$(webix.ARCHIBUS.filterContainer).getItem(row);
-            item[column].value =  this.value;
-            $$(webix.ARCHIBUS.filterContainer).refresh();
-            $$(webix.ARCHIBUS.gridContainer).filterByAll();
-        };
-    }
-
-    _renderNumberFilter()
+    _mouseMove (id, event, node)
     {
-        var result = '<div class="ARCHIBUS_number_filter">' +
-            '<input id="customMinFilter" type="text">' +
-            '<div>' +
-            'to' +
-            '</div>' +
-            '<input id="customMaxFilter" type="text">';
-        return result;
-
-    }
-
-    _createFilterView (node, column) {
-        var filterView = $$("customFilterView"),
-            body = filterView.getBody(),
-            configGridCell = $$(webix.ARCHIBUS.filterContainer).getColumnConfig(column);
-
-        filterView.show(node);
-        switch (webix.ARCHIBUS.currentDisplayFilter.type) {
-            case 'enum':
-            case 'date':
-                filterView.define("width", 100);
-                break;
-            case 'text':
-                filterView.define("width", 105);
-                break;
-            case 'number':
-            case 'integer':
-                filterView.define("width", 137);
-                break;
-        }
-
-        var left = filterView.config.left +(configGridCell.width - filterView.config.width)/2;
-        var top = filterView.config.top + $$(webix.ARCHIBUS.filterContainer).$height + 4;
-        filterView.define("left", left);
-        body.refresh();
-        filterView.define("top", top);
-        body.refresh();
-    }
-
-
-
-    _mouseMove (id, event, node) {
         var item = $$(webix.ARCHIBUS.filterContainer).getItem(id),
+            type = '';
+        if (item) {
             type = item[id.column].type;
-
-        webix.ARCHIBUS.currentDisplayFilter = {id: id.column, type: type};
-        this.callEvent('onCreateFilterView', [event.target, id.column]);
-        this.callEvent('onCreateFilterView', [event.target, id.column]);
-        this.callEvent('onRegisterFilter', [type, id.row, id.column, this]);
+            this.editStop();
+            webix.ARCHIBUS.currentDisplayFilter = {id: id.column, row: id.row, type: type};
+            this.editCell(id.row, id.column);
+        }
     }
 
     _beforeRender () {
@@ -380,12 +374,26 @@ class DataGridFilter {
             webix.ARCHIBUS.currentDisplayFilter = {};
             var item = filterGridObject.getItem(cellElement.row);
             item[cellElement.column].value = '';
-            if (item[cellElement.column].equal) {
-                item[cellElement.column].equal = '';
+            if (item[cellElement.column].maxValue) {
+                item[cellElement.column].maxValue = '';
             }
             filterGridObject.refresh();
             gridObject.filterByAll();
         };
+    }
+
+    _afterEditStop (state, editors) {
+        var item = this.getItem(webix.ARCHIBUS.currentDisplayFilter.row);
+        var newState = state.old;
+        if (item) {
+            if (state.value.min || state.value.max || state.value.min == '' || state.value.max == '') {
+                newState.value = state.value.min;
+                newState.maxValue = state.value.max;
+            } else {
+                newState.value = state.value;
+            }
+            item[webix.ARCHIBUS.currentDisplayFilter.id] = newState;
+        }
     }
 
     _renderFilterValue (cellElement, cellInfo) {
@@ -397,20 +405,27 @@ class DataGridFilter {
         } else {
             if (cellElement[id].value) {
                 result = '<div class="filterValue"><img class="filterCancelClass" src="style/icons/cansel.jpg" style="float:left;"/><div style="padding-left: 2px; float:left;">' + cellElement[id].value;
-                if (cellElement[id].equal) {
-                    result += ' to ' + cellElement[id].equal;
+                if (cellElement[id].type == 'number' || cellElement[id].type == 'integer') {
+                    if (cellElement[id].maxValue ) {
+                        result += ' to ' + cellElement[id].maxValue;
+                    } else {
+                        result += ' to highest';
+                    }
                 }
+
                 result += '</div></div>';
-
             } else {
-                result = 'All values';
+                if (cellElement[id].maxValue) {
+                    result = '<div class="filterValue">' +
+                                '<img class="filterCancelClass" src="style/icons/cansel.jpg" style="float:left;"/>' +
+                                '<div style="padding-left: 2px; float:left;"> ' +
+                                    'lowest to' + cellElement[id].maxValue +
+                                '</div>' +
+                              '</div>';
+                } else {
+                    result = 'All values';
+                }
             }
-        }
-
-        if (webix.ARCHIBUS.gridContainer && id == webix.ARCHIBUS.currentDisplayFilter.id) {
-            var gridObject = $$(webix.ARCHIBUS.filterContainer);
-            gridObject.callEvent('onCreateFilterView', [this.node, id]);
-            gridObject.callEvent('onRegisterFilter', [webix.ARCHIBUS.currentDisplayFilter.type, cellElement.id, id, gridObject]);
         }
         return result;
     }

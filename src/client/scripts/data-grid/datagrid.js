@@ -43,8 +43,9 @@ class DataGrid {
             addDivInColumnHeader: this._dataGridSort.addDivInColumnHeader,
             calculationColumnValue: this._dataGridGroups.calculationColumnValue
         }, webix.ui.treetable);
-        if (!webix.env.touch && webix.ui.scrollSize)
+        if (!webix.env.touch && webix.ui.scrollSize) {
             webix.CustomScroll.init();
+        }
         this.dataTypeToFilterTypeMapping = {
             text: 'serverFilter',
             date: 'serverFilter',
@@ -57,23 +58,26 @@ class DataGrid {
 
         this.view = new webix.ui({
             type: 'clean',
-            css: config.style,
+            css: config.style + ' styleLayoutDataGrid',
             container: config.container,
+            padding: 0,
             rows:[
                 {
                     type: 'header',
-                    css: 'webix_header ' + config.style,
+                    css: 'webix_header styleLayoutHeader ' + config.style,
                     template: config.title
                 },
                 {
-                    css: 'layoutFilter',
+                    css: 'styleLayoutFilter',
                     template: '<div id="' + nameFiltering + '"style="height: 100%" "></div>',
                     autoheight:true
                 },
                 {
+                    css: 'styleLayoutDataGrid',
                     template:'<div id="' + nameGrid + '"style="height: 100%" "></div>'
                 },
                 {
+                    css: 'styleLayoutPager',
                     template:'<div id="' + namePaging + '"></div>',
                     autoheight:true
                 }
@@ -122,6 +126,7 @@ class DataGrid {
             css: config.style,
             columns: gridColumns.columns,
             pager: {
+                css: 'stylePager',
                 template: "{common.first()}{common.prev()}{common.pages()}{common.next()}{common.last()}",
                 container: pagingName,
                 size: config.pageSize,
@@ -165,7 +170,8 @@ class DataGrid {
             onAfterRender: this._afterRender,
             onBeforeSelect: this._beforeSelect,
             onAfterScroll: this._afterScroll,
-            onColumnResize: this._columnResize
+            onColumnResize: this._columnResize,
+            onAfterFilter: this._dataGridFilter.afterFilter
         };
 
         for (var event in customGridEvents) {
@@ -243,7 +249,12 @@ class DataGrid {
                 webixGroupBy = configurationTotalGroup.header;
             }
             else{
-                gridColumn.footer = [{text:"", height: 20},{text:"", height: 20}];
+                if (i == ARCHIBUSColumns.length - 1) {
+                    gridColumn.footer = [{text:'<div id="pager"></div>', height: 20},{text:"", height: 20}];
+                } else {
+                    gridColumn.footer = [{text:"", height: 20},{text:"", height: 20}];
+                }
+
             }
             gridColumns[index] = gridColumn;
             index++;
@@ -274,7 +285,7 @@ class DataGrid {
             }
         }
         if (isCalcTotalGroup){
-            configureCheckbox['footer'] = {text: '<div class="footerTitle"">TOTAL</div><div id="page_section"></div>'};
+            configureCheckbox['footer'] = {text: '<div class="footerTitle"">TOTAL</div>'};
         }
         return configureCheckbox;
     }

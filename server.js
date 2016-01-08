@@ -21,13 +21,14 @@ app.use(express.bodyParser());
  */
 app.get('/server/data', function(req, res){
     var query;
-    if(typeof req.query.filter === 'undefined' &&
+    console.log(req.query);
+    if(typeof req.query.filters === 'undefined' &&
         typeof req.query.sort === 'undefined'){
         query = 'select * from AssetGrid ';
     }
     else{
         query = 'select * from AssetGrid WHERE ';
-        query = getRequestFilter(req.query.filter, query);
+        query = getRequestFilter(req.query.filters, query);
         query = getRequestSorting(req.query.sort, query);
         if(query == ""){
             query = 'select * from AssetGrid ';
@@ -66,8 +67,8 @@ app.post('/server/data/prop', function(req, res){
 
 app.listen(8000);
 /*
- To build the query to filter the data
- @param filter: object with data to filter
+ To build the query to filters the data
+ @param filters: object with data to filters
  @param startQuery: start request
  * */
 function getRequestFilter(filter, startQuery){
@@ -76,8 +77,37 @@ function getRequestFilter(filter, startQuery){
     var queryArray = [];
     for(var key in filter){
         if(filter[key] != "" && filter[key] != 'null'){
-            queryArray[index] =  key + ' like \'' + filter[key] + '%\'';
-            index++;
+            var object = JSON.parse(filter[key]);
+            switch (object.type) {
+                case 'text':
+                    if (object.start) {
+                        queryArray[index] =  key + ' like \'' + object.value + '%\'';
+                        index++;
+                    }
+                    if (object.end) {
+                        queryArray[index] =  key + ' like \'%' + object.value + '\'';
+                        index++;
+                    }
+                    if (! object.start && !object.end && object.value != '') {
+                        queryArray[index] =  key + ' like \'' + object.value + '\'';
+                        index++;
+                    }
+                    break;
+                case 'number':
+                    var result = '';
+                    if (object.min) {
+                        result =  key + ' > ' + object.min;
+                    }
+                    if (object.max) {
+                        result =  key + ' < ' + object.max;
+                    }
+                    if (object.min && object.max) {
+                        result =  key + ' > ' + object.min + ' and ' + key + ' < ' + object.max;
+                    }
+                    queryArray[index] = result;
+                    index++;
+                    break;
+            }
         }
     }
     if(index == 0){

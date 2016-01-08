@@ -21,9 +21,6 @@ webix.ready(function(){
         firstRightFixedColumn: 'Action',
         lastLeftFixedColumn: 'quantity_mtbf'
     });
-
-
-
     resize([dataGrid]);
 });
 
@@ -37,7 +34,8 @@ function resize(objects){
     }
 }
 
-function filter() {
-    console.log('up');
-}
+
+
+
+
 
