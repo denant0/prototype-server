@@ -530,7 +530,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         editaction: 'custom',
                         autoheight: true,
                         on: {
-                            onMouseMove: this._mouseMove,
+                            onItemClick: this._itemClick,
                             onBeforeRender: this._beforeRender,
                             onAfterEditStop: this._afterEditStop
                         },
@@ -649,8 +649,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     return rightSplit;
                 }
             }, {
-                key: "_mouseMove",
-                value: function _mouseMove(id, event, node) {
+                key: "_itemClick",
+                value: function _itemClick(id, event, node) {
                     var item = $$(webix.ARCHIBUS.filterContainer).getItem(id),
                         type = '';
                     if (item) {

@@ -237,7 +237,7 @@ class DataGridFilter {
             editaction: 'custom',
             autoheight:true,
             on:{
-                onMouseMove: this._mouseMove,
+                onItemClick: this._itemClick,
                 onBeforeRender: this._beforeRender,
                 onAfterEditStop: this._afterEditStop
             },
@@ -347,7 +347,7 @@ class DataGridFilter {
         return rightSplit;
     }
 
-    _mouseMove (id, event, node)
+    _itemClick (id, event, node)
     {
         var item = $$(webix.ARCHIBUS.filterContainer).getItem(id),
             type = '';
