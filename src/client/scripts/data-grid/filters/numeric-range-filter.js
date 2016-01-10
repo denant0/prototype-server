@@ -61,6 +61,7 @@ class NumericRangeFilter {
                         view:"text",
                         id:'customFilter',
                         css: 'styleMinInput',
+                        placeholder: 'lowest',
                         width:70,
                         height:30,
                         tabFocus: true,
@@ -83,6 +84,7 @@ class NumericRangeFilter {
                         view:"text",
                         id:'customFilter1',
                         css: 'styleMaxInput',
+                        placeholder: 'highest',
                         width:70,
                         height:30,
                         tabFocus: true,
@@ -107,63 +109,67 @@ class NumericRangeFilter {
     }
 
     _changeMinValueFilter (newValue, oldValue) {
-        var gridObject = $$(webix.ARCHIBUS.filterContainer);
-        var item = gridObject.getItem(webix.ARCHIBUS.currentDisplayFilter.row);
+        var gridObject = $$(webix.ARCHIBUS.filterContainer),
+            item = gridObject.getItem(webix.ARCHIBUS.currentDisplayFilter.row),
+            data = item[webix.ARCHIBUS.currentDisplayFilter.id];
+
         if (newValue || newValue == '') {
-            item[webix.ARCHIBUS.currentDisplayFilter.id].value = newValue;
-        }
-        $$(webix.ARCHIBUS.gridContainer).registerFilter(
-            item[webix.ARCHIBUS.currentDisplayFilter.id],
-            { columnId: webix.ARCHIBUS.currentDisplayFilter.id },
-            {
-                $server: true,
-                getValue:function(node) {
-                    var query = '';
-                    if (node.value) {
-                        query ='{"type": "number", "min": "' + node.value + '"}';
+            data.value = newValue;
+            $$(webix.ARCHIBUS.gridContainer).registerFilter(
+                item[webix.ARCHIBUS.currentDisplayFilter.id],
+                { columnId: webix.ARCHIBUS.currentDisplayFilter.id },
+                {
+                    $server: true,
+                    getValue:function(node) {
+                        var query = '';
+                        if (node.value) {
+                            query ='{"type": "number", "min": "' + node.value + '"}';
+                        }
+                        if (node.maxValue) {
+                            query ='{"type": "number", "max": "' + node.maxValue + '"}';
+                        }
+                        if (node.value && node.maxValue) {
+                            query ='{"type": "number", "min": "' + node.value + '", "max": "' + node.maxValue + '"}';
+                        }
+                        return query;
                     }
-                    if (node.maxValue) {
-                        query ='{"type": "number", "max": "' + node.maxValue + '"}';
-                    }
-                    if (node.value && node.maxValue) {
-                        query ='{"type": "number", "min": "' + node.value + '", "max": "' + node.maxValue + '"}';
-                    }
-                    return query;
                 }
-            }
-        );
-        $$(webix.ARCHIBUS.gridContainer).filterByAll();
-        gridObject.refresh();
+            );
+            $$(webix.ARCHIBUS.gridContainer).filterByAll();
+            gridObject.refresh();
+        }
     }
 
     _changeMaxValueFilter (newValue, oldValue) {
-        var gridObject = $$(webix.ARCHIBUS.filterContainer);
-        var item = gridObject.getItem(webix.ARCHIBUS.currentDisplayFilter.row);
+        var gridObject = $$(webix.ARCHIBUS.filterContainer),
+            item = gridObject.getItem(webix.ARCHIBUS.currentDisplayFilter.row),
+            data = item[webix.ARCHIBUS.currentDisplayFilter.id];
+
         if (newValue || newValue == '') {
-            item[webix.ARCHIBUS.currentDisplayFilter.id].maxValue = newValue;
-        }
-        $$(webix.ARCHIBUS.gridContainer).registerFilter(
-            item[webix.ARCHIBUS.currentDisplayFilter.id],
-            { columnId: webix.ARCHIBUS.currentDisplayFilter.id },
-            {
-                $server: true,
-                getValue:function(node) {
-                    var query = '';
-                    if (node.value) {
-                        query ='{"type": "number", "min": "' + node.value + '"}';
+            data.maxValue = newValue;
+            $$(webix.ARCHIBUS.gridContainer).registerFilter(
+                item[webix.ARCHIBUS.currentDisplayFilter.id],
+                {columnId: webix.ARCHIBUS.currentDisplayFilter.id},
+                {
+                    $server: true,
+                    getValue: function (node) {
+                        var query = '';
+                        if (node.value) {
+                            query = '{"type": "number", "min": "' + node.value + '"}';
+                        }
+                        if (node.maxValue) {
+                            query = '{"type": "number", "max": "' + node.maxValue + '"}';
+                        }
+                        if (node.value && node.maxValue) {
+                            query = '{"type": "number", "min": "' + node.value + '", "max": "' + node.maxValue + '"}';
+                        }
+                        return query;
                     }
-                    if (node.maxValue) {
-                        query ='{"type": "number", "max": "' + node.maxValue + '"}';
-                    }
-                    if (node.value && node.maxValue) {
-                        query ='{"type": "number", "min": "' + node.value + '", "max": "' + node.maxValue + '"}';
-                    }
-                    return query;
                 }
-            }
-        );
-        $$(webix.ARCHIBUS.gridContainer).filterByAll();
-        gridObject.refresh();
+            );
+            $$(webix.ARCHIBUS.gridContainer).filterByAll();
+            gridObject.refresh();
+        }
     }
 }
 

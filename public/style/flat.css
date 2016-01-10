@@ -1,74 +1,192 @@
-body, html { height:99%; }
-
-.flat .rowSelect { background-color: #FFE0B4; border-bottom: 1px solid #FFD69A !important; color: #a87104; }
-.flat .rowEdited { background-color: #FFE0B4; }
-.flat .rowGroupHeader {  background-color: #E4EDF9; }
-.flat .rowGroupHeaderSelect { background-color: #FFD69A; }
-
-.flat .groupTitleFirst { font-size:13px; font-weight:bold; margin: 0; }
-.flat .groupTitleSecond { font-size:11px; margin-top: -10px; }
-
-.flat .footerTitle { font-size:13px; font-weight:bold; text-align: right !important; padding: 0 !important; }
-
-.flat .webix_ss_header td { background-color: #37a6d3; color: #f7f7f7; border-right: none; border-left: none; font-size: 12px; font-weight: bold; }
-.flat .webix_ss_header .webix_hcell { text-align: center }
-.flat .webix_ss_vscroll_header { background-color:#4075D3; }
-
-.flat .webix_ss_footer td { font-size: 11px;  background-color: #E4EDF9; padding: 0; }
-.flat .webix_ss_vscroll_footer { background-color:#E4EDF9; }
-.flat .webix_ss_footer .webix_hcell { text-align: right; padding:0 4px 0 4px !important;}
-
-.flat .webix_cell { font-size: 12px; border-bottom: 1px solid #E4EDF9; border-right: none; border-left: none; padding:0 4px 0 4px !important; }
-
-.flat .webix_header > div { background: #4075D3 !important; font-weight: bold; }
-.flat .webix_view { border: none; }
-
-.filterCell {text-align: center; font-style: italic; color: #61A6F7; align: center;}
-
-.webix_column>div.webix_cell_select { padding:0 4px 0 4px !important; background-color: #FFE0B4; color: #a87104; border: 1px solid #FFD69A !important; }
-
-.webix_view .webix_tree_open:before{content:url(icons/treeOpen.jpg) !important;}
-.webix_view .webix_tree_close:before{content:url(icons/treeClose.jpg) !important;}
-
-.webix_layout_clean { border: 1px solid #4075D3 }
-
-.styleLayoutFilter {  background-color: #E4EDF9; padding: 0 !important; padding: 0 !important; margin-bottom: -10px}
-
-.customFilterView { background-color: #FCC48B; border: 1px solid #FCC48B !important; }
-
-.webix_view.webix_header.styleLayoutHeader.flat { background: #4075D3 !important; }
-
-.webix_dtable .webix_hs_left td.webix_last  {border-right: 1px solid #d0d0d0;}
-
-.styleFilterTable { background-color: #E4EDF9; padding: 0 !important;}
-.styleLayoutDataGrid { background-color: #E4EDF9; padding: 0 !important;}
-.styleLayoutPager { background-color: #E4EDF9; padding: 0 !important; float: right; margin-top: -15px !important; }
-
-.stylePager { float: right; text-align: right; }
-
-/* style numericRange filter*/
-.styleNumericRangeFilter { background-color: #FCC48B; border: 1px solid #FCC48B !important; }
-
-.styleMinInput .webix_el_box input {color: #4075D3 !important; font-weight: bold; border-radius: 0 !important;}
-.styleMaxInput .webix_el_box input {color: #4075D3 !important; font-weight: bold; border-radius: 0 !important;}
-
-.styleString { background-color: #FCC48B; border: 1px solid #FCC48B !important; font-weight: bold; }
-/**/
-
-
-/* style select filter*/
-.styleSelectFilter { background-color: #FCC48B; border: 1px solid #FCC48B !important; }
-
-.styleSelectList .webix_el_box input { color: #4075D3 !important; font-weight: bold; border-radius: 0 !important; }
-.styleSelectList .webix_el_box .webix_input_icon { background-color: inherit !important; color: #4075D3 !important; border-radius: 0 !important;}
-.styleSelectList .webix_el_box .webix_input_icon:hover { background-color: inherit !important; }
-
-.styleSelectOptions .webix_list .webix_list_item { font-size: 12px; color: #A87104 !important;}
-.styleSelectOptions .webix_list .webix_list_item.webix_selected { background: #FFE0B4 !important;}
-/**/
-
-/**/
-.styleTextFilter { background-color: #FCC48B; border: 1px solid #FCC48B !important; }
-
-.styleTextInput .webix_el_box input {color: #4075D3 !important; font-weight: bold; border-radius: 0 !important;}
-/**/
+.select {
+  background-color: #FFE0B4;
+  border-bottom: 1px solid #FFD69A !important;
+  color: #A87104;
+}
+.colorFilterLayout {
+  background-color: #FCC48B;
+  border: 1px solid #FCC48B !important;
+}
+.inputText {
+  border-radius: 0 !important;
+  color: #4075D3 !important;
+  font-weight: bold;
+}
+.placeholder {
+  color: #37A6D3;
+  font-size: 10px;
+  font-style: italic;
+}
+body,
+html {
+  height: 99%;
+}
+.rowSelect {
+  background-color: #FFE0B4;
+  border-bottom: 1px solid #FFD69A !important;
+  color: #A87104;
+}
+.rowEdited {
+  background-color: #FFE0B4;
+}
+.rowGroupHeader {
+  background-color: #E4EDF9;
+}
+.rowGroupHeaderSelect {
+  background-color: #FFD69A;
+}
+.groupTitleFirst {
+  font-size: 13px;
+  font-weight: bold;
+  margin: 0;
+}
+.groupTitleSecond {
+  font-size: 11px;
+  margin-top: -10px;
+}
+.footerTitle {
+  font-size: 13px;
+  font-weight: bold;
+  text-align: right !important;
+  padding: 0 !important;
+}
+.flat .webix_view {
+  border: none;
+}
+.flat .webix_header > div {
+  background: #4075D3 !important;
+  font-weight: bold;
+}
+.webix_layout_clean {
+  border: 1px solid #4075D3;
+}
+.styleDataGrid .webix_ss_header td {
+  background-color: #37A6D3;
+  color: #f7f7f7;
+  border-right: none;
+  border-left: none;
+  font-size: 12px;
+  font-weight: bold;
+}
+.styleDataGrid .webix_ss_header .webix_hcell {
+  text-align: center;
+}
+.styleDataGrid .webix_ss_footer td {
+  background-color: #E4EDF9;
+  font-size: 11px;
+  padding: 0;
+}
+.styleDataGrid .webix_ss_footer .webix_hcell {
+  text-align: right;
+  padding: 0 4px 0 4px !important;
+}
+.styleFilterTable .webix_cell,
+.styleDataGrid .webix_cell {
+  border-bottom: 1px solid #E4EDF9;
+  border-right: none;
+  border-left: none;
+  font-size: 12px;
+  padding: 0 4px 0 4px !important;
+}
+.styleFilterTableCell {
+  color: #61A6F7;
+  text-align: center;
+  font-style: italic;
+  align: center;
+}
+.styleDataGrid .webix_column > div.webix_cell_select {
+  background-color: #FFE0B4;
+  border-bottom: 1px solid #FFD69A !important;
+  color: #A87104;
+  padding: 0 4px 0 4px !important;
+}
+.webix_view .webix_tree_open:before {
+  content: url(icons/treeOpen.jpg) !important;
+}
+.webix_view .webix_tree_close:before {
+  content: url(icons/treeClose.jpg) !important;
+}
+.styleLayoutFilter {
+  padding: 0 !important;
+  margin-bottom: -10px;
+}
+.styleTextFilter,
+.styleSelectFilter,
+.styleNumericRangeFilter {
+  background-color: #FCC48B;
+  border: 1px solid #FCC48B !important;
+}
+.styleMinInput .webix_el_box input,
+.styleMaxInput .webix_el_box input,
+.styleTextInput .webix_el_box input,
+.styleSelectList .webix_el_box input {
+  border-radius: 0 !important;
+  color: #4075D3 !important;
+  font-weight: bold;
+}
+.styleMinInput .webix_el_box input::-webkit-input-placeholder,
+.styleMaxInput .webix_el_box input::-webkit-input-placeholder {
+  /* Safari, Chrome and Opera */
+  color: #37A6D3;
+  font-size: 10px;
+  font-style: italic;
+}
+.styleMinInput .webix_el_box input:-moz-placeholder,
+.styleMaxInput .webix_el_box input:-moz-placeholder {
+  /* Firefox 18- */
+  color: #37A6D3;
+  font-size: 10px;
+  font-style: italic;
+}
+.styleMinInput .webix_el_box input::-moz-placeholder,
+.styleMaxInput .webix_el_box input::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #37A6D3;
+  font-size: 10px;
+  font-style: italic;
+}
+.styleMinInput .webix_el_box input:-ms-input-placeholder,
+.styleMaxInput .webix_el_box input:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #37A6D3;
+  font-size: 10px;
+  font-style: italic;
+}
+.styleMinInput .webix_el_box input::-ms-input-placeholder,
+.styleMaxInput .webix_el_box input::-ms-input-placeholder {
+  /* Edge */
+  color: #37A6D3;
+  font-size: 10px;
+  font-style: italic;
+}
+.styleMinInput .webix_el_box input:placeholder-shown,
+.styleMaxInput .webix_el_box input:placeholder-shown {
+  /* Standard one last! */
+  color: #37A6D3;
+  font-size: 10px;
+  font-style: italic;
+}
+.styleString {
+  background-color: #FCC48B;
+  border: 1px solid #FCC48B !important;
+  font-weight: bold;
+}
+.styleSelectList .webix_el_box .webix_input_icon {
+  border-radius: 0 !important;
+  color: #4075D3 !important;
+  font-weight: bold;
+  background-color: inherit !important;
+}
+.styleSelectList .webix_el_box .webix_input_icon:hover {
+  background-color: inherit !important;
+}
+.styleSelectOptions .webix_list .webix_list_item {
+  color: #A87104 !important;
+  font-size: 12px;
+}
+.styleSelectOptions .webix_list .webix_list_item.webix_selected {
+  background: #FFE0B4 !important;
+}
+.webix_dtable .webix_hs_left td.webix_last {
+  border-right: 1px solid #d0d0d0;
+}

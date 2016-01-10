@@ -50,7 +50,6 @@ class DataGridFilter {
 
     getFilteringView (config, nameFiltering) {
         var table = new webix.ui(this._createGridConfiguration(config, nameFiltering));
-        webix.ARCHIBUS.filterContainer = table.getNode().attributes[2].nodeValue;
         return table;
     }
 
@@ -284,7 +283,7 @@ class DataGridFilter {
         var configGridColumn = {};
         configGridColumn.id = id;
         configGridColumn.dataType = dataType;
-        configGridColumn.css = 'filterCell';
+        configGridColumn.css = 'styleFilterTableCell';
         configGridColumn.template = this. _renderFilterValue;
         if (dataType) {
             switch (dataType) {

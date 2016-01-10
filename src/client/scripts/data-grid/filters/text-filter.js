@@ -50,7 +50,6 @@ class TextFilter {
                 }
             }
         };
-
         return {
             id: 'customText',
             view: configurationView
@@ -58,44 +57,44 @@ class TextFilter {
     }
 
     _changeFilter (newValue, oldValue) {
-        var gridObject = $$(webix.ARCHIBUS.filterContainer);
-        var item = gridObject.getItem(webix.ARCHIBUS.currentDisplayFilter.row);
+        var gridObject = $$(webix.ARCHIBUS.filterContainer),
+            item = gridObject.getItem(webix.ARCHIBUS.currentDisplayFilter.row),
+            data = item[webix.ARCHIBUS.currentDisplayFilter.id];
         if (newValue) {
-            item[webix.ARCHIBUS.currentDisplayFilter.id].value = newValue;
-        }
-        $$(webix.ARCHIBUS.gridContainer).registerFilter(
-            newValue,
-            { columnId: webix.ARCHIBUS.currentDisplayFilter.id },
-            {
-                $server: true,
-                getValue:function(node) {
-                    var result = '{"type": "text", "value": "'+ node + '"';
-                    var pattern = "%";
-                    var isAddStyle = true;
+            $$(webix.ARCHIBUS.gridContainer).registerFilter(
+                newValue,
+                { columnId: webix.ARCHIBUS.currentDisplayFilter.id },
+                {
+                    $server: true,
+                    getValue:function(node) {
+                        var result = '{"type": "text", "value": "'+ node + '"';
+                        var pattern = "%";
+                        var isAddStyle = true;
 
-                    for (var i = 0, length = pattern.length; i < length; i += 1) {
-                        var p = pattern[i];
-                        var s = node[i];
-                        if (p !== s) {
-                            isAddStyle = false;
-                            break;
+                        for (var i = 0, length = pattern.length; i < length; i += 1) {
+                            var p = pattern[i];
+                            var s = node[i];
+                            if (p !== s) {
+                                isAddStyle = false;
+                                break;
+                            }
                         }
-                    }
 
-                    if (node[node.length-1] == pattern) {
-                        result = '{"type": "text", "value": "' + node.substr(0, node.length - 1) + '", "start": "true"';
-                    }
+                        if (node[node.length-1] == pattern) {
+                            result = '{"type": "text", "value": "' + node.substr(0, node.length - 1) + '", "start": "true"';
+                        }
 
-                    if(isAddStyle) {
-                        result = '{"type": "text", "value": "' + node.substr(1) + '", "end": "true"';
+                        if(isAddStyle) {
+                            result = '{"type": "text", "value": "' + node.substr(1) + '", "end": "true"';
+                        }
+                        result += '}';
+                        return result;
                     }
-                    result += '}';
-                    return result;
                 }
-            }
-        );
-        $$(webix.ARCHIBUS.gridContainer).filterByAll();
-        gridObject.refresh();
+            );
+            $$(webix.ARCHIBUS.gridContainer).filterByAll();
+            gridObject.refresh();
+        }
     }
 }
 

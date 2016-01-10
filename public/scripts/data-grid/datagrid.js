@@ -348,7 +348,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 key: "getFilteringView",
                 value: function getFilteringView(config, nameFiltering) {
                     var table = new webix.ui(this._createGridConfiguration(config, nameFiltering));
-                    webix.ARCHIBUS.filterContainer = table.getNode().attributes[2].nodeValue;
                     return table;
                 }
             }, {
@@ -580,7 +579,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     var configGridColumn = {};
                     configGridColumn.id = id;
                     configGridColumn.dataType = dataType;
-                    configGridColumn.css = 'filterCell';
+                    configGridColumn.css = 'styleFilterTableCell';
                     configGridColumn.template = this._renderFilterValue;
                     if (dataType) {
                         switch (dataType) {
@@ -1553,17 +1552,38 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 });
                 this.dataTable = new webix.ui(this._createGridConfiguration(config));
                 this.filterTable = this._dataGridFilter.getFilteringView(config, nameFiltering);
-
-                webix.ARCHIBUS.gridContainer = this.dataTable.getNode().attributes[2].nodeValue;
+                if (this._isInternetExplorer() == -1) {
+                    webix.ARCHIBUS.gridContainer = this.dataTable.getNode().attributes[2].nodeValue;
+                    webix.ARCHIBUS.filterContainer = this.filterTable.getNode().attributes[2].nodeValue;
+                } else {
+                    webix.ARCHIBUS.gridContainer = this.dataTable.getNode().attributes[3].nodeValue;
+                    webix.ARCHIBUS.filterContainer = this.filterTable.getNode().attributes[3].nodeValue;
+                }
             }
-            /*
-             Customize the size the grid view depending on the set values in the config
-             @container: the name container grid
-             @width: the width container grid
-             @height: the height container grid
-             */
 
             _createClass(DataGrid, [{
+                key: "_isInternetExplorer",
+                value: function _isInternetExplorer() {
+                    var rv = -1;
+                    if (navigator.appName == 'Microsoft Internet Explorer') {
+                        var ua = navigator.userAgent;
+                        var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+                        if (re.exec(ua) != null) rv = parseFloat(RegExp.$1);
+                    } else if (navigator.appName == 'Netscape') {
+                        var ua = navigator.userAgent;
+                        var re = new RegExp("Trident/.*rv:([0-9]{1,}[\.0-9]{0,})");
+                        if (re.exec(ua) != null) rv = parseFloat(RegExp.$1);
+                    }
+                    return rv;
+                }
+                /*
+                 Customize the size the grid view depending on the set values in the config
+                 @container: the name container grid
+                 @width: the width container grid
+                 @height: the height container grid
+                 */
+
+            }, {
                 key: "_configurationGridSize",
                 value: function _configurationGridSize(containerName, width, height) {
                     if (width) {
@@ -1595,7 +1615,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     var gridConfiguration = {
                         container: gridName,
                         view: "customDataTable",
-                        css: config.style,
+                        css: 'styleDataGrid',
                         columns: gridColumns.columns,
                         pager: {
                             css: 'stylePager',
@@ -2026,6 +2046,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             function DateRangeFilter() {
                 _classCallCheck(this, DateRangeFilter);
 
+                webix.ui({
+                    view: "popup",
+                    css: "custom",
+                    relative: 'bottom',
+                    id: "cmenu",
+                    body: {
+                        view: "calendar", timepicker: true, stringResult: true, format: "%d %M %Y at %H:%i",
+                        on: {
+                            onChange: function onChange() {
+                                var t = 0;
+                            } //this._changeMinValueFilter
+                        }
+                    }
+                });
+
                 webix.editors.dateRange = webix.extend({
                     popupType: 'dateRange',
                     focus: function focus() {
@@ -2042,12 +2077,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         }*/
                     },
                     getValue: function getValue() {
-                        var minInput = this.getInputNode().getChildViews()[0].getValue();
-                        var maxInput = this.getInputNode().getChildViews()[2].getValue();
-                        return { min: minInput || '', max: maxInput || '' };
+                        /*var minInput = this.getInputNode().getChildViews()[0].getValue();
+                        var maxInput = this.getInputNode().getChildViews()[2].getValue();*/
+                        return "";
                     },
                     setValue: function setValue(value) {
-                        var displayMinValue = '',
+                        /*var displayMinValue = '',
                             displayMaxValue = '';
                         var gridObject = $$(webix.ARCHIBUS.filterContainer),
                             item = gridObject.getItem(webix.ARCHIBUS.currentDisplayFilter.row),
@@ -2058,11 +2093,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         if (data.maxValue) {
                             displayMaxValue = data.maxValue;
                         }
-                        this.getPopup().show(this.node);
-                        var minInput = this.getInputNode().getChildViews()[0];
+                          var minInput = this.getInputNode().getChildViews()[0];
                         var maxInput = this.getInputNode().getChildViews()[2];
                         minInput.setValue(displayMinValue);
-                        maxInput.setValue(displayMaxValue);
+                        maxInput.setValue(displayMaxValue);*/
+                        this.getPopup().show(this.node);
                     },
                     getInputNode: function getInputNode() {
                         return this.getPopup().getChildViews()[0];
@@ -2084,20 +2119,31 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         css: 'customFilterView',
                         body: {
                             cols: [{
-                                view: "datepicker", timepicker: true, stringResult: true, format: "%d %M %Y at %H:%i",
-                                on: {
-                                    //onChange: this._changeMinValueFilter
-                                }
+                                rows: [{
+                                    view: 'text',
+                                    on: {
+                                        onFocus: function onFocus(currentView, prevView) {
+                                            $$("cmenu").show(currentView);
+                                            //$$("cmenu").getBody().data.dataedit = tooltip;
+                                            //$$("cmenu").getBody().data.id = id;
+                                            $$("cmenu").getBody().refresh();
+                                        }
+                                    }
+                                }]
                             }, {
                                 template: 'to',
                                 width: 20,
                                 css: 'styleString'
                             }, {
-                                view: "datepicker", timepicker: true, stringResult: true, format: "%d %M %Y at %H:%i",
-                                tabFocus: true,
-                                on: {
-                                    //onChange: this._changeMaxValueFilter
-                                }
+                                rows: [{
+                                    view: 'text'
+                                }, {
+                                    view: "calendar", timepicker: true, stringResult: true, format: "%d %M %Y at %H:%i",
+                                    hidden: true,
+                                    on: {
+                                        //onChange: this._changeMaxValueFilter
+                                    }
+                                }]
                             }]
                         }
                     };
@@ -2115,24 +2161,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     if (newValue || newValue == '') {
                         item[webix.ARCHIBUS.currentDisplayFilter.id].value = newValue;
                     }
-                    $$(webix.ARCHIBUS.gridContainer).registerFilter(item[webix.ARCHIBUS.currentDisplayFilter.id], { columnId: webix.ARCHIBUS.currentDisplayFilter.id }, {
-                        $server: true,
-                        getValue: function getValue(node) {
-                            var query = '';
-                            if (node.value) {
-                                query = '{"type": "date", "min": "' + node.value + '"}';
+                    /*$$(webix.ARCHIBUS.gridContainer).registerFilter(
+                        item[webix.ARCHIBUS.currentDisplayFilter.id],
+                        { columnId: webix.ARCHIBUS.currentDisplayFilter.id },
+                        {
+                            $server: true,
+                            getValue:function(node) {
+                                var query = '';
+                                if (node.value) {
+                                    query ='{"type": "date", "min": "' + node.value + '"}';
+                                }
+                                if (node.maxValue) {
+                                    query ='{"type": "date", "max": "' + node.maxValue + '"}';
+                                }
+                                if (node.value && node.maxValue) {
+                                    query ='{"type": "date", "min": "' + node.value + '", "max": "' + node.maxValue + '"}';
+                                }
+                                return query;
                             }
-                            if (node.maxValue) {
-                                query = '{"type": "date", "max": "' + node.maxValue + '"}';
-                            }
-                            if (node.value && node.maxValue) {
-                                query = '{"type": "date", "min": "' + node.value + '", "max": "' + node.maxValue + '"}';
-                            }
-                            return query;
                         }
-                    });
+                    );
                     $$(webix.ARCHIBUS.gridContainer).filterByAll();
-                    gridObject.refresh();
+                    gridObject.refresh();*/
                 }
             }, {
                 key: "_changeMaxValueFilter",
@@ -2142,24 +2192,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     if (newValue || newValue == '') {
                         item[webix.ARCHIBUS.currentDisplayFilter.id].maxValue = newValue;
                     }
-                    $$(webix.ARCHIBUS.gridContainer).registerFilter(item[webix.ARCHIBUS.currentDisplayFilter.id], { columnId: webix.ARCHIBUS.currentDisplayFilter.id }, {
-                        $server: true,
-                        getValue: function getValue(node) {
-                            var query = '';
-                            if (node.value) {
-                                query = '{"type": "date", "min": "' + node.value + '"}';
+                    /*$$(webix.ARCHIBUS.gridContainer).registerFilter(
+                        item[webix.ARCHIBUS.currentDisplayFilter.id],
+                        { columnId: webix.ARCHIBUS.currentDisplayFilter.id },
+                        {
+                            $server: true,
+                            getValue:function(node) {
+                                var query = '';
+                                if (node.value) {
+                                    query ='{"type": "date", "min": "' + node.value + '"}';
+                                }
+                                if (node.maxValue) {
+                                    query ='{"type": "date", "max": "' + node.maxValue + '"}';
+                                }
+                                if (node.value && node.maxValue) {
+                                    query ='{"type": "date", "min": "' + node.value + '", "max": "' + node.maxValue + '"}';
+                                }
+                                return query;
                             }
-                            if (node.maxValue) {
-                                query = '{"type": "date", "max": "' + node.maxValue + '"}';
-                            }
-                            if (node.value && node.maxValue) {
-                                query = '{"type": "date", "min": "' + node.value + '", "max": "' + node.maxValue + '"}';
-                            }
-                            return query;
                         }
-                    });
+                    );
                     $$(webix.ARCHIBUS.gridContainer).filterByAll();
-                    gridObject.refresh();
+                    gridObject.refresh();*/
                 }
             }]);
 
@@ -2234,6 +2288,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                 view: "text",
                                 id: 'customFilter',
                                 css: 'styleMinInput',
+                                placeholder: 'lowest',
                                 width: 70,
                                 height: 30,
                                 tabFocus: true,
@@ -2254,6 +2309,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                 view: "text",
                                 id: 'customFilter1',
                                 css: 'styleMaxInput',
+                                placeholder: 'highest',
                                 width: 70,
                                 height: 30,
                                 tabFocus: true,
@@ -2278,56 +2334,60 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }, {
                 key: "_changeMinValueFilter",
                 value: function _changeMinValueFilter(newValue, oldValue) {
-                    var gridObject = $$(webix.ARCHIBUS.filterContainer);
-                    var item = gridObject.getItem(webix.ARCHIBUS.currentDisplayFilter.row);
+                    var gridObject = $$(webix.ARCHIBUS.filterContainer),
+                        item = gridObject.getItem(webix.ARCHIBUS.currentDisplayFilter.row),
+                        data = item[webix.ARCHIBUS.currentDisplayFilter.id];
+
                     if (newValue || newValue == '') {
-                        item[webix.ARCHIBUS.currentDisplayFilter.id].value = newValue;
+                        data.value = newValue;
+                        $$(webix.ARCHIBUS.gridContainer).registerFilter(item[webix.ARCHIBUS.currentDisplayFilter.id], { columnId: webix.ARCHIBUS.currentDisplayFilter.id }, {
+                            $server: true,
+                            getValue: function getValue(node) {
+                                var query = '';
+                                if (node.value) {
+                                    query = '{"type": "number", "min": "' + node.value + '"}';
+                                }
+                                if (node.maxValue) {
+                                    query = '{"type": "number", "max": "' + node.maxValue + '"}';
+                                }
+                                if (node.value && node.maxValue) {
+                                    query = '{"type": "number", "min": "' + node.value + '", "max": "' + node.maxValue + '"}';
+                                }
+                                return query;
+                            }
+                        });
+                        $$(webix.ARCHIBUS.gridContainer).filterByAll();
+                        gridObject.refresh();
                     }
-                    $$(webix.ARCHIBUS.gridContainer).registerFilter(item[webix.ARCHIBUS.currentDisplayFilter.id], { columnId: webix.ARCHIBUS.currentDisplayFilter.id }, {
-                        $server: true,
-                        getValue: function getValue(node) {
-                            var query = '';
-                            if (node.value) {
-                                query = '{"type": "number", "min": "' + node.value + '"}';
-                            }
-                            if (node.maxValue) {
-                                query = '{"type": "number", "max": "' + node.maxValue + '"}';
-                            }
-                            if (node.value && node.maxValue) {
-                                query = '{"type": "number", "min": "' + node.value + '", "max": "' + node.maxValue + '"}';
-                            }
-                            return query;
-                        }
-                    });
-                    $$(webix.ARCHIBUS.gridContainer).filterByAll();
-                    gridObject.refresh();
                 }
             }, {
                 key: "_changeMaxValueFilter",
                 value: function _changeMaxValueFilter(newValue, oldValue) {
-                    var gridObject = $$(webix.ARCHIBUS.filterContainer);
-                    var item = gridObject.getItem(webix.ARCHIBUS.currentDisplayFilter.row);
+                    var gridObject = $$(webix.ARCHIBUS.filterContainer),
+                        item = gridObject.getItem(webix.ARCHIBUS.currentDisplayFilter.row),
+                        data = item[webix.ARCHIBUS.currentDisplayFilter.id];
+
                     if (newValue || newValue == '') {
-                        item[webix.ARCHIBUS.currentDisplayFilter.id].maxValue = newValue;
+                        data.maxValue = newValue;
+                        $$(webix.ARCHIBUS.gridContainer).registerFilter(item[webix.ARCHIBUS.currentDisplayFilter.id], { columnId: webix.ARCHIBUS.currentDisplayFilter.id }, {
+                            $server: true,
+                            getValue: function getValue(node) {
+                                var query = '';
+                                if (node.value) {
+                                    query = '{"type": "number", "min": "' + node.value + '"}';
+                                }
+                                if (node.maxValue) {
+                                    query = '{"type": "number", "max": "' + node.maxValue + '"}';
+                                }
+                                if (node.value && node.maxValue) {
+                                    query = '{"type": "number", "min": "' + node.value + '", "max": "' + node.maxValue + '"}';
+                                }
+                                return query;
+                            }
+                        });
+                        $$(webix.ARCHIBUS.gridContainer).filterByAll();
+                        gridObject.refresh();
                     }
-                    $$(webix.ARCHIBUS.gridContainer).registerFilter(item[webix.ARCHIBUS.currentDisplayFilter.id], { columnId: webix.ARCHIBUS.currentDisplayFilter.id }, {
-                        $server: true,
-                        getValue: function getValue(node) {
-                            var query = '';
-                            if (node.value) {
-                                query = '{"type": "number", "min": "' + node.value + '"}';
-                            }
-                            if (node.maxValue) {
-                                query = '{"type": "number", "max": "' + node.maxValue + '"}';
-                            }
-                            if (node.value && node.maxValue) {
-                                query = '{"type": "number", "min": "' + node.value + '", "max": "' + node.maxValue + '"}';
-                            }
-                            return query;
-                        }
-                    });
-                    $$(webix.ARCHIBUS.gridContainer).filterByAll();
-                    gridObject.refresh();
                 }
             }]);
 
@@ -2401,19 +2461,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 key: "_changeFilter",
                 value: function _changeFilter(newValue, oldValue) {
                     newValue = this.getText();
-                    var gridObject = $$(webix.ARCHIBUS.filterContainer);
-                    var item = gridObject.getItem(webix.ARCHIBUS.currentDisplayFilter.row);
-                    if (newValue) {
-                        item[webix.ARCHIBUS.currentDisplayFilter.id].value = newValue;
+                    var gridObject = $$(webix.ARCHIBUS.filterContainer),
+                        item = gridObject.getItem(webix.ARCHIBUS.currentDisplayFilter.row),
+                        data = item[webix.ARCHIBUS.currentDisplayFilter.id];
+
+                    if (newValue && data.value != newValue) {
+                        data.value = newValue;
+                        $$(webix.ARCHIBUS.gridContainer).registerFilter(newValue, { columnId: webix.ARCHIBUS.currentDisplayFilter.id }, {
+                            $server: true,
+                            getValue: function getValue(node) {
+                                return '{"type": "text", "value": "' + node + '"}';
+                            }
+                        });
+                        $$(webix.ARCHIBUS.gridContainer).filterByAll();
+                        gridObject.refresh();
                     }
-                    $$(webix.ARCHIBUS.gridContainer).registerFilter(newValue, { columnId: webix.ARCHIBUS.currentDisplayFilter.id }, {
-                        $server: true,
-                        getValue: function getValue(node) {
-                            return '{"type": "text", "value": "' + node + '"}';
-                        }
-                    });
-                    $$(webix.ARCHIBUS.gridContainer).filterByAll();
-                    gridObject.refresh();
                 }
             }, {
                 key: "_show",
@@ -2493,7 +2555,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             }
                         }
                     };
-
                     return {
                         id: 'customText',
                         view: configurationView
@@ -2502,40 +2563,40 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }, {
                 key: "_changeFilter",
                 value: function _changeFilter(newValue, oldValue) {
-                    var gridObject = $$(webix.ARCHIBUS.filterContainer);
-                    var item = gridObject.getItem(webix.ARCHIBUS.currentDisplayFilter.row);
+                    var gridObject = $$(webix.ARCHIBUS.filterContainer),
+                        item = gridObject.getItem(webix.ARCHIBUS.currentDisplayFilter.row),
+                        data = item[webix.ARCHIBUS.currentDisplayFilter.id];
                     if (newValue) {
-                        item[webix.ARCHIBUS.currentDisplayFilter.id].value = newValue;
-                    }
-                    $$(webix.ARCHIBUS.gridContainer).registerFilter(newValue, { columnId: webix.ARCHIBUS.currentDisplayFilter.id }, {
-                        $server: true,
-                        getValue: function getValue(node) {
-                            var result = '{"type": "text", "value": "' + node + '"';
-                            var pattern = "%";
-                            var isAddStyle = true;
+                        $$(webix.ARCHIBUS.gridContainer).registerFilter(newValue, { columnId: webix.ARCHIBUS.currentDisplayFilter.id }, {
+                            $server: true,
+                            getValue: function getValue(node) {
+                                var result = '{"type": "text", "value": "' + node + '"';
+                                var pattern = "%";
+                                var isAddStyle = true;
 
-                            for (var i = 0, length = pattern.length; i < length; i += 1) {
-                                var p = pattern[i];
-                                var s = node[i];
-                                if (p !== s) {
-                                    isAddStyle = false;
-                                    break;
+                                for (var i = 0, length = pattern.length; i < length; i += 1) {
+                                    var p = pattern[i];
+                                    var s = node[i];
+                                    if (p !== s) {
+                                        isAddStyle = false;
+                                        break;
+                                    }
                                 }
-                            }
 
-                            if (node[node.length - 1] == pattern) {
-                                result = '{"type": "text", "value": "' + node.substr(0, node.length - 1) + '", "start": "true"';
-                            }
+                                if (node[node.length - 1] == pattern) {
+                                    result = '{"type": "text", "value": "' + node.substr(0, node.length - 1) + '", "start": "true"';
+                                }
 
-                            if (isAddStyle) {
-                                result = '{"type": "text", "value": "' + node.substr(1) + '", "end": "true"';
+                                if (isAddStyle) {
+                                    result = '{"type": "text", "value": "' + node.substr(1) + '", "end": "true"';
+                                }
+                                result += '}';
+                                return result;
                             }
-                            result += '}';
-                            return result;
-                        }
-                    });
-                    $$(webix.ARCHIBUS.gridContainer).filterByAll();
-                    gridObject.refresh();
+                        });
+                        $$(webix.ARCHIBUS.gridContainer).filterByAll();
+                        gridObject.refresh();
+                    }
                 }
             }]);
 
@@ -2652,6 +2713,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             title: 'Site Code',
             dataType: 'text'
         }, {
+            id: 'Date',
+            title: 'Date',
+            dataType: 'date',
+            dateTimeFormat: '%m/%d/%y'
+        }, {
             id: 'BuildingCode',
             title: 'Building Code',
             dataType: 'text'
@@ -2675,11 +2741,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             id: 'DepartmentCode',
             title: 'Department Code',
             dataType: 'text'
-        }, {
-            id: 'Date',
-            title: 'Date',
-            dataType: 'date',
-            dateTimeFormat: '%m/%d/%y'
         }, {
             id: 'action',
             title: 'Action',

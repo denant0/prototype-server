@@ -58,6 +58,12 @@ var ARCHIBUSColumns = [
         dataType: 'text'
     },
     {
+        id: 'Date',
+        title: 'Date',
+        dataType: 'date',
+        dateTimeFormat: '%m/%d/%y'
+    },
+    {
         id: 'BuildingCode',
         title: 'Building Code',
         dataType: 'text'
@@ -86,12 +92,6 @@ var ARCHIBUSColumns = [
         id: 'DepartmentCode',
         title: 'Department Code',
         dataType: 'text'
-    },
-    {
-        id: 'Date',
-        title: 'Date',
-        dataType: 'date',
-        dateTimeFormat: '%m/%d/%y'
     },
     {
         id: 'action',

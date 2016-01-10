@@ -58,23 +58,25 @@ class SelectFilter {
 
     _changeFilter (newValue, oldValue) {
         newValue = this.getText();
-        var gridObject = $$(webix.ARCHIBUS.filterContainer);
-        var item = gridObject.getItem(webix.ARCHIBUS.currentDisplayFilter.row);
-        if (newValue) {
-            item[webix.ARCHIBUS.currentDisplayFilter.id].value = newValue;
-        }
-        $$(webix.ARCHIBUS.gridContainer).registerFilter(
-            newValue,
-            { columnId: webix.ARCHIBUS.currentDisplayFilter.id },
-            {
-                $server: true,
-                getValue:function(node) {
-                    return '{"type": "text", "value": "' + node + '"}';
+        var gridObject = $$(webix.ARCHIBUS.filterContainer),
+            item = gridObject.getItem(webix.ARCHIBUS.currentDisplayFilter.row),
+            data = item[webix.ARCHIBUS.currentDisplayFilter.id];
+
+        if (newValue && data.value != newValue) {
+            data.value = newValue;
+            $$(webix.ARCHIBUS.gridContainer).registerFilter(
+                newValue,
+                {columnId: webix.ARCHIBUS.currentDisplayFilter.id},
+                {
+                    $server: true,
+                    getValue: function (node) {
+                        return '{"type": "text", "value": "' + node + '"}';
+                    }
                 }
-            }
-        );
-        $$(webix.ARCHIBUS.gridContainer).filterByAll();
-        gridObject.refresh();
+            );
+            $$(webix.ARCHIBUS.gridContainer).filterByAll();
+            gridObject.refresh();
+        }
     }
 
     _show () {

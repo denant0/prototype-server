@@ -1,0 +1,222 @@
+@backgroundColor-selectRow: #FFE0B4;
+@backgroundColor-groupHeaderRow: #E4EDF9;
+@backgroundColor-groupHeaderRowSelect: #FFD69A;
+@backgroundColor-gridHeader: #37A6D3;
+@backgroundColor-editRow: #FFE0B4;
+@backgroundColor-gridFooter: #E4EDF9;
+@backgroundColor-tableHeader: #4075D3;
+@backgroundColor-filterLayout: #FCC48B;
+
+
+@borderColor-selectRow: #FFD69A;
+@borderColor-gridCell: #E4EDF9;
+@borderColor-separatorSection: #d0d0d0;
+
+@textColor-selectRow: #A87104;
+@textColor-gridHeader: #f7f7f7;
+@textColor-filterCell: #61A6F7;
+
+@iconTreeOpen: url(icons/treeOpen.jpg);
+@iconTreeClose: url(icons/treeClose.jpg);
+
+
+@fontSize-title: 13px;
+@fontSize-value: 11px;
+@fontSize-gridText: 12px;
+@fontSize-placeholder: 10px;
+
+.select {
+  background-color: @backgroundColor-selectRow;
+  border-bottom: 1px solid @borderColor-selectRow !important;
+  color: @textColor-selectRow;
+}
+
+.colorFilterLayout {
+  background-color: @backgroundColor-filterLayout;
+  border: 1px solid @backgroundColor-filterLayout !important;
+}
+
+.inputText {
+  border-radius: 0 !important;
+  color: #4075D3 !important;
+  font-weight: bold;
+}
+
+.placeholder {
+  color: @backgroundColor-gridHeader;
+  font-size: @fontSize-placeholder;
+  font-style: italic;
+}
+
+body, html { height:99%; }
+
+.rowSelect {
+  .select
+}
+
+.rowEdited {
+  background-color: @backgroundColor-editRow;
+}
+
+.rowGroupHeader {
+  background-color: @backgroundColor-groupHeaderRow;
+}
+.rowGroupHeaderSelect {
+  background-color: @backgroundColor-groupHeaderRowSelect;
+}
+
+.groupTitleFirst {
+  font-size: @fontSize-title;
+  font-weight: bold;
+  margin: 0;
+}
+
+.groupTitleSecond {
+  font-size: @fontSize-value;
+  margin-top: -10px;
+}
+
+.footerTitle {
+  font-size: @fontSize-title;
+  font-weight: bold;
+  text-align: right !important;
+  padding: 0 !important;
+}
+
+.flat .webix_view {
+  border: none;
+}
+
+.flat .webix_header > div {
+  background: @backgroundColor-tableHeader !important;
+  font-weight: bold;
+}
+
+.webix_layout_clean {
+  border: 1px solid @backgroundColor-tableHeader
+}
+
+.styleDataGrid .webix_ss_header td {
+  background-color: @backgroundColor-gridHeader;
+  color: @textColor-gridHeader;
+  border-right: none;
+  border-left: none;
+  font-size: @fontSize-gridText;
+  font-weight: bold;
+}
+
+.styleDataGrid .webix_ss_header .webix_hcell {
+  text-align: center
+}
+
+.styleDataGrid .webix_ss_footer td {
+  background-color: @backgroundColor-gridFooter;
+  font-size: @fontSize-value;
+  padding: 0;
+}
+
+.styleDataGrid .webix_ss_footer .webix_hcell {
+  text-align: right;
+  padding:0 4px 0 4px !important;
+}
+
+.styleFilterTable .webix_cell,
+.styleDataGrid .webix_cell {
+  border-bottom: 1px solid @borderColor-gridCell;
+  border-right: none;
+  border-left: none;
+  font-size: @fontSize-gridText;
+  padding:0 4px 0 4px !important;
+}
+
+.styleFilterTableCell {
+  color: @textColor-filterCell;
+  text-align: center;
+  font-style: italic;
+  align: center;
+}
+
+.styleDataGrid .webix_column > div.webix_cell_select {
+  .select;
+  padding:0 4px 0 4px !important;
+}
+
+.webix_view .webix_tree_open:before {
+  content: @iconTreeOpen !important;
+}
+
+.webix_view .webix_tree_close:before {
+  content: @iconTreeClose !important;
+}
+
+.styleLayoutFilter {
+  padding: 0 !important;
+  margin-bottom: -10px
+}
+
+.styleTextFilter, .styleSelectFilter, .styleNumericRangeFilter {
+  .colorFilterLayout
+}
+
+.styleMinInput .webix_el_box input, .styleMaxInput .webix_el_box input, .styleTextInput .webix_el_box input, .styleSelectList .webix_el_box input {
+  .inputText
+}
+
+.styleMinInput .webix_el_box input::-webkit-input-placeholder,
+.styleMaxInput .webix_el_box input::-webkit-input-placeholder { /* Safari, Chrome and Opera */
+  .placeholder
+}
+
+.styleMinInput .webix_el_box input:-moz-placeholder,
+.styleMaxInput .webix_el_box input:-moz-placeholder { /* Firefox 18- */
+  .placeholder
+}
+
+.styleMinInput .webix_el_box input::-moz-placeholder,
+.styleMaxInput .webix_el_box input::-moz-placeholder { /* Firefox 19+ */
+  .placeholder
+}
+
+.styleMinInput .webix_el_box input:-ms-input-placeholder,
+.styleMaxInput .webix_el_box input:-ms-input-placeholder{ /* IE 10+ */
+  .placeholder
+}
+
+.styleMinInput .webix_el_box input::-ms-input-placeholder,
+.styleMaxInput .webix_el_box input::-ms-input-placeholder { /* Edge */
+  .placeholder
+}
+
+.styleMinInput .webix_el_box input:placeholder-shown,
+.styleMaxInput .webix_el_box input:placeholder-shown{ /* Standard one last! */
+  .placeholder
+}
+
+
+.styleString {
+  .colorFilterLayout;
+  font-weight: bold;
+}
+
+.styleSelectList .webix_el_box .webix_input_icon {
+  .inputText;
+  background-color: inherit !important;
+}
+
+.styleSelectList .webix_el_box .webix_input_icon:hover {
+  background-color: inherit !important;
+}
+
+.styleSelectOptions .webix_list .webix_list_item {
+  color: @textColor-selectRow !important;
+  font-size: @fontSize-gridText;
+}
+
+.styleSelectOptions .webix_list .webix_list_item.webix_selected {
+  background: @backgroundColor-selectRow !important;
+}
+
+.webix_dtable .webix_hs_left td.webix_last  {
+  border-right: 1px solid @borderColor-separatorSection;
+}
+

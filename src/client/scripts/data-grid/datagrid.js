@@ -85,8 +85,32 @@ class DataGrid {
         });
         this.dataTable = new webix.ui(this._createGridConfiguration(config));
         this.filterTable = this._dataGridFilter.getFilteringView(config, nameFiltering);
+        if(this._isInternetExplorer() == -1) {
+            webix.ARCHIBUS.gridContainer = this.dataTable.getNode().attributes[2].nodeValue;
+            webix.ARCHIBUS.filterContainer = this.filterTable.getNode().attributes[2].nodeValue;
+        } else {
+            webix.ARCHIBUS.gridContainer = this.dataTable.getNode().attributes[3].nodeValue;
+            webix.ARCHIBUS.filterContainer = this.filterTable.getNode().attributes[3].nodeValue;
+        }
+    }
 
-        webix.ARCHIBUS.gridContainer = this.dataTable.getNode().attributes[2].nodeValue;
+    _isInternetExplorer() {
+        var rv = -1;
+        if (navigator.appName == 'Microsoft Internet Explorer')
+        {
+            var ua = navigator.userAgent;
+            var re  = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+            if (re.exec(ua) != null)
+                rv = parseFloat( RegExp.$1 );
+        }
+        else if (navigator.appName == 'Netscape')
+        {
+            var ua = navigator.userAgent;
+            var re  = new RegExp("Trident/.*rv:([0-9]{1,}[\.0-9]{0,})");
+            if (re.exec(ua) != null)
+                rv = parseFloat( RegExp.$1 );
+        }
+        return rv;
     }
     /*
      Customize the size the grid view depending on the set values in the config
@@ -123,7 +147,7 @@ class DataGrid {
         var gridConfiguration = {
             container: gridName,
             view: "customDataTable",
-            css: config.style,
+            css: 'styleDataGrid',
             columns: gridColumns.columns,
             pager: {
                 css: 'stylePager',

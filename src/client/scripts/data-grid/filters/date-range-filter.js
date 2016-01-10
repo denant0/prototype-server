@@ -1,5 +1,21 @@
 class DateRangeFilter {
     constructor () {
+
+        webix.ui({
+            view:"popup",
+            css:"custom",
+            relative: 'bottom',
+            id:"cmenu",
+            body:{
+                view:"calendar", timepicker:true, stringResult:true, format:"%d %M %Y at %H:%i",
+                on: {
+                    onChange: function () {
+                        var t = 0;
+                    }//this._changeMinValueFilter
+                }
+            }
+        });
+
         webix.editors.dateRange = webix.extend({
             popupType: 'dateRange',
             focus: function () {
@@ -16,12 +32,12 @@ class DateRangeFilter {
                 }*/
             },
             getValue: function () {
-                var minInput = this.getInputNode().getChildViews()[0].getValue();
-                var maxInput = this.getInputNode().getChildViews()[2].getValue();
-                return {min: minInput || '', max: maxInput || ''};
+                /*var minInput = this.getInputNode().getChildViews()[0].getValue();
+                var maxInput = this.getInputNode().getChildViews()[2].getValue();*/
+                return "";
             },
             setValue: function (value) {
-                var displayMinValue = '',
+                /*var displayMinValue = '',
                     displayMaxValue = '';
                 var gridObject = $$(webix.ARCHIBUS.filterContainer),
                     item = gridObject.getItem(webix.ARCHIBUS.currentDisplayFilter.row),
@@ -32,11 +48,12 @@ class DateRangeFilter {
                 if (data.maxValue) {
                     displayMaxValue = data.maxValue;
                 }
-                this.getPopup().show(this.node);
+
                 var minInput = this.getInputNode().getChildViews()[0];
                 var maxInput = this.getInputNode().getChildViews()[2];
                 minInput.setValue(displayMinValue);
-                maxInput.setValue(displayMaxValue);
+                maxInput.setValue(displayMaxValue);*/
+                this.getPopup().show(this.node);
             },
             getInputNode: function() {
                 return this.getPopup().getChildViews()[0];
@@ -57,10 +74,19 @@ class DateRangeFilter {
             body:{
                 cols:[
                     {
-                        view:"datepicker", timepicker:true, stringResult:true, format:"%d %M %Y at %H:%i",
-                        on: {
-                            //onChange: this._changeMinValueFilter
-                        }
+                        rows: [
+                            {
+                                view: 'text',
+                                on: {
+                                    onFocus: function (currentView, prevView) {
+                                        $$("cmenu").show(currentView);
+                                        //$$("cmenu").getBody().data.dataedit = tooltip;
+                                        //$$("cmenu").getBody().data.id = id;
+                                        $$("cmenu").getBody().refresh();
+                                    }
+                                }
+                            }
+                        ]
                     },
                     {
                         template: 'to',
@@ -68,11 +94,18 @@ class DateRangeFilter {
                         css: 'styleString'
                     },
                     {
-                        view:"datepicker", timepicker:true, stringResult:true, format:"%d %M %Y at %H:%i",
-                        tabFocus: true,
-                        on: {
-                            //onChange: this._changeMaxValueFilter
-                        }
+                        rows: [
+                            {
+                                view: 'text'
+                            },
+                            {
+                                view:"calendar", timepicker:true, stringResult:true, format:"%d %M %Y at %H:%i",
+                                hidden: true,
+                                on: {
+                                    //onChange: this._changeMaxValueFilter
+                                }
+                            }
+                        ]
                     }
                 ]
             }
@@ -90,7 +123,7 @@ class DateRangeFilter {
         if (newValue || newValue == '') {
             item[webix.ARCHIBUS.currentDisplayFilter.id].value = newValue;
         }
-        $$(webix.ARCHIBUS.gridContainer).registerFilter(
+        /*$$(webix.ARCHIBUS.gridContainer).registerFilter(
             item[webix.ARCHIBUS.currentDisplayFilter.id],
             { columnId: webix.ARCHIBUS.currentDisplayFilter.id },
             {
@@ -111,7 +144,7 @@ class DateRangeFilter {
             }
         );
         $$(webix.ARCHIBUS.gridContainer).filterByAll();
-        gridObject.refresh();
+        gridObject.refresh();*/
     }
 
     _changeMaxValueFilter (newValue, oldValue) {
@@ -120,7 +153,7 @@ class DateRangeFilter {
         if (newValue || newValue == '') {
             item[webix.ARCHIBUS.currentDisplayFilter.id].maxValue = newValue;
         }
-        $$(webix.ARCHIBUS.gridContainer).registerFilter(
+        /*$$(webix.ARCHIBUS.gridContainer).registerFilter(
             item[webix.ARCHIBUS.currentDisplayFilter.id],
             { columnId: webix.ARCHIBUS.currentDisplayFilter.id },
             {
@@ -141,7 +174,7 @@ class DateRangeFilter {
             }
         );
         $$(webix.ARCHIBUS.gridContainer).filterByAll();
-        gridObject.refresh();
+        gridObject.refresh();*/
     }
 }
 

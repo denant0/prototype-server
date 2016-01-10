@@ -3,6 +3,9 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify');
 var babel = require("gulp-babel");
+var less = require('gulp-less');
+var path = require('path');
+
 
 gulp.task('webix', function(){
     gulp.src('src/client/scripts/main.js')
@@ -24,7 +27,15 @@ gulp.task('copy', function(){
         .pipe(gulp.dest('public/scripts/lib/'));
 });
 
-gulp.task('default',['webix', 'copy']);
+gulp.task('less', function () {
+    return gulp.src('src/client/style/**/*.less')
+        .pipe(less({
+            paths: [ path.join(__dirname, 'less', 'includes') ]
+        }))
+        .pipe(gulp.dest('public/style/'));
+});
+
+gulp.task('default',['webix', 'copy', 'less']);
 
 gulp.task('watch', function(){
     gulp.watch('src/**/*.*',['default']);
