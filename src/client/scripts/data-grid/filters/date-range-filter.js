@@ -11,6 +11,7 @@ class DateRangeFilter {
                         view: 'datepicker',
                         css: 'styleMinDateInput',
                         placeholder: 'oldest',
+                        format:webix.Date.dateToStr("%m/%d/%Y"),
                         on: {
                             onChange: this._changeMinValueFilter
                         }
@@ -23,6 +24,7 @@ class DateRangeFilter {
                     {
                         view: 'datepicker',
                         placeholder: 'newest',
+                        format:webix.Date.dateToStr("%m/%d/%Y"),
                         css: 'styleMaxDateInput',
                         on: {
                             onChange: this._changeMaxValueFilter
@@ -32,8 +34,6 @@ class DateRangeFilter {
             }
         });
     }
-
-
 
     _changeMinValueFilter (newValue, oldValue) {
         var gridObject = $$(webix.ARCHIBUS.filterContainer);

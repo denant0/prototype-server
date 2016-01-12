@@ -2,7 +2,7 @@
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-function _typeof(obj) { return typeof obj; }
+function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : typeof obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -328,7 +328,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     var gridFilter = $$(webix.ARCHIBUS.filterContainer),
                         configurationColumn = this.getColumnConfig(columnId);
                     gridFilter.setColumnWidth(columnId, configurationColumn.width);
-                    gridFilter.refresh();
+                    //gridFilter.refresh();
                 }
             }, {
                 key: "refreshWidthColumns",
@@ -336,9 +336,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     var gridFilter = $$(webix.ARCHIBUS.filterContainer);
                     this.eachColumn(function (columnId) {
                         var configurationColumn = this.getColumnConfig(columnId);
-                        gridFilter.setColumnWidth(columnId, configurationColumn.width);
+                        gridFilter.adjustColumn(columnId, "data");
+                        var configurationFilterColumn = gridFilter.getColumnConfig(columnId);
+                        if (configurationFilterColumn.width > configurationColumn.width) {
+                            this.setColumnWidth(columnId, configurationFilterColumn.width);
+                        } else {
+                            gridFilter.setColumnWidth(columnId, configurationColumn.width);
+                        }
                     });
-                    gridFilter.refresh();
                 }
             }, {
                 key: "setPositionSctoll",
@@ -354,13 +359,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }, {
                 key: "afterFilter",
                 value: function afterFilter() {
-                    $$(webix.ARCHIBUS.filterContainer).editStop();
+                    var gridFilter = $$(webix.ARCHIBUS.filterContainer);
+                    gridFilter.editStop();
+                    gridFilter.adjustColumn(webix.ARCHIBUS.currentDisplayFilter.id, "data");
+                    var configurationFilterColumn = gridFilter.getColumnConfig(webix.ARCHIBUS.currentDisplayFilter.id);
+                    var configurationColumn = this.getColumnConfig(webix.ARCHIBUS.currentDisplayFilter.id);
+                    var width = configurationFilterColumn.width + 20;
+                    if (width > configurationColumn.width) {
+                        this.setColumnWidth(webix.ARCHIBUS.currentDisplayFilter.id, width);
+                    } else {
+                        gridFilter.setColumnWidth(webix.ARCHIBUS.currentDisplayFilter.id, configurationColumn.width);
+                    }
+
                     if (webix.ARCHIBUS.currentDisplayFilter.id) {
                         if (webix.ARCHIBUS.currentDisplayFilter.type == 'date') {
-                            var targer = $$(webix.ARCHIBUS.filterContainer).getItemNode({ row: webix.ARCHIBUS.currentDisplayFilter.row, column: webix.ARCHIBUS.currentDisplayFilter.id });
+                            var targer = gridFilter.getItemNode({ row: webix.ARCHIBUS.currentDisplayFilter.row, column: webix.ARCHIBUS.currentDisplayFilter.id });
                             $$("dataRangeFilter").show(targer);
                         } else {
-                            $$(webix.ARCHIBUS.filterContainer).editCell(webix.ARCHIBUS.currentDisplayFilter.row, webix.ARCHIBUS.currentDisplayFilter.id);
+                            gridFilter.editCell(webix.ARCHIBUS.currentDisplayFilter.row, webix.ARCHIBUS.currentDisplayFilter.id);
                         }
                     }
                 }
@@ -1989,6 +2005,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 key: "_afterLoad",
                 value: function _afterLoad(row, column, value) {
                     this.openAll();
+                    /*this.eachColumn(function(columnId) {
+                        this.adjustColumn(columnId, 'data');
+                    });*/
                     this.callEvent('onRefreshWidthColumnsFilterTable', []);
                 }
                 /*
@@ -2063,6 +2082,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             view: 'datepicker',
                             css: 'styleMinDateInput',
                             placeholder: 'oldest',
+                            format: webix.Date.dateToStr("%m/%d/%Y"),
                             on: {
                                 onChange: this._changeMinValueFilter
                             }
@@ -2073,6 +2093,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         }, {
                             view: 'datepicker',
                             placeholder: 'newest',
+                            format: webix.Date.dateToStr("%m/%d/%Y"),
                             css: 'styleMaxDateInput',
                             on: {
                                 onChange: this._changeMaxValueFilter

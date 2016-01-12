@@ -33,16 +33,22 @@ class DataGridFilter {
         var gridFilter = $$(webix.ARCHIBUS.filterContainer),
             configurationColumn = this.getColumnConfig(columnId);
         gridFilter.setColumnWidth(columnId, configurationColumn.width);
-        gridFilter.refresh();
+        //gridFilter.refresh();
     }
 
     refreshWidthColumns () {
         var gridFilter = $$(webix.ARCHIBUS.filterContainer);
         this.eachColumn(function(columnId){
             var configurationColumn = this.getColumnConfig(columnId);
-            gridFilter.setColumnWidth(columnId, configurationColumn.width);
+            gridFilter.adjustColumn(columnId, "data");
+            var configurationFilterColumn = gridFilter.getColumnConfig(columnId);
+            if (configurationFilterColumn.width > configurationColumn.width) {
+                this.setColumnWidth(columnId, configurationFilterColumn.width);
+            } else {
+                gridFilter.setColumnWidth(columnId, configurationColumn.width);
+            }
+
         });
-        gridFilter.refresh();
     }
 
     setPositionSctoll (position) {
@@ -55,15 +61,25 @@ class DataGridFilter {
     }
 
     afterFilter () {
-        $$(webix.ARCHIBUS.filterContainer).editStop();
+        var gridFilter = $$(webix.ARCHIBUS.filterContainer);
+        gridFilter.editStop();
+        gridFilter.adjustColumn(webix.ARCHIBUS.currentDisplayFilter.id, "data");
+        var configurationFilterColumn = gridFilter.getColumnConfig(webix.ARCHIBUS.currentDisplayFilter.id);
+        var configurationColumn = this.getColumnConfig(webix.ARCHIBUS.currentDisplayFilter.id);
+        var width = configurationFilterColumn.width + 20;
+        if (width > configurationColumn.width) {
+            this.setColumnWidth(webix.ARCHIBUS.currentDisplayFilter.id, width);
+        } else {
+            gridFilter.setColumnWidth(webix.ARCHIBUS.currentDisplayFilter.id, configurationColumn.width);
+        }
+
         if (webix.ARCHIBUS.currentDisplayFilter.id) {
             if(webix.ARCHIBUS.currentDisplayFilter.type == 'date') {
-                var targer = $$(webix.ARCHIBUS.filterContainer).getItemNode({ row: webix.ARCHIBUS.currentDisplayFilter.row, column: webix.ARCHIBUS.currentDisplayFilter.id});
+                var targer = gridFilter.getItemNode({ row: webix.ARCHIBUS.currentDisplayFilter.row, column: webix.ARCHIBUS.currentDisplayFilter.id});
                 $$("dataRangeFilter").show(targer);
             } else {
-                $$(webix.ARCHIBUS.filterContainer).editCell(webix.ARCHIBUS.currentDisplayFilter.row, webix.ARCHIBUS.currentDisplayFilter.id);
+                gridFilter.editCell(webix.ARCHIBUS.currentDisplayFilter.row, webix.ARCHIBUS.currentDisplayFilter.id);
             }
-
         }
     }
 
