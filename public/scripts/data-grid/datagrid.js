@@ -2,7 +2,7 @@
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-function _typeof(obj) { return obj && obj.constructor === Symbol ? "symbol" : typeof obj; }
+function _typeof(obj) { return typeof obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -318,7 +318,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 this._registerFilter(new TextFilter());
                 this._registerFilter(new SelectFilter());
                 this._registerFilter(new NumericRangeFilter());
-                this._registerFilter(new DateRangeFilter());
+                new DateRangeFilter();
+                //this._registerFilter(new DateRangeFilter());
             }
 
             _createClass(DataGridFilter, [{
@@ -355,7 +356,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 value: function afterFilter() {
                     $$(webix.ARCHIBUS.filterContainer).editStop();
                     if (webix.ARCHIBUS.currentDisplayFilter.id) {
-                        $$(webix.ARCHIBUS.filterContainer).editCell(webix.ARCHIBUS.currentDisplayFilter.row, webix.ARCHIBUS.currentDisplayFilter.id);
+                        if (webix.ARCHIBUS.currentDisplayFilter.type == 'date') {
+                            var targer = $$(webix.ARCHIBUS.filterContainer).getItemNode({ row: webix.ARCHIBUS.currentDisplayFilter.row, column: webix.ARCHIBUS.currentDisplayFilter.id });
+                            $$("dataRangeFilter").show(targer);
+                        } else {
+                            $$(webix.ARCHIBUS.filterContainer).editCell(webix.ARCHIBUS.currentDisplayFilter.row, webix.ARCHIBUS.currentDisplayFilter.id);
+                        }
                     }
                 }
             }, {
@@ -590,9 +596,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             case 'enum':
                                 configGridColumn.editor = 'customSelect';
                                 break;
-                            case 'date':
-                                configGridColumn.editor = 'dateRange';
-                                break;
                             default:
                                 configGridColumn.editor = 'customText';
                                 break;
@@ -656,7 +659,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         type = item[id.column].type;
                         this.editStop();
                         webix.ARCHIBUS.currentDisplayFilter = { id: id.column, row: id.row, type: type };
-                        this.editCell(id.row, id.column);
+                        if (type == 'date') {
+                            $$("dataRangeFilter").show(event.target);
+                        } else {
+                            this.editCell(id.row, id.column);
+                        }
                     }
                 }
             }, {
@@ -1747,7 +1754,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             webixGroupBy = configurationTotalGroup.header;
                         } else {
                             if (i == ARCHIBUSColumns.length - 1) {
-                                gridColumn.footer = [{ text: '<div id="pager"></div>', height: 20 }, { text: "", height: 20 }];
+                                gridColumn.footer = [{ text: "", height: 20 }, { text: "", height: 20 }];
                             } else {
                                 gridColumn.footer = [{ text: "", height: 20 }, { text: "", height: 20 }];
                             }
@@ -2047,113 +2054,35 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 _classCallCheck(this, DateRangeFilter);
 
                 webix.ui({
-                    view: "popup",
-                    css: "custom",
-                    relative: 'bottom',
-                    id: "cmenu",
+                    view: 'filterPopup',
+                    css: 'styleDataRangeFilter',
+                    relative: 'top',
+                    id: 'dataRangeFilter',
                     body: {
-                        view: "calendar", timepicker: true, stringResult: true, format: "%d %M %Y at %H:%i",
-                        on: {
-                            onChange: function onChange() {
-                                var t = 0;
-                            } //this._changeMinValueFilter
-                        }
+                        cols: [{
+                            view: 'datepicker',
+                            css: 'styleMinDateInput',
+                            placeholder: 'oldest',
+                            on: {
+                                onChange: this._changeMinValueFilter
+                            }
+                        }, {
+                            template: 'to',
+                            width: 20,
+                            css: 'styleString'
+                        }, {
+                            view: 'datepicker',
+                            placeholder: 'newest',
+                            css: 'styleMaxDateInput',
+                            on: {
+                                onChange: this._changeMaxValueFilter
+                            }
+                        }]
                     }
                 });
-
-                webix.editors.dateRange = webix.extend({
-                    popupType: 'dateRange',
-                    focus: function focus() {
-                        /*var gridObject = $$(webix.ARCHIBUS.filterContainer),
-                            item = gridObject.getItem(webix.ARCHIBUS.currentDisplayFilter.row),
-                            data = item[webix.ARCHIBUS.currentDisplayFilter.id];
-                        if (data.value) {
-                            this.getInputNode().getChildViews()[2].focus();
-                            if (data.value && data.maxValue) {
-                                this.getInputNode().getChildViews()[0].focus();
-                            }
-                        } else {
-                            this.getInputNode().getChildViews()[0].focus();
-                        }*/
-                    },
-                    getValue: function getValue() {
-                        /*var minInput = this.getInputNode().getChildViews()[0].getValue();
-                        var maxInput = this.getInputNode().getChildViews()[2].getValue();*/
-                        return "";
-                    },
-                    setValue: function setValue(value) {
-                        /*var displayMinValue = '',
-                            displayMaxValue = '';
-                        var gridObject = $$(webix.ARCHIBUS.filterContainer),
-                            item = gridObject.getItem(webix.ARCHIBUS.currentDisplayFilter.row),
-                            data = item[webix.ARCHIBUS.currentDisplayFilter.id];
-                        if (data.value) {
-                            displayMinValue = data.value;
-                        }
-                        if (data.maxValue) {
-                            displayMaxValue = data.maxValue;
-                        }
-                          var minInput = this.getInputNode().getChildViews()[0];
-                        var maxInput = this.getInputNode().getChildViews()[2];
-                        minInput.setValue(displayMinValue);
-                        maxInput.setValue(displayMaxValue);*/
-                        this.getPopup().show(this.node);
-                    },
-                    getInputNode: function getInputNode() {
-                        return this.getPopup().getChildViews()[0];
-                    },
-                    popupInit: function popupInit(popup) {
-                        popup.getChildViews()[0].attachEvent("onSelect", function (value) {
-                            webix.callEvent("onEditEnd", [value]);
-                        });
-                    }
-                }, webix.editors.popup);
             }
 
             _createClass(DateRangeFilter, [{
-                key: "configuration",
-                value: function configuration() {
-                    var configurationView = {
-                        view: "filterPopup",
-                        relative: 'top',
-                        css: 'customFilterView',
-                        body: {
-                            cols: [{
-                                rows: [{
-                                    view: 'text',
-                                    on: {
-                                        onFocus: function onFocus(currentView, prevView) {
-                                            $$("cmenu").show(currentView);
-                                            //$$("cmenu").getBody().data.dataedit = tooltip;
-                                            //$$("cmenu").getBody().data.id = id;
-                                            $$("cmenu").getBody().refresh();
-                                        }
-                                    }
-                                }]
-                            }, {
-                                template: 'to',
-                                width: 20,
-                                css: 'styleString'
-                            }, {
-                                rows: [{
-                                    view: 'text'
-                                }, {
-                                    view: "calendar", timepicker: true, stringResult: true, format: "%d %M %Y at %H:%i",
-                                    hidden: true,
-                                    on: {
-                                        //onChange: this._changeMaxValueFilter
-                                    }
-                                }]
-                            }]
-                        }
-                    };
-
-                    return {
-                        id: 'dateRange',
-                        view: configurationView
-                    };
-                }
-            }, {
                 key: "_changeMinValueFilter",
                 value: function _changeMinValueFilter(newValue, oldValue) {
                     var gridObject = $$(webix.ARCHIBUS.filterContainer);
@@ -2161,28 +2090,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     if (newValue || newValue == '') {
                         item[webix.ARCHIBUS.currentDisplayFilter.id].value = newValue;
                     }
-                    /*$$(webix.ARCHIBUS.gridContainer).registerFilter(
-                        item[webix.ARCHIBUS.currentDisplayFilter.id],
-                        { columnId: webix.ARCHIBUS.currentDisplayFilter.id },
-                        {
-                            $server: true,
-                            getValue:function(node) {
-                                var query = '';
-                                if (node.value) {
-                                    query ='{"type": "date", "min": "' + node.value + '"}';
-                                }
-                                if (node.maxValue) {
-                                    query ='{"type": "date", "max": "' + node.maxValue + '"}';
-                                }
-                                if (node.value && node.maxValue) {
-                                    query ='{"type": "date", "min": "' + node.value + '", "max": "' + node.maxValue + '"}';
-                                }
-                                return query;
+                    $$(webix.ARCHIBUS.gridContainer).registerFilter(item[webix.ARCHIBUS.currentDisplayFilter.id], { columnId: webix.ARCHIBUS.currentDisplayFilter.id }, {
+                        $server: true,
+                        getValue: function getValue(node) {
+                            var query = '';
+                            if (node.value) {
+                                query = '{"type": "date", "min": "' + node.value + '"}';
                             }
+                            if (node.maxValue) {
+                                query = '{"type": "date", "max": "' + node.maxValue + '"}';
+                            }
+                            if (node.value && node.maxValue) {
+                                query = '{"type": "date", "min": "' + node.value + '", "max": "' + node.maxValue + '"}';
+                            }
+                            return query;
                         }
-                    );
+                    });
                     $$(webix.ARCHIBUS.gridContainer).filterByAll();
-                    gridObject.refresh();*/
+                    gridObject.refresh();
                 }
             }, {
                 key: "_changeMaxValueFilter",
@@ -2192,28 +2117,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     if (newValue || newValue == '') {
                         item[webix.ARCHIBUS.currentDisplayFilter.id].maxValue = newValue;
                     }
-                    /*$$(webix.ARCHIBUS.gridContainer).registerFilter(
-                        item[webix.ARCHIBUS.currentDisplayFilter.id],
-                        { columnId: webix.ARCHIBUS.currentDisplayFilter.id },
-                        {
-                            $server: true,
-                            getValue:function(node) {
-                                var query = '';
-                                if (node.value) {
-                                    query ='{"type": "date", "min": "' + node.value + '"}';
-                                }
-                                if (node.maxValue) {
-                                    query ='{"type": "date", "max": "' + node.maxValue + '"}';
-                                }
-                                if (node.value && node.maxValue) {
-                                    query ='{"type": "date", "min": "' + node.value + '", "max": "' + node.maxValue + '"}';
-                                }
-                                return query;
+                    $$(webix.ARCHIBUS.gridContainer).registerFilter(item[webix.ARCHIBUS.currentDisplayFilter.id], { columnId: webix.ARCHIBUS.currentDisplayFilter.id }, {
+                        $server: true,
+                        getValue: function getValue(node) {
+                            var query = '';
+                            if (node.value) {
+                                query = '{"type": "date", "min": "' + node.value + '"}';
                             }
+                            if (node.maxValue) {
+                                query = '{"type": "date", "max": "' + node.maxValue + '"}';
+                            }
+                            if (node.value && node.maxValue) {
+                                query = '{"type": "date", "min": "' + node.value + '", "max": "' + node.maxValue + '"}';
+                            }
+                            return query;
                         }
-                    );
+                    });
                     $$(webix.ARCHIBUS.gridContainer).filterByAll();
-                    gridObject.refresh();*/
+                    gridObject.refresh();
                 }
             }]);
 

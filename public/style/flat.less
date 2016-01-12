@@ -154,41 +154,46 @@ body, html { height:99%; }
   margin-bottom: -10px
 }
 
-.styleTextFilter, .styleSelectFilter, .styleNumericRangeFilter {
+.styleTextFilter, .styleSelectFilter, .styleNumericRangeFilter, .styleDataRangeFilter {
   .colorFilterLayout
 }
 
-.styleMinInput .webix_el_box input, .styleMaxInput .webix_el_box input, .styleTextInput .webix_el_box input, .styleSelectList .webix_el_box input {
+.styleMinInput .webix_el_box input, .styleMaxInput .webix_el_box input, .styleTextInput .webix_el_box input, .styleSelectList .webix_el_box input, .styleMinDateInput .webix_inp_static, .styleMaxDateInput .webix_inp_static {
   .inputText
 }
 
 .styleMinInput .webix_el_box input::-webkit-input-placeholder,
-.styleMaxInput .webix_el_box input::-webkit-input-placeholder { /* Safari, Chrome and Opera */
+.styleMaxInput .webix_el_box input::-webkit-input-placeholder {
   .placeholder
 }
 
 .styleMinInput .webix_el_box input:-moz-placeholder,
-.styleMaxInput .webix_el_box input:-moz-placeholder { /* Firefox 18- */
+.styleMaxInput .webix_el_box input:-moz-placeholder {
   .placeholder
 }
 
 .styleMinInput .webix_el_box input::-moz-placeholder,
-.styleMaxInput .webix_el_box input::-moz-placeholder { /* Firefox 19+ */
+.styleMaxInput .webix_el_box input::-moz-placeholder{
   .placeholder
 }
 
 .styleMinInput .webix_el_box input:-ms-input-placeholder,
-.styleMaxInput .webix_el_box input:-ms-input-placeholder{ /* IE 10+ */
+.styleMaxInput .webix_el_box input:-ms-input-placeholder{
   .placeholder
 }
 
 .styleMinInput .webix_el_box input::-ms-input-placeholder,
-.styleMaxInput .webix_el_box input::-ms-input-placeholder { /* Edge */
+.styleMaxInput .webix_el_box input::-ms-input-placeholder {
   .placeholder
 }
 
 .styleMinInput .webix_el_box input:placeholder-shown,
-.styleMaxInput .webix_el_box input:placeholder-shown{ /* Standard one last! */
+.styleMaxInput .webix_el_box input:placeholder-shown {
+  .placeholder
+}
+
+.styleMinDateInput .webix_el_box .webix_inp_static .webix_placeholder,
+.styleMaxDateInput .webix_el_box .webix_inp_static .webix_placeholder{
   .placeholder
 }
 
@@ -198,7 +203,7 @@ body, html { height:99%; }
   font-weight: bold;
 }
 
-.styleSelectList .webix_el_box .webix_input_icon {
+.styleSelectList .webix_el_box .webix_input_icon, .styleMinDateInput .webix_el_box .webix_input_icon, .styleMaxDateInput .webix_el_box .webix_input_icon {
   .inputText;
   background-color: inherit !important;
 }

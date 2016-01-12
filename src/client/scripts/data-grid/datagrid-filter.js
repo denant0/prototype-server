@@ -25,7 +25,8 @@ class DataGridFilter {
         this._registerFilter(new TextFilter());
         this._registerFilter(new SelectFilter());
         this._registerFilter(new NumericRangeFilter());
-        this._registerFilter(new DateRangeFilter());
+        new DateRangeFilter();
+        //this._registerFilter(new DateRangeFilter());
     }
 
     refreshWidthColumn(columnId) {
@@ -56,7 +57,13 @@ class DataGridFilter {
     afterFilter () {
         $$(webix.ARCHIBUS.filterContainer).editStop();
         if (webix.ARCHIBUS.currentDisplayFilter.id) {
-            $$(webix.ARCHIBUS.filterContainer).editCell(webix.ARCHIBUS.currentDisplayFilter.row, webix.ARCHIBUS.currentDisplayFilter.id);
+            if(webix.ARCHIBUS.currentDisplayFilter.type == 'date') {
+                var targer = $$(webix.ARCHIBUS.filterContainer).getItemNode({ row: webix.ARCHIBUS.currentDisplayFilter.row, column: webix.ARCHIBUS.currentDisplayFilter.id});
+                $$("dataRangeFilter").show(targer);
+            } else {
+                $$(webix.ARCHIBUS.filterContainer).editCell(webix.ARCHIBUS.currentDisplayFilter.row, webix.ARCHIBUS.currentDisplayFilter.id);
+            }
+
         }
     }
 
@@ -294,9 +301,6 @@ class DataGridFilter {
                 case 'enum':
                     configGridColumn.editor = 'customSelect';
                     break;
-                case 'date':
-                    configGridColumn.editor = 'dateRange';
-                    break;
                 default:
                     configGridColumn.editor = 'customText';
                     break;
@@ -354,7 +358,12 @@ class DataGridFilter {
             type = item[id.column].type;
             this.editStop();
             webix.ARCHIBUS.currentDisplayFilter = {id: id.column, row: id.row, type: type};
-            this.editCell(id.row, id.column);
+            if (type == 'date') {
+                $$("dataRangeFilter").show(event.target);
+            } else {
+                this.editCell(id.row, id.column);
+            }
+
         }
     }
 

@@ -274,7 +274,7 @@ class DataGrid {
             }
             else{
                 if (i == ARCHIBUSColumns.length - 1) {
-                    gridColumn.footer = [{text:'<div id="pager"></div>', height: 20},{text:"", height: 20}];
+                    gridColumn.footer = [{text:"", height: 20},{text:"", height: 20}];
                 } else {
                     gridColumn.footer = [{text:"", height: 20},{text:"", height: 20}];
                 }

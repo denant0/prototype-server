@@ -112,56 +112,59 @@ html {
 }
 .styleTextFilter,
 .styleSelectFilter,
-.styleNumericRangeFilter {
+.styleNumericRangeFilter,
+.styleDataRangeFilter {
   background-color: #FCC48B;
   border: 1px solid #FCC48B !important;
 }
 .styleMinInput .webix_el_box input,
 .styleMaxInput .webix_el_box input,
 .styleTextInput .webix_el_box input,
-.styleSelectList .webix_el_box input {
+.styleSelectList .webix_el_box input,
+.styleMinDateInput .webix_inp_static,
+.styleMaxDateInput .webix_inp_static {
   border-radius: 0 !important;
   color: #4075D3 !important;
   font-weight: bold;
 }
 .styleMinInput .webix_el_box input::-webkit-input-placeholder,
 .styleMaxInput .webix_el_box input::-webkit-input-placeholder {
-  /* Safari, Chrome and Opera */
   color: #37A6D3;
   font-size: 10px;
   font-style: italic;
 }
 .styleMinInput .webix_el_box input:-moz-placeholder,
 .styleMaxInput .webix_el_box input:-moz-placeholder {
-  /* Firefox 18- */
   color: #37A6D3;
   font-size: 10px;
   font-style: italic;
 }
 .styleMinInput .webix_el_box input::-moz-placeholder,
 .styleMaxInput .webix_el_box input::-moz-placeholder {
-  /* Firefox 19+ */
   color: #37A6D3;
   font-size: 10px;
   font-style: italic;
 }
 .styleMinInput .webix_el_box input:-ms-input-placeholder,
 .styleMaxInput .webix_el_box input:-ms-input-placeholder {
-  /* IE 10+ */
   color: #37A6D3;
   font-size: 10px;
   font-style: italic;
 }
 .styleMinInput .webix_el_box input::-ms-input-placeholder,
 .styleMaxInput .webix_el_box input::-ms-input-placeholder {
-  /* Edge */
   color: #37A6D3;
   font-size: 10px;
   font-style: italic;
 }
 .styleMinInput .webix_el_box input:placeholder-shown,
 .styleMaxInput .webix_el_box input:placeholder-shown {
-  /* Standard one last! */
+  color: #37A6D3;
+  font-size: 10px;
+  font-style: italic;
+}
+.styleMinDateInput .webix_el_box .webix_inp_static .webix_placeholder,
+.styleMaxDateInput .webix_el_box .webix_inp_static .webix_placeholder {
   color: #37A6D3;
   font-size: 10px;
   font-style: italic;
@@ -171,7 +174,9 @@ html {
   border: 1px solid #FCC48B !important;
   font-weight: bold;
 }
-.styleSelectList .webix_el_box .webix_input_icon {
+.styleSelectList .webix_el_box .webix_input_icon,
+.styleMinDateInput .webix_el_box .webix_input_icon,
+.styleMaxDateInput .webix_el_box .webix_input_icon {
   border-radius: 0 !important;
   color: #4075D3 !important;
   font-weight: bold;
