@@ -1506,18 +1506,66 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 _classCallCheck(this, DataGrid);
 
                 var nameGrid = config.container + 'Grid',
-                    namePaging = config.container + 'Paging',
                     nameFiltering = config.container + 'Filtering';
 
                 webix.ARCHIBUS.data = {};
                 webix.ARCHIBUS.data.collection = [];
                 webix.ARCHIBUS.pageSize = config.pageSize;
 
+                webix.ui.datafilter.customFilterName = {
+                    getValue: function getValue() {
+                        return "";
+                    },
+                    setValue: function setValue() {},
+                    refresh: function refresh(master, node, config) {
+                        var pager = webix.$$(config.pager);
+                        master.registerFilter(node, config, this);
+
+                        node.firstChild.appendChild(pager.$view.parentNode);
+                        pager.render();
+                        webix.delay(pager.resize, pager);
+                    },
+                    render: function render(master, config) {
+                        if (!config.pager) {
+                            var d = webix.html.create("div", { "class": "webix_richfilter" });
+                            var pagers = master.getPager().config;
+                            var pagerConfig = {
+                                container: d,
+                                view: "pager",
+                                template: "{common.first()} {common.prev()}{common.pages()}{common.next()}{common.last()}",
+                                size: master.config.pageSize,
+                                group: 4,
+                                css: "stylePagerView"
+                            };
+
+                            var pager = webix.ui(pagerConfig);
+                            webix.ARCHIBUS.pagerViewId = pager.config.id;
+                            config.pager = pager.config.id;
+                            pager.attachEvent("onItemClick", function (id) {
+                                $$("pager").select(id);
+                                webix.delay(function () {
+                                    this.render();
+                                }, this);
+                            });
+                        }
+
+                        config.css = "webix_div_filter styleLayoutPager";
+                        return " ";
+                    }
+                };
+
                 this._dataGridLoad = new DataGridLoad();
                 this._dataGridSort = new DataGridSort();
                 this._dataGridEdit = new DataGridEdit();
                 this._dataGridGroups = new DataGridGroups();
                 this._dataGridFilter = new DataGridFilter();
+
+                webix.locale.pager = {
+                    first: "&lt;",
+                    last: "&gt;",
+                    next: "NEXT",
+                    prev: "PREV"
+                };
 
                 webix.protoUI({
                     name: 'customDataTable',
@@ -1567,10 +1615,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     }, {
                         css: 'styleLayoutDataGrid',
                         template: '<div id="' + nameGrid + '"style="height: 100%" "></div>'
-                    }, {
-                        css: 'styleLayoutPager',
-                        template: '<div id="' + namePaging + '"></div>',
-                        autoheight: true
                     }]
                 });
                 this.dataTable = new webix.ui(this._createGridConfiguration(config));
@@ -1640,15 +1684,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         view: "customDataTable",
                         css: 'styleDataGrid',
                         columns: gridColumns.columns,
+                        pageSize: config.pageSize,
                         pager: {
-                            css: 'stylePager',
-                            template: "{common.first()}{common.prev()}{common.pages()}{common.next()}{common.last()}",
-                            container: pagingName,
+                            id: 'pager',
+                            group: 4,
                             size: config.pageSize,
-                            group: 5,
-                            animate: {
-                                subtype: "in"
-                            }
+                            apiOnly: true
                         },
                         multisort: true,
                         select: "cell",
@@ -1701,6 +1742,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         gridActions['onRecalculateTotalColumn'] = this._dataGridGroups.recalculateTotalColumn;
                     }
                     gridActions['onStartWith'] = this._startWith;
+                    gridActions['onSetLimitPages'] = this._setLimitPages;
                     gridActions['onRefreshWidthColumnsFilterTable'] = this._dataGridFilter.refreshWidthColumns;
                     gridActions['onRefreshWidthColumnFilterTable'] = this._dataGridFilter.refreshWidthColumn;
                     gridActions['onSetPositionScrollFilterTable'] = this._dataGridFilter.setPositionSctoll;
@@ -1746,10 +1788,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         if (config.editing) {
                             gridColumn = this._dataGridEdit.configureColumnEdit(gridColumn, gridColumns, ARCHIBUSColumn.dataType, this._dataGridLoad);
                         }
-                        if (ARCHIBUSColumn.width) {
-                            gridColumn.width = ARCHIBUSColumn.width;
+                        if (i == ARCHIBUSColumns.length - 1) {
+                            gridColumn.width = 300;
                         } else {
-                            gridColumn.adjust = "data";
+                            if (ARCHIBUSColumn.width) {
+                                gridColumn.width = ARCHIBUSColumn.width;
+                            } else {
+                                gridColumn.adjust = "data";
+                            }
                         }
                         if (ARCHIBUSColumn.action) {
                             webix.ARCHIBUS.buttonsMap = ARCHIBUSColumn.action;
@@ -1770,7 +1816,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             webixGroupBy = configurationTotalGroup.header;
                         } else {
                             if (i == ARCHIBUSColumns.length - 1) {
-                                gridColumn.footer = [{ text: "", height: 20 }, { text: "", height: 20 }];
+                                gridColumn.footer = { content: "customFilterName" };
                             } else {
                                 gridColumn.footer = [{ text: "", height: 20 }, { text: "", height: 20 }];
                             }
@@ -2005,9 +2051,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 key: "_afterLoad",
                 value: function _afterLoad(row, column, value) {
                     this.openAll();
-                    /*this.eachColumn(function(columnId) {
-                        this.adjustColumn(columnId, 'data');
-                    });*/
+                    this.callEvent('onSetLimitPages', []);
+                    var pager = $$(webix.ARCHIBUS.pagerViewId);
+                    var children = pager.$view.children;
+                    for (var i = 0; i < children.length; i++) {
+                        var child = children[i];
+                        if (child.attributes[1].nodeValue == 'first') {
+                            child.css = 'first';
+                        }
+                    }
                     this.callEvent('onRefreshWidthColumnsFilterTable', []);
                 }
                 /*
@@ -2040,6 +2092,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 key: "_columnResize",
                 value: function _columnResize(columnId) {
                     this.callEvent('onRefreshWidthColumnFilterTable', [columnId]);
+                }
+            }, {
+                key: "_setLimitPages",
+                value: function _setLimitPages() {
+                    $$(webix.ARCHIBUS.pagerViewId).config.limit = this.getPager().config.limit;
                 }
                 /*
                  Event to check if the given string with the specified prefix

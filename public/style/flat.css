@@ -195,3 +195,32 @@ html {
 .webix_dtable .webix_hs_left td.webix_last {
   border-right: 1px solid #d0d0d0;
 }
+.webix_view.webix_pager.stylePagerView {
+  line-height: 30px;
+  height: 30px !important;
+}
+.webix_view.webix_pager.stylePagerView .webix_pager_item {
+  padding: 1px;
+  border-radius: 0 !important;
+  border: 1px solid #4075D3;
+  color: #fff;
+  background: #4075D3;
+  border-bottom: 1px solid #4075D3;
+  font-size: 11px;
+}
+.webix_view.webix_pager.stylePagerView .webix_pager_item_selected {
+  padding: 1px;
+  border-radius: 0 !important;
+  border: 1px solid #E4EDF9;
+  color: #4075D3;
+  background: #E4EDF9;
+  border-bottom: 1px solid #E4EDF9;
+  font-size: 13px;
+  font-weight: bold;
+}
+.webix_view.webix_pager.stylePagerView .webix_pager_item > button[first] {
+  background: #612eae;
+}
+.styleLayoutPager {
+  height: 40px !important;
+}
