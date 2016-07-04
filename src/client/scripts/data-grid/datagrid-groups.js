@@ -64,6 +64,29 @@ class DataGridGroups{
         }
         return configurationGroup;
     }
+    configureColumnGroups (indexColumn, ARCHIBUSColumns) {
+        var ARCHIBUSColumn = ARCHIBUSColumns[indexColumn];
+        if (ARCHIBUSColumn.action) {
+            return [ARCHIBUSColumn.title];
+        }
+        var result = [];
+        if (ARCHIBUSColumn.groupText) {
+            var groupColumnCount = 1;
+            for (var i = indexColumn; i < ARCHIBUSColumns.length; i++) {
+                var column  = ARCHIBUSColumns[i];
+                if (column.groupCol == ARCHIBUSColumn.batch) {
+                    groupColumnCount++;
+                }
+            }
+            result [0] = { content:"columnGroup", closed:false, batch: ARCHIBUSColumn.batch, groupText: ARCHIBUSColumn.groupText, colspan:groupColumnCount};
+        }
+        if (ARCHIBUSColumn.groupCol) {
+            result [0] = null;
+        }
+        result[result.length] = ARCHIBUSColumn.title;
+        return result;
+    }
+
     /*
 	Do perform the configuration columns to display the total amount of column data
 		@webixGroupBy: configuration columns to display the total amount of column data

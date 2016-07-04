@@ -6,25 +6,29 @@ var ARCHIBUSColumns = [
         id: 'AssetType',
         title: 'Asset Type',
         groupBy: true,
-        sortBy: 'asc', // or 'desc'
+        sortBy: 'asc',
         dataType: 'enum'
     },
     {
         id: 'cost_purchase',
         title: 'Purchase Cost',
         dataType: 'number',
-        showTotals: true
+        showTotals: true,
+        //groupText: 'Purchase Cost',
+        //batch: 'cost'
     },
     {
         id: 'quantity_mtbf',
         title: 'Mean Time Between Failures',
         dataType: 'integer',
-        showTotals: true
+        showTotals: true,
+        //groupCol: 'cost'
     },
     {
         id: 'AssetStatus',
         title: 'Asset Status',
-        dataType: 'enum'
+        dataType: 'enum',
+        //groupCol: 'cost'
     },
     {
         id: 'TitleDescription',
@@ -34,23 +38,28 @@ var ARCHIBUSColumns = [
     {
         id: 'GeoRegionID',
         title: 'Geo-RegionID',
-        dataType: 'text'
+        dataType: 'text',
+        groupText: 'Code',
+        batch: 'code'
     },
     {
         id: 'CountryCode',
         title: 'Country Code',
         cssClass: 'cssClassCountryCode',
-        dataType: 'enum'
+        dataType: 'enum',
+        groupCol: 'code'
     },
     {
         id: 'StateCode',
         title: 'State Code',
-        dataType: 'text'
+        dataType: 'text',
+        groupCol: 'code'
     },
     {
         id: 'CityCode',
         title: 'City Code',
-        dataType: 'text'
+        dataType: 'text',
+        groupCol: 'code'
     },
     {
         id: 'SiteCode',
@@ -79,11 +88,6 @@ var ARCHIBUSColumns = [
         dataType: 'text'
     },
     {
-        id: 'BusinessUnit',
-        title: 'Business Unit',
-        dataType: 'text'
-    },
-    {
         id: 'DivisionCode',
         title: 'Division Code',
         dataType: 'text'
@@ -91,6 +95,11 @@ var ARCHIBUSColumns = [
     {
         id: 'DepartmentCode',
         title: 'Department Code',
+        dataType: 'text'
+    },
+    {
+        id: 'BusinessUnit',
+        title: 'Business Unit',
         dataType: 'text'
     },
     {

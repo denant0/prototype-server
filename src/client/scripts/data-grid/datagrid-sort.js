@@ -9,10 +9,28 @@ class DataGridSort {
      */
     doStartSorting (column, order) {
         if (typeof this.___multisort != 'undefined'  && this.___multisort) {
-            this.doStartMultiSorting(column,order);
+            var isSort = true;
+            var index = 0;
+            for (var i = 0; i < this._multisortMap.length; i++) {
+                var col = this._multisortMap[i];
+                if (col.id == column && col.dir == order) {
+                    isSort = false;
+                    index = i;
+                    break;
+                }
+            }
+            if (isSort) {
+                this.doStartMultiSorting(column,order);
+            }
+                for (var i = 0; i < this._multisortMap.length; i++) {
+                    var col = this._multisortMap[i];
+                    this.doReLabelingSorting(i, col.id, col.dir, false);
+                }
+
         } else {
             this.doStartSingSorting(column,order);
         }
+
     }
     /*
      To perform a single sorting

@@ -206,7 +206,10 @@ class DataGrid {
             url: config.dataSource,
             footer:true,
             navigation:true,
-            tooltip:true
+            tooltip:true,
+            datafetch: 200,
+            loadahead: 200,
+            dragColumn: true
         };
 
         gridConfiguration.scheme = this._dataGridGroups.configureGroup(gridColumns.group.id, gridColumns.group.header);
@@ -279,7 +282,11 @@ class DataGrid {
             if (ARCHIBUSColumn.id) {
                 gridColumn.id = ARCHIBUSColumn.id;
             }
-            gridColumn.header = this._configureColumnHeader(ARCHIBUSColumn.title, ARCHIBUSColumn.dataType, ARCHIBUSColumn.action);
+            gridColumn.header = this._dataGridGroups.configureColumnGroups(i, ARCHIBUSColumns);
+            if (ARCHIBUSColumn.groupCol) {
+                gridColumn.batch = ARCHIBUSColumn.groupCol;
+            }
+            //gridColumn.header = this._configureColumnHeader(ARCHIBUSColumn);
             gridColumn.template = this._dataGridGroups.renderColumnsCell;
             gridColumn.tooltip = this._renderTooltip;
             gridColumn = this._configureColumnStyle(gridColumn, ARCHIBUSColumn);
@@ -362,19 +369,24 @@ class DataGrid {
      @dataType: the type column
      @actions: the actions column
      */
-    _configureColumnHeader (title, dataType, actions) {
-        if (actions) {
-            return title;
+    _configureColumnHeader (column) {
+        if (column.action) {
+            return column.title;
         }
-        var filterView;
+        var result = [];
+        /*var filterView;
         for (var type in this.dataTypeToFilterTypeMapping) {
-            if (type === dataType) {
+            if (type === column.dataType) {
                 filterView = this.dataTypeToFilterTypeMapping[type];
             }
-        }
-        return [
-            title
-        ];
+        }*/
+
+        /*if (column.groupText) {
+            result[0] = { content:"columnGroup", closed:true, batch: column.batch, groupText: column.groupText, colspan:12};
+        }*/
+        result[result.length] = column.title;
+
+        return result;
     }
 
     /*
