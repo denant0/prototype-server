@@ -827,6 +827,31 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     }
                     return configurationGroup;
                 }
+            }, {
+                key: "configureColumnGroups",
+                value: function configureColumnGroups(indexColumn, ARCHIBUSColumns) {
+                    var ARCHIBUSColumn = ARCHIBUSColumns[indexColumn];
+                    if (ARCHIBUSColumn.action) {
+                        return [ARCHIBUSColumn.title];
+                    }
+                    var result = [];
+                    if (ARCHIBUSColumn.groupText) {
+                        var groupColumnCount = 1;
+                        for (var i = indexColumn; i < ARCHIBUSColumns.length; i++) {
+                            var column = ARCHIBUSColumns[i];
+                            if (column.groupCol == ARCHIBUSColumn.batch) {
+                                groupColumnCount++;
+                            }
+                        }
+                        result[0] = { content: "columnGroup", closed: false, batch: ARCHIBUSColumn.batch, groupText: ARCHIBUSColumn.groupText, colspan: groupColumnCount };
+                    }
+                    if (ARCHIBUSColumn.groupCol) {
+                        result[0] = null;
+                    }
+                    result[result.length] = ARCHIBUSColumn.title;
+                    return result;
+                }
+
                 /*
                 Do perform the configuration columns to display the total amount of column data
                 @webixGroupBy: configuration columns to display the total amount of column data
@@ -1310,7 +1335,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 key: "doStartSorting",
                 value: function doStartSorting(column, order) {
                     if (typeof this.___multisort != 'undefined' && this.___multisort) {
-                        this.doStartMultiSorting(column, order);
+                        var isSort = true;
+                        var index = 0;
+                        for (var i = 0; i < this._multisortMap.length; i++) {
+                            var col = this._multisortMap[i];
+                            if (col.id == column && col.dir == order) {
+                                isSort = false;
+                                index = i;
+                                break;
+                            }
+                        }
+                        if (isSort) {
+                            this.doStartMultiSorting(column, order);
+                        }
+                        for (var i = 0; i < this._multisortMap.length; i++) {
+                            var col = this._multisortMap[i];
+                            this.doReLabelingSorting(i, col.id, col.dir, false);
+                        }
                     } else {
                         this.doStartSingSorting(column, order);
                     }
@@ -1700,7 +1741,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         url: config.dataSource,
                         footer: true,
                         navigation: true,
-                        tooltip: true
+                        tooltip: true,
+                        datafetch: 200,
+                        loadahead: 200,
+                        dragColumn: true
                     };
 
                     gridConfiguration.scheme = this._dataGridGroups.configureGroup(gridColumns.group.id, gridColumns.group.header);
@@ -1779,7 +1823,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         if (ARCHIBUSColumn.id) {
                             gridColumn.id = ARCHIBUSColumn.id;
                         }
-                        gridColumn.header = this._configureColumnHeader(ARCHIBUSColumn.title, ARCHIBUSColumn.dataType, ARCHIBUSColumn.action);
+                        gridColumn.header = this._dataGridGroups.configureColumnGroups(i, ARCHIBUSColumns);
+                        if (ARCHIBUSColumn.groupCol) {
+                            gridColumn.batch = ARCHIBUSColumn.groupCol;
+                        }
+                        //gridColumn.header = this._configureColumnHeader(ARCHIBUSColumn);
                         gridColumn.template = this._dataGridGroups.renderColumnsCell;
                         gridColumn.tooltip = this._renderTooltip;
                         gridColumn = this._configureColumnStyle(gridColumn, ARCHIBUSColumn);
@@ -1866,17 +1914,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             }, {
                 key: "_configureColumnHeader",
-                value: function _configureColumnHeader(title, dataType, actions) {
-                    if (actions) {
-                        return title;
+                value: function _configureColumnHeader(column) {
+                    if (column.action) {
+                        return column.title;
                     }
-                    var filterView;
+                    var result = [];
+                    /*var filterView;
                     for (var type in this.dataTypeToFilterTypeMapping) {
-                        if (type === dataType) {
+                        if (type === column.dataType) {
                             filterView = this.dataTypeToFilterTypeMapping[type];
                         }
-                    }
-                    return [title];
+                    }*/
+
+                    /*if (column.groupText) {
+                        result[0] = { content:"columnGroup", closed:true, batch: column.batch, groupText: column.groupText, colspan:12};
+                    }*/
+                    result[result.length] = column.title;
+
+                    return result;
                 }
 
                 /*
@@ -2670,43 +2725,52 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             id: 'AssetType',
             title: 'Asset Type',
             groupBy: true,
-            sortBy: 'asc', // or 'desc'
+            sortBy: 'asc',
             dataType: 'enum'
         }, {
             id: 'cost_purchase',
             title: 'Purchase Cost',
             dataType: 'number',
             showTotals: true
-        }, {
+        }, //groupText: 'Purchase Cost',
+        //batch: 'cost'
+        {
             id: 'quantity_mtbf',
             title: 'Mean Time Between Failures',
             dataType: 'integer',
             showTotals: true
-        }, {
+        }, //groupCol: 'cost'
+        {
             id: 'AssetStatus',
             title: 'Asset Status',
             dataType: 'enum'
-        }, {
+        }, //groupCol: 'cost'
+        {
             id: 'TitleDescription',
             title: 'Title Description',
             dataType: 'text'
         }, {
             id: 'GeoRegionID',
             title: 'Geo-RegionID',
-            dataType: 'text'
+            dataType: 'text',
+            groupText: 'Code',
+            batch: 'code'
         }, {
             id: 'CountryCode',
             title: 'Country Code',
             cssClass: 'cssClassCountryCode',
-            dataType: 'enum'
+            dataType: 'enum',
+            groupCol: 'code'
         }, {
             id: 'StateCode',
             title: 'State Code',
-            dataType: 'text'
+            dataType: 'text',
+            groupCol: 'code'
         }, {
             id: 'CityCode',
             title: 'City Code',
-            dataType: 'text'
+            dataType: 'text',
+            groupCol: 'code'
         }, {
             id: 'SiteCode',
             title: 'Site Code',
@@ -2729,16 +2793,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             title: 'Room Code',
             dataType: 'text'
         }, {
-            id: 'BusinessUnit',
-            title: 'Business Unit',
-            dataType: 'text'
-        }, {
             id: 'DivisionCode',
             title: 'Division Code',
             dataType: 'text'
         }, {
             id: 'DepartmentCode',
             title: 'Department Code',
+            dataType: 'text'
+        }, {
+            id: 'BusinessUnit',
+            title: 'Business Unit',
             dataType: 'text'
         }, {
             id: 'action',
